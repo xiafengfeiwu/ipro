@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE generatorConfiguration  
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!-- 
+	<properties url="file:///C:/Users/wangting/workspace/ipro/src/test/resources/generator.properties"/>
+ 	-->
+ 	
+	<properties url="file:///C:/Users/SiZhongXia/Documents/MavenProject/src/test/resources/generator.properties"/>
+ 	
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry location="${classPath}" />
+	
+	<context id="iproContext">
+	
+		<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${username}" password="${password}" />
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="${javaModelPackage}" targetProject="${javaModelProject}" />
+		<!-- 生成的映射文件报名和位置 -->
+		<sqlMapGenerator targetPackage="${sqlMapPackage}" targetProject="${sqlMapProject}" />
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator targetPackage="${javaClientPackage}" targetProject="${javaClientProject}" type="XMLMAPPER" />
+		
+		<!-- 要生成的那些表 -->
+		<table schema="${schema}" tableName="w_menu" domainObjectName="Menu" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_system" domainObjectName="WebSystem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+	</context>
+</generatorConfiguration>

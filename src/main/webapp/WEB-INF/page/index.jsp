@@ -14,12 +14,12 @@
 <meta name="keywords" content="${systemInfo.systemKeywords }">
 <meta name="description" content="${systemInfo.systemDescription }">
 <link rel="shortcut icon" href="favicon.ico">
-<link href="resources/css/bootstrap.min14ed.css?v=3.3.6"
+<link href="resources/css/bootstrap.min.css?v=3.3.6"
 	rel="stylesheet">
-<link href="resources/css/font-awesome.min93e3.css?v=4.4.0"
+<link href="resources/css/font-awesome.min.css?v=4.4.0"
 	rel="stylesheet">
 <link href="resources/css/animate.min.css" rel="stylesheet">
-<link href="resources/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+<link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg"
 	style="overflow: hidden">

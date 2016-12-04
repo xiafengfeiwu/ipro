@@ -1,62 +1,275 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="renderer" content="webkit">
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-<base
-	href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-					+ request.getContextPath() + "/"%>" />
-<title>开发</title>
-<link rel="shortcut icon" href="favicon.ico">
-<link href="resources/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-<link href="resources/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-<link href="resources/css/animate.min.css" rel="stylesheet">
-<link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
-</head>
-<body class="gray-bg">
-	<div class="wrapper wrapper-content animated fadeIn">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="ibox float-e-margins">
-					<div class="ibox-title">
-						<h5>
-							菜单配置 <small>系统自定义菜单控制面板</small>
-						</h5>
-						<div class="ibox-tools">
-							<a class="collapse-link"> <i class="fa fa-chevron-up"></i></a>
-						</div>
-					</div>
-					<div class="ibox-content">${menuNestableHtml }</div>
-				</div>
-			</div>
-			<div class="col-sm-4">ss</div>
-			<div class="col-sm-4">ss</div>
-		</div>
-	</div>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<base
+		href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/"%>" />
+    <link href="resources/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="resources/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="resources/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="resources/css/animate.min.css" rel="stylesheet">
+    <link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
 
-	<script src="resources/js/jquery.min.js?v=2.1.4"></script>
-	<script src="resources/js/bootstrap.min.js?v=3.3.6"></script>
-	<script src="resources/js/content.min.js?v=1.0.0"></script>
-	<script src="resources/js/plugins/nestable/jquery.nestable.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#menu-nestable").nestable({
-				maxDepth : 3
-			}).on("change", function(e) {
-				var list = e.length ? e : $(e.target);
-				if (window.JSON) {
-					console.info(window.JSON.stringify(list.nestable("serialize")))
-				} else {
-					alert("浏览器不支持nestable")
-				}
-			});
-		});
-	</script>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <h5>功能</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li>
+                                    <a href="develop/index"> <i class="fa fa-inbox inactive"></i> 收件箱</a>
+                                </li>
+                                <li>
+                                    <a href="develop/index"> <i class="fa fa-envelope-o"></i> 发信</a>
+                                </li>
+                                <li>
+                                    <a href="develop/index"> <i class="fa fa-certificate"></i> 重要</a>
+                                </li>
+                                <li>
+                                    <a href="develop/index"> <i class="fa fa-file-text-o"></i> 草稿</a>
+                                </li>
+                                <li>
+                                    <a href="develop/index"> <i class="fa fa-trash-o"></i> 垃圾箱</a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 animated fadeIn">
+                <div class="mail-box-header">
+
+                    <form method="get" action="index.html" class="pull-right mail-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" name="search" placeholder="搜索邮件标题，正文等">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    搜索
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <h2>
+                    收件箱 (16)
+                </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i>
+                            </button>
+                            <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="刷新邮件列表"><i class="fa fa-refresh"></i> 刷新</button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为已读"><i class="fa fa-eye"></i>
+                        </button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为重要"><i class="fa fa-exclamation"></i>
+                        </button>
+                        <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件"><i class="fa fa-trash-o"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="mail-box">
+
+                    <table class="table table-hover table-mail">
+                        <tbody>
+                            <tr class="unread">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">支付宝</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">支付宝提醒</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">昨天 10:20</td>
+                            </tr>
+                            <tr class="unread">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks" checked>
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">Amaze UI</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">Amaze UI Beta2 发布</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午10:57</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">WordPress</a> <span class="label label-warning pull-right">验证邮件</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">wp-user-frontend-pro v2.1.9</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午9:21</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">史上最全！淘宝双11红包疯抢攻略！</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">中午12:24</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a> <span class="label label-danger pull-right">AD</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">亲，双11来啦！帮你挑货，还送你4999元红包！仅此一次！</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">上午6:48</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">支付宝</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">支付宝提醒</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">昨天 10:20</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">Amaze UI</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">Amaze UI Beta2 发布</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午10:57</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">WordPress</a> <span class="label label-warning pull-right">验证邮件</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">wp-user-frontend-pro v2.1.9</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午9:21</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">史上最全！淘宝双11红包疯抢攻略！</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">中午12:24</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a> <span class="label label-danger pull-right">AD</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">亲，双11来啦！帮你挑货，还送你4999元红包！仅此一次！</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">上午6:48</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">支付宝</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">支付宝提醒</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">昨天 10:20</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">Amaze UI</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">Amaze UI Beta2 发布</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午10:57</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">WordPress</a> <span class="label label-warning pull-right">验证邮件</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">wp-user-frontend-pro v2.1.9</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">上午9:21</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">史上最全！淘宝双11红包疯抢攻略！</a>
+                                </td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">中午12:24</td>
+                            </tr>
+                            <tr class="read">
+                                <td class="check-mail">
+                                    <input type="checkbox" class="i-checks">
+                                </td>
+                                <td class="mail-ontact"><a href="mail_detail.html">淘宝网</a> <span class="label label-danger pull-right">AD</span>
+                                </td>
+                                <td class="mail-subject"><a href="mail_detail.html">亲，双11来啦！帮你挑货，还送你4999元红包！仅此一次！</a>
+                                </td>
+                                <td class=""><i class="fa fa-paperclip"></i>
+                                </td>
+                                <td class="text-right mail-date">上午6:48</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="resources/js/jquery.min.js?v=2.1.4"></script>
+    <script src="resources/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="resources/js/content.min.js?v=1.0.0"></script>
+    <script src="resources/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
 </body>
 
 </html>

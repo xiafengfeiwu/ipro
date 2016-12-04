@@ -43,7 +43,7 @@
 							</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
-								<li><a class="J_menuItem" href="javascript:;">修改头像</a></li>
+								<li onclick="layer.alert('修改头像')"><a href="javascript:;">修改头像</a></li>
 								<li><a class="J_menuItem" href="javascript:;">个人资料</a></li>
 								<li><a class="J_menuItem" href="javascript:;">联系我们</a></li>
 								<li><a class="J_menuItem" href="javascript:;">信箱</a></li>

@@ -33,25 +33,24 @@
 				<ul class="nav" id="side-menu">
 					<li class="nav-header">
 						<div class="dropdown profile-element">
-							<span><img alt="image" class="img-circle"
-								src="resources/img/profile_small.jpg" /></span> <a
-								data-toggle="dropdown" class="dropdown-toggle"
-								href="javascript:;"> <span class="clear"> <span
-									class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-									<span class="text-muted text-xs block">超级管理员<b
-										class="caret"></b></span>
-							</span>
+							<span>
+								<img alt="image" class="img-circle" src="upload/20161204/805316298304126976.jpg" />
+							</span> 
+							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+								<span class="clear">
+									<span class="block m-t-xs"><strong class="font-bold">Si ZhongXia</strong></span>
+									<span class="text-muted text-xs block">司仲夏<b class="caret"></b></span>
+								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
 								<li onclick="layer.alert('修改头像')"><a href="javascript:;">修改头像</a></li>
-								<li><a class="J_menuItem" href="javascript:;">个人资料</a></li>
 								<li><a class="J_menuItem" href="javascript:;">联系我们</a></li>
 								<li><a class="J_menuItem" href="javascript:;">信箱</a></li>
 								<li class="divider"></li>
 								<li><a href="javascript:;">安全退出</a></li>
 							</ul>
 						</div>
-						<div class="logo-element">Zt</div>
+						<div class="logo-element">TX</div>
 					</li>
 					<jsp:include page="components/menus.jsp"></jsp:include>
 				</ul>
@@ -66,31 +65,6 @@
 						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="javascript:;"><i class="fa fa-bars"></i></a>
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="javascript:;"><i class="fa fa-envelope"></i> <span class="label label-warning">16</span></a>
-							<ul class="dropdown-menu dropdown-messages">
-								<li class="m-t-xs">
-									<div class="dropdown-messages-box">
-										<a href="profile.html" class="pull-left"> <img alt="image" class="img-circle" src="resources/img/a7.jpg"></a>
-										<div class="media-body">
-											<small class="pull-right">46小时前</small> <strong>小四</strong> <br>这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？<br> <small class="text-muted">3天前 2014.11.8</small>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="text-center link-block">
-										<a class="J_menuItem" href="javascript:;"> <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong></a>
-									</div>
-								</li>
-							</ul></li>
-						<li class="dropdown">
-							<a class="dropdown-toggle count-info" data-toggle="dropdown" href="javascript:;"><i class="fa fa-bell"></i> <span class="label label-primary">8</span></a>
-							<ul class="dropdown-menu dropdown-alerts">
-								<li><a href="javascript:;"><i class="fa fa-envelope fa-fw"></i> 您有16条未读消息 <span class="pull-right text-muted small">4分钟前</span></a></li>
-								<li class="divider"></li>
-							</ul>
-						</li>
 						<li class="dropdown"><a class="J_menuItem" href="develop/index"><i class="fa fa-cog"></i>开发</a></li>
 						<li class="dropdown hidden-xs"><a class="right-sidebar-toggle" aria-expanded="false"><i class="fa fa-tasks"></i>主题</a></li>
 					</ul>
@@ -102,16 +76,14 @@
 				</button>
 				<nav class="page-tabs J_menuTabs">
 					<div class="page-tabs-content">
-						<a href="javascript:;" class="active J_menuTab" data-id="default">首页</a>
+						<a href="javascript:;" class="active J_menuTab" data-id="resume">主页面</a>
 					</div>
 				</nav>
 				<button class="roll-nav roll-right J_tabRight">
 					<i class="fa fa-forward"></i>
 				</button>
 				<div class="btn-group roll-nav roll-right">
-					<button class="dropdown J_tabClose" data-toggle="dropdown">
-						关闭操作<span class="caret"></span>
-					</button>
+					<button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span></button>
 					<ul role="menu" class="dropdown-menu dropdown-menu-right">
 						<li class="J_tabCloseAll"><a>关闭全部选项卡</a></li>
 						<li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
@@ -120,14 +92,13 @@
 				<a href="javascript:;" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
 			</div>
 			<div class="row J_mainContent" id="content-main">
-				<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="http://www.baidu.com" frameborder="0" data-id="default" seamless></iframe>
+				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="resume" frameborder="0" data-id="default" seamless></iframe>
 			</div>
 			<div class="footer">
 				<div class="pull-right">${systemInfo.systemCopyright }</div>
 			</div>
 		</div>
 		<!--右侧部分结束-->
-		<!--右侧边栏开始-->
 		<div id="right-sidebar">
 			<div class="sidebar-container">
 				<ul class="nav nav-tabs navs-3">
@@ -199,41 +170,6 @@
 				</div>
 			</div>
 		</div>
-		<!--右侧边栏结束-->
-		<!--mini聊天窗口开始-->
-		<div class="small-chat-box fadeInRight animated">
-			<div class="heading" draggable="true">
-				<small class="chat-date pull-right">Help</small> 帮助
-			</div>
-			<div class="content">
-				<div class="left">
-					<div class="author-name">
-						Beau-zihan <small class="chat-date">10:02</small>
-					</div>
-					<div class="chat-message active">你好</div>
-				</div>
-				<div class="right">
-					<div class="author-name">
-						游客<small class="chat-date">11:24</small>
-					</div>
-					<div class="chat-message">你好，请问H+有帮助文档吗？</div>
-				</div>
-			</div>
-			<div class="form-chat">
-				<div class="input-group input-group-sm">
-					<input type="text" class="form-control" /> <span
-						class="input-group-btn">
-						<button class="btn btn-primary" type="button">发送</button>
-					</span>
-				</div>
-			</div>
-		</div>
-		<div id="small-chat">
-			<span class="badge badge-warning pull-right"></span> <a
-				class="open-small-chat"> <i class="fa fa-comments"></i>
-			</a>
-		</div>
-		<!--mini聊天窗口结束-->
 	</div>
 
 	<script src="resources/js/jquery.min.js?v=2.1.4"></script>

@@ -34,7 +34,7 @@
 					<li class="nav-header">
 						<div class="dropdown profile-element">
 							<span>
-								<img alt="image" class="img-circle" src="upload/20161204/805316298304126976.jpg" />
+								<img alt="image" class="img-circle" src="resources/img/default_head_124x124.png" />
 							</span> 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
 								<span class="clear">
@@ -43,7 +43,7 @@
 								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
-								<li onclick="layer.alert('修改头像')"><a href="javascript:;">修改头像</a></li>
+								<li><a href="javascript:;">修改头像</a></li>
 								<li><a class="J_menuItem" href="javascript:;">联系我们</a></li>
 								<li><a class="J_menuItem" href="javascript:;">信箱</a></li>
 								<li class="divider"></li>
@@ -65,7 +65,7 @@
 						<a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="javascript:;"><i class="fa fa-bars"></i></a>
 					</div>
 					<ul class="nav navbar-top-links navbar-right">
-						<li class="dropdown"><a class="J_menuItem" href="develop/index"><i class="fa fa-cog"></i>开发</a></li>
+						<li class="dropdown"><a class="J_menuItem" href="develop/index.jspx"><i class="fa fa-cog"></i>开发</a></li>
 						<li class="dropdown hidden-xs"><a class="right-sidebar-toggle" aria-expanded="false"><i class="fa fa-tasks"></i>主题</a></li>
 					</ul>
 				</nav>
@@ -92,7 +92,7 @@
 				<a href="javascript:;" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
 			</div>
 			<div class="row J_mainContent" id="content-main">
-				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="resume" frameborder="0" data-id="default" seamless></iframe>
+				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="welcome.jspx" frameborder="0" data-id="default" seamless></iframe>
 			</div>
 			<div class="footer">
 				<div class="pull-right">${systemInfo.systemCopyright }</div>

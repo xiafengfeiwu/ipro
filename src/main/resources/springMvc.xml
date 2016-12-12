@@ -74,7 +74,11 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<bean class="com.pro.controller.InterceptorHolder"></bean>
+			<bean class="com.pro.interceptor.InterceptorHolder"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.pro.interceptor.FormTokenInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

@@ -61,21 +61,6 @@
 		<property name="sqlSessionFactoryBeanName" value="sessionFactory" />
 		<property name="basePackage" value="com.pro.dao" />
 	</bean>
-	<bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">  
-        <property name="dataSource" ref="proxoolDataSource" />  
-        <property name="databaseType" value="mysql"/>  
-        <property name="databaseSchemaUpdate" value="true" />  
-        <property name="jobExecutorActivate" value="false" />  
-    </bean>  
-    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">  
-        <property name="processEngineConfiguration" ref="processEngineConfiguration" />  
-    </bean>  
-    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />  
-    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />  
-    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />  
-    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />  
-    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />  
-
 	<!-- 自定义Realm -->
 	<bean id="shiroJDBCRealm" class="com.pro.shiro.ShiroJDBCRealm" />
 	<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO" />

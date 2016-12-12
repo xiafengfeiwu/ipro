@@ -31,7 +31,7 @@
                                     <a href="develop/index"> <i class="fa fa-inbox inactive"></i> 收件箱</a>
                                 </li>
                                 <li>
-                                    <a href="develop/index"> <i class="fa fa-envelope-o"></i> 发信</a>
+                                    <a href="plugin/jquery_treetable"> <i class="fa fa-envelope-o"></i> 发信</a>
                                 </li>
                                 <li>
                                     <a href="develop/index"> <i class="fa fa-certificate"></i> 重要</a>

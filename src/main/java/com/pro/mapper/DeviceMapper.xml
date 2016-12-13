@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.Device">
+    <id column="device_id" jdbcType="BIGINT" property="deviceId" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="device_sn" jdbcType="VARCHAR" property="deviceSn" />
+    <result column="device_model" jdbcType="VARCHAR" property="deviceModel" />
+    <result column="device_type" jdbcType="VARCHAR" property="deviceType" />
+    <result column="device_create_time" jdbcType="TIMESTAMP" property="deviceCreateTime" />
+    <result column="device_modify_time" jdbcType="TIMESTAMP" property="deviceModifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    device_id, device_name, device_sn, device_model, device_type, device_create_time, 
+    device_modify_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.DeviceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_device
+    where device_id = #{deviceId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_device
+    where device_id = #{deviceId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.DeviceExample">
+    delete from w_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.Device">
+    insert into w_device (device_id, device_name, device_sn, 
+      device_model, device_type, device_create_time, 
+      device_modify_time)
+    values (#{deviceId,jdbcType=BIGINT}, #{deviceName,jdbcType=VARCHAR}, #{deviceSn,jdbcType=VARCHAR}, 
+      #{deviceModel,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, #{deviceCreateTime,jdbcType=TIMESTAMP}, 
+      #{deviceModifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.Device">
+    insert into w_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceSn != null">
+        device_sn,
+      </if>
+      <if test="deviceModel != null">
+        device_model,
+      </if>
+      <if test="deviceType != null">
+        device_type,
+      </if>
+      <if test="deviceCreateTime != null">
+        device_create_time,
+      </if>
+      <if test="deviceModifyTime != null">
+        device_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceSn != null">
+        #{deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceModel != null">
+        #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCreateTime != null">
+        #{deviceCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceModifyTime != null">
+        #{deviceModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.DeviceExample" resultType="java.lang.Long">
+    select count(*) from w_device
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_device
+    <set>
+      <if test="record.deviceId != null">
+        device_id = #{record.deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="record.deviceName != null">
+        device_name = #{record.deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceSn != null">
+        device_sn = #{record.deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceModel != null">
+        device_model = #{record.deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceType != null">
+        device_type = #{record.deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceCreateTime != null">
+        device_create_time = #{record.deviceCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deviceModifyTime != null">
+        device_modify_time = #{record.deviceModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_device
+    set device_id = #{record.deviceId,jdbcType=BIGINT},
+      device_name = #{record.deviceName,jdbcType=VARCHAR},
+      device_sn = #{record.deviceSn,jdbcType=VARCHAR},
+      device_model = #{record.deviceModel,jdbcType=VARCHAR},
+      device_type = #{record.deviceType,jdbcType=VARCHAR},
+      device_create_time = #{record.deviceCreateTime,jdbcType=TIMESTAMP},
+      device_modify_time = #{record.deviceModifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Device">
+    update w_device
+    <set>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceSn != null">
+        device_sn = #{deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceModel != null">
+        device_model = #{deviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceType != null">
+        device_type = #{deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCreateTime != null">
+        device_create_time = #{deviceCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceModifyTime != null">
+        device_modify_time = #{deviceModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where device_id = #{deviceId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.Device">
+    update w_device
+    set device_name = #{deviceName,jdbcType=VARCHAR},
+      device_sn = #{deviceSn,jdbcType=VARCHAR},
+      device_model = #{deviceModel,jdbcType=VARCHAR},
+      device_type = #{deviceType,jdbcType=VARCHAR},
+      device_create_time = #{deviceCreateTime,jdbcType=TIMESTAMP},
+      device_modify_time = #{deviceModifyTime,jdbcType=TIMESTAMP}
+    where device_id = #{deviceId,jdbcType=BIGINT}
+  </update>
+</mapper>

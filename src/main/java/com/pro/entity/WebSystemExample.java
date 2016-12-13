@@ -104,6 +104,76 @@ public class WebSystemExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andSystemLogoUrlIsNull() {
+            addCriterion("system_logo_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlIsNotNull() {
+            addCriterion("system_logo_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlEqualTo(String value) {
+            addCriterion("system_logo_url =", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlNotEqualTo(String value) {
+            addCriterion("system_logo_url <>", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlGreaterThan(String value) {
+            addCriterion("system_logo_url >", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("system_logo_url >=", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlLessThan(String value) {
+            addCriterion("system_logo_url <", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlLessThanOrEqualTo(String value) {
+            addCriterion("system_logo_url <=", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlLike(String value) {
+            addCriterion("system_logo_url like", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlNotLike(String value) {
+            addCriterion("system_logo_url not like", value, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlIn(List<String> values) {
+            addCriterion("system_logo_url in", values, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlNotIn(List<String> values) {
+            addCriterion("system_logo_url not in", values, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlBetween(String value1, String value2) {
+            addCriterion("system_logo_url between", value1, value2, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemLogoUrlNotBetween(String value1, String value2) {
+            addCriterion("system_logo_url not between", value1, value2, "systemLogoUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andSystemTitleIsNull() {
             addCriterion("system_title is null");
             return (Criteria) this;
@@ -174,283 +244,143 @@ public class WebSystemExample {
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleIsNull() {
-            addCriterion("system_short_title is null");
+        public Criteria andSystemJianPinIsNull() {
+            addCriterion("system_jian_pin is null");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleIsNotNull() {
-            addCriterion("system_short_title is not null");
+        public Criteria andSystemJianPinIsNotNull() {
+            addCriterion("system_jian_pin is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleEqualTo(String value) {
-            addCriterion("system_short_title =", value, "systemShortTitle");
+        public Criteria andSystemJianPinEqualTo(String value) {
+            addCriterion("system_jian_pin =", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleNotEqualTo(String value) {
-            addCriterion("system_short_title <>", value, "systemShortTitle");
+        public Criteria andSystemJianPinNotEqualTo(String value) {
+            addCriterion("system_jian_pin <>", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleGreaterThan(String value) {
-            addCriterion("system_short_title >", value, "systemShortTitle");
+        public Criteria andSystemJianPinGreaterThan(String value) {
+            addCriterion("system_jian_pin >", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleGreaterThanOrEqualTo(String value) {
-            addCriterion("system_short_title >=", value, "systemShortTitle");
+        public Criteria andSystemJianPinGreaterThanOrEqualTo(String value) {
+            addCriterion("system_jian_pin >=", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleLessThan(String value) {
-            addCriterion("system_short_title <", value, "systemShortTitle");
+        public Criteria andSystemJianPinLessThan(String value) {
+            addCriterion("system_jian_pin <", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleLessThanOrEqualTo(String value) {
-            addCriterion("system_short_title <=", value, "systemShortTitle");
+        public Criteria andSystemJianPinLessThanOrEqualTo(String value) {
+            addCriterion("system_jian_pin <=", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleLike(String value) {
-            addCriterion("system_short_title like", value, "systemShortTitle");
+        public Criteria andSystemJianPinLike(String value) {
+            addCriterion("system_jian_pin like", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleNotLike(String value) {
-            addCriterion("system_short_title not like", value, "systemShortTitle");
+        public Criteria andSystemJianPinNotLike(String value) {
+            addCriterion("system_jian_pin not like", value, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleIn(List<String> values) {
-            addCriterion("system_short_title in", values, "systemShortTitle");
+        public Criteria andSystemJianPinIn(List<String> values) {
+            addCriterion("system_jian_pin in", values, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleNotIn(List<String> values) {
-            addCriterion("system_short_title not in", values, "systemShortTitle");
+        public Criteria andSystemJianPinNotIn(List<String> values) {
+            addCriterion("system_jian_pin not in", values, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleBetween(String value1, String value2) {
-            addCriterion("system_short_title between", value1, value2, "systemShortTitle");
+        public Criteria andSystemJianPinBetween(String value1, String value2) {
+            addCriterion("system_jian_pin between", value1, value2, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemShortTitleNotBetween(String value1, String value2) {
-            addCriterion("system_short_title not between", value1, value2, "systemShortTitle");
+        public Criteria andSystemJianPinNotBetween(String value1, String value2) {
+            addCriterion("system_jian_pin not between", value1, value2, "systemJianPin");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsIsNull() {
-            addCriterion("system_keywords is null");
+        public Criteria andSystemTechnicalSupportIsNull() {
+            addCriterion("system_technical_support is null");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsIsNotNull() {
-            addCriterion("system_keywords is not null");
+        public Criteria andSystemTechnicalSupportIsNotNull() {
+            addCriterion("system_technical_support is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsEqualTo(String value) {
-            addCriterion("system_keywords =", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportEqualTo(String value) {
+            addCriterion("system_technical_support =", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsNotEqualTo(String value) {
-            addCriterion("system_keywords <>", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportNotEqualTo(String value) {
+            addCriterion("system_technical_support <>", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsGreaterThan(String value) {
-            addCriterion("system_keywords >", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportGreaterThan(String value) {
+            addCriterion("system_technical_support >", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsGreaterThanOrEqualTo(String value) {
-            addCriterion("system_keywords >=", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportGreaterThanOrEqualTo(String value) {
+            addCriterion("system_technical_support >=", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsLessThan(String value) {
-            addCriterion("system_keywords <", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportLessThan(String value) {
+            addCriterion("system_technical_support <", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsLessThanOrEqualTo(String value) {
-            addCriterion("system_keywords <=", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportLessThanOrEqualTo(String value) {
+            addCriterion("system_technical_support <=", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsLike(String value) {
-            addCriterion("system_keywords like", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportLike(String value) {
+            addCriterion("system_technical_support like", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsNotLike(String value) {
-            addCriterion("system_keywords not like", value, "systemKeywords");
+        public Criteria andSystemTechnicalSupportNotLike(String value) {
+            addCriterion("system_technical_support not like", value, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsIn(List<String> values) {
-            addCriterion("system_keywords in", values, "systemKeywords");
+        public Criteria andSystemTechnicalSupportIn(List<String> values) {
+            addCriterion("system_technical_support in", values, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsNotIn(List<String> values) {
-            addCriterion("system_keywords not in", values, "systemKeywords");
+        public Criteria andSystemTechnicalSupportNotIn(List<String> values) {
+            addCriterion("system_technical_support not in", values, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsBetween(String value1, String value2) {
-            addCriterion("system_keywords between", value1, value2, "systemKeywords");
+        public Criteria andSystemTechnicalSupportBetween(String value1, String value2) {
+            addCriterion("system_technical_support between", value1, value2, "systemTechnicalSupport");
             return (Criteria) this;
         }
 
-        public Criteria andSystemKeywordsNotBetween(String value1, String value2) {
-            addCriterion("system_keywords not between", value1, value2, "systemKeywords");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionIsNull() {
-            addCriterion("system_description is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionIsNotNull() {
-            addCriterion("system_description is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionEqualTo(String value) {
-            addCriterion("system_description =", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionNotEqualTo(String value) {
-            addCriterion("system_description <>", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionGreaterThan(String value) {
-            addCriterion("system_description >", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionGreaterThanOrEqualTo(String value) {
-            addCriterion("system_description >=", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionLessThan(String value) {
-            addCriterion("system_description <", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionLessThanOrEqualTo(String value) {
-            addCriterion("system_description <=", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionLike(String value) {
-            addCriterion("system_description like", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionNotLike(String value) {
-            addCriterion("system_description not like", value, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionIn(List<String> values) {
-            addCriterion("system_description in", values, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionNotIn(List<String> values) {
-            addCriterion("system_description not in", values, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionBetween(String value1, String value2) {
-            addCriterion("system_description between", value1, value2, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemDescriptionNotBetween(String value1, String value2) {
-            addCriterion("system_description not between", value1, value2, "systemDescription");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightIsNull() {
-            addCriterion("system_copyright is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightIsNotNull() {
-            addCriterion("system_copyright is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightEqualTo(String value) {
-            addCriterion("system_copyright =", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightNotEqualTo(String value) {
-            addCriterion("system_copyright <>", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightGreaterThan(String value) {
-            addCriterion("system_copyright >", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightGreaterThanOrEqualTo(String value) {
-            addCriterion("system_copyright >=", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightLessThan(String value) {
-            addCriterion("system_copyright <", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightLessThanOrEqualTo(String value) {
-            addCriterion("system_copyright <=", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightLike(String value) {
-            addCriterion("system_copyright like", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightNotLike(String value) {
-            addCriterion("system_copyright not like", value, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightIn(List<String> values) {
-            addCriterion("system_copyright in", values, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightNotIn(List<String> values) {
-            addCriterion("system_copyright not in", values, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightBetween(String value1, String value2) {
-            addCriterion("system_copyright between", value1, value2, "systemCopyright");
-            return (Criteria) this;
-        }
-
-        public Criteria andSystemCopyrightNotBetween(String value1, String value2) {
-            addCriterion("system_copyright not between", value1, value2, "systemCopyright");
+        public Criteria andSystemTechnicalSupportNotBetween(String value1, String value2) {
+            addCriterion("system_technical_support not between", value1, value2, "systemTechnicalSupport");
             return (Criteria) this;
         }
     }

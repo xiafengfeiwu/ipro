@@ -33,6 +33,13 @@ public class MainController {
 		return modelAndView;
 	}
 
+	@RequestMapping("default")
+	@FormToken(init = true)
+	public ModelAndView defaultPage() {
+		ModelAndView modelAndView = new ModelAndView("default");
+		return modelAndView;
+	}
+
 	@RequestMapping("form")
 	@FormToken(init = true)
 	public ModelAndView formPage() {

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.WeatherDataMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WeatherData">
+    <id column="weather_city_code" jdbcType="VARCHAR" property="weatherCityCode" />
+    <result column="collect_date" jdbcType="VARCHAR" property="collectDate" />
+    <result column="sunrise_time" jdbcType="VARCHAR" property="sunriseTime" />
+    <result column="sunset_time" jdbcType="VARCHAR" property="sunsetTime" />
+    <result column="min_temperature" jdbcType="VARCHAR" property="minTemperature" />
+    <result column="max_temperature" jdbcType="VARCHAR" property="maxTemperature" />
+    <result column="day_weather" jdbcType="CHAR" property="dayWeather" />
+    <result column="night_weather" jdbcType="CHAR" property="nightWeather" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    weather_city_code, collect_date, sunrise_time, sunset_time, min_temperature, max_temperature, 
+    day_weather, night_weather, last_update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.WeatherDataExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_weather_data
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from w_weather_data
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.WeatherDataExample">
+    delete from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.WeatherData">
+    insert into w_weather_data (weather_city_code, collect_date, sunrise_time, 
+      sunset_time, min_temperature, max_temperature, 
+      day_weather, night_weather, last_update_time
+      )
+    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=VARCHAR}, #{sunriseTime,jdbcType=VARCHAR}, 
+      #{sunsetTime,jdbcType=VARCHAR}, #{minTemperature,jdbcType=VARCHAR}, #{maxTemperature,jdbcType=VARCHAR}, 
+      #{dayWeather,jdbcType=CHAR}, #{nightWeather,jdbcType=CHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.WeatherData">
+    insert into w_weather_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        weather_city_code,
+      </if>
+      <if test="collectDate != null">
+        collect_date,
+      </if>
+      <if test="sunriseTime != null">
+        sunrise_time,
+      </if>
+      <if test="sunsetTime != null">
+        sunset_time,
+      </if>
+      <if test="minTemperature != null">
+        min_temperature,
+      </if>
+      <if test="maxTemperature != null">
+        max_temperature,
+      </if>
+      <if test="dayWeather != null">
+        day_weather,
+      </if>
+      <if test="nightWeather != null">
+        night_weather,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        #{weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="collectDate != null">
+        #{collectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="sunriseTime != null">
+        #{sunriseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sunsetTime != null">
+        #{sunsetTime,jdbcType=VARCHAR},
+      </if>
+      <if test="minTemperature != null">
+        #{minTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="maxTemperature != null">
+        #{maxTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="dayWeather != null">
+        #{dayWeather,jdbcType=CHAR},
+      </if>
+      <if test="nightWeather != null">
+        #{nightWeather,jdbcType=CHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.WeatherDataExample" resultType="java.lang.Long">
+    select count(*) from w_weather_data
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_weather_data
+    <set>
+      <if test="record.weatherCityCode != null">
+        weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectDate != null">
+        collect_date = #{record.collectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sunriseTime != null">
+        sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sunsetTime != null">
+        sunset_time = #{record.sunsetTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.minTemperature != null">
+        min_temperature = #{record.minTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxTemperature != null">
+        max_temperature = #{record.maxTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dayWeather != null">
+        day_weather = #{record.dayWeather,jdbcType=CHAR},
+      </if>
+      <if test="record.nightWeather != null">
+        night_weather = #{record.nightWeather,jdbcType=CHAR},
+      </if>
+      <if test="record.lastUpdateTime != null">
+        last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_weather_data
+    set weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      collect_date = #{record.collectDate,jdbcType=VARCHAR},
+      sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
+      sunset_time = #{record.sunsetTime,jdbcType=VARCHAR},
+      min_temperature = #{record.minTemperature,jdbcType=VARCHAR},
+      max_temperature = #{record.maxTemperature,jdbcType=VARCHAR},
+      day_weather = #{record.dayWeather,jdbcType=CHAR},
+      night_weather = #{record.nightWeather,jdbcType=CHAR},
+      last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherData">
+    update w_weather_data
+    <set>
+      <if test="collectDate != null">
+        collect_date = #{collectDate,jdbcType=VARCHAR},
+      </if>
+      <if test="sunriseTime != null">
+        sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="sunsetTime != null">
+        sunset_time = #{sunsetTime,jdbcType=VARCHAR},
+      </if>
+      <if test="minTemperature != null">
+        min_temperature = #{minTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="maxTemperature != null">
+        max_temperature = #{maxTemperature,jdbcType=VARCHAR},
+      </if>
+      <if test="dayWeather != null">
+        day_weather = #{dayWeather,jdbcType=CHAR},
+      </if>
+      <if test="nightWeather != null">
+        night_weather = #{nightWeather,jdbcType=CHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherData">
+    update w_weather_data
+    set collect_date = #{collectDate,jdbcType=VARCHAR},
+      sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
+      sunset_time = #{sunsetTime,jdbcType=VARCHAR},
+      min_temperature = #{minTemperature,jdbcType=VARCHAR},
+      max_temperature = #{maxTemperature,jdbcType=VARCHAR},
+      day_weather = #{dayWeather,jdbcType=CHAR},
+      night_weather = #{nightWeather,jdbcType=CHAR},
+      last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

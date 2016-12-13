@@ -1,15 +1,21 @@
 package com.pro.entity;
 
 public class WebSystem {
+    private String systemLogoUrl;
+
     private String systemTitle;
 
-    private String systemShortTitle;
+    private String systemJianPin;
 
-    private String systemKeywords;
+    private String systemTechnicalSupport;
 
-    private String systemDescription;
+    public String getSystemLogoUrl() {
+        return systemLogoUrl;
+    }
 
-    private String systemCopyright;
+    public void setSystemLogoUrl(String systemLogoUrl) {
+        this.systemLogoUrl = systemLogoUrl;
+    }
 
     public String getSystemTitle() {
         return systemTitle;
@@ -19,35 +25,19 @@ public class WebSystem {
         this.systemTitle = systemTitle;
     }
 
-    public String getSystemShortTitle() {
-        return systemShortTitle;
+    public String getSystemJianPin() {
+        return systemJianPin;
     }
 
-    public void setSystemShortTitle(String systemShortTitle) {
-        this.systemShortTitle = systemShortTitle;
+    public void setSystemJianPin(String systemJianPin) {
+        this.systemJianPin = systemJianPin;
     }
 
-    public String getSystemKeywords() {
-        return systemKeywords;
+    public String getSystemTechnicalSupport() {
+        return systemTechnicalSupport;
     }
 
-    public void setSystemKeywords(String systemKeywords) {
-        this.systemKeywords = systemKeywords;
-    }
-
-    public String getSystemDescription() {
-        return systemDescription;
-    }
-
-    public void setSystemDescription(String systemDescription) {
-        this.systemDescription = systemDescription;
-    }
-
-    public String getSystemCopyright() {
-        return systemCopyright;
-    }
-
-    public void setSystemCopyright(String systemCopyright) {
-        this.systemCopyright = systemCopyright;
+    public void setSystemTechnicalSupport(String systemTechnicalSupport) {
+        this.systemTechnicalSupport = systemTechnicalSupport;
     }
 }

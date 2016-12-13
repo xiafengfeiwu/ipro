@@ -23,5 +23,6 @@
     <script src="resources/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="resources/js/content.min.js?v=1.0.0"></script>
     <script src="resources/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="resources/js/plugins/pace/pace.min.js"></script>
 </body>
 </html>

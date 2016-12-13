@@ -30,7 +30,24 @@
 		<javaClientGenerator targetPackage="${javaClientPackage}" targetProject="${javaClientProject}" type="XMLMAPPER" />
 		
 		<!-- 要生成的那些表 -->
+		<table schema="${schema}" tableName="w_device" domainObjectName="Device" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_device_replace" domainObjectName="DeviceReplace" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_jurisdiction" domainObjectName="Jurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_jurisdiction_group" domainObjectName="JurisdictionGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_menu" domainObjectName="Menu" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_node" domainObjectName="Node" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_node_data" domainObjectName="NodeData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_node_status" domainObjectName="NodeStatus" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_role" domainObjectName="Role" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_role_jurisdiction" domainObjectName="RoleJurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_sms" domainObjectName="Sms" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_system" domainObjectName="WebSystem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_terminal" domainObjectName="Terminal" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_user_role" domainObjectName="UserRole" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_warn_setup" domainObjectName="WarnSetUp" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_city" domainObjectName="WeatherCity" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_data" domainObjectName="WeatherData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_icon" domainObjectName="WeatherIcon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 	</context>
 </generatorConfiguration>

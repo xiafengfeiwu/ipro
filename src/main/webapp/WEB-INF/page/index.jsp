@@ -11,8 +11,6 @@
 <base
 	href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/"%>" />
 <title>${systemInfo.systemTitle }</title>
-<meta name="keywords" content="${systemInfo.systemKeywords }">
-<meta name="description" content="${systemInfo.systemDescription }">
 <link rel="shortcut icon" href="favicon.ico">
 <link href="resources/css/bootstrap.min.css?v=3.3.6"
 	rel="stylesheet">
@@ -21,8 +19,7 @@
 <link href="resources/css/animate.min.css" rel="stylesheet">
 <link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
 </head>
-<body class="fixed-sidebar full-height-layout gray-bg"
-	style="overflow: hidden">
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
 	<div id="wrapper">
 		<!--左侧导航开始-->
 		<nav class="navbar-default navbar-static-side" role="navigation">
@@ -43,9 +40,7 @@
 								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
-								<li><a href="javascript:;">修改头像</a></li>
-								<li><a class="J_menuItem" href="javascript:;">联系我们</a></li>
-								<li><a class="J_menuItem" href="javascript:;">信箱</a></li>
+								<li><a href="javascript:;">个人信息</a></li>
 								<li class="divider"></li>
 								<li><a href="javascript:;">安全退出</a></li>
 							</ul>
@@ -92,10 +87,10 @@
 				<a href="javascript:;" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
 			</div>
 			<div class="row J_mainContent" id="content-main">
-				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="welcome.jspx" frameborder="0" data-id="default" seamless></iframe>
+				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="welcome.jspx" frameborder="0" seamless></iframe>
 			</div>
 			<div class="footer">
-				<div class="pull-right">${systemInfo.systemCopyright }</div>
+				<div class="pull-right">${systemInfo.systemTechnicalSupport }</div>
 			</div>
 		</div>
 		<!--右侧部分结束-->

@@ -3,9 +3,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Menu Req</title>
+<title>default</title>
 </head>
 <body>
-	${menuId }
+	default
+	<input type="button" name="back" value="返回上一页" onclick="javascript:history.back(-1);"/>
 </body>
 </html>

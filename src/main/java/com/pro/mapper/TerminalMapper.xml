@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.TerminalMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.Terminal">
+    <id column="terminal_id" jdbcType="BIGINT" property="terminalId" />
+    <result column="terminal_name" jdbcType="VARCHAR" property="terminalName" />
+    <result column="terminal_address" jdbcType="VARCHAR" property="terminalAddress" />
+    <result column="terminal_owner_id" jdbcType="BIGINT" property="terminalOwnerId" />
+    <result column="terminal_longitude" jdbcType="VARCHAR" property="terminalLongitude" />
+    <result column="terminal_latitude" jdbcType="VARCHAR" property="terminalLatitude" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    terminal_id, terminal_name, terminal_address, terminal_owner_id, terminal_longitude, 
+    terminal_latitude
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.TerminalExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_terminal
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_terminal
+    where terminal_id = #{terminalId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_terminal
+    where terminal_id = #{terminalId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.TerminalExample">
+    delete from w_terminal
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.Terminal">
+    insert into w_terminal (terminal_id, terminal_name, terminal_address, 
+      terminal_owner_id, terminal_longitude, terminal_latitude
+      )
+    values (#{terminalId,jdbcType=BIGINT}, #{terminalName,jdbcType=VARCHAR}, #{terminalAddress,jdbcType=VARCHAR}, 
+      #{terminalOwnerId,jdbcType=BIGINT}, #{terminalLongitude,jdbcType=VARCHAR}, #{terminalLatitude,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.Terminal">
+    insert into w_terminal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        terminal_id,
+      </if>
+      <if test="terminalName != null">
+        terminal_name,
+      </if>
+      <if test="terminalAddress != null">
+        terminal_address,
+      </if>
+      <if test="terminalOwnerId != null">
+        terminal_owner_id,
+      </if>
+      <if test="terminalLongitude != null">
+        terminal_longitude,
+      </if>
+      <if test="terminalLatitude != null">
+        terminal_latitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        #{terminalId,jdbcType=BIGINT},
+      </if>
+      <if test="terminalName != null">
+        #{terminalName,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalAddress != null">
+        #{terminalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalOwnerId != null">
+        #{terminalOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="terminalLongitude != null">
+        #{terminalLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalLatitude != null">
+        #{terminalLatitude,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.TerminalExample" resultType="java.lang.Long">
+    select count(*) from w_terminal
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_terminal
+    <set>
+      <if test="record.terminalId != null">
+        terminal_id = #{record.terminalId,jdbcType=BIGINT},
+      </if>
+      <if test="record.terminalName != null">
+        terminal_name = #{record.terminalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalAddress != null">
+        terminal_address = #{record.terminalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalOwnerId != null">
+        terminal_owner_id = #{record.terminalOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.terminalLongitude != null">
+        terminal_longitude = #{record.terminalLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.terminalLatitude != null">
+        terminal_latitude = #{record.terminalLatitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_terminal
+    set terminal_id = #{record.terminalId,jdbcType=BIGINT},
+      terminal_name = #{record.terminalName,jdbcType=VARCHAR},
+      terminal_address = #{record.terminalAddress,jdbcType=VARCHAR},
+      terminal_owner_id = #{record.terminalOwnerId,jdbcType=BIGINT},
+      terminal_longitude = #{record.terminalLongitude,jdbcType=VARCHAR},
+      terminal_latitude = #{record.terminalLatitude,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Terminal">
+    update w_terminal
+    <set>
+      <if test="terminalName != null">
+        terminal_name = #{terminalName,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalAddress != null">
+        terminal_address = #{terminalAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalOwnerId != null">
+        terminal_owner_id = #{terminalOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="terminalLongitude != null">
+        terminal_longitude = #{terminalLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalLatitude != null">
+        terminal_latitude = #{terminalLatitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where terminal_id = #{terminalId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.Terminal">
+    update w_terminal
+    set terminal_name = #{terminalName,jdbcType=VARCHAR},
+      terminal_address = #{terminalAddress,jdbcType=VARCHAR},
+      terminal_owner_id = #{terminalOwnerId,jdbcType=BIGINT},
+      terminal_longitude = #{terminalLongitude,jdbcType=VARCHAR},
+      terminal_latitude = #{terminalLatitude,jdbcType=VARCHAR}
+    where terminal_id = #{terminalId,jdbcType=BIGINT}
+  </update>
+</mapper>

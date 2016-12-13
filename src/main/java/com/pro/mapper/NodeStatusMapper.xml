@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.NodeStatusMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.NodeStatus">
+    <id column="node_id" jdbcType="BIGINT" property="nodeId" />
+    <result column="back_water_temp" jdbcType="DECIMAL" property="backWaterTemp" />
+    <result column="out_water_temp" jdbcType="DECIMAL" property="outWaterTemp" />
+    <result column="environment_temp" jdbcType="DECIMAL" property="environmentTemp" />
+    <result column="compressor_current" jdbcType="DECIMAL" property="compressorCurrent" />
+    <result column="water_tank_temp" jdbcType="DECIMAL" property="waterTankTemp" />
+    <result column="work_mode" jdbcType="VARCHAR" property="workMode" />
+    <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
+    <result column="back_air_temp" jdbcType="DECIMAL" property="backAirTemp" />
+    <result column="out_air_temp" jdbcType="DECIMAL" property="outAirTemp" />
+    <result column="set_up_temp" jdbcType="DECIMAL" property="setUpTemp" />
+    <result column="indoor_temp" jdbcType="DECIMAL" property="indoorTemp" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    node_id, back_water_temp, out_water_temp, environment_temp, compressor_current, water_tank_temp, 
+    work_mode, warn_code, back_air_temp, out_air_temp, set_up_temp, indoor_temp, collect_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.NodeStatusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_node_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_node_status
+    where node_id = #{nodeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_node_status
+    where node_id = #{nodeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.NodeStatusExample">
+    delete from w_node_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.NodeStatus">
+    insert into w_node_status (node_id, back_water_temp, out_water_temp, 
+      environment_temp, compressor_current, water_tank_temp, 
+      work_mode, warn_code, back_air_temp, 
+      out_air_temp, set_up_temp, indoor_temp, 
+      collect_time)
+    values (#{nodeId,jdbcType=BIGINT}, #{backWaterTemp,jdbcType=DECIMAL}, #{outWaterTemp,jdbcType=DECIMAL}, 
+      #{environmentTemp,jdbcType=DECIMAL}, #{compressorCurrent,jdbcType=DECIMAL}, #{waterTankTemp,jdbcType=DECIMAL}, 
+      #{workMode,jdbcType=VARCHAR}, #{warnCode,jdbcType=VARCHAR}, #{backAirTemp,jdbcType=DECIMAL}, 
+      #{outAirTemp,jdbcType=DECIMAL}, #{setUpTemp,jdbcType=DECIMAL}, #{indoorTemp,jdbcType=DECIMAL}, 
+      #{collectTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.NodeStatus">
+    insert into w_node_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="backWaterTemp != null">
+        back_water_temp,
+      </if>
+      <if test="outWaterTemp != null">
+        out_water_temp,
+      </if>
+      <if test="environmentTemp != null">
+        environment_temp,
+      </if>
+      <if test="compressorCurrent != null">
+        compressor_current,
+      </if>
+      <if test="waterTankTemp != null">
+        water_tank_temp,
+      </if>
+      <if test="workMode != null">
+        work_mode,
+      </if>
+      <if test="warnCode != null">
+        warn_code,
+      </if>
+      <if test="backAirTemp != null">
+        back_air_temp,
+      </if>
+      <if test="outAirTemp != null">
+        out_air_temp,
+      </if>
+      <if test="setUpTemp != null">
+        set_up_temp,
+      </if>
+      <if test="indoorTemp != null">
+        indoor_temp,
+      </if>
+      <if test="collectTime != null">
+        collect_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="backWaterTemp != null">
+        #{backWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="outWaterTemp != null">
+        #{outWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="environmentTemp != null">
+        #{environmentTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="compressorCurrent != null">
+        #{compressorCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="waterTankTemp != null">
+        #{waterTankTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="workMode != null">
+        #{workMode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCode != null">
+        #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="backAirTemp != null">
+        #{backAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="outAirTemp != null">
+        #{outAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="setUpTemp != null">
+        #{setUpTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="indoorTemp != null">
+        #{indoorTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.NodeStatusExample" resultType="java.lang.Long">
+    select count(*) from w_node_status
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_node_status
+    <set>
+      <if test="record.nodeId != null">
+        node_id = #{record.nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.backWaterTemp != null">
+        back_water_temp = #{record.backWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outWaterTemp != null">
+        out_water_temp = #{record.outWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.environmentTemp != null">
+        environment_temp = #{record.environmentTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.compressorCurrent != null">
+        compressor_current = #{record.compressorCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="record.waterTankTemp != null">
+        water_tank_temp = #{record.waterTankTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.workMode != null">
+        work_mode = #{record.workMode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnCode != null">
+        warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backAirTemp != null">
+        back_air_temp = #{record.backAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.outAirTemp != null">
+        out_air_temp = #{record.outAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.setUpTemp != null">
+        set_up_temp = #{record.setUpTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.indoorTemp != null">
+        indoor_temp = #{record.indoorTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.collectTime != null">
+        collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_node_status
+    set node_id = #{record.nodeId,jdbcType=BIGINT},
+      back_water_temp = #{record.backWaterTemp,jdbcType=DECIMAL},
+      out_water_temp = #{record.outWaterTemp,jdbcType=DECIMAL},
+      environment_temp = #{record.environmentTemp,jdbcType=DECIMAL},
+      compressor_current = #{record.compressorCurrent,jdbcType=DECIMAL},
+      water_tank_temp = #{record.waterTankTemp,jdbcType=DECIMAL},
+      work_mode = #{record.workMode,jdbcType=VARCHAR},
+      warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      back_air_temp = #{record.backAirTemp,jdbcType=DECIMAL},
+      out_air_temp = #{record.outAirTemp,jdbcType=DECIMAL},
+      set_up_temp = #{record.setUpTemp,jdbcType=DECIMAL},
+      indoor_temp = #{record.indoorTemp,jdbcType=DECIMAL},
+      collect_time = #{record.collectTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.NodeStatus">
+    update w_node_status
+    <set>
+      <if test="backWaterTemp != null">
+        back_water_temp = #{backWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="outWaterTemp != null">
+        out_water_temp = #{outWaterTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="environmentTemp != null">
+        environment_temp = #{environmentTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="compressorCurrent != null">
+        compressor_current = #{compressorCurrent,jdbcType=DECIMAL},
+      </if>
+      <if test="waterTankTemp != null">
+        water_tank_temp = #{waterTankTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="workMode != null">
+        work_mode = #{workMode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnCode != null">
+        warn_code = #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="backAirTemp != null">
+        back_air_temp = #{backAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="outAirTemp != null">
+        out_air_temp = #{outAirTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="setUpTemp != null">
+        set_up_temp = #{setUpTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="indoorTemp != null">
+        indoor_temp = #{indoorTemp,jdbcType=DECIMAL},
+      </if>
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where node_id = #{nodeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.NodeStatus">
+    update w_node_status
+    set back_water_temp = #{backWaterTemp,jdbcType=DECIMAL},
+      out_water_temp = #{outWaterTemp,jdbcType=DECIMAL},
+      environment_temp = #{environmentTemp,jdbcType=DECIMAL},
+      compressor_current = #{compressorCurrent,jdbcType=DECIMAL},
+      water_tank_temp = #{waterTankTemp,jdbcType=DECIMAL},
+      work_mode = #{workMode,jdbcType=VARCHAR},
+      warn_code = #{warnCode,jdbcType=VARCHAR},
+      back_air_temp = #{backAirTemp,jdbcType=DECIMAL},
+      out_air_temp = #{outAirTemp,jdbcType=DECIMAL},
+      set_up_temp = #{setUpTemp,jdbcType=DECIMAL},
+      indoor_temp = #{indoorTemp,jdbcType=DECIMAL},
+      collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where node_id = #{nodeId,jdbcType=BIGINT}
+  </update>
+</mapper>

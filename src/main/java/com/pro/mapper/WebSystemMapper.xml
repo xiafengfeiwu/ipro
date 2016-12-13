@@ -2,11 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pro.dao.WebSystemMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.WebSystem">
+    <result column="system_logo_url" jdbcType="VARCHAR" property="systemLogoUrl" />
     <result column="system_title" jdbcType="VARCHAR" property="systemTitle" />
-    <result column="system_short_title" jdbcType="VARCHAR" property="systemShortTitle" />
-    <result column="system_keywords" jdbcType="VARCHAR" property="systemKeywords" />
-    <result column="system_description" jdbcType="VARCHAR" property="systemDescription" />
-    <result column="system_copyright" jdbcType="VARCHAR" property="systemCopyright" />
+    <result column="system_jian_pin" jdbcType="VARCHAR" property="systemJianPin" />
+    <result column="system_technical_support" jdbcType="VARCHAR" property="systemTechnicalSupport" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    system_title, system_short_title, system_keywords, system_description, system_copyright
+    system_logo_url, system_title, system_jian_pin, system_technical_support
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.WebSystemExample" resultMap="BaseResultMap">
     select
@@ -91,45 +90,39 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.WebSystem">
-    insert into w_system (system_title, system_short_title, system_keywords, 
-      system_description, system_copyright)
-    values (#{systemTitle,jdbcType=VARCHAR}, #{systemShortTitle,jdbcType=VARCHAR}, #{systemKeywords,jdbcType=VARCHAR}, 
-      #{systemDescription,jdbcType=VARCHAR}, #{systemCopyright,jdbcType=VARCHAR})
+    insert into w_system (system_logo_url, system_title, system_jian_pin, 
+      system_technical_support)
+    values (#{systemLogoUrl,jdbcType=VARCHAR}, #{systemTitle,jdbcType=VARCHAR}, #{systemJianPin,jdbcType=VARCHAR}, 
+      #{systemTechnicalSupport,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.WebSystem">
     insert into w_system
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="systemLogoUrl != null">
+        system_logo_url,
+      </if>
       <if test="systemTitle != null">
         system_title,
       </if>
-      <if test="systemShortTitle != null">
-        system_short_title,
+      <if test="systemJianPin != null">
+        system_jian_pin,
       </if>
-      <if test="systemKeywords != null">
-        system_keywords,
-      </if>
-      <if test="systemDescription != null">
-        system_description,
-      </if>
-      <if test="systemCopyright != null">
-        system_copyright,
+      <if test="systemTechnicalSupport != null">
+        system_technical_support,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="systemLogoUrl != null">
+        #{systemLogoUrl,jdbcType=VARCHAR},
+      </if>
       <if test="systemTitle != null">
         #{systemTitle,jdbcType=VARCHAR},
       </if>
-      <if test="systemShortTitle != null">
-        #{systemShortTitle,jdbcType=VARCHAR},
+      <if test="systemJianPin != null">
+        #{systemJianPin,jdbcType=VARCHAR},
       </if>
-      <if test="systemKeywords != null">
-        #{systemKeywords,jdbcType=VARCHAR},
-      </if>
-      <if test="systemDescription != null">
-        #{systemDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="systemCopyright != null">
-        #{systemCopyright,jdbcType=VARCHAR},
+      <if test="systemTechnicalSupport != null">
+        #{systemTechnicalSupport,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -142,20 +135,17 @@
   <update id="updateByExampleSelective" parameterType="map">
     update w_system
     <set>
+      <if test="record.systemLogoUrl != null">
+        system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
+      </if>
       <if test="record.systemTitle != null">
         system_title = #{record.systemTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.systemShortTitle != null">
-        system_short_title = #{record.systemShortTitle,jdbcType=VARCHAR},
+      <if test="record.systemJianPin != null">
+        system_jian_pin = #{record.systemJianPin,jdbcType=VARCHAR},
       </if>
-      <if test="record.systemKeywords != null">
-        system_keywords = #{record.systemKeywords,jdbcType=VARCHAR},
-      </if>
-      <if test="record.systemDescription != null">
-        system_description = #{record.systemDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="record.systemCopyright != null">
-        system_copyright = #{record.systemCopyright,jdbcType=VARCHAR},
+      <if test="record.systemTechnicalSupport != null">
+        system_technical_support = #{record.systemTechnicalSupport,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -164,11 +154,10 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_system
-    set system_title = #{record.systemTitle,jdbcType=VARCHAR},
-      system_short_title = #{record.systemShortTitle,jdbcType=VARCHAR},
-      system_keywords = #{record.systemKeywords,jdbcType=VARCHAR},
-      system_description = #{record.systemDescription,jdbcType=VARCHAR},
-      system_copyright = #{record.systemCopyright,jdbcType=VARCHAR}
+    set system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
+      system_title = #{record.systemTitle,jdbcType=VARCHAR},
+      system_jian_pin = #{record.systemJianPin,jdbcType=VARCHAR},
+      system_technical_support = #{record.systemTechnicalSupport,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

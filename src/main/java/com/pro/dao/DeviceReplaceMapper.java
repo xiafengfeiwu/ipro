@@ -10,7 +10,7 @@ public interface DeviceReplaceMapper {
 
     int deleteByExample(DeviceReplaceExample example);
 
-    int deleteByPrimaryKey(Long nodeId);
+    int deleteByPrimaryKey(Long recordId);
 
     int insert(DeviceReplace record);
 
@@ -18,7 +18,7 @@ public interface DeviceReplaceMapper {
 
     List<DeviceReplace> selectByExample(DeviceReplaceExample example);
 
-    DeviceReplace selectByPrimaryKey(Long nodeId);
+    DeviceReplace selectByPrimaryKey(Long recordId);
 
     int updateByExampleSelective(@Param("record") DeviceReplace record, @Param("example") DeviceReplaceExample example);
 

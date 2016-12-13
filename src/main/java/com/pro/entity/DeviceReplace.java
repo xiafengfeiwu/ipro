@@ -3,6 +3,8 @@ package com.pro.entity;
 import java.util.Date;
 
 public class DeviceReplace {
+    private Long recordId;
+
     private Long nodeId;
 
     private Date replaceTime;
@@ -10,6 +12,14 @@ public class DeviceReplace {
     private String replaceDescript;
 
     private Long operatorId;
+
+    public Long getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(Long recordId) {
+        this.recordId = recordId;
+    }
 
     public Long getNodeId() {
         return nodeId;

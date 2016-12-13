@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.WebSystemMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.WebSystem">
-    <result column="system_logo_url" jdbcType="VARCHAR" property="systemLogoUrl" />
-    <result column="system_title" jdbcType="VARCHAR" property="systemTitle" />
-    <result column="system_jian_pin" jdbcType="VARCHAR" property="systemJianPin" />
-    <result column="system_technical_support" jdbcType="VARCHAR" property="systemTechnicalSupport" />
-    <result column="system_modify_time" jdbcType="TIMESTAMP" property="systemModifyTime" />
+<mapper namespace="com.pro.dao.RoleMenuMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.RoleMenuKey">
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,16 +64,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    system_logo_url, system_title, system_jian_pin, system_technical_support, system_modify_time
+    role_id, menu_id
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.WebSystemExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.RoleMenuExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_system
+    from w_role_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,80 +81,54 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.pro.entity.WebSystemExample">
-    delete from w_system
+  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.RoleMenuKey">
+    delete from w_role_menu
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and menu_id = #{menuId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.RoleMenuExample">
+    delete from w_role_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.WebSystem">
-    insert into w_system (system_logo_url, system_title, system_jian_pin, 
-      system_technical_support, system_modify_time
-      )
-    values (#{systemLogoUrl,jdbcType=VARCHAR}, #{systemTitle,jdbcType=VARCHAR}, #{systemJianPin,jdbcType=VARCHAR}, 
-      #{systemTechnicalSupport,jdbcType=VARCHAR}, #{systemModifyTime,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.pro.entity.RoleMenuKey">
+    insert into w_role_menu (role_id, menu_id)
+    values (#{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.WebSystem">
-    insert into w_system
+  <insert id="insertSelective" parameterType="com.pro.entity.RoleMenuKey">
+    insert into w_role_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="systemLogoUrl != null">
-        system_logo_url,
+      <if test="roleId != null">
+        role_id,
       </if>
-      <if test="systemTitle != null">
-        system_title,
-      </if>
-      <if test="systemJianPin != null">
-        system_jian_pin,
-      </if>
-      <if test="systemTechnicalSupport != null">
-        system_technical_support,
-      </if>
-      <if test="systemModifyTime != null">
-        system_modify_time,
+      <if test="menuId != null">
+        menu_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="systemLogoUrl != null">
-        #{systemLogoUrl,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
       </if>
-      <if test="systemTitle != null">
-        #{systemTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="systemJianPin != null">
-        #{systemJianPin,jdbcType=VARCHAR},
-      </if>
-      <if test="systemTechnicalSupport != null">
-        #{systemTechnicalSupport,jdbcType=VARCHAR},
-      </if>
-      <if test="systemModifyTime != null">
-        #{systemModifyTime,jdbcType=TIMESTAMP},
+      <if test="menuId != null">
+        #{menuId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.WebSystemExample" resultType="java.lang.Long">
-    select count(*) from w_system
+  <select id="countByExample" parameterType="com.pro.entity.RoleMenuExample" resultType="java.lang.Long">
+    select count(*) from w_role_menu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_system
+    update w_role_menu
     <set>
-      <if test="record.systemLogoUrl != null">
-        system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=BIGINT},
       </if>
-      <if test="record.systemTitle != null">
-        system_title = #{record.systemTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="record.systemJianPin != null">
-        system_jian_pin = #{record.systemJianPin,jdbcType=VARCHAR},
-      </if>
-      <if test="record.systemTechnicalSupport != null">
-        system_technical_support = #{record.systemTechnicalSupport,jdbcType=VARCHAR},
-      </if>
-      <if test="record.systemModifyTime != null">
-        system_modify_time = #{record.systemModifyTime,jdbcType=TIMESTAMP},
+      <if test="record.menuId != null">
+        menu_id = #{record.menuId,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -165,12 +136,9 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_system
-    set system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
-      system_title = #{record.systemTitle,jdbcType=VARCHAR},
-      system_jian_pin = #{record.systemJianPin,jdbcType=VARCHAR},
-      system_technical_support = #{record.systemTechnicalSupport,jdbcType=VARCHAR},
-      system_modify_time = #{record.systemModifyTime,jdbcType=TIMESTAMP}
+    update w_role_menu
+    set role_id = #{record.roleId,jdbcType=BIGINT},
+      menu_id = #{record.menuId,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

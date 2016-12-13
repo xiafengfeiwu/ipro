@@ -5,9 +5,11 @@ import java.util.Date;
 public class Node {
     private Long nodeId;
 
-    private Long terminalId;
+    private Long pumpId;
 
     private Long deviceId;
+
+    private Boolean nodeOnline;
 
     private Date lastTimeContactTime;
 
@@ -21,12 +23,12 @@ public class Node {
         this.nodeId = nodeId;
     }
 
-    public Long getTerminalId() {
-        return terminalId;
+    public Long getPumpId() {
+        return pumpId;
     }
 
-    public void setTerminalId(Long terminalId) {
-        this.terminalId = terminalId;
+    public void setPumpId(Long pumpId) {
+        this.pumpId = pumpId;
     }
 
     public Long getDeviceId() {
@@ -35,6 +37,14 @@ public class Node {
 
     public void setDeviceId(Long deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public Boolean getNodeOnline() {
+        return nodeOnline;
+    }
+
+    public void setNodeOnline(Boolean nodeOnline) {
+        this.nodeOnline = nodeOnline;
     }
 
     public Date getLastTimeContactTime() {

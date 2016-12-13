@@ -1,6 +1,7 @@
 package com.pro.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class WebSystemExample {
@@ -381,6 +382,66 @@ public class WebSystemExample {
 
         public Criteria andSystemTechnicalSupportNotBetween(String value1, String value2) {
             addCriterion("system_technical_support not between", value1, value2, "systemTechnicalSupport");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeIsNull() {
+            addCriterion("system_modify_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeIsNotNull() {
+            addCriterion("system_modify_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeEqualTo(Date value) {
+            addCriterion("system_modify_time =", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeNotEqualTo(Date value) {
+            addCriterion("system_modify_time <>", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeGreaterThan(Date value) {
+            addCriterion("system_modify_time >", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("system_modify_time >=", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeLessThan(Date value) {
+            addCriterion("system_modify_time <", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeLessThanOrEqualTo(Date value) {
+            addCriterion("system_modify_time <=", value, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeIn(List<Date> values) {
+            addCriterion("system_modify_time in", values, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeNotIn(List<Date> values) {
+            addCriterion("system_modify_time not in", values, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeBetween(Date value1, Date value2) {
+            addCriterion("system_modify_time between", value1, value2, "systemModifyTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemModifyTimeNotBetween(Date value1, Date value2) {
+            addCriterion("system_modify_time not between", value1, value2, "systemModifyTime");
             return (Criteria) this;
         }
     }

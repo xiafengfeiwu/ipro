@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DeviceReplaceExample {
+public class PacketQueryExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceReplaceExample() {
+    public PacketQueryExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -105,253 +105,263 @@ public class DeviceReplaceExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andNodeIdIsNull() {
-            addCriterion("node_id is null");
+        public Criteria andPacketIdIsNull() {
+            addCriterion("packet_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdIsNotNull() {
-            addCriterion("node_id is not null");
+        public Criteria andPacketIdIsNotNull() {
+            addCriterion("packet_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdEqualTo(Long value) {
-            addCriterion("node_id =", value, "nodeId");
+        public Criteria andPacketIdEqualTo(Long value) {
+            addCriterion("packet_id =", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdNotEqualTo(Long value) {
-            addCriterion("node_id <>", value, "nodeId");
+        public Criteria andPacketIdNotEqualTo(Long value) {
+            addCriterion("packet_id <>", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdGreaterThan(Long value) {
-            addCriterion("node_id >", value, "nodeId");
+        public Criteria andPacketIdGreaterThan(Long value) {
+            addCriterion("packet_id >", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("node_id >=", value, "nodeId");
+        public Criteria andPacketIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("packet_id >=", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdLessThan(Long value) {
-            addCriterion("node_id <", value, "nodeId");
+        public Criteria andPacketIdLessThan(Long value) {
+            addCriterion("packet_id <", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdLessThanOrEqualTo(Long value) {
-            addCriterion("node_id <=", value, "nodeId");
+        public Criteria andPacketIdLessThanOrEqualTo(Long value) {
+            addCriterion("packet_id <=", value, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdIn(List<Long> values) {
-            addCriterion("node_id in", values, "nodeId");
+        public Criteria andPacketIdIn(List<Long> values) {
+            addCriterion("packet_id in", values, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdNotIn(List<Long> values) {
-            addCriterion("node_id not in", values, "nodeId");
+        public Criteria andPacketIdNotIn(List<Long> values) {
+            addCriterion("packet_id not in", values, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdBetween(Long value1, Long value2) {
-            addCriterion("node_id between", value1, value2, "nodeId");
+        public Criteria andPacketIdBetween(Long value1, Long value2) {
+            addCriterion("packet_id between", value1, value2, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andNodeIdNotBetween(Long value1, Long value2) {
-            addCriterion("node_id not between", value1, value2, "nodeId");
+        public Criteria andPacketIdNotBetween(Long value1, Long value2) {
+            addCriterion("packet_id not between", value1, value2, "packetId");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeIsNull() {
-            addCriterion("replace_time is null");
+        public Criteria andPacketTypeIsNull() {
+            addCriterion("packet_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeIsNotNull() {
-            addCriterion("replace_time is not null");
+        public Criteria andPacketTypeIsNotNull() {
+            addCriterion("packet_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeEqualTo(Date value) {
-            addCriterion("replace_time =", value, "replaceTime");
+        public Criteria andPacketTypeEqualTo(String value) {
+            addCriterion("packet_type =", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeNotEqualTo(Date value) {
-            addCriterion("replace_time <>", value, "replaceTime");
+        public Criteria andPacketTypeNotEqualTo(String value) {
+            addCriterion("packet_type <>", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeGreaterThan(Date value) {
-            addCriterion("replace_time >", value, "replaceTime");
+        public Criteria andPacketTypeGreaterThan(String value) {
+            addCriterion("packet_type >", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("replace_time >=", value, "replaceTime");
+        public Criteria andPacketTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("packet_type >=", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeLessThan(Date value) {
-            addCriterion("replace_time <", value, "replaceTime");
+        public Criteria andPacketTypeLessThan(String value) {
+            addCriterion("packet_type <", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeLessThanOrEqualTo(Date value) {
-            addCriterion("replace_time <=", value, "replaceTime");
+        public Criteria andPacketTypeLessThanOrEqualTo(String value) {
+            addCriterion("packet_type <=", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeIn(List<Date> values) {
-            addCriterion("replace_time in", values, "replaceTime");
+        public Criteria andPacketTypeLike(String value) {
+            addCriterion("packet_type like", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeNotIn(List<Date> values) {
-            addCriterion("replace_time not in", values, "replaceTime");
+        public Criteria andPacketTypeNotLike(String value) {
+            addCriterion("packet_type not like", value, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeBetween(Date value1, Date value2) {
-            addCriterion("replace_time between", value1, value2, "replaceTime");
+        public Criteria andPacketTypeIn(List<String> values) {
+            addCriterion("packet_type in", values, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceTimeNotBetween(Date value1, Date value2) {
-            addCriterion("replace_time not between", value1, value2, "replaceTime");
+        public Criteria andPacketTypeNotIn(List<String> values) {
+            addCriterion("packet_type not in", values, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptIsNull() {
-            addCriterion("replace_descript is null");
+        public Criteria andPacketTypeBetween(String value1, String value2) {
+            addCriterion("packet_type between", value1, value2, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptIsNotNull() {
-            addCriterion("replace_descript is not null");
+        public Criteria andPacketTypeNotBetween(String value1, String value2) {
+            addCriterion("packet_type not between", value1, value2, "packetType");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptEqualTo(String value) {
-            addCriterion("replace_descript =", value, "replaceDescript");
+        public Criteria andPacketDataIsNull() {
+            addCriterion("packet_data is null");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptNotEqualTo(String value) {
-            addCriterion("replace_descript <>", value, "replaceDescript");
+        public Criteria andPacketDataIsNotNull() {
+            addCriterion("packet_data is not null");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptGreaterThan(String value) {
-            addCriterion("replace_descript >", value, "replaceDescript");
+        public Criteria andPacketDataEqualTo(String value) {
+            addCriterion("packet_data =", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptGreaterThanOrEqualTo(String value) {
-            addCriterion("replace_descript >=", value, "replaceDescript");
+        public Criteria andPacketDataNotEqualTo(String value) {
+            addCriterion("packet_data <>", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptLessThan(String value) {
-            addCriterion("replace_descript <", value, "replaceDescript");
+        public Criteria andPacketDataGreaterThan(String value) {
+            addCriterion("packet_data >", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptLessThanOrEqualTo(String value) {
-            addCriterion("replace_descript <=", value, "replaceDescript");
+        public Criteria andPacketDataGreaterThanOrEqualTo(String value) {
+            addCriterion("packet_data >=", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptLike(String value) {
-            addCriterion("replace_descript like", value, "replaceDescript");
+        public Criteria andPacketDataLessThan(String value) {
+            addCriterion("packet_data <", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptNotLike(String value) {
-            addCriterion("replace_descript not like", value, "replaceDescript");
+        public Criteria andPacketDataLessThanOrEqualTo(String value) {
+            addCriterion("packet_data <=", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptIn(List<String> values) {
-            addCriterion("replace_descript in", values, "replaceDescript");
+        public Criteria andPacketDataLike(String value) {
+            addCriterion("packet_data like", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptNotIn(List<String> values) {
-            addCriterion("replace_descript not in", values, "replaceDescript");
+        public Criteria andPacketDataNotLike(String value) {
+            addCriterion("packet_data not like", value, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptBetween(String value1, String value2) {
-            addCriterion("replace_descript between", value1, value2, "replaceDescript");
+        public Criteria andPacketDataIn(List<String> values) {
+            addCriterion("packet_data in", values, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andReplaceDescriptNotBetween(String value1, String value2) {
-            addCriterion("replace_descript not between", value1, value2, "replaceDescript");
+        public Criteria andPacketDataNotIn(List<String> values) {
+            addCriterion("packet_data not in", values, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdIsNull() {
-            addCriterion("operator_id is null");
+        public Criteria andPacketDataBetween(String value1, String value2) {
+            addCriterion("packet_data between", value1, value2, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdIsNotNull() {
-            addCriterion("operator_id is not null");
+        public Criteria andPacketDataNotBetween(String value1, String value2) {
+            addCriterion("packet_data not between", value1, value2, "packetData");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdEqualTo(Long value) {
-            addCriterion("operator_id =", value, "operatorId");
+        public Criteria andCollectTimeIsNull() {
+            addCriterion("collect_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdNotEqualTo(Long value) {
-            addCriterion("operator_id <>", value, "operatorId");
+        public Criteria andCollectTimeIsNotNull() {
+            addCriterion("collect_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdGreaterThan(Long value) {
-            addCriterion("operator_id >", value, "operatorId");
+        public Criteria andCollectTimeEqualTo(Date value) {
+            addCriterion("collect_time =", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("operator_id >=", value, "operatorId");
+        public Criteria andCollectTimeNotEqualTo(Date value) {
+            addCriterion("collect_time <>", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdLessThan(Long value) {
-            addCriterion("operator_id <", value, "operatorId");
+        public Criteria andCollectTimeGreaterThan(Date value) {
+            addCriterion("collect_time >", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdLessThanOrEqualTo(Long value) {
-            addCriterion("operator_id <=", value, "operatorId");
+        public Criteria andCollectTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("collect_time >=", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdIn(List<Long> values) {
-            addCriterion("operator_id in", values, "operatorId");
+        public Criteria andCollectTimeLessThan(Date value) {
+            addCriterion("collect_time <", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdNotIn(List<Long> values) {
-            addCriterion("operator_id not in", values, "operatorId");
+        public Criteria andCollectTimeLessThanOrEqualTo(Date value) {
+            addCriterion("collect_time <=", value, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdBetween(Long value1, Long value2) {
-            addCriterion("operator_id between", value1, value2, "operatorId");
+        public Criteria andCollectTimeIn(List<Date> values) {
+            addCriterion("collect_time in", values, "collectTime");
             return (Criteria) this;
         }
 
-        public Criteria andOperatorIdNotBetween(Long value1, Long value2) {
-            addCriterion("operator_id not between", value1, value2, "operatorId");
+        public Criteria andCollectTimeNotIn(List<Date> values) {
+            addCriterion("collect_time not in", values, "collectTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectTimeBetween(Date value1, Date value2) {
+            addCriterion("collect_time between", value1, value2, "collectTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectTimeNotBetween(Date value1, Date value2) {
+            addCriterion("collect_time not between", value1, value2, "collectTime");
             return (Criteria) this;
         }
     }

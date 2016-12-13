@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.PumpMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.Pump">
+    <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <result column="pump_name" jdbcType="VARCHAR" property="pumpName" />
+    <result column="pump_owner_id" jdbcType="BIGINT" property="pumpOwnerId" />
+    <result column="pump_address" jdbcType="VARCHAR" property="pumpAddress" />
+    <result column="pump_weather_city_code" jdbcType="VARCHAR" property="pumpWeatherCityCode" />
+    <result column="pump_longitude" jdbcType="VARCHAR" property="pumpLongitude" />
+    <result column="pump_latitude" jdbcType="VARCHAR" property="pumpLatitude" />
+    <result column="pump_create_time" jdbcType="TIMESTAMP" property="pumpCreateTime" />
+    <result column="pump_modify_time" jdbcType="TIMESTAMP" property="pumpModifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pump_id, pump_name, pump_owner_id, pump_address, pump_weather_city_code, pump_longitude, 
+    pump_latitude, pump_create_time, pump_modify_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.PumpExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_pump
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_pump
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_pump
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.PumpExample">
+    delete from w_pump
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.Pump">
+    insert into w_pump (pump_id, pump_name, pump_owner_id, 
+      pump_address, pump_weather_city_code, pump_longitude, 
+      pump_latitude, pump_create_time, pump_modify_time
+      )
+    values (#{pumpId,jdbcType=BIGINT}, #{pumpName,jdbcType=VARCHAR}, #{pumpOwnerId,jdbcType=BIGINT}, 
+      #{pumpAddress,jdbcType=VARCHAR}, #{pumpWeatherCityCode,jdbcType=VARCHAR}, #{pumpLongitude,jdbcType=VARCHAR}, 
+      #{pumpLatitude,jdbcType=VARCHAR}, #{pumpCreateTime,jdbcType=TIMESTAMP}, #{pumpModifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.Pump">
+    insert into w_pump
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pumpId != null">
+        pump_id,
+      </if>
+      <if test="pumpName != null">
+        pump_name,
+      </if>
+      <if test="pumpOwnerId != null">
+        pump_owner_id,
+      </if>
+      <if test="pumpAddress != null">
+        pump_address,
+      </if>
+      <if test="pumpWeatherCityCode != null">
+        pump_weather_city_code,
+      </if>
+      <if test="pumpLongitude != null">
+        pump_longitude,
+      </if>
+      <if test="pumpLatitude != null">
+        pump_latitude,
+      </if>
+      <if test="pumpCreateTime != null">
+        pump_create_time,
+      </if>
+      <if test="pumpModifyTime != null">
+        pump_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="pumpName != null">
+        #{pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpOwnerId != null">
+        #{pumpOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="pumpAddress != null">
+        #{pumpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpWeatherCityCode != null">
+        #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpLongitude != null">
+        #{pumpLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpLatitude != null">
+        #{pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpCreateTime != null">
+        #{pumpCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pumpModifyTime != null">
+        #{pumpModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.PumpExample" resultType="java.lang.Long">
+    select count(*) from w_pump
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_pump
+    <set>
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pumpName != null">
+        pump_name = #{record.pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpOwnerId != null">
+        pump_owner_id = #{record.pumpOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pumpAddress != null">
+        pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpWeatherCityCode != null">
+        pump_weather_city_code = #{record.pumpWeatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpLongitude != null">
+        pump_longitude = #{record.pumpLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpLatitude != null">
+        pump_latitude = #{record.pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpCreateTime != null">
+        pump_create_time = #{record.pumpCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pumpModifyTime != null">
+        pump_modify_time = #{record.pumpModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_pump
+    set pump_id = #{record.pumpId,jdbcType=BIGINT},
+      pump_name = #{record.pumpName,jdbcType=VARCHAR},
+      pump_owner_id = #{record.pumpOwnerId,jdbcType=BIGINT},
+      pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
+      pump_weather_city_code = #{record.pumpWeatherCityCode,jdbcType=VARCHAR},
+      pump_longitude = #{record.pumpLongitude,jdbcType=VARCHAR},
+      pump_latitude = #{record.pumpLatitude,jdbcType=VARCHAR},
+      pump_create_time = #{record.pumpCreateTime,jdbcType=TIMESTAMP},
+      pump_modify_time = #{record.pumpModifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Pump">
+    update w_pump
+    <set>
+      <if test="pumpName != null">
+        pump_name = #{pumpName,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpOwnerId != null">
+        pump_owner_id = #{pumpOwnerId,jdbcType=BIGINT},
+      </if>
+      <if test="pumpAddress != null">
+        pump_address = #{pumpAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpWeatherCityCode != null">
+        pump_weather_city_code = #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpLongitude != null">
+        pump_longitude = #{pumpLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpLatitude != null">
+        pump_latitude = #{pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpCreateTime != null">
+        pump_create_time = #{pumpCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pumpModifyTime != null">
+        pump_modify_time = #{pumpModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.Pump">
+    update w_pump
+    set pump_name = #{pumpName,jdbcType=VARCHAR},
+      pump_owner_id = #{pumpOwnerId,jdbcType=BIGINT},
+      pump_address = #{pumpAddress,jdbcType=VARCHAR},
+      pump_weather_city_code = #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      pump_longitude = #{pumpLongitude,jdbcType=VARCHAR},
+      pump_latitude = #{pumpLatitude,jdbcType=VARCHAR},
+      pump_create_time = #{pumpCreateTime,jdbcType=TIMESTAMP},
+      pump_modify_time = #{pumpModifyTime,jdbcType=TIMESTAMP}
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.DeviceReplaceMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.DeviceReplace">
-    <id column="node_id" jdbcType="BIGINT" property="nodeId" />
-    <result column="replace_time" jdbcType="TIMESTAMP" property="replaceTime" />
-    <result column="replace_descript" jdbcType="VARCHAR" property="replaceDescript" />
-    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+<mapper namespace="com.pro.dao.PacketQueryMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.PacketQuery">
+    <id column="packet_id" jdbcType="BIGINT" property="packetId" />
+    <result column="packet_type" jdbcType="VARCHAR" property="packetType" />
+    <result column="packet_data" jdbcType="VARCHAR" property="packetData" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,16 +66,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    node_id, replace_time, replace_descript, operator_id
+    packet_id, packet_type, packet_data, collect_time
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.DeviceReplaceExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.PacketQueryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_device_replace
+    from w_packet_query
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,76 +86,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_device_replace
-    where node_id = #{nodeId,jdbcType=BIGINT}
+    from w_packet_query
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from w_device_replace
-    where node_id = #{nodeId,jdbcType=BIGINT}
+    delete from w_packet_query
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.DeviceReplaceExample">
-    delete from w_device_replace
+  <delete id="deleteByExample" parameterType="com.pro.entity.PacketQueryExample">
+    delete from w_packet_query
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.DeviceReplace">
-    insert into w_device_replace (node_id, replace_time, replace_descript, 
-      operator_id)
-    values (#{nodeId,jdbcType=BIGINT}, #{replaceTime,jdbcType=TIMESTAMP}, #{replaceDescript,jdbcType=VARCHAR}, 
-      #{operatorId,jdbcType=BIGINT})
+  <insert id="insert" parameterType="com.pro.entity.PacketQuery">
+    insert into w_packet_query (packet_id, packet_type, packet_data, 
+      collect_time)
+    values (#{packetId,jdbcType=BIGINT}, #{packetType,jdbcType=VARCHAR}, #{packetData,jdbcType=VARCHAR}, 
+      #{collectTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.DeviceReplace">
-    insert into w_device_replace
+  <insert id="insertSelective" parameterType="com.pro.entity.PacketQuery">
+    insert into w_packet_query
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="nodeId != null">
-        node_id,
+      <if test="packetId != null">
+        packet_id,
       </if>
-      <if test="replaceTime != null">
-        replace_time,
+      <if test="packetType != null">
+        packet_type,
       </if>
-      <if test="replaceDescript != null">
-        replace_descript,
+      <if test="packetData != null">
+        packet_data,
       </if>
-      <if test="operatorId != null">
-        operator_id,
+      <if test="collectTime != null">
+        collect_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="nodeId != null">
-        #{nodeId,jdbcType=BIGINT},
+      <if test="packetId != null">
+        #{packetId,jdbcType=BIGINT},
       </if>
-      <if test="replaceTime != null">
-        #{replaceTime,jdbcType=TIMESTAMP},
+      <if test="packetType != null">
+        #{packetType,jdbcType=VARCHAR},
       </if>
-      <if test="replaceDescript != null">
-        #{replaceDescript,jdbcType=VARCHAR},
+      <if test="packetData != null">
+        #{packetData,jdbcType=VARCHAR},
       </if>
-      <if test="operatorId != null">
-        #{operatorId,jdbcType=BIGINT},
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.DeviceReplaceExample" resultType="java.lang.Long">
-    select count(*) from w_device_replace
+  <select id="countByExample" parameterType="com.pro.entity.PacketQueryExample" resultType="java.lang.Long">
+    select count(*) from w_packet_query
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_device_replace
+    update w_packet_query
     <set>
-      <if test="record.nodeId != null">
-        node_id = #{record.nodeId,jdbcType=BIGINT},
+      <if test="record.packetId != null">
+        packet_id = #{record.packetId,jdbcType=BIGINT},
       </if>
-      <if test="record.replaceTime != null">
-        replace_time = #{record.replaceTime,jdbcType=TIMESTAMP},
+      <if test="record.packetType != null">
+        packet_type = #{record.packetType,jdbcType=VARCHAR},
       </if>
-      <if test="record.replaceDescript != null">
-        replace_descript = #{record.replaceDescript,jdbcType=VARCHAR},
+      <if test="record.packetData != null">
+        packet_data = #{record.packetData,jdbcType=VARCHAR},
       </if>
-      <if test="record.operatorId != null">
-        operator_id = #{record.operatorId,jdbcType=BIGINT},
+      <if test="record.collectTime != null">
+        collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -163,35 +163,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_device_replace
-    set node_id = #{record.nodeId,jdbcType=BIGINT},
-      replace_time = #{record.replaceTime,jdbcType=TIMESTAMP},
-      replace_descript = #{record.replaceDescript,jdbcType=VARCHAR},
-      operator_id = #{record.operatorId,jdbcType=BIGINT}
+    update w_packet_query
+    set packet_id = #{record.packetId,jdbcType=BIGINT},
+      packet_type = #{record.packetType,jdbcType=VARCHAR},
+      packet_data = #{record.packetData,jdbcType=VARCHAR},
+      collect_time = #{record.collectTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.DeviceReplace">
-    update w_device_replace
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.PacketQuery">
+    update w_packet_query
     <set>
-      <if test="replaceTime != null">
-        replace_time = #{replaceTime,jdbcType=TIMESTAMP},
+      <if test="packetType != null">
+        packet_type = #{packetType,jdbcType=VARCHAR},
       </if>
-      <if test="replaceDescript != null">
-        replace_descript = #{replaceDescript,jdbcType=VARCHAR},
+      <if test="packetData != null">
+        packet_data = #{packetData,jdbcType=VARCHAR},
       </if>
-      <if test="operatorId != null">
-        operator_id = #{operatorId,jdbcType=BIGINT},
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where node_id = #{nodeId,jdbcType=BIGINT}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.DeviceReplace">
-    update w_device_replace
-    set replace_time = #{replaceTime,jdbcType=TIMESTAMP},
-      replace_descript = #{replaceDescript,jdbcType=VARCHAR},
-      operator_id = #{operatorId,jdbcType=BIGINT}
-    where node_id = #{nodeId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.PacketQuery">
+    update w_packet_query
+    set packet_type = #{packetType,jdbcType=VARCHAR},
+      packet_data = #{packetData,jdbcType=VARCHAR},
+      collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
 </mapper>

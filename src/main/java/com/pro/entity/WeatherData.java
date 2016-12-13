@@ -2,11 +2,7 @@ package com.pro.entity;
 
 import java.util.Date;
 
-public class WeatherData {
-    private String weatherCityCode;
-
-    private String collectDate;
-
+public class WeatherData extends WeatherDataKey {
     private String sunriseTime;
 
     private String sunsetTime;
@@ -20,22 +16,6 @@ public class WeatherData {
     private String nightWeather;
 
     private Date lastUpdateTime;
-
-    public String getWeatherCityCode() {
-        return weatherCityCode;
-    }
-
-    public void setWeatherCityCode(String weatherCityCode) {
-        this.weatherCityCode = weatherCityCode;
-    }
-
-    public String getCollectDate() {
-        return collectDate;
-    }
-
-    public void setCollectDate(String collectDate) {
-        this.collectDate = collectDate;
-    }
 
     public String getSunriseTime() {
         return sunriseTime;

@@ -3,7 +3,7 @@
 <mapper namespace="com.pro.dao.WeatherDataMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.WeatherData">
     <id column="weather_city_code" jdbcType="VARCHAR" property="weatherCityCode" />
-    <result column="collect_date" jdbcType="VARCHAR" property="collectDate" />
+    <id column="collect_date" jdbcType="DATE" property="collectDate" />
     <result column="sunrise_time" jdbcType="VARCHAR" property="sunriseTime" />
     <result column="sunset_time" jdbcType="VARCHAR" property="sunsetTime" />
     <result column="min_temperature" jdbcType="VARCHAR" property="minTemperature" />
@@ -89,15 +89,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="com.pro.entity.WeatherDataKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from w_weather_data
     where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.WeatherDataKey">
     delete from w_weather_data
     where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
   </delete>
   <delete id="deleteByExample" parameterType="com.pro.entity.WeatherDataExample">
     delete from w_weather_data
@@ -110,7 +112,7 @@
       sunset_time, min_temperature, max_temperature, 
       day_weather, night_weather, last_update_time
       )
-    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=VARCHAR}, #{sunriseTime,jdbcType=VARCHAR}, 
+    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=DATE}, #{sunriseTime,jdbcType=VARCHAR}, 
       #{sunsetTime,jdbcType=VARCHAR}, #{minTemperature,jdbcType=VARCHAR}, #{maxTemperature,jdbcType=VARCHAR}, 
       #{dayWeather,jdbcType=CHAR}, #{nightWeather,jdbcType=CHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
       )
@@ -151,7 +153,7 @@
         #{weatherCityCode,jdbcType=VARCHAR},
       </if>
       <if test="collectDate != null">
-        #{collectDate,jdbcType=VARCHAR},
+        #{collectDate,jdbcType=DATE},
       </if>
       <if test="sunriseTime != null">
         #{sunriseTime,jdbcType=VARCHAR},
@@ -189,7 +191,7 @@
         weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
       </if>
       <if test="record.collectDate != null">
-        collect_date = #{record.collectDate,jdbcType=VARCHAR},
+        collect_date = #{record.collectDate,jdbcType=DATE},
       </if>
       <if test="record.sunriseTime != null">
         sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
@@ -220,7 +222,7 @@
   <update id="updateByExample" parameterType="map">
     update w_weather_data
     set weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
-      collect_date = #{record.collectDate,jdbcType=VARCHAR},
+      collect_date = #{record.collectDate,jdbcType=DATE},
       sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
       sunset_time = #{record.sunsetTime,jdbcType=VARCHAR},
       min_temperature = #{record.minTemperature,jdbcType=VARCHAR},
@@ -235,9 +237,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherData">
     update w_weather_data
     <set>
-      <if test="collectDate != null">
-        collect_date = #{collectDate,jdbcType=VARCHAR},
-      </if>
       <if test="sunriseTime != null">
         sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
       </if>
@@ -261,11 +260,11 @@
       </if>
     </set>
     where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherData">
     update w_weather_data
-    set collect_date = #{collectDate,jdbcType=VARCHAR},
-      sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
+    set sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
       sunset_time = #{sunsetTime,jdbcType=VARCHAR},
       min_temperature = #{minTemperature,jdbcType=VARCHAR},
       max_temperature = #{maxTemperature,jdbcType=VARCHAR},
@@ -273,5 +272,6 @@
       night_weather = #{nightWeather,jdbcType=CHAR},
       last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
     where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+      and collect_date = #{collectDate,jdbcType=DATE}
   </update>
 </mapper>

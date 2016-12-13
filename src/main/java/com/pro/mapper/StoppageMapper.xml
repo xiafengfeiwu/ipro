@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.StoppageMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.Stoppage">
+    <id column="stoppage_id" jdbcType="BIGINT" property="stoppageId" />
+    <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
+    <result column="node_id" jdbcType="BIGINT" property="nodeId" />
+    <result column="descript" jdbcType="VARCHAR" property="descript" />
+    <result column="attach_id" jdbcType="BIGINT" property="attachId" />
+    <result column="originator_id" jdbcType="BIGINT" property="originatorId" />
+    <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
+    <result column="handle_status" jdbcType="CHAR" property="handleStatus" />
+    <result column="handle_modify_time" jdbcType="TIMESTAMP" property="handleModifyTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    stoppage_id, stoppage_no, node_id, descript, attach_id, originator_id, occur_time, 
+    handle_status, handle_modify_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.StoppageExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_stoppage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_stoppage
+    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_stoppage
+    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.StoppageExample">
+    delete from w_stoppage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.Stoppage">
+    insert into w_stoppage (stoppage_id, stoppage_no, node_id, 
+      descript, attach_id, originator_id, 
+      occur_time, handle_status, handle_modify_time
+      )
+    values (#{stoppageId,jdbcType=BIGINT}, #{stoppageNo,jdbcType=VARCHAR}, #{nodeId,jdbcType=BIGINT}, 
+      #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=BIGINT}, #{originatorId,jdbcType=BIGINT}, 
+      #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, #{handleModifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.Stoppage">
+    insert into w_stoppage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stoppageId != null">
+        stoppage_id,
+      </if>
+      <if test="stoppageNo != null">
+        stoppage_no,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="descript != null">
+        descript,
+      </if>
+      <if test="attachId != null">
+        attach_id,
+      </if>
+      <if test="originatorId != null">
+        originator_id,
+      </if>
+      <if test="occurTime != null">
+        occur_time,
+      </if>
+      <if test="handleStatus != null">
+        handle_status,
+      </if>
+      <if test="handleModifyTime != null">
+        handle_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stoppageId != null">
+        #{stoppageId,jdbcType=BIGINT},
+      </if>
+      <if test="stoppageNo != null">
+        #{stoppageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="attachId != null">
+        #{attachId,jdbcType=BIGINT},
+      </if>
+      <if test="originatorId != null">
+        #{originatorId,jdbcType=BIGINT},
+      </if>
+      <if test="occurTime != null">
+        #{occurTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleStatus != null">
+        #{handleStatus,jdbcType=CHAR},
+      </if>
+      <if test="handleModifyTime != null">
+        #{handleModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.StoppageExample" resultType="java.lang.Long">
+    select count(*) from w_stoppage
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_stoppage
+    <set>
+      <if test="record.stoppageId != null">
+        stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+      </if>
+      <if test="record.stoppageNo != null">
+        stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeId != null">
+        node_id = #{record.nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.descript != null">
+        descript = #{record.descript,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attachId != null">
+        attach_id = #{record.attachId,jdbcType=BIGINT},
+      </if>
+      <if test="record.originatorId != null">
+        originator_id = #{record.originatorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.occurTime != null">
+        occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.handleStatus != null">
+        handle_status = #{record.handleStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.handleModifyTime != null">
+        handle_modify_time = #{record.handleModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_stoppage
+    set stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+      stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
+      node_id = #{record.nodeId,jdbcType=BIGINT},
+      descript = #{record.descript,jdbcType=VARCHAR},
+      attach_id = #{record.attachId,jdbcType=BIGINT},
+      originator_id = #{record.originatorId,jdbcType=BIGINT},
+      occur_time = #{record.occurTime,jdbcType=TIMESTAMP},
+      handle_status = #{record.handleStatus,jdbcType=CHAR},
+      handle_modify_time = #{record.handleModifyTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Stoppage">
+    update w_stoppage
+    <set>
+      <if test="stoppageNo != null">
+        stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="descript != null">
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="attachId != null">
+        attach_id = #{attachId,jdbcType=BIGINT},
+      </if>
+      <if test="originatorId != null">
+        originator_id = #{originatorId,jdbcType=BIGINT},
+      </if>
+      <if test="occurTime != null">
+        occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleStatus != null">
+        handle_status = #{handleStatus,jdbcType=CHAR},
+      </if>
+      <if test="handleModifyTime != null">
+        handle_modify_time = #{handleModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.Stoppage">
+    update w_stoppage
+    set stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+      node_id = #{nodeId,jdbcType=BIGINT},
+      descript = #{descript,jdbcType=VARCHAR},
+      attach_id = #{attachId,jdbcType=BIGINT},
+      originator_id = #{originatorId,jdbcType=BIGINT},
+      occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      handle_status = #{handleStatus,jdbcType=CHAR},
+      handle_modify_time = #{handleModifyTime,jdbcType=TIMESTAMP}
+    where stoppage_id = #{stoppageId,jdbcType=BIGINT}
+  </update>
+</mapper>

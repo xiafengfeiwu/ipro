@@ -165,63 +165,63 @@ public class NodeExample {
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdIsNull() {
-            addCriterion("terminal_id is null");
+        public Criteria andPumpIdIsNull() {
+            addCriterion("pump_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdIsNotNull() {
-            addCriterion("terminal_id is not null");
+        public Criteria andPumpIdIsNotNull() {
+            addCriterion("pump_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdEqualTo(Long value) {
-            addCriterion("terminal_id =", value, "terminalId");
+        public Criteria andPumpIdEqualTo(Long value) {
+            addCriterion("pump_id =", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdNotEqualTo(Long value) {
-            addCriterion("terminal_id <>", value, "terminalId");
+        public Criteria andPumpIdNotEqualTo(Long value) {
+            addCriterion("pump_id <>", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdGreaterThan(Long value) {
-            addCriterion("terminal_id >", value, "terminalId");
+        public Criteria andPumpIdGreaterThan(Long value) {
+            addCriterion("pump_id >", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("terminal_id >=", value, "terminalId");
+        public Criteria andPumpIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("pump_id >=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdLessThan(Long value) {
-            addCriterion("terminal_id <", value, "terminalId");
+        public Criteria andPumpIdLessThan(Long value) {
+            addCriterion("pump_id <", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdLessThanOrEqualTo(Long value) {
-            addCriterion("terminal_id <=", value, "terminalId");
+        public Criteria andPumpIdLessThanOrEqualTo(Long value) {
+            addCriterion("pump_id <=", value, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdIn(List<Long> values) {
-            addCriterion("terminal_id in", values, "terminalId");
+        public Criteria andPumpIdIn(List<Long> values) {
+            addCriterion("pump_id in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdNotIn(List<Long> values) {
-            addCriterion("terminal_id not in", values, "terminalId");
+        public Criteria andPumpIdNotIn(List<Long> values) {
+            addCriterion("pump_id not in", values, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdBetween(Long value1, Long value2) {
-            addCriterion("terminal_id between", value1, value2, "terminalId");
+        public Criteria andPumpIdBetween(Long value1, Long value2) {
+            addCriterion("pump_id between", value1, value2, "pumpId");
             return (Criteria) this;
         }
 
-        public Criteria andTerminalIdNotBetween(Long value1, Long value2) {
-            addCriterion("terminal_id not between", value1, value2, "terminalId");
+        public Criteria andPumpIdNotBetween(Long value1, Long value2) {
+            addCriterion("pump_id not between", value1, value2, "pumpId");
             return (Criteria) this;
         }
 
@@ -282,6 +282,66 @@ public class NodeExample {
 
         public Criteria andDeviceIdNotBetween(Long value1, Long value2) {
             addCriterion("device_id not between", value1, value2, "deviceId");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineIsNull() {
+            addCriterion("node_online is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineIsNotNull() {
+            addCriterion("node_online is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineEqualTo(Boolean value) {
+            addCriterion("node_online =", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineNotEqualTo(Boolean value) {
+            addCriterion("node_online <>", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineGreaterThan(Boolean value) {
+            addCriterion("node_online >", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("node_online >=", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineLessThan(Boolean value) {
+            addCriterion("node_online <", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineLessThanOrEqualTo(Boolean value) {
+            addCriterion("node_online <=", value, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineIn(List<Boolean> values) {
+            addCriterion("node_online in", values, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineNotIn(List<Boolean> values) {
+            addCriterion("node_online not in", values, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineBetween(Boolean value1, Boolean value2) {
+            addCriterion("node_online between", value1, value2, "nodeOnline");
+            return (Criteria) this;
+        }
+
+        public Criteria andNodeOnlineNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("node_online not between", value1, value2, "nodeOnline");
             return (Criteria) this;
         }
 

@@ -1,5 +1,7 @@
 package com.pro.entity;
 
+import java.util.Date;
+
 public class WebSystem {
     private String systemLogoUrl;
 
@@ -8,6 +10,8 @@ public class WebSystem {
     private String systemJianPin;
 
     private String systemTechnicalSupport;
+
+    private Date systemModifyTime;
 
     public String getSystemLogoUrl() {
         return systemLogoUrl;
@@ -39,5 +43,13 @@ public class WebSystem {
 
     public void setSystemTechnicalSupport(String systemTechnicalSupport) {
         this.systemTechnicalSupport = systemTechnicalSupport;
+    }
+
+    public Date getSystemModifyTime() {
+        return systemModifyTime;
+    }
+
+    public void setSystemModifyTime(Date systemModifyTime) {
+        this.systemModifyTime = systemModifyTime;
     }
 }

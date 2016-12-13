@@ -3,8 +3,9 @@
 <mapper namespace="com.pro.dao.NodeMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.Node">
     <id column="node_id" jdbcType="BIGINT" property="nodeId" />
-    <result column="terminal_id" jdbcType="BIGINT" property="terminalId" />
+    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <result column="device_id" jdbcType="BIGINT" property="deviceId" />
+    <result column="node_online" jdbcType="BIT" property="nodeOnline" />
     <result column="last_time_contact_time" jdbcType="TIMESTAMP" property="lastTimeContactTime" />
     <result column="regist_time" jdbcType="TIMESTAMP" property="registTime" />
   </resultMap>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    node_id, terminal_id, device_id, last_time_contact_time, regist_time
+    node_id, pump_id, device_id, node_online, last_time_contact_time, regist_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.NodeExample" resultMap="BaseResultMap">
     select
@@ -101,10 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Node">
-    insert into w_node (node_id, terminal_id, device_id, 
-      last_time_contact_time, regist_time)
-    values (#{nodeId,jdbcType=BIGINT}, #{terminalId,jdbcType=BIGINT}, #{deviceId,jdbcType=BIGINT}, 
-      #{lastTimeContactTime,jdbcType=TIMESTAMP}, #{registTime,jdbcType=TIMESTAMP})
+    insert into w_node (node_id, pump_id, device_id, 
+      node_online, last_time_contact_time, regist_time
+      )
+    values (#{nodeId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT}, #{deviceId,jdbcType=BIGINT}, 
+      #{nodeOnline,jdbcType=BIT}, #{lastTimeContactTime,jdbcType=TIMESTAMP}, #{registTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Node">
     insert into w_node
@@ -112,11 +115,14 @@
       <if test="nodeId != null">
         node_id,
       </if>
-      <if test="terminalId != null">
-        terminal_id,
+      <if test="pumpId != null">
+        pump_id,
       </if>
       <if test="deviceId != null">
         device_id,
+      </if>
+      <if test="nodeOnline != null">
+        node_online,
       </if>
       <if test="lastTimeContactTime != null">
         last_time_contact_time,
@@ -129,11 +135,14 @@
       <if test="nodeId != null">
         #{nodeId,jdbcType=BIGINT},
       </if>
-      <if test="terminalId != null">
-        #{terminalId,jdbcType=BIGINT},
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
       </if>
       <if test="deviceId != null">
         #{deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeOnline != null">
+        #{nodeOnline,jdbcType=BIT},
       </if>
       <if test="lastTimeContactTime != null">
         #{lastTimeContactTime,jdbcType=TIMESTAMP},
@@ -155,11 +164,14 @@
       <if test="record.nodeId != null">
         node_id = #{record.nodeId,jdbcType=BIGINT},
       </if>
-      <if test="record.terminalId != null">
-        terminal_id = #{record.terminalId,jdbcType=BIGINT},
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
       </if>
       <if test="record.deviceId != null">
         device_id = #{record.deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="record.nodeOnline != null">
+        node_online = #{record.nodeOnline,jdbcType=BIT},
       </if>
       <if test="record.lastTimeContactTime != null">
         last_time_contact_time = #{record.lastTimeContactTime,jdbcType=TIMESTAMP},
@@ -175,8 +187,9 @@
   <update id="updateByExample" parameterType="map">
     update w_node
     set node_id = #{record.nodeId,jdbcType=BIGINT},
-      terminal_id = #{record.terminalId,jdbcType=BIGINT},
+      pump_id = #{record.pumpId,jdbcType=BIGINT},
       device_id = #{record.deviceId,jdbcType=BIGINT},
+      node_online = #{record.nodeOnline,jdbcType=BIT},
       last_time_contact_time = #{record.lastTimeContactTime,jdbcType=TIMESTAMP},
       regist_time = #{record.registTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -186,11 +199,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Node">
     update w_node
     <set>
-      <if test="terminalId != null">
-        terminal_id = #{terminalId,jdbcType=BIGINT},
+      <if test="pumpId != null">
+        pump_id = #{pumpId,jdbcType=BIGINT},
       </if>
       <if test="deviceId != null">
         device_id = #{deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeOnline != null">
+        node_online = #{nodeOnline,jdbcType=BIT},
       </if>
       <if test="lastTimeContactTime != null">
         last_time_contact_time = #{lastTimeContactTime,jdbcType=TIMESTAMP},
@@ -203,8 +219,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.Node">
     update w_node
-    set terminal_id = #{terminalId,jdbcType=BIGINT},
+    set pump_id = #{pumpId,jdbcType=BIGINT},
       device_id = #{deviceId,jdbcType=BIGINT},
+      node_online = #{nodeOnline,jdbcType=BIT},
       last_time_contact_time = #{lastTimeContactTime,jdbcType=TIMESTAMP},
       regist_time = #{registTime,jdbcType=TIMESTAMP}
     where node_id = #{nodeId,jdbcType=BIGINT}

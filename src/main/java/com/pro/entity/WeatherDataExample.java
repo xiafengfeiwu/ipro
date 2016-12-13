@@ -2,6 +2,7 @@ package com.pro.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class WeatherDataExample {
@@ -105,6 +106,32 @@ public class WeatherDataExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
         public Criteria andWeatherCityCodeIsNull() {
             addCriterion("weather_city_code is null");
             return (Criteria) this;
@@ -185,63 +212,53 @@ public class WeatherDataExample {
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateEqualTo(String value) {
-            addCriterion("collect_date =", value, "collectDate");
+        public Criteria andCollectDateEqualTo(Date value) {
+            addCriterionForJDBCDate("collect_date =", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateNotEqualTo(String value) {
-            addCriterion("collect_date <>", value, "collectDate");
+        public Criteria andCollectDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("collect_date <>", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateGreaterThan(String value) {
-            addCriterion("collect_date >", value, "collectDate");
+        public Criteria andCollectDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("collect_date >", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateGreaterThanOrEqualTo(String value) {
-            addCriterion("collect_date >=", value, "collectDate");
+        public Criteria andCollectDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("collect_date >=", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateLessThan(String value) {
-            addCriterion("collect_date <", value, "collectDate");
+        public Criteria andCollectDateLessThan(Date value) {
+            addCriterionForJDBCDate("collect_date <", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateLessThanOrEqualTo(String value) {
-            addCriterion("collect_date <=", value, "collectDate");
+        public Criteria andCollectDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("collect_date <=", value, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateLike(String value) {
-            addCriterion("collect_date like", value, "collectDate");
+        public Criteria andCollectDateIn(List<Date> values) {
+            addCriterionForJDBCDate("collect_date in", values, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateNotLike(String value) {
-            addCriterion("collect_date not like", value, "collectDate");
+        public Criteria andCollectDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("collect_date not in", values, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateIn(List<String> values) {
-            addCriterion("collect_date in", values, "collectDate");
+        public Criteria andCollectDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("collect_date between", value1, value2, "collectDate");
             return (Criteria) this;
         }
 
-        public Criteria andCollectDateNotIn(List<String> values) {
-            addCriterion("collect_date not in", values, "collectDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCollectDateBetween(String value1, String value2) {
-            addCriterion("collect_date between", value1, value2, "collectDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andCollectDateNotBetween(String value1, String value2) {
-            addCriterion("collect_date not between", value1, value2, "collectDate");
+        public Criteria andCollectDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("collect_date not between", value1, value2, "collectDate");
             return (Criteria) this;
         }
 

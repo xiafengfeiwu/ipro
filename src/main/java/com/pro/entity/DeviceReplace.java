@@ -9,6 +9,8 @@ public class DeviceReplace {
 
     private String replaceDescript;
 
+    private Long operatorId;
+
     public Long getNodeId() {
         return nodeId;
     }
@@ -31,5 +33,13 @@ public class DeviceReplace {
 
     public void setReplaceDescript(String replaceDescript) {
         this.replaceDescript = replaceDescript;
+    }
+
+    public Long getOperatorId() {
+        return operatorId;
+    }
+
+    public void setOperatorId(Long operatorId) {
+        this.operatorId = operatorId;
     }
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.WarnSetUpMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.WarnSetUp">
-    <id column="item_id" jdbcType="BIGINT" property="itemId" />
-    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
-    <result column="item_field" jdbcType="VARCHAR" property="itemField" />
-    <result column="item_value" jdbcType="VARCHAR" property="itemValue" />
-    <result column="item_condition" jdbcType="VARCHAR" property="itemCondition" />
+<mapper namespace="com.pro.dao.PacketMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.Packet">
+    <id column="packet_id" jdbcType="BIGINT" property="packetId" />
+    <result column="packet_type" jdbcType="VARCHAR" property="packetType" />
+    <result column="packet_data" jdbcType="VARCHAR" property="packetData" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,16 +66,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    item_id, item_name, item_field, item_value, item_condition
+    packet_id, packet_type, packet_data, collect_time
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.WarnSetUpExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.PacketExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_warn_setup
+    from w_packet
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,85 +86,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_warn_setup
-    where item_id = #{itemId,jdbcType=BIGINT}
+    from w_packet
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from w_warn_setup
-    where item_id = #{itemId,jdbcType=BIGINT}
+    delete from w_packet
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.WarnSetUpExample">
-    delete from w_warn_setup
+  <delete id="deleteByExample" parameterType="com.pro.entity.PacketExample">
+    delete from w_packet
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.WarnSetUp">
-    insert into w_warn_setup (item_id, item_name, item_field, 
-      item_value, item_condition)
-    values (#{itemId,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, #{itemField,jdbcType=VARCHAR}, 
-      #{itemValue,jdbcType=VARCHAR}, #{itemCondition,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.pro.entity.Packet">
+    insert into w_packet (packet_id, packet_type, packet_data, 
+      collect_time)
+    values (#{packetId,jdbcType=BIGINT}, #{packetType,jdbcType=VARCHAR}, #{packetData,jdbcType=VARCHAR}, 
+      #{collectTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.WarnSetUp">
-    insert into w_warn_setup
+  <insert id="insertSelective" parameterType="com.pro.entity.Packet">
+    insert into w_packet
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="itemId != null">
-        item_id,
+      <if test="packetId != null">
+        packet_id,
       </if>
-      <if test="itemName != null">
-        item_name,
+      <if test="packetType != null">
+        packet_type,
       </if>
-      <if test="itemField != null">
-        item_field,
+      <if test="packetData != null">
+        packet_data,
       </if>
-      <if test="itemValue != null">
-        item_value,
-      </if>
-      <if test="itemCondition != null">
-        item_condition,
+      <if test="collectTime != null">
+        collect_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="itemId != null">
-        #{itemId,jdbcType=BIGINT},
+      <if test="packetId != null">
+        #{packetId,jdbcType=BIGINT},
       </if>
-      <if test="itemName != null">
-        #{itemName,jdbcType=VARCHAR},
+      <if test="packetType != null">
+        #{packetType,jdbcType=VARCHAR},
       </if>
-      <if test="itemField != null">
-        #{itemField,jdbcType=VARCHAR},
+      <if test="packetData != null">
+        #{packetData,jdbcType=VARCHAR},
       </if>
-      <if test="itemValue != null">
-        #{itemValue,jdbcType=VARCHAR},
-      </if>
-      <if test="itemCondition != null">
-        #{itemCondition,jdbcType=VARCHAR},
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.WarnSetUpExample" resultType="java.lang.Long">
-    select count(*) from w_warn_setup
+  <select id="countByExample" parameterType="com.pro.entity.PacketExample" resultType="java.lang.Long">
+    select count(*) from w_packet
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_warn_setup
+    update w_packet
     <set>
-      <if test="record.itemId != null">
-        item_id = #{record.itemId,jdbcType=BIGINT},
+      <if test="record.packetId != null">
+        packet_id = #{record.packetId,jdbcType=BIGINT},
       </if>
-      <if test="record.itemName != null">
-        item_name = #{record.itemName,jdbcType=VARCHAR},
+      <if test="record.packetType != null">
+        packet_type = #{record.packetType,jdbcType=VARCHAR},
       </if>
-      <if test="record.itemField != null">
-        item_field = #{record.itemField,jdbcType=VARCHAR},
+      <if test="record.packetData != null">
+        packet_data = #{record.packetData,jdbcType=VARCHAR},
       </if>
-      <if test="record.itemValue != null">
-        item_value = #{record.itemValue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.itemCondition != null">
-        item_condition = #{record.itemCondition,jdbcType=VARCHAR},
+      <if test="record.collectTime != null">
+        collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -173,40 +163,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_warn_setup
-    set item_id = #{record.itemId,jdbcType=BIGINT},
-      item_name = #{record.itemName,jdbcType=VARCHAR},
-      item_field = #{record.itemField,jdbcType=VARCHAR},
-      item_value = #{record.itemValue,jdbcType=VARCHAR},
-      item_condition = #{record.itemCondition,jdbcType=VARCHAR}
+    update w_packet
+    set packet_id = #{record.packetId,jdbcType=BIGINT},
+      packet_type = #{record.packetType,jdbcType=VARCHAR},
+      packet_data = #{record.packetData,jdbcType=VARCHAR},
+      collect_time = #{record.collectTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WarnSetUp">
-    update w_warn_setup
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Packet">
+    update w_packet
     <set>
-      <if test="itemName != null">
-        item_name = #{itemName,jdbcType=VARCHAR},
+      <if test="packetType != null">
+        packet_type = #{packetType,jdbcType=VARCHAR},
       </if>
-      <if test="itemField != null">
-        item_field = #{itemField,jdbcType=VARCHAR},
+      <if test="packetData != null">
+        packet_data = #{packetData,jdbcType=VARCHAR},
       </if>
-      <if test="itemValue != null">
-        item_value = #{itemValue,jdbcType=VARCHAR},
-      </if>
-      <if test="itemCondition != null">
-        item_condition = #{itemCondition,jdbcType=VARCHAR},
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where item_id = #{itemId,jdbcType=BIGINT}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WarnSetUp">
-    update w_warn_setup
-    set item_name = #{itemName,jdbcType=VARCHAR},
-      item_field = #{itemField,jdbcType=VARCHAR},
-      item_value = #{itemValue,jdbcType=VARCHAR},
-      item_condition = #{itemCondition,jdbcType=VARCHAR}
-    where item_id = #{itemId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.Packet">
+    update w_packet
+    set packet_type = #{packetType,jdbcType=VARCHAR},
+      packet_data = #{packetData,jdbcType=VARCHAR},
+      collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where packet_id = #{packetId,jdbcType=BIGINT}
   </update>
 </mapper>

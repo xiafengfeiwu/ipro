@@ -79,7 +79,7 @@
                 title: '角色授权',
                 closeBtn: true,
                 shade: [0.23],
-                area: ['860px', '415px'],
+                area: ['90%', '90%'],
                 content: ['develop/role/authorize.jspx', 'no'], //iframe的url，no代表不显示滚动条
             });
         }

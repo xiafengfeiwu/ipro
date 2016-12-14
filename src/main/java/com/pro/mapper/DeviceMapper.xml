@@ -6,9 +6,11 @@
     <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
     <result column="device_sn" jdbcType="VARCHAR" property="deviceSn" />
     <result column="device_model" jdbcType="VARCHAR" property="deviceModel" />
+    <result column="device_vender_code" jdbcType="VARCHAR" property="deviceVenderCode" />
     <result column="device_type" jdbcType="VARCHAR" property="deviceType" />
-    <result column="device_create_time" jdbcType="TIMESTAMP" property="deviceCreateTime" />
-    <result column="device_modify_time" jdbcType="TIMESTAMP" property="deviceModifyTime" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,8 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    device_id, device_name, device_sn, device_model, device_type, device_create_time, 
-    device_modify_time
+    device_id, device_name, device_sn, device_model, device_vender_code, device_type, 
+    creator_id, create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.DeviceExample" resultMap="BaseResultMap">
     select
@@ -105,11 +107,13 @@
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Device">
     insert into w_device (device_id, device_name, device_sn, 
-      device_model, device_type, device_create_time, 
-      device_modify_time)
+      device_model, device_vender_code, device_type, 
+      creator_id, create_time, modify_time
+      )
     values (#{deviceId,jdbcType=BIGINT}, #{deviceName,jdbcType=VARCHAR}, #{deviceSn,jdbcType=VARCHAR}, 
-      #{deviceModel,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, #{deviceCreateTime,jdbcType=TIMESTAMP}, 
-      #{deviceModifyTime,jdbcType=TIMESTAMP})
+      #{deviceModel,jdbcType=VARCHAR}, #{deviceVenderCode,jdbcType=VARCHAR}, #{deviceType,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Device">
     insert into w_device
@@ -126,14 +130,20 @@
       <if test="deviceModel != null">
         device_model,
       </if>
+      <if test="deviceVenderCode != null">
+        device_vender_code,
+      </if>
       <if test="deviceType != null">
         device_type,
       </if>
-      <if test="deviceCreateTime != null">
-        device_create_time,
+      <if test="creatorId != null">
+        creator_id,
       </if>
-      <if test="deviceModifyTime != null">
-        device_modify_time,
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -149,14 +159,20 @@
       <if test="deviceModel != null">
         #{deviceModel,jdbcType=VARCHAR},
       </if>
+      <if test="deviceVenderCode != null">
+        #{deviceVenderCode,jdbcType=VARCHAR},
+      </if>
       <if test="deviceType != null">
         #{deviceType,jdbcType=VARCHAR},
       </if>
-      <if test="deviceCreateTime != null">
-        #{deviceCreateTime,jdbcType=TIMESTAMP},
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=BIGINT},
       </if>
-      <if test="deviceModifyTime != null">
-        #{deviceModifyTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -181,14 +197,20 @@
       <if test="record.deviceModel != null">
         device_model = #{record.deviceModel,jdbcType=VARCHAR},
       </if>
+      <if test="record.deviceVenderCode != null">
+        device_vender_code = #{record.deviceVenderCode,jdbcType=VARCHAR},
+      </if>
       <if test="record.deviceType != null">
         device_type = #{record.deviceType,jdbcType=VARCHAR},
       </if>
-      <if test="record.deviceCreateTime != null">
-        device_create_time = #{record.deviceCreateTime,jdbcType=TIMESTAMP},
+      <if test="record.creatorId != null">
+        creator_id = #{record.creatorId,jdbcType=BIGINT},
       </if>
-      <if test="record.deviceModifyTime != null">
-        device_modify_time = #{record.deviceModifyTime,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifyTime != null">
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -201,9 +223,11 @@
       device_name = #{record.deviceName,jdbcType=VARCHAR},
       device_sn = #{record.deviceSn,jdbcType=VARCHAR},
       device_model = #{record.deviceModel,jdbcType=VARCHAR},
+      device_vender_code = #{record.deviceVenderCode,jdbcType=VARCHAR},
       device_type = #{record.deviceType,jdbcType=VARCHAR},
-      device_create_time = #{record.deviceCreateTime,jdbcType=TIMESTAMP},
-      device_modify_time = #{record.deviceModifyTime,jdbcType=TIMESTAMP}
+      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      modify_time = #{record.modifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -220,14 +244,20 @@
       <if test="deviceModel != null">
         device_model = #{deviceModel,jdbcType=VARCHAR},
       </if>
+      <if test="deviceVenderCode != null">
+        device_vender_code = #{deviceVenderCode,jdbcType=VARCHAR},
+      </if>
       <if test="deviceType != null">
         device_type = #{deviceType,jdbcType=VARCHAR},
       </if>
-      <if test="deviceCreateTime != null">
-        device_create_time = #{deviceCreateTime,jdbcType=TIMESTAMP},
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=BIGINT},
       </if>
-      <if test="deviceModifyTime != null">
-        device_modify_time = #{deviceModifyTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where device_id = #{deviceId,jdbcType=BIGINT}
@@ -237,9 +267,11 @@
     set device_name = #{deviceName,jdbcType=VARCHAR},
       device_sn = #{deviceSn,jdbcType=VARCHAR},
       device_model = #{deviceModel,jdbcType=VARCHAR},
+      device_vender_code = #{deviceVenderCode,jdbcType=VARCHAR},
       device_type = #{deviceType,jdbcType=VARCHAR},
-      device_create_time = #{deviceCreateTime,jdbcType=TIMESTAMP},
-      device_modify_time = #{deviceModifyTime,jdbcType=TIMESTAMP}
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where device_id = #{deviceId,jdbcType=BIGINT}
   </update>
 </mapper>

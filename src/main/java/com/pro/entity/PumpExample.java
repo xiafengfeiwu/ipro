@@ -295,143 +295,73 @@ public class PumpExample {
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressIsNull() {
-            addCriterion("pump_address is null");
+        public Criteria andPumpCityCodeIsNull() {
+            addCriterion("pump_city_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressIsNotNull() {
-            addCriterion("pump_address is not null");
+        public Criteria andPumpCityCodeIsNotNull() {
+            addCriterion("pump_city_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressEqualTo(String value) {
-            addCriterion("pump_address =", value, "pumpAddress");
+        public Criteria andPumpCityCodeEqualTo(String value) {
+            addCriterion("pump_city_code =", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressNotEqualTo(String value) {
-            addCriterion("pump_address <>", value, "pumpAddress");
+        public Criteria andPumpCityCodeNotEqualTo(String value) {
+            addCriterion("pump_city_code <>", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressGreaterThan(String value) {
-            addCriterion("pump_address >", value, "pumpAddress");
+        public Criteria andPumpCityCodeGreaterThan(String value) {
+            addCriterion("pump_city_code >", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_address >=", value, "pumpAddress");
+        public Criteria andPumpCityCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("pump_city_code >=", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressLessThan(String value) {
-            addCriterion("pump_address <", value, "pumpAddress");
+        public Criteria andPumpCityCodeLessThan(String value) {
+            addCriterion("pump_city_code <", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressLessThanOrEqualTo(String value) {
-            addCriterion("pump_address <=", value, "pumpAddress");
+        public Criteria andPumpCityCodeLessThanOrEqualTo(String value) {
+            addCriterion("pump_city_code <=", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressLike(String value) {
-            addCriterion("pump_address like", value, "pumpAddress");
+        public Criteria andPumpCityCodeLike(String value) {
+            addCriterion("pump_city_code like", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressNotLike(String value) {
-            addCriterion("pump_address not like", value, "pumpAddress");
+        public Criteria andPumpCityCodeNotLike(String value) {
+            addCriterion("pump_city_code not like", value, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressIn(List<String> values) {
-            addCriterion("pump_address in", values, "pumpAddress");
+        public Criteria andPumpCityCodeIn(List<String> values) {
+            addCriterion("pump_city_code in", values, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressNotIn(List<String> values) {
-            addCriterion("pump_address not in", values, "pumpAddress");
+        public Criteria andPumpCityCodeNotIn(List<String> values) {
+            addCriterion("pump_city_code not in", values, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressBetween(String value1, String value2) {
-            addCriterion("pump_address between", value1, value2, "pumpAddress");
+        public Criteria andPumpCityCodeBetween(String value1, String value2) {
+            addCriterion("pump_city_code between", value1, value2, "pumpCityCode");
             return (Criteria) this;
         }
 
-        public Criteria andPumpAddressNotBetween(String value1, String value2) {
-            addCriterion("pump_address not between", value1, value2, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeIsNull() {
-            addCriterion("pump_weather_city_code is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeIsNotNull() {
-            addCriterion("pump_weather_city_code is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeEqualTo(String value) {
-            addCriterion("pump_weather_city_code =", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeNotEqualTo(String value) {
-            addCriterion("pump_weather_city_code <>", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeGreaterThan(String value) {
-            addCriterion("pump_weather_city_code >", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_weather_city_code >=", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeLessThan(String value) {
-            addCriterion("pump_weather_city_code <", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeLessThanOrEqualTo(String value) {
-            addCriterion("pump_weather_city_code <=", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeLike(String value) {
-            addCriterion("pump_weather_city_code like", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeNotLike(String value) {
-            addCriterion("pump_weather_city_code not like", value, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeIn(List<String> values) {
-            addCriterion("pump_weather_city_code in", values, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeNotIn(List<String> values) {
-            addCriterion("pump_weather_city_code not in", values, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeBetween(String value1, String value2) {
-            addCriterion("pump_weather_city_code between", value1, value2, "pumpWeatherCityCode");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpWeatherCityCodeNotBetween(String value1, String value2) {
-            addCriterion("pump_weather_city_code not between", value1, value2, "pumpWeatherCityCode");
+        public Criteria andPumpCityCodeNotBetween(String value1, String value2) {
+            addCriterion("pump_city_code not between", value1, value2, "pumpCityCode");
             return (Criteria) this;
         }
 
@@ -572,6 +502,76 @@ public class PumpExample {
 
         public Criteria andPumpLatitudeNotBetween(String value1, String value2) {
             addCriterion("pump_latitude not between", value1, value2, "pumpLatitude");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressIsNull() {
+            addCriterion("pump_address is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressIsNotNull() {
+            addCriterion("pump_address is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressEqualTo(String value) {
+            addCriterion("pump_address =", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressNotEqualTo(String value) {
+            addCriterion("pump_address <>", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressGreaterThan(String value) {
+            addCriterion("pump_address >", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("pump_address >=", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressLessThan(String value) {
+            addCriterion("pump_address <", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressLessThanOrEqualTo(String value) {
+            addCriterion("pump_address <=", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressLike(String value) {
+            addCriterion("pump_address like", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressNotLike(String value) {
+            addCriterion("pump_address not like", value, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressIn(List<String> values) {
+            addCriterion("pump_address in", values, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressNotIn(List<String> values) {
+            addCriterion("pump_address not in", values, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressBetween(String value1, String value2) {
+            addCriterion("pump_address between", value1, value2, "pumpAddress");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpAddressNotBetween(String value1, String value2) {
+            addCriterion("pump_address not between", value1, value2, "pumpAddress");
             return (Criteria) this;
         }
 

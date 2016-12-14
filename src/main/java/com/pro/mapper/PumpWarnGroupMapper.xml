@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.UserRoleMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.UserRole">
-    <id column="user_id" jdbcType="BIGINT" property="userId" />
-    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+<mapper namespace="com.pro.dao.PumpWarnGroupMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.PumpWarnGroup">
+    <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <id column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,16 +66,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, role_id, create_time
+    pump_id, warn_group_id, creator_id, create_time
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.UserRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.PumpWarnGroupExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_user_role
+    from w_pump_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,69 +83,78 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="com.pro.entity.UserRoleKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="com.pro.entity.PumpWarnGroupKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_user_role
-    where user_id = #{userId,jdbcType=BIGINT}
-      and role_id = #{roleId,jdbcType=BIGINT}
+    from w_pump_warn_group
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.UserRoleKey">
-    delete from w_user_role
-    where user_id = #{userId,jdbcType=BIGINT}
-      and role_id = #{roleId,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.PumpWarnGroupKey">
+    delete from w_pump_warn_group
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.UserRoleExample">
-    delete from w_user_role
+  <delete id="deleteByExample" parameterType="com.pro.entity.PumpWarnGroupExample">
+    delete from w_pump_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.UserRole">
-    insert into w_user_role (user_id, role_id, create_time
-      )
-    values (#{userId,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}
-      )
+  <insert id="insert" parameterType="com.pro.entity.PumpWarnGroup">
+    insert into w_pump_warn_group (pump_id, warn_group_id, creator_id, 
+      create_time)
+    values (#{pumpId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{creatorId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.UserRole">
-    insert into w_user_role
+  <insert id="insertSelective" parameterType="com.pro.entity.PumpWarnGroup">
+    insert into w_pump_warn_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        user_id,
+      <if test="pumpId != null">
+        pump_id,
       </if>
-      <if test="roleId != null">
-        role_id,
+      <if test="warnGroupId != null">
+        warn_group_id,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
       </if>
       <if test="createTime != null">
         create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
       </if>
-      <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+      <if test="warnGroupId != null">
+        #{warnGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.UserRoleExample" resultType="java.lang.Long">
-    select count(*) from w_user_role
+  <select id="countByExample" parameterType="com.pro.entity.PumpWarnGroupExample" resultType="java.lang.Long">
+    select count(*) from w_pump_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_user_role
+    update w_pump_warn_group
     <set>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
       </if>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+      <if test="record.warnGroupId != null">
+        warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="record.creatorId != null">
+        creator_id = #{record.creatorId,jdbcType=BIGINT},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -155,28 +165,33 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_user_role
-    set user_id = #{record.userId,jdbcType=BIGINT},
-      role_id = #{record.roleId,jdbcType=BIGINT},
+    update w_pump_warn_group
+    set pump_id = #{record.pumpId,jdbcType=BIGINT},
+      warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+      creator_id = #{record.creatorId,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.UserRole">
-    update w_user_role
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.PumpWarnGroup">
+    update w_pump_warn_group
     <set>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=BIGINT},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=BIGINT}
-      and role_id = #{roleId,jdbcType=BIGINT}
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.UserRole">
-    update w_user_role
-    set create_time = #{createTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=BIGINT}
-      and role_id = #{roleId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.PumpWarnGroup">
+    update w_pump_warn_group
+    set creator_id = #{creatorId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where pump_id = #{pumpId,jdbcType=BIGINT}
+      and warn_group_id = #{warnGroupId,jdbcType=BIGINT}
   </update>
 </mapper>

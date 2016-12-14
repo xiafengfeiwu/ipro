@@ -5,10 +5,10 @@
     <id column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <result column="pump_name" jdbcType="VARCHAR" property="pumpName" />
     <result column="pump_owner_id" jdbcType="BIGINT" property="pumpOwnerId" />
-    <result column="pump_address" jdbcType="VARCHAR" property="pumpAddress" />
-    <result column="pump_weather_city_code" jdbcType="VARCHAR" property="pumpWeatherCityCode" />
+    <result column="pump_city_code" jdbcType="VARCHAR" property="pumpCityCode" />
     <result column="pump_longitude" jdbcType="VARCHAR" property="pumpLongitude" />
     <result column="pump_latitude" jdbcType="VARCHAR" property="pumpLatitude" />
+    <result column="pump_address" jdbcType="VARCHAR" property="pumpAddress" />
     <result column="pump_create_time" jdbcType="TIMESTAMP" property="pumpCreateTime" />
     <result column="pump_modify_time" jdbcType="TIMESTAMP" property="pumpModifyTime" />
   </resultMap>
@@ -71,8 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    pump_id, pump_name, pump_owner_id, pump_address, pump_weather_city_code, pump_longitude, 
-    pump_latitude, pump_create_time, pump_modify_time
+    pump_id, pump_name, pump_owner_id, pump_city_code, pump_longitude, pump_latitude, 
+    pump_address, pump_create_time, pump_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.PumpExample" resultMap="BaseResultMap">
     select
@@ -107,12 +107,12 @@
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Pump">
     insert into w_pump (pump_id, pump_name, pump_owner_id, 
-      pump_address, pump_weather_city_code, pump_longitude, 
-      pump_latitude, pump_create_time, pump_modify_time
+      pump_city_code, pump_longitude, pump_latitude, 
+      pump_address, pump_create_time, pump_modify_time
       )
     values (#{pumpId,jdbcType=BIGINT}, #{pumpName,jdbcType=VARCHAR}, #{pumpOwnerId,jdbcType=BIGINT}, 
-      #{pumpAddress,jdbcType=VARCHAR}, #{pumpWeatherCityCode,jdbcType=VARCHAR}, #{pumpLongitude,jdbcType=VARCHAR}, 
-      #{pumpLatitude,jdbcType=VARCHAR}, #{pumpCreateTime,jdbcType=TIMESTAMP}, #{pumpModifyTime,jdbcType=TIMESTAMP}
+      #{pumpCityCode,jdbcType=VARCHAR}, #{pumpLongitude,jdbcType=VARCHAR}, #{pumpLatitude,jdbcType=VARCHAR}, 
+      #{pumpAddress,jdbcType=VARCHAR}, #{pumpCreateTime,jdbcType=TIMESTAMP}, #{pumpModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Pump">
@@ -127,17 +127,17 @@
       <if test="pumpOwnerId != null">
         pump_owner_id,
       </if>
-      <if test="pumpAddress != null">
-        pump_address,
-      </if>
-      <if test="pumpWeatherCityCode != null">
-        pump_weather_city_code,
+      <if test="pumpCityCode != null">
+        pump_city_code,
       </if>
       <if test="pumpLongitude != null">
         pump_longitude,
       </if>
       <if test="pumpLatitude != null">
         pump_latitude,
+      </if>
+      <if test="pumpAddress != null">
+        pump_address,
       </if>
       <if test="pumpCreateTime != null">
         pump_create_time,
@@ -156,17 +156,17 @@
       <if test="pumpOwnerId != null">
         #{pumpOwnerId,jdbcType=BIGINT},
       </if>
-      <if test="pumpAddress != null">
-        #{pumpAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="pumpWeatherCityCode != null">
-        #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      <if test="pumpCityCode != null">
+        #{pumpCityCode,jdbcType=VARCHAR},
       </if>
       <if test="pumpLongitude != null">
         #{pumpLongitude,jdbcType=VARCHAR},
       </if>
       <if test="pumpLatitude != null">
         #{pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpAddress != null">
+        #{pumpAddress,jdbcType=VARCHAR},
       </if>
       <if test="pumpCreateTime != null">
         #{pumpCreateTime,jdbcType=TIMESTAMP},
@@ -194,17 +194,17 @@
       <if test="record.pumpOwnerId != null">
         pump_owner_id = #{record.pumpOwnerId,jdbcType=BIGINT},
       </if>
-      <if test="record.pumpAddress != null">
-        pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="record.pumpWeatherCityCode != null">
-        pump_weather_city_code = #{record.pumpWeatherCityCode,jdbcType=VARCHAR},
+      <if test="record.pumpCityCode != null">
+        pump_city_code = #{record.pumpCityCode,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpLongitude != null">
         pump_longitude = #{record.pumpLongitude,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpLatitude != null">
         pump_latitude = #{record.pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pumpAddress != null">
+        pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.pumpCreateTime != null">
         pump_create_time = #{record.pumpCreateTime,jdbcType=TIMESTAMP},
@@ -222,10 +222,10 @@
     set pump_id = #{record.pumpId,jdbcType=BIGINT},
       pump_name = #{record.pumpName,jdbcType=VARCHAR},
       pump_owner_id = #{record.pumpOwnerId,jdbcType=BIGINT},
-      pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
-      pump_weather_city_code = #{record.pumpWeatherCityCode,jdbcType=VARCHAR},
+      pump_city_code = #{record.pumpCityCode,jdbcType=VARCHAR},
       pump_longitude = #{record.pumpLongitude,jdbcType=VARCHAR},
       pump_latitude = #{record.pumpLatitude,jdbcType=VARCHAR},
+      pump_address = #{record.pumpAddress,jdbcType=VARCHAR},
       pump_create_time = #{record.pumpCreateTime,jdbcType=TIMESTAMP},
       pump_modify_time = #{record.pumpModifyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -241,17 +241,17 @@
       <if test="pumpOwnerId != null">
         pump_owner_id = #{pumpOwnerId,jdbcType=BIGINT},
       </if>
-      <if test="pumpAddress != null">
-        pump_address = #{pumpAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="pumpWeatherCityCode != null">
-        pump_weather_city_code = #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      <if test="pumpCityCode != null">
+        pump_city_code = #{pumpCityCode,jdbcType=VARCHAR},
       </if>
       <if test="pumpLongitude != null">
         pump_longitude = #{pumpLongitude,jdbcType=VARCHAR},
       </if>
       <if test="pumpLatitude != null">
         pump_latitude = #{pumpLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpAddress != null">
+        pump_address = #{pumpAddress,jdbcType=VARCHAR},
       </if>
       <if test="pumpCreateTime != null">
         pump_create_time = #{pumpCreateTime,jdbcType=TIMESTAMP},
@@ -266,10 +266,10 @@
     update w_pump
     set pump_name = #{pumpName,jdbcType=VARCHAR},
       pump_owner_id = #{pumpOwnerId,jdbcType=BIGINT},
-      pump_address = #{pumpAddress,jdbcType=VARCHAR},
-      pump_weather_city_code = #{pumpWeatherCityCode,jdbcType=VARCHAR},
+      pump_city_code = #{pumpCityCode,jdbcType=VARCHAR},
       pump_longitude = #{pumpLongitude,jdbcType=VARCHAR},
       pump_latitude = #{pumpLatitude,jdbcType=VARCHAR},
+      pump_address = #{pumpAddress,jdbcType=VARCHAR},
       pump_create_time = #{pumpCreateTime,jdbcType=TIMESTAMP},
       pump_modify_time = #{pumpModifyTime,jdbcType=TIMESTAMP}
     where pump_id = #{pumpId,jdbcType=BIGINT}

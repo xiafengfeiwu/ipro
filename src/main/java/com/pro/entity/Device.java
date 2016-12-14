@@ -11,11 +11,15 @@ public class Device {
 
     private String deviceModel;
 
+    private String deviceVenderCode;
+
     private String deviceType;
 
-    private Date deviceCreateTime;
+    private Long creatorId;
 
-    private Date deviceModifyTime;
+    private Date createTime;
+
+    private Date modifyTime;
 
     public Long getDeviceId() {
         return deviceId;
@@ -49,6 +53,14 @@ public class Device {
         this.deviceModel = deviceModel;
     }
 
+    public String getDeviceVenderCode() {
+        return deviceVenderCode;
+    }
+
+    public void setDeviceVenderCode(String deviceVenderCode) {
+        this.deviceVenderCode = deviceVenderCode;
+    }
+
     public String getDeviceType() {
         return deviceType;
     }
@@ -57,19 +69,27 @@ public class Device {
         this.deviceType = deviceType;
     }
 
-    public Date getDeviceCreateTime() {
-        return deviceCreateTime;
+    public Long getCreatorId() {
+        return creatorId;
     }
 
-    public void setDeviceCreateTime(Date deviceCreateTime) {
-        this.deviceCreateTime = deviceCreateTime;
+    public void setCreatorId(Long creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public Date getDeviceModifyTime() {
-        return deviceModifyTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setDeviceModifyTime(Date deviceModifyTime) {
-        this.deviceModifyTime = deviceModifyTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }

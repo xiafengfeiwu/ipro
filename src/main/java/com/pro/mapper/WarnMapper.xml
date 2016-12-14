@@ -3,8 +3,10 @@
 <mapper namespace="com.pro.dao.WarnMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.Warn">
     <id column="warn_id" jdbcType="BIGINT" property="warnId" />
+    <result column="warn_no" jdbcType="VARCHAR" property="warnNo" />
     <result column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
+    <result column="warn_level" jdbcType="CHAR" property="warnLevel" />
     <result column="warn_descript" jdbcType="VARCHAR" property="warnDescript" />
     <result column="warn_status" jdbcType="CHAR" property="warnStatus" />
     <result column="warn_happen_time" jdbcType="TIMESTAMP" property="warnHappenTime" />
@@ -69,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    warn_id, node_id, warn_code, warn_descript, warn_status, warn_happen_time, warn_modify_time
+    warn_id, warn_no, node_id, warn_code, warn_level, warn_descript, warn_status, warn_happen_time, 
+    warn_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.WarnExample" resultMap="BaseResultMap">
     select
@@ -103,12 +106,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Warn">
-    insert into w_warn (warn_id, node_id, warn_code, 
-      warn_descript, warn_status, warn_happen_time, 
-      warn_modify_time)
-    values (#{warnId,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{warnCode,jdbcType=VARCHAR}, 
-      #{warnDescript,jdbcType=VARCHAR}, #{warnStatus,jdbcType=CHAR}, #{warnHappenTime,jdbcType=TIMESTAMP}, 
-      #{warnModifyTime,jdbcType=TIMESTAMP})
+    insert into w_warn (warn_id, warn_no, node_id, 
+      warn_code, warn_level, warn_descript, 
+      warn_status, warn_happen_time, warn_modify_time
+      )
+    values (#{warnId,jdbcType=BIGINT}, #{warnNo,jdbcType=VARCHAR}, #{nodeId,jdbcType=BIGINT}, 
+      #{warnCode,jdbcType=VARCHAR}, #{warnLevel,jdbcType=CHAR}, #{warnDescript,jdbcType=VARCHAR}, 
+      #{warnStatus,jdbcType=CHAR}, #{warnHappenTime,jdbcType=TIMESTAMP}, #{warnModifyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Warn">
     insert into w_warn
@@ -116,11 +121,17 @@
       <if test="warnId != null">
         warn_id,
       </if>
+      <if test="warnNo != null">
+        warn_no,
+      </if>
       <if test="nodeId != null">
         node_id,
       </if>
       <if test="warnCode != null">
         warn_code,
+      </if>
+      <if test="warnLevel != null">
+        warn_level,
       </if>
       <if test="warnDescript != null">
         warn_descript,
@@ -139,11 +150,17 @@
       <if test="warnId != null">
         #{warnId,jdbcType=BIGINT},
       </if>
+      <if test="warnNo != null">
+        #{warnNo,jdbcType=VARCHAR},
+      </if>
       <if test="nodeId != null">
         #{nodeId,jdbcType=BIGINT},
       </if>
       <if test="warnCode != null">
         #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        #{warnLevel,jdbcType=CHAR},
       </if>
       <if test="warnDescript != null">
         #{warnDescript,jdbcType=VARCHAR},
@@ -171,11 +188,17 @@
       <if test="record.warnId != null">
         warn_id = #{record.warnId,jdbcType=BIGINT},
       </if>
+      <if test="record.warnNo != null">
+        warn_no = #{record.warnNo,jdbcType=VARCHAR},
+      </if>
       <if test="record.nodeId != null">
         node_id = #{record.nodeId,jdbcType=BIGINT},
       </if>
       <if test="record.warnCode != null">
         warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnLevel != null">
+        warn_level = #{record.warnLevel,jdbcType=CHAR},
       </if>
       <if test="record.warnDescript != null">
         warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
@@ -197,8 +220,10 @@
   <update id="updateByExample" parameterType="map">
     update w_warn
     set warn_id = #{record.warnId,jdbcType=BIGINT},
+      warn_no = #{record.warnNo,jdbcType=VARCHAR},
       node_id = #{record.nodeId,jdbcType=BIGINT},
       warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      warn_level = #{record.warnLevel,jdbcType=CHAR},
       warn_descript = #{record.warnDescript,jdbcType=VARCHAR},
       warn_status = #{record.warnStatus,jdbcType=CHAR},
       warn_happen_time = #{record.warnHappenTime,jdbcType=TIMESTAMP},
@@ -210,11 +235,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Warn">
     update w_warn
     <set>
+      <if test="warnNo != null">
+        warn_no = #{warnNo,jdbcType=VARCHAR},
+      </if>
       <if test="nodeId != null">
         node_id = #{nodeId,jdbcType=BIGINT},
       </if>
       <if test="warnCode != null">
         warn_code = #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        warn_level = #{warnLevel,jdbcType=CHAR},
       </if>
       <if test="warnDescript != null">
         warn_descript = #{warnDescript,jdbcType=VARCHAR},
@@ -233,8 +264,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.Warn">
     update w_warn
-    set node_id = #{nodeId,jdbcType=BIGINT},
+    set warn_no = #{warnNo,jdbcType=VARCHAR},
+      node_id = #{nodeId,jdbcType=BIGINT},
       warn_code = #{warnCode,jdbcType=VARCHAR},
+      warn_level = #{warnLevel,jdbcType=CHAR},
       warn_descript = #{warnDescript,jdbcType=VARCHAR},
       warn_status = #{warnStatus,jdbcType=CHAR},
       warn_happen_time = #{warnHappenTime,jdbcType=TIMESTAMP},

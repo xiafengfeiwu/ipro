@@ -165,6 +165,66 @@ public class StoppageExample {
             return (Criteria) this;
         }
 
+        public Criteria andWarnIdIsNull() {
+            addCriterion("warn_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdIsNotNull() {
+            addCriterion("warn_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdEqualTo(Long value) {
+            addCriterion("warn_id =", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdNotEqualTo(Long value) {
+            addCriterion("warn_id <>", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdGreaterThan(Long value) {
+            addCriterion("warn_id >", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("warn_id >=", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdLessThan(Long value) {
+            addCriterion("warn_id <", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdLessThanOrEqualTo(Long value) {
+            addCriterion("warn_id <=", value, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdIn(List<Long> values) {
+            addCriterion("warn_id in", values, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdNotIn(List<Long> values) {
+            addCriterion("warn_id not in", values, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdBetween(Long value1, Long value2) {
+            addCriterion("warn_id between", value1, value2, "warnId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnIdNotBetween(Long value1, Long value2) {
+            addCriterion("warn_id not between", value1, value2, "warnId");
+            return (Criteria) this;
+        }
+
         public Criteria andStoppageNoIsNull() {
             addCriterion("stoppage_no is null");
             return (Criteria) this;

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.WarnGroupItemMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WarnGroupItem">
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="warn_group_id" jdbcType="BIGINT" property="warnGroupId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_threshold" jdbcType="VARCHAR" property="itemThreshold" />
+    <result column="item_operators" jdbcType="CHAR" property="itemOperators" />
+    <result column="warn_code" jdbcType="VARCHAR" property="warnCode" />
+    <result column="warn_level" jdbcType="CHAR" property="warnLevel" />
+    <result column="sms_notice" jdbcType="BIT" property="smsNotice" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    item_id, warn_group_id, item_name, item_threshold, item_operators, warn_code, warn_level, 
+    sms_notice, creator_id, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.WarnGroupItemExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_warn_group_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_warn_group_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_warn_group_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.WarnGroupItemExample">
+    delete from w_warn_group_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.WarnGroupItem">
+    insert into w_warn_group_item (item_id, warn_group_id, item_name, 
+      item_threshold, item_operators, warn_code, 
+      warn_level, sms_notice, creator_id, 
+      create_time)
+    values (#{itemId,jdbcType=BIGINT}, #{warnGroupId,jdbcType=BIGINT}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemThreshold,jdbcType=VARCHAR}, #{itemOperators,jdbcType=CHAR}, #{warnCode,jdbcType=VARCHAR}, 
+      #{warnLevel,jdbcType=CHAR}, #{smsNotice,jdbcType=BIT}, #{creatorId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.WarnGroupItem">
+    insert into w_warn_group_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="warnGroupId != null">
+        warn_group_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemThreshold != null">
+        item_threshold,
+      </if>
+      <if test="itemOperators != null">
+        item_operators,
+      </if>
+      <if test="warnCode != null">
+        warn_code,
+      </if>
+      <if test="warnLevel != null">
+        warn_level,
+      </if>
+      <if test="smsNotice != null">
+        sms_notice,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="warnGroupId != null">
+        #{warnGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemThreshold != null">
+        #{itemThreshold,jdbcType=VARCHAR},
+      </if>
+      <if test="itemOperators != null">
+        #{itemOperators,jdbcType=CHAR},
+      </if>
+      <if test="warnCode != null">
+        #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        #{warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="smsNotice != null">
+        #{smsNotice,jdbcType=BIT},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.WarnGroupItemExample" resultType="java.lang.Long">
+    select count(*) from w_warn_group_item
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_warn_group_item
+    <set>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=BIGINT},
+      </if>
+      <if test="record.warnGroupId != null">
+        warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemName != null">
+        item_name = #{record.itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemThreshold != null">
+        item_threshold = #{record.itemThreshold,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemOperators != null">
+        item_operators = #{record.itemOperators,jdbcType=CHAR},
+      </if>
+      <if test="record.warnCode != null">
+        warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnLevel != null">
+        warn_level = #{record.warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="record.smsNotice != null">
+        sms_notice = #{record.smsNotice,jdbcType=BIT},
+      </if>
+      <if test="record.creatorId != null">
+        creator_id = #{record.creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_warn_group_item
+    set item_id = #{record.itemId,jdbcType=BIGINT},
+      warn_group_id = #{record.warnGroupId,jdbcType=BIGINT},
+      item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_threshold = #{record.itemThreshold,jdbcType=VARCHAR},
+      item_operators = #{record.itemOperators,jdbcType=CHAR},
+      warn_code = #{record.warnCode,jdbcType=VARCHAR},
+      warn_level = #{record.warnLevel,jdbcType=CHAR},
+      sms_notice = #{record.smsNotice,jdbcType=BIT},
+      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WarnGroupItem">
+    update w_warn_group_item
+    <set>
+      <if test="warnGroupId != null">
+        warn_group_id = #{warnGroupId,jdbcType=BIGINT},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemThreshold != null">
+        item_threshold = #{itemThreshold,jdbcType=VARCHAR},
+      </if>
+      <if test="itemOperators != null">
+        item_operators = #{itemOperators,jdbcType=CHAR},
+      </if>
+      <if test="warnCode != null">
+        warn_code = #{warnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="warnLevel != null">
+        warn_level = #{warnLevel,jdbcType=CHAR},
+      </if>
+      <if test="smsNotice != null">
+        sms_notice = #{smsNotice,jdbcType=BIT},
+      </if>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WarnGroupItem">
+    update w_warn_group_item
+    set warn_group_id = #{warnGroupId,jdbcType=BIGINT},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_threshold = #{itemThreshold,jdbcType=VARCHAR},
+      item_operators = #{itemOperators,jdbcType=CHAR},
+      warn_code = #{warnCode,jdbcType=VARCHAR},
+      warn_level = #{warnLevel,jdbcType=CHAR},
+      sms_notice = #{smsNotice,jdbcType=BIT},
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+</mapper>

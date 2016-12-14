@@ -9,13 +9,13 @@ public class Pump {
 
     private Long pumpOwnerId;
 
-    private String pumpAddress;
-
-    private String pumpWeatherCityCode;
+    private String pumpCityCode;
 
     private String pumpLongitude;
 
     private String pumpLatitude;
+
+    private String pumpAddress;
 
     private Date pumpCreateTime;
 
@@ -45,20 +45,12 @@ public class Pump {
         this.pumpOwnerId = pumpOwnerId;
     }
 
-    public String getPumpAddress() {
-        return pumpAddress;
+    public String getPumpCityCode() {
+        return pumpCityCode;
     }
 
-    public void setPumpAddress(String pumpAddress) {
-        this.pumpAddress = pumpAddress;
-    }
-
-    public String getPumpWeatherCityCode() {
-        return pumpWeatherCityCode;
-    }
-
-    public void setPumpWeatherCityCode(String pumpWeatherCityCode) {
-        this.pumpWeatherCityCode = pumpWeatherCityCode;
+    public void setPumpCityCode(String pumpCityCode) {
+        this.pumpCityCode = pumpCityCode;
     }
 
     public String getPumpLongitude() {
@@ -75,6 +67,14 @@ public class Pump {
 
     public void setPumpLatitude(String pumpLatitude) {
         this.pumpLatitude = pumpLatitude;
+    }
+
+    public String getPumpAddress() {
+        return pumpAddress;
+    }
+
+    public void setPumpAddress(String pumpAddress) {
+        this.pumpAddress = pumpAddress;
     }
 
     public Date getPumpCreateTime() {

@@ -9,6 +9,8 @@ public class PacketQuery {
 
     private String packetData;
 
+    private String packetStatus;
+
     private Date collectTime;
 
     public Long getPacketId() {
@@ -33,6 +35,14 @@ public class PacketQuery {
 
     public void setPacketData(String packetData) {
         this.packetData = packetData;
+    }
+
+    public String getPacketStatus() {
+        return packetStatus;
+    }
+
+    public void setPacketStatus(String packetStatus) {
+        this.packetStatus = packetStatus;
     }
 
     public Date getCollectTime() {

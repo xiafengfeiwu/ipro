@@ -165,6 +165,76 @@ public class WarnExample {
             return (Criteria) this;
         }
 
+        public Criteria andWarnNoIsNull() {
+            addCriterion("warn_no is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoIsNotNull() {
+            addCriterion("warn_no is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoEqualTo(String value) {
+            addCriterion("warn_no =", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoNotEqualTo(String value) {
+            addCriterion("warn_no <>", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoGreaterThan(String value) {
+            addCriterion("warn_no >", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoGreaterThanOrEqualTo(String value) {
+            addCriterion("warn_no >=", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoLessThan(String value) {
+            addCriterion("warn_no <", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoLessThanOrEqualTo(String value) {
+            addCriterion("warn_no <=", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoLike(String value) {
+            addCriterion("warn_no like", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoNotLike(String value) {
+            addCriterion("warn_no not like", value, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoIn(List<String> values) {
+            addCriterion("warn_no in", values, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoNotIn(List<String> values) {
+            addCriterion("warn_no not in", values, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoBetween(String value1, String value2) {
+            addCriterion("warn_no between", value1, value2, "warnNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnNoNotBetween(String value1, String value2) {
+            addCriterion("warn_no not between", value1, value2, "warnNo");
+            return (Criteria) this;
+        }
+
         public Criteria andNodeIdIsNull() {
             addCriterion("node_id is null");
             return (Criteria) this;
@@ -292,6 +362,76 @@ public class WarnExample {
 
         public Criteria andWarnCodeNotBetween(String value1, String value2) {
             addCriterion("warn_code not between", value1, value2, "warnCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelIsNull() {
+            addCriterion("warn_level is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelIsNotNull() {
+            addCriterion("warn_level is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelEqualTo(String value) {
+            addCriterion("warn_level =", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelNotEqualTo(String value) {
+            addCriterion("warn_level <>", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelGreaterThan(String value) {
+            addCriterion("warn_level >", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelGreaterThanOrEqualTo(String value) {
+            addCriterion("warn_level >=", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelLessThan(String value) {
+            addCriterion("warn_level <", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelLessThanOrEqualTo(String value) {
+            addCriterion("warn_level <=", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelLike(String value) {
+            addCriterion("warn_level like", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelNotLike(String value) {
+            addCriterion("warn_level not like", value, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelIn(List<String> values) {
+            addCriterion("warn_level in", values, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelNotIn(List<String> values) {
+            addCriterion("warn_level not in", values, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelBetween(String value1, String value2) {
+            addCriterion("warn_level between", value1, value2, "warnLevel");
+            return (Criteria) this;
+        }
+
+        public Criteria andWarnLevelNotBetween(String value1, String value2) {
+            addCriterion("warn_level not between", value1, value2, "warnLevel");
             return (Criteria) this;
         }
 

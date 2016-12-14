@@ -3,6 +3,7 @@
 <mapper namespace="com.pro.dao.StoppageMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.Stoppage">
     <id column="stoppage_id" jdbcType="BIGINT" property="stoppageId" />
+    <result column="warn_id" jdbcType="BIGINT" property="warnId" />
     <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
     <result column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stoppage_id, stoppage_no, node_id, descript, attach_id, originator_id, occur_time, 
+    stoppage_id, warn_id, stoppage_no, node_id, descript, attach_id, originator_id, occur_time, 
     handle_status, handle_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.StoppageExample" resultMap="BaseResultMap">
@@ -106,20 +107,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Stoppage">
-    insert into w_stoppage (stoppage_id, stoppage_no, node_id, 
-      descript, attach_id, originator_id, 
-      occur_time, handle_status, handle_modify_time
-      )
-    values (#{stoppageId,jdbcType=BIGINT}, #{stoppageNo,jdbcType=VARCHAR}, #{nodeId,jdbcType=BIGINT}, 
-      #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=BIGINT}, #{originatorId,jdbcType=BIGINT}, 
-      #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, #{handleModifyTime,jdbcType=TIMESTAMP}
-      )
+    insert into w_stoppage (stoppage_id, warn_id, stoppage_no, 
+      node_id, descript, attach_id, 
+      originator_id, occur_time, handle_status, 
+      handle_modify_time)
+    values (#{stoppageId,jdbcType=BIGINT}, #{warnId,jdbcType=BIGINT}, #{stoppageNo,jdbcType=VARCHAR}, 
+      #{nodeId,jdbcType=BIGINT}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=BIGINT}, 
+      #{originatorId,jdbcType=BIGINT}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
+      #{handleModifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Stoppage">
     insert into w_stoppage
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="stoppageId != null">
         stoppage_id,
+      </if>
+      <if test="warnId != null">
+        warn_id,
       </if>
       <if test="stoppageNo != null">
         stoppage_no,
@@ -149,6 +153,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stoppageId != null">
         #{stoppageId,jdbcType=BIGINT},
+      </if>
+      <if test="warnId != null">
+        #{warnId,jdbcType=BIGINT},
       </if>
       <if test="stoppageNo != null">
         #{stoppageNo,jdbcType=VARCHAR},
@@ -188,6 +195,9 @@
       <if test="record.stoppageId != null">
         stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
       </if>
+      <if test="record.warnId != null">
+        warn_id = #{record.warnId,jdbcType=BIGINT},
+      </if>
       <if test="record.stoppageNo != null">
         stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       </if>
@@ -220,6 +230,7 @@
   <update id="updateByExample" parameterType="map">
     update w_stoppage
     set stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
+      warn_id = #{record.warnId,jdbcType=BIGINT},
       stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       node_id = #{record.nodeId,jdbcType=BIGINT},
       descript = #{record.descript,jdbcType=VARCHAR},
@@ -235,6 +246,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Stoppage">
     update w_stoppage
     <set>
+      <if test="warnId != null">
+        warn_id = #{warnId,jdbcType=BIGINT},
+      </if>
       <if test="stoppageNo != null">
         stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       </if>
@@ -264,7 +278,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.Stoppage">
     update w_stoppage
-    set stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+    set warn_id = #{warnId,jdbcType=BIGINT},
+      stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
       node_id = #{nodeId,jdbcType=BIGINT},
       descript = #{descript,jdbcType=VARCHAR},
       attach_id = #{attachId,jdbcType=BIGINT},

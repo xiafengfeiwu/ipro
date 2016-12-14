@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DeviceExample {
+public class DeviceVenderExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceExample() {
+    public DeviceVenderExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -105,413 +105,413 @@ public class DeviceExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andDeviceIdIsNull() {
-            addCriterion("device_id is null");
+        public Criteria andVenderIdIsNull() {
+            addCriterion("vender_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdIsNotNull() {
-            addCriterion("device_id is not null");
+        public Criteria andVenderIdIsNotNull() {
+            addCriterion("vender_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdEqualTo(Long value) {
-            addCriterion("device_id =", value, "deviceId");
+        public Criteria andVenderIdEqualTo(Long value) {
+            addCriterion("vender_id =", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotEqualTo(Long value) {
-            addCriterion("device_id <>", value, "deviceId");
+        public Criteria andVenderIdNotEqualTo(Long value) {
+            addCriterion("vender_id <>", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdGreaterThan(Long value) {
-            addCriterion("device_id >", value, "deviceId");
+        public Criteria andVenderIdGreaterThan(Long value) {
+            addCriterion("vender_id >", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("device_id >=", value, "deviceId");
+        public Criteria andVenderIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("vender_id >=", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdLessThan(Long value) {
-            addCriterion("device_id <", value, "deviceId");
+        public Criteria andVenderIdLessThan(Long value) {
+            addCriterion("vender_id <", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdLessThanOrEqualTo(Long value) {
-            addCriterion("device_id <=", value, "deviceId");
+        public Criteria andVenderIdLessThanOrEqualTo(Long value) {
+            addCriterion("vender_id <=", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdIn(List<Long> values) {
-            addCriterion("device_id in", values, "deviceId");
+        public Criteria andVenderIdIn(List<Long> values) {
+            addCriterion("vender_id in", values, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotIn(List<Long> values) {
-            addCriterion("device_id not in", values, "deviceId");
+        public Criteria andVenderIdNotIn(List<Long> values) {
+            addCriterion("vender_id not in", values, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdBetween(Long value1, Long value2) {
-            addCriterion("device_id between", value1, value2, "deviceId");
+        public Criteria andVenderIdBetween(Long value1, Long value2) {
+            addCriterion("vender_id between", value1, value2, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceIdNotBetween(Long value1, Long value2) {
-            addCriterion("device_id not between", value1, value2, "deviceId");
+        public Criteria andVenderIdNotBetween(Long value1, Long value2) {
+            addCriterion("vender_id not between", value1, value2, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameIsNull() {
-            addCriterion("device_name is null");
+        public Criteria andVenderNameIsNull() {
+            addCriterion("vender_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameIsNotNull() {
-            addCriterion("device_name is not null");
+        public Criteria andVenderNameIsNotNull() {
+            addCriterion("vender_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameEqualTo(String value) {
-            addCriterion("device_name =", value, "deviceName");
+        public Criteria andVenderNameEqualTo(String value) {
+            addCriterion("vender_name =", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameNotEqualTo(String value) {
-            addCriterion("device_name <>", value, "deviceName");
+        public Criteria andVenderNameNotEqualTo(String value) {
+            addCriterion("vender_name <>", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameGreaterThan(String value) {
-            addCriterion("device_name >", value, "deviceName");
+        public Criteria andVenderNameGreaterThan(String value) {
+            addCriterion("vender_name >", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameGreaterThanOrEqualTo(String value) {
-            addCriterion("device_name >=", value, "deviceName");
+        public Criteria andVenderNameGreaterThanOrEqualTo(String value) {
+            addCriterion("vender_name >=", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameLessThan(String value) {
-            addCriterion("device_name <", value, "deviceName");
+        public Criteria andVenderNameLessThan(String value) {
+            addCriterion("vender_name <", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameLessThanOrEqualTo(String value) {
-            addCriterion("device_name <=", value, "deviceName");
+        public Criteria andVenderNameLessThanOrEqualTo(String value) {
+            addCriterion("vender_name <=", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameLike(String value) {
-            addCriterion("device_name like", value, "deviceName");
+        public Criteria andVenderNameLike(String value) {
+            addCriterion("vender_name like", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameNotLike(String value) {
-            addCriterion("device_name not like", value, "deviceName");
+        public Criteria andVenderNameNotLike(String value) {
+            addCriterion("vender_name not like", value, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameIn(List<String> values) {
-            addCriterion("device_name in", values, "deviceName");
+        public Criteria andVenderNameIn(List<String> values) {
+            addCriterion("vender_name in", values, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameNotIn(List<String> values) {
-            addCriterion("device_name not in", values, "deviceName");
+        public Criteria andVenderNameNotIn(List<String> values) {
+            addCriterion("vender_name not in", values, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameBetween(String value1, String value2) {
-            addCriterion("device_name between", value1, value2, "deviceName");
+        public Criteria andVenderNameBetween(String value1, String value2) {
+            addCriterion("vender_name between", value1, value2, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceNameNotBetween(String value1, String value2) {
-            addCriterion("device_name not between", value1, value2, "deviceName");
+        public Criteria andVenderNameNotBetween(String value1, String value2) {
+            addCriterion("vender_name not between", value1, value2, "venderName");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnIsNull() {
-            addCriterion("device_sn is null");
+        public Criteria andVenderCodeIsNull() {
+            addCriterion("vender_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnIsNotNull() {
-            addCriterion("device_sn is not null");
+        public Criteria andVenderCodeIsNotNull() {
+            addCriterion("vender_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnEqualTo(String value) {
-            addCriterion("device_sn =", value, "deviceSn");
+        public Criteria andVenderCodeEqualTo(String value) {
+            addCriterion("vender_code =", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnNotEqualTo(String value) {
-            addCriterion("device_sn <>", value, "deviceSn");
+        public Criteria andVenderCodeNotEqualTo(String value) {
+            addCriterion("vender_code <>", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnGreaterThan(String value) {
-            addCriterion("device_sn >", value, "deviceSn");
+        public Criteria andVenderCodeGreaterThan(String value) {
+            addCriterion("vender_code >", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnGreaterThanOrEqualTo(String value) {
-            addCriterion("device_sn >=", value, "deviceSn");
+        public Criteria andVenderCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("vender_code >=", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnLessThan(String value) {
-            addCriterion("device_sn <", value, "deviceSn");
+        public Criteria andVenderCodeLessThan(String value) {
+            addCriterion("vender_code <", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnLessThanOrEqualTo(String value) {
-            addCriterion("device_sn <=", value, "deviceSn");
+        public Criteria andVenderCodeLessThanOrEqualTo(String value) {
+            addCriterion("vender_code <=", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnLike(String value) {
-            addCriterion("device_sn like", value, "deviceSn");
+        public Criteria andVenderCodeLike(String value) {
+            addCriterion("vender_code like", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnNotLike(String value) {
-            addCriterion("device_sn not like", value, "deviceSn");
+        public Criteria andVenderCodeNotLike(String value) {
+            addCriterion("vender_code not like", value, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnIn(List<String> values) {
-            addCriterion("device_sn in", values, "deviceSn");
+        public Criteria andVenderCodeIn(List<String> values) {
+            addCriterion("vender_code in", values, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnNotIn(List<String> values) {
-            addCriterion("device_sn not in", values, "deviceSn");
+        public Criteria andVenderCodeNotIn(List<String> values) {
+            addCriterion("vender_code not in", values, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnBetween(String value1, String value2) {
-            addCriterion("device_sn between", value1, value2, "deviceSn");
+        public Criteria andVenderCodeBetween(String value1, String value2) {
+            addCriterion("vender_code between", value1, value2, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceSnNotBetween(String value1, String value2) {
-            addCriterion("device_sn not between", value1, value2, "deviceSn");
+        public Criteria andVenderCodeNotBetween(String value1, String value2) {
+            addCriterion("vender_code not between", value1, value2, "venderCode");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelIsNull() {
-            addCriterion("device_model is null");
+        public Criteria andVenderContactsIsNull() {
+            addCriterion("vender_contacts is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelIsNotNull() {
-            addCriterion("device_model is not null");
+        public Criteria andVenderContactsIsNotNull() {
+            addCriterion("vender_contacts is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelEqualTo(String value) {
-            addCriterion("device_model =", value, "deviceModel");
+        public Criteria andVenderContactsEqualTo(String value) {
+            addCriterion("vender_contacts =", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelNotEqualTo(String value) {
-            addCriterion("device_model <>", value, "deviceModel");
+        public Criteria andVenderContactsNotEqualTo(String value) {
+            addCriterion("vender_contacts <>", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelGreaterThan(String value) {
-            addCriterion("device_model >", value, "deviceModel");
+        public Criteria andVenderContactsGreaterThan(String value) {
+            addCriterion("vender_contacts >", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelGreaterThanOrEqualTo(String value) {
-            addCriterion("device_model >=", value, "deviceModel");
+        public Criteria andVenderContactsGreaterThanOrEqualTo(String value) {
+            addCriterion("vender_contacts >=", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelLessThan(String value) {
-            addCriterion("device_model <", value, "deviceModel");
+        public Criteria andVenderContactsLessThan(String value) {
+            addCriterion("vender_contacts <", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelLessThanOrEqualTo(String value) {
-            addCriterion("device_model <=", value, "deviceModel");
+        public Criteria andVenderContactsLessThanOrEqualTo(String value) {
+            addCriterion("vender_contacts <=", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelLike(String value) {
-            addCriterion("device_model like", value, "deviceModel");
+        public Criteria andVenderContactsLike(String value) {
+            addCriterion("vender_contacts like", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelNotLike(String value) {
-            addCriterion("device_model not like", value, "deviceModel");
+        public Criteria andVenderContactsNotLike(String value) {
+            addCriterion("vender_contacts not like", value, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelIn(List<String> values) {
-            addCriterion("device_model in", values, "deviceModel");
+        public Criteria andVenderContactsIn(List<String> values) {
+            addCriterion("vender_contacts in", values, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelNotIn(List<String> values) {
-            addCriterion("device_model not in", values, "deviceModel");
+        public Criteria andVenderContactsNotIn(List<String> values) {
+            addCriterion("vender_contacts not in", values, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelBetween(String value1, String value2) {
-            addCriterion("device_model between", value1, value2, "deviceModel");
+        public Criteria andVenderContactsBetween(String value1, String value2) {
+            addCriterion("vender_contacts between", value1, value2, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceModelNotBetween(String value1, String value2) {
-            addCriterion("device_model not between", value1, value2, "deviceModel");
+        public Criteria andVenderContactsNotBetween(String value1, String value2) {
+            addCriterion("vender_contacts not between", value1, value2, "venderContacts");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeIsNull() {
-            addCriterion("device_vender_code is null");
+        public Criteria andVenderContactsTelIsNull() {
+            addCriterion("vender_contacts_tel is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeIsNotNull() {
-            addCriterion("device_vender_code is not null");
+        public Criteria andVenderContactsTelIsNotNull() {
+            addCriterion("vender_contacts_tel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeEqualTo(String value) {
-            addCriterion("device_vender_code =", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelEqualTo(String value) {
+            addCriterion("vender_contacts_tel =", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeNotEqualTo(String value) {
-            addCriterion("device_vender_code <>", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelNotEqualTo(String value) {
+            addCriterion("vender_contacts_tel <>", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeGreaterThan(String value) {
-            addCriterion("device_vender_code >", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelGreaterThan(String value) {
+            addCriterion("vender_contacts_tel >", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("device_vender_code >=", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelGreaterThanOrEqualTo(String value) {
+            addCriterion("vender_contacts_tel >=", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeLessThan(String value) {
-            addCriterion("device_vender_code <", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelLessThan(String value) {
+            addCriterion("vender_contacts_tel <", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeLessThanOrEqualTo(String value) {
-            addCriterion("device_vender_code <=", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelLessThanOrEqualTo(String value) {
+            addCriterion("vender_contacts_tel <=", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeLike(String value) {
-            addCriterion("device_vender_code like", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelLike(String value) {
+            addCriterion("vender_contacts_tel like", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeNotLike(String value) {
-            addCriterion("device_vender_code not like", value, "deviceVenderCode");
+        public Criteria andVenderContactsTelNotLike(String value) {
+            addCriterion("vender_contacts_tel not like", value, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeIn(List<String> values) {
-            addCriterion("device_vender_code in", values, "deviceVenderCode");
+        public Criteria andVenderContactsTelIn(List<String> values) {
+            addCriterion("vender_contacts_tel in", values, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeNotIn(List<String> values) {
-            addCriterion("device_vender_code not in", values, "deviceVenderCode");
+        public Criteria andVenderContactsTelNotIn(List<String> values) {
+            addCriterion("vender_contacts_tel not in", values, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeBetween(String value1, String value2) {
-            addCriterion("device_vender_code between", value1, value2, "deviceVenderCode");
+        public Criteria andVenderContactsTelBetween(String value1, String value2) {
+            addCriterion("vender_contacts_tel between", value1, value2, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceVenderCodeNotBetween(String value1, String value2) {
-            addCriterion("device_vender_code not between", value1, value2, "deviceVenderCode");
+        public Criteria andVenderContactsTelNotBetween(String value1, String value2) {
+            addCriterion("vender_contacts_tel not between", value1, value2, "venderContactsTel");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeIsNull() {
-            addCriterion("device_type is null");
+        public Criteria andVenderAddressIsNull() {
+            addCriterion("vender_address is null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeIsNotNull() {
-            addCriterion("device_type is not null");
+        public Criteria andVenderAddressIsNotNull() {
+            addCriterion("vender_address is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeEqualTo(String value) {
-            addCriterion("device_type =", value, "deviceType");
+        public Criteria andVenderAddressEqualTo(String value) {
+            addCriterion("vender_address =", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeNotEqualTo(String value) {
-            addCriterion("device_type <>", value, "deviceType");
+        public Criteria andVenderAddressNotEqualTo(String value) {
+            addCriterion("vender_address <>", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeGreaterThan(String value) {
-            addCriterion("device_type >", value, "deviceType");
+        public Criteria andVenderAddressGreaterThan(String value) {
+            addCriterion("vender_address >", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("device_type >=", value, "deviceType");
+        public Criteria andVenderAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("vender_address >=", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeLessThan(String value) {
-            addCriterion("device_type <", value, "deviceType");
+        public Criteria andVenderAddressLessThan(String value) {
+            addCriterion("vender_address <", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeLessThanOrEqualTo(String value) {
-            addCriterion("device_type <=", value, "deviceType");
+        public Criteria andVenderAddressLessThanOrEqualTo(String value) {
+            addCriterion("vender_address <=", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeLike(String value) {
-            addCriterion("device_type like", value, "deviceType");
+        public Criteria andVenderAddressLike(String value) {
+            addCriterion("vender_address like", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeNotLike(String value) {
-            addCriterion("device_type not like", value, "deviceType");
+        public Criteria andVenderAddressNotLike(String value) {
+            addCriterion("vender_address not like", value, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeIn(List<String> values) {
-            addCriterion("device_type in", values, "deviceType");
+        public Criteria andVenderAddressIn(List<String> values) {
+            addCriterion("vender_address in", values, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeNotIn(List<String> values) {
-            addCriterion("device_type not in", values, "deviceType");
+        public Criteria andVenderAddressNotIn(List<String> values) {
+            addCriterion("vender_address not in", values, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeBetween(String value1, String value2) {
-            addCriterion("device_type between", value1, value2, "deviceType");
+        public Criteria andVenderAddressBetween(String value1, String value2) {
+            addCriterion("vender_address between", value1, value2, "venderAddress");
             return (Criteria) this;
         }
 
-        public Criteria andDeviceTypeNotBetween(String value1, String value2) {
-            addCriterion("device_type not between", value1, value2, "deviceType");
+        public Criteria andVenderAddressNotBetween(String value1, String value2) {
+            addCriterion("vender_address not between", value1, value2, "venderAddress");
             return (Criteria) this;
         }
 
@@ -632,66 +632,6 @@ public class DeviceExample {
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeIsNull() {
-            addCriterion("modify_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeIsNotNull() {
-            addCriterion("modify_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeEqualTo(Date value) {
-            addCriterion("modify_time =", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeNotEqualTo(Date value) {
-            addCriterion("modify_time <>", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeGreaterThan(Date value) {
-            addCriterion("modify_time >", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("modify_time >=", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeLessThan(Date value) {
-            addCriterion("modify_time <", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeLessThanOrEqualTo(Date value) {
-            addCriterion("modify_time <=", value, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeIn(List<Date> values) {
-            addCriterion("modify_time in", values, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeNotIn(List<Date> values) {
-            addCriterion("modify_time not in", values, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeBetween(Date value1, Date value2) {
-            addCriterion("modify_time between", value1, value2, "modifyTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifyTimeNotBetween(Date value1, Date value2) {
-            addCriterion("modify_time not between", value1, value2, "modifyTime");
             return (Criteria) this;
         }
     }

@@ -4,9 +4,12 @@
   <resultMap id="BaseResultMap" type="com.pro.entity.User">
     <id column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="user_login_name" jdbcType="VARCHAR" property="userLoginName" />
-    <result column="user_nick_name" jdbcType="VARCHAR" property="userNickName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_name_py" jdbcType="VARCHAR" property="userNamePy" />
     <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
     <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="user_portrait_path" jdbcType="VARCHAR" property="userPortraitPath" />
     <result column="user_wx_open_id" jdbcType="VARCHAR" property="userWxOpenId" />
     <result column="user_disable_status" jdbcType="BIT" property="userDisableStatus" />
     <result column="user_regist_time" jdbcType="TIMESTAMP" property="userRegistTime" />
@@ -71,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, user_login_name, user_nick_name, user_phone, user_password, user_wx_open_id, 
-    user_disable_status, user_regist_time, user_modify_time
+    user_id, user_login_name, user_name, user_name_py, user_phone, user_password, role_id, 
+    user_portrait_path, user_wx_open_id, user_disable_status, user_regist_time, user_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.UserExample" resultMap="BaseResultMap">
     select
@@ -106,12 +109,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.User">
-    insert into w_user (user_id, user_login_name, user_nick_name, 
-      user_phone, user_password, user_wx_open_id, 
+    insert into w_user (user_id, user_login_name, user_name, 
+      user_name_py, user_phone, user_password, 
+      role_id, user_portrait_path, user_wx_open_id, 
       user_disable_status, user_regist_time, user_modify_time
       )
-    values (#{userId,jdbcType=BIGINT}, #{userLoginName,jdbcType=VARCHAR}, #{userNickName,jdbcType=VARCHAR}, 
-      #{userPhone,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userWxOpenId,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=BIGINT}, #{userLoginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userNamePy,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=BIGINT}, #{userPortraitPath,jdbcType=VARCHAR}, #{userWxOpenId,jdbcType=VARCHAR}, 
       #{userDisableStatus,jdbcType=BIT}, #{userRegistTime,jdbcType=TIMESTAMP}, #{userModifyTime,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -124,14 +129,23 @@
       <if test="userLoginName != null">
         user_login_name,
       </if>
-      <if test="userNickName != null">
-        user_nick_name,
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userNamePy != null">
+        user_name_py,
       </if>
       <if test="userPhone != null">
         user_phone,
       </if>
       <if test="userPassword != null">
         user_password,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="userPortraitPath != null">
+        user_portrait_path,
       </if>
       <if test="userWxOpenId != null">
         user_wx_open_id,
@@ -153,14 +167,23 @@
       <if test="userLoginName != null">
         #{userLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="userNickName != null">
-        #{userNickName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNamePy != null">
+        #{userNamePy,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null">
         #{userPhone,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userPortraitPath != null">
+        #{userPortraitPath,jdbcType=VARCHAR},
       </if>
       <if test="userWxOpenId != null">
         #{userWxOpenId,jdbcType=VARCHAR},
@@ -191,14 +214,23 @@
       <if test="record.userLoginName != null">
         user_login_name = #{record.userLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="record.userNickName != null">
-        user_nick_name = #{record.userNickName,jdbcType=VARCHAR},
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userNamePy != null">
+        user_name_py = #{record.userNamePy,jdbcType=VARCHAR},
       </if>
       <if test="record.userPhone != null">
         user_phone = #{record.userPhone,jdbcType=VARCHAR},
       </if>
       <if test="record.userPassword != null">
         user_password = #{record.userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userPortraitPath != null">
+        user_portrait_path = #{record.userPortraitPath,jdbcType=VARCHAR},
       </if>
       <if test="record.userWxOpenId != null">
         user_wx_open_id = #{record.userWxOpenId,jdbcType=VARCHAR},
@@ -221,9 +253,12 @@
     update w_user
     set user_id = #{record.userId,jdbcType=BIGINT},
       user_login_name = #{record.userLoginName,jdbcType=VARCHAR},
-      user_nick_name = #{record.userNickName,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      user_name_py = #{record.userNamePy,jdbcType=VARCHAR},
       user_phone = #{record.userPhone,jdbcType=VARCHAR},
       user_password = #{record.userPassword,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=BIGINT},
+      user_portrait_path = #{record.userPortraitPath,jdbcType=VARCHAR},
       user_wx_open_id = #{record.userWxOpenId,jdbcType=VARCHAR},
       user_disable_status = #{record.userDisableStatus,jdbcType=BIT},
       user_regist_time = #{record.userRegistTime,jdbcType=TIMESTAMP},
@@ -238,14 +273,23 @@
       <if test="userLoginName != null">
         user_login_name = #{userLoginName,jdbcType=VARCHAR},
       </if>
-      <if test="userNickName != null">
-        user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNamePy != null">
+        user_name_py = #{userNamePy,jdbcType=VARCHAR},
       </if>
       <if test="userPhone != null">
         user_phone = #{userPhone,jdbcType=VARCHAR},
       </if>
       <if test="userPassword != null">
         user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userPortraitPath != null">
+        user_portrait_path = #{userPortraitPath,jdbcType=VARCHAR},
       </if>
       <if test="userWxOpenId != null">
         user_wx_open_id = #{userWxOpenId,jdbcType=VARCHAR},
@@ -265,9 +309,12 @@
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.User">
     update w_user
     set user_login_name = #{userLoginName,jdbcType=VARCHAR},
-      user_nick_name = #{userNickName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_name_py = #{userNamePy,jdbcType=VARCHAR},
       user_phone = #{userPhone,jdbcType=VARCHAR},
       user_password = #{userPassword,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT},
+      user_portrait_path = #{userPortraitPath,jdbcType=VARCHAR},
       user_wx_open_id = #{userWxOpenId,jdbcType=VARCHAR},
       user_disable_status = #{userDisableStatus,jdbcType=BIT},
       user_regist_time = #{userRegistTime,jdbcType=TIMESTAMP},

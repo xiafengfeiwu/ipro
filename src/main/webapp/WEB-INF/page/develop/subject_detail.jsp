@@ -22,6 +22,14 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="ibox-content">
+					<div class="pull-right dropdown">
+                        <button data-toggle="dropdown" class="dropdown-toggle btn-white">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu m-t-xs">
+                            <li><a id="OpenNewTabId" href="javascript:;"> <i class="fa fa-globe"></i>  在浏览器新标签页打开</a></li>
+                        </ul>
+                    </div>
 					<ul class="nav nav-tabs" id="avatar-tab">
 						<li class="active" id="item1"><a href="javascript:;">画面</a></li>
 						<li id="item2"><a href="javascript:;">地图</a></li>
@@ -62,6 +70,7 @@
 	var currentContent = "#item1_content";
 	setTimeout(function(){
 		$("#item2_content").hide();
+		$("#OpenNewTabId").attr('href', window.location.href).attr("target", "_blank");
 	}, 200)
 	//选项卡点击事件
 	$('#avatar-tab li').click(function() {

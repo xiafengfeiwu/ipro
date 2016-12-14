@@ -7,11 +7,17 @@ public class User {
 
     private String userLoginName;
 
-    private String userNickName;
+    private String userName;
+
+    private String userNamePy;
 
     private String userPhone;
 
     private String userPassword;
+
+    private Long roleId;
+
+    private String userPortraitPath;
 
     private String userWxOpenId;
 
@@ -37,12 +43,20 @@ public class User {
         this.userLoginName = userLoginName;
     }
 
-    public String getUserNickName() {
-        return userNickName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserNickName(String userNickName) {
-        this.userNickName = userNickName;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserNamePy() {
+        return userNamePy;
+    }
+
+    public void setUserNamePy(String userNamePy) {
+        this.userNamePy = userNamePy;
     }
 
     public String getUserPhone() {
@@ -59,6 +73,22 @@ public class User {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getUserPortraitPath() {
+        return userPortraitPath;
+    }
+
+    public void setUserPortraitPath(String userPortraitPath) {
+        this.userPortraitPath = userPortraitPath;
     }
 
     public String getUserWxOpenId() {

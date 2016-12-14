@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="autocomplete.min.css"/>
+</head>
+<body>
+
+<input type="text" class="autocomplete-input" name="query" id="query" />
+
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="jquery.autocomplete.js"></script>
+
+
+<script type="text/javascript">
+        $(function() {
+            var onAutocompleteSelect =function(value, data) {  　　
+　　　　　　　　　　//根据返回结果自定义一些操作
+				console.info(data)
+            }; 
+            var options = {
+                serviceUrl: 'data.json',//获取数据的后台页面
+                width: 228,//提示框的宽度
+                delimiter: /(,|;)\s*/,//分隔符
+                onSelect: onAutocompleteSelect,//选中之后的回调函数
+                deferRequestBy: 0, //单位微秒
+                params: { country: 'Yes' },//参数
+                noCache: false //是否启用缓存 默认是开启缓存的
+            };
+
+			$('#query').autocomplete(options);
+                        
+        });
+</script>
+
+</body>
+</html>

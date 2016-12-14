@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.PacketQueryMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.PacketQuery">
-    <id column="packet_id" jdbcType="BIGINT" property="packetId" />
-    <result column="packet_type" jdbcType="VARCHAR" property="packetType" />
-    <result column="packet_data" jdbcType="VARCHAR" property="packetData" />
-    <result column="packet_status" jdbcType="CHAR" property="packetStatus" />
-    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+<mapper namespace="com.pro.dao.WarnGroupMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WarnGroup">
+    <id column="group_id" jdbcType="BIGINT" property="groupId" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="group_descript" jdbcType="VARCHAR" property="groupDescript" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,16 +67,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    packet_id, packet_type, packet_data, packet_status, collect_time
+    group_id, group_name, group_descript, creator_id, create_time
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.PacketQueryExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.WarnGroupExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_packet_query
+    from w_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,85 +87,85 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_packet_query
-    where packet_id = #{packetId,jdbcType=BIGINT}
+    from w_warn_group
+    where group_id = #{groupId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from w_packet_query
-    where packet_id = #{packetId,jdbcType=BIGINT}
+    delete from w_warn_group
+    where group_id = #{groupId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.PacketQueryExample">
-    delete from w_packet_query
+  <delete id="deleteByExample" parameterType="com.pro.entity.WarnGroupExample">
+    delete from w_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.PacketQuery">
-    insert into w_packet_query (packet_id, packet_type, packet_data, 
-      packet_status, collect_time)
-    values (#{packetId,jdbcType=BIGINT}, #{packetType,jdbcType=VARCHAR}, #{packetData,jdbcType=VARCHAR}, 
-      #{packetStatus,jdbcType=CHAR}, #{collectTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.pro.entity.WarnGroup">
+    insert into w_warn_group (group_id, group_name, group_descript, 
+      creator_id, create_time)
+    values (#{groupId,jdbcType=BIGINT}, #{groupName,jdbcType=VARCHAR}, #{groupDescript,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.PacketQuery">
-    insert into w_packet_query
+  <insert id="insertSelective" parameterType="com.pro.entity.WarnGroup">
+    insert into w_warn_group
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="packetId != null">
-        packet_id,
+      <if test="groupId != null">
+        group_id,
       </if>
-      <if test="packetType != null">
-        packet_type,
+      <if test="groupName != null">
+        group_name,
       </if>
-      <if test="packetData != null">
-        packet_data,
+      <if test="groupDescript != null">
+        group_descript,
       </if>
-      <if test="packetStatus != null">
-        packet_status,
+      <if test="creatorId != null">
+        creator_id,
       </if>
-      <if test="collectTime != null">
-        collect_time,
+      <if test="createTime != null">
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="packetId != null">
-        #{packetId,jdbcType=BIGINT},
+      <if test="groupId != null">
+        #{groupId,jdbcType=BIGINT},
       </if>
-      <if test="packetType != null">
-        #{packetType,jdbcType=VARCHAR},
+      <if test="groupName != null">
+        #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="packetData != null">
-        #{packetData,jdbcType=VARCHAR},
+      <if test="groupDescript != null">
+        #{groupDescript,jdbcType=VARCHAR},
       </if>
-      <if test="packetStatus != null">
-        #{packetStatus,jdbcType=CHAR},
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=BIGINT},
       </if>
-      <if test="collectTime != null">
-        #{collectTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.PacketQueryExample" resultType="java.lang.Long">
-    select count(*) from w_packet_query
+  <select id="countByExample" parameterType="com.pro.entity.WarnGroupExample" resultType="java.lang.Long">
+    select count(*) from w_warn_group
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_packet_query
+    update w_warn_group
     <set>
-      <if test="record.packetId != null">
-        packet_id = #{record.packetId,jdbcType=BIGINT},
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=BIGINT},
       </if>
-      <if test="record.packetType != null">
-        packet_type = #{record.packetType,jdbcType=VARCHAR},
+      <if test="record.groupName != null">
+        group_name = #{record.groupName,jdbcType=VARCHAR},
       </if>
-      <if test="record.packetData != null">
-        packet_data = #{record.packetData,jdbcType=VARCHAR},
+      <if test="record.groupDescript != null">
+        group_descript = #{record.groupDescript,jdbcType=VARCHAR},
       </if>
-      <if test="record.packetStatus != null">
-        packet_status = #{record.packetStatus,jdbcType=CHAR},
+      <if test="record.creatorId != null">
+        creator_id = #{record.creatorId,jdbcType=BIGINT},
       </if>
-      <if test="record.collectTime != null">
-        collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -173,40 +173,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_packet_query
-    set packet_id = #{record.packetId,jdbcType=BIGINT},
-      packet_type = #{record.packetType,jdbcType=VARCHAR},
-      packet_data = #{record.packetData,jdbcType=VARCHAR},
-      packet_status = #{record.packetStatus,jdbcType=CHAR},
-      collect_time = #{record.collectTime,jdbcType=TIMESTAMP}
+    update w_warn_group
+    set group_id = #{record.groupId,jdbcType=BIGINT},
+      group_name = #{record.groupName,jdbcType=VARCHAR},
+      group_descript = #{record.groupDescript,jdbcType=VARCHAR},
+      creator_id = #{record.creatorId,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.PacketQuery">
-    update w_packet_query
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WarnGroup">
+    update w_warn_group
     <set>
-      <if test="packetType != null">
-        packet_type = #{packetType,jdbcType=VARCHAR},
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
       </if>
-      <if test="packetData != null">
-        packet_data = #{packetData,jdbcType=VARCHAR},
+      <if test="groupDescript != null">
+        group_descript = #{groupDescript,jdbcType=VARCHAR},
       </if>
-      <if test="packetStatus != null">
-        packet_status = #{packetStatus,jdbcType=CHAR},
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=BIGINT},
       </if>
-      <if test="collectTime != null">
-        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where packet_id = #{packetId,jdbcType=BIGINT}
+    where group_id = #{groupId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.PacketQuery">
-    update w_packet_query
-    set packet_type = #{packetType,jdbcType=VARCHAR},
-      packet_data = #{packetData,jdbcType=VARCHAR},
-      packet_status = #{packetStatus,jdbcType=CHAR},
-      collect_time = #{collectTime,jdbcType=TIMESTAMP}
-    where packet_id = #{packetId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WarnGroup">
+    update w_warn_group
+    set group_name = #{groupName,jdbcType=VARCHAR},
+      group_descript = #{groupDescript,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where group_id = #{groupId,jdbcType=BIGINT}
   </update>
 </mapper>

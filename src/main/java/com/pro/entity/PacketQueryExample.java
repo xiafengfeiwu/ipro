@@ -305,6 +305,76 @@ public class PacketQueryExample {
             return (Criteria) this;
         }
 
+        public Criteria andPacketStatusIsNull() {
+            addCriterion("packet_status is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusIsNotNull() {
+            addCriterion("packet_status is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusEqualTo(String value) {
+            addCriterion("packet_status =", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusNotEqualTo(String value) {
+            addCriterion("packet_status <>", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusGreaterThan(String value) {
+            addCriterion("packet_status >", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("packet_status >=", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusLessThan(String value) {
+            addCriterion("packet_status <", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusLessThanOrEqualTo(String value) {
+            addCriterion("packet_status <=", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusLike(String value) {
+            addCriterion("packet_status like", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusNotLike(String value) {
+            addCriterion("packet_status not like", value, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusIn(List<String> values) {
+            addCriterion("packet_status in", values, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusNotIn(List<String> values) {
+            addCriterion("packet_status not in", values, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusBetween(String value1, String value2) {
+            addCriterion("packet_status between", value1, value2, "packetStatus");
+            return (Criteria) this;
+        }
+
+        public Criteria andPacketStatusNotBetween(String value1, String value2) {
+            addCriterion("packet_status not between", value1, value2, "packetStatus");
+            return (Criteria) this;
+        }
+
         public Criteria andCollectTimeIsNull() {
             addCriterion("collect_time is null");
             return (Criteria) this;

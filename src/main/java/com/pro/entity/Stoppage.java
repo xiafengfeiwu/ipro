@@ -5,6 +5,8 @@ import java.util.Date;
 public class Stoppage {
     private Long stoppageId;
 
+    private Long warnId;
+
     private String stoppageNo;
 
     private Long nodeId;
@@ -27,6 +29,14 @@ public class Stoppage {
 
     public void setStoppageId(Long stoppageId) {
         this.stoppageId = stoppageId;
+    }
+
+    public Long getWarnId() {
+        return warnId;
+    }
+
+    public void setWarnId(Long warnId) {
+        this.warnId = warnId;
     }
 
     public String getStoppageNo() {

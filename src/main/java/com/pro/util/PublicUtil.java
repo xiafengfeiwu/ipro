@@ -2,6 +2,7 @@ package com.pro.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,25 @@ public class PublicUtil {
 	// 初始化ID
 	public static long initId() {
 		return sequence.nextId();
+	}
+
+	public static boolean isEmpty(Object obj) {
+		if (obj == null) {
+			return true;
+		}
+		if (obj instanceof String) {
+			if ("".equals(((String) obj).trim())) {
+				return true;
+			}
+		}
+		if (obj instanceof Collection<?>) {
+			return ((Collection<?>) obj).isEmpty();
+		}
+		return false;
+	}
+
+	public static boolean isNotEmpty(Object obj) {
+		return !isEmpty(obj);
 	}
 
 	// 获取访问者IP地址

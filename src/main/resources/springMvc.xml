@@ -63,11 +63,11 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/login</prop>
-				<prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/error/ep403</prop>
+				<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/login.jspx</prop>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/error.jspx</prop>
 			</props>
 		</property>
-		<property name="defaultErrorView" value="error/ep500" />
+		<property name="defaultErrorView" value="error" />
 	</bean>
 	<aop:aspectj-autoproxy />
 	<!-- 拦截器 -->

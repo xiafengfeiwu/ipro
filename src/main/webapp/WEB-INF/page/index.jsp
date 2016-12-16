@@ -19,9 +19,9 @@
 <link href="resources/css/animate.min.css" rel="stylesheet">
 <link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
 </head>
-<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
+<body class="fixed-sidebar skin-1 full-height-layout gray-bg" style="overflow: hidden">
 	<div id="wrapper">
-		<!--左侧导航开始-->
+		<%--左侧导航开始--%>
 		<nav class="navbar-default navbar-static-side" role="navigation">
 			<div class="nav-close">
 				<i class="fa fa-times-circle"></i>
@@ -35,24 +35,24 @@
 							</span> 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
 								<span class="clear">
-									<span class="block m-t-xs"><strong class="font-bold">Si ZhongXia</strong></span>
-									<span class="text-muted text-xs block">司仲夏<b class="caret"></b></span>
+									<span class="block m-t-xs"><strong class="font-bold">${userRole }</strong></span>
+									<span class="text-muted text-xs block">${user.userName } <b class="caret"></b></span>
 								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
 								<li><a href="javascript:;">个人信息</a></li>
 								<li class="divider"></li>
-								<li><a href="javascript:;">安全退出</a></li>
+								<li><a href="logout.jspx">安全退出</a></li>
 							</ul>
 						</div>
-						<div class="logo-element">TX</div>
+						<div class="logo-element">${systemInfo.systemJianPin }</div>
 					</li>
 					<jsp:include page="components/menus.jsp"></jsp:include>
 				</ul>
 			</div>
 		</nav>
-		<!--左侧导航结束-->
-		<!--右侧部分开始-->
+		<%--左侧导航结束--%>
+		<%--右侧部分开始--%>
 		<div id="page-wrapper" class="gray-bg dashbard-1">
 			<div class="row border-bottom">
 				<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -93,7 +93,7 @@
 				<div class="pull-right">${systemInfo.systemTechnicalSupport }</div>
 			</div>
 		</div>
-		<!--右侧部分结束-->
+		<%--右侧部分结束--%>
 		<div id="right-sidebar">
 			<div class="sidebar-container">
 				<ul class="nav nav-tabs navs-3">
@@ -146,6 +146,7 @@
 									</div>
 								</div>
 							</div>
+							<%-- 
 							<div class="title">皮肤选择</div>
 							<div class="setings-item default-skin nb">
 								<span class="skin-name "><a href="javascript:;"
@@ -160,6 +161,7 @@
 									class="s-skin-3">黄/紫色 主题</a>
 								</span>
 							</div>
+							 --%>
 						</div>
 					</div>
 				</div>
@@ -174,6 +176,11 @@
 	<script src="resources/js/plugins/layer/layer.min.js"></script>
 	<script src="resources/js/hplus.min.js?v=4.1.0"></script>
 	<script src="resources/js/contabs.min.js"></script>
-	<script src="resources/js/plugins/pace/pace.min.js"></script>
+	<script>
+		history.pushState(null, null, document.URL);
+		window.addEventListener('popstate', function() {
+			history.pushState(null, null, document.URL);
+		});
+	</script>
 </body>
 </html>

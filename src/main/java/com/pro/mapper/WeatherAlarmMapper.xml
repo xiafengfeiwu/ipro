@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.WeatherAlarmMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WeatherAlarm">
+    <id column="weather_city_code" jdbcType="VARCHAR" property="weatherCityCode" />
+    <result column="early_warn_time" jdbcType="DATE" property="earlyWarnTime" />
+    <result column="early_warn_level" jdbcType="VARCHAR" property="earlyWarnLevel" />
+    <result column="early_warn_stat" jdbcType="VARCHAR" property="earlyWarnStat" />
+    <result column="early_warn_type" jdbcType="VARCHAR" property="earlyWarnType" />
+    <result column="early_warn_title" jdbcType="VARCHAR" property="earlyWarnTitle" />
+    <result column="early_warn_txt" jdbcType="VARCHAR" property="earlyWarnTxt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    weather_city_code, early_warn_time, early_warn_level, early_warn_stat, early_warn_type, 
+    early_warn_title, early_warn_txt
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.WeatherAlarmExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_weather_alarm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_weather_alarm
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from w_weather_alarm
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.WeatherAlarmExample">
+    delete from w_weather_alarm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.WeatherAlarm">
+    insert into w_weather_alarm (weather_city_code, early_warn_time, early_warn_level, 
+      early_warn_stat, early_warn_type, early_warn_title, 
+      early_warn_txt)
+    values (#{weatherCityCode,jdbcType=VARCHAR}, #{earlyWarnTime,jdbcType=DATE}, #{earlyWarnLevel,jdbcType=VARCHAR}, 
+      #{earlyWarnStat,jdbcType=VARCHAR}, #{earlyWarnType,jdbcType=VARCHAR}, #{earlyWarnTitle,jdbcType=VARCHAR}, 
+      #{earlyWarnTxt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.WeatherAlarm">
+    insert into w_weather_alarm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        weather_city_code,
+      </if>
+      <if test="earlyWarnTime != null">
+        early_warn_time,
+      </if>
+      <if test="earlyWarnLevel != null">
+        early_warn_level,
+      </if>
+      <if test="earlyWarnStat != null">
+        early_warn_stat,
+      </if>
+      <if test="earlyWarnType != null">
+        early_warn_type,
+      </if>
+      <if test="earlyWarnTitle != null">
+        early_warn_title,
+      </if>
+      <if test="earlyWarnTxt != null">
+        early_warn_txt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="weatherCityCode != null">
+        #{weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnTime != null">
+        #{earlyWarnTime,jdbcType=DATE},
+      </if>
+      <if test="earlyWarnLevel != null">
+        #{earlyWarnLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnStat != null">
+        #{earlyWarnStat,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnType != null">
+        #{earlyWarnType,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnTitle != null">
+        #{earlyWarnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnTxt != null">
+        #{earlyWarnTxt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.WeatherAlarmExample" resultType="java.lang.Long">
+    select count(*) from w_weather_alarm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_weather_alarm
+    <set>
+      <if test="record.weatherCityCode != null">
+        weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyWarnTime != null">
+        early_warn_time = #{record.earlyWarnTime,jdbcType=DATE},
+      </if>
+      <if test="record.earlyWarnLevel != null">
+        early_warn_level = #{record.earlyWarnLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyWarnStat != null">
+        early_warn_stat = #{record.earlyWarnStat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyWarnType != null">
+        early_warn_type = #{record.earlyWarnType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyWarnTitle != null">
+        early_warn_title = #{record.earlyWarnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earlyWarnTxt != null">
+        early_warn_txt = #{record.earlyWarnTxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_weather_alarm
+    set weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
+      early_warn_time = #{record.earlyWarnTime,jdbcType=DATE},
+      early_warn_level = #{record.earlyWarnLevel,jdbcType=VARCHAR},
+      early_warn_stat = #{record.earlyWarnStat,jdbcType=VARCHAR},
+      early_warn_type = #{record.earlyWarnType,jdbcType=VARCHAR},
+      early_warn_title = #{record.earlyWarnTitle,jdbcType=VARCHAR},
+      early_warn_txt = #{record.earlyWarnTxt,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherAlarm">
+    update w_weather_alarm
+    <set>
+      <if test="earlyWarnTime != null">
+        early_warn_time = #{earlyWarnTime,jdbcType=DATE},
+      </if>
+      <if test="earlyWarnLevel != null">
+        early_warn_level = #{earlyWarnLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnStat != null">
+        early_warn_stat = #{earlyWarnStat,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnType != null">
+        early_warn_type = #{earlyWarnType,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnTitle != null">
+        early_warn_title = #{earlyWarnTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="earlyWarnTxt != null">
+        early_warn_txt = #{earlyWarnTxt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherAlarm">
+    update w_weather_alarm
+    set early_warn_time = #{earlyWarnTime,jdbcType=DATE},
+      early_warn_level = #{earlyWarnLevel,jdbcType=VARCHAR},
+      early_warn_stat = #{earlyWarnStat,jdbcType=VARCHAR},
+      early_warn_type = #{earlyWarnType,jdbcType=VARCHAR},
+      early_warn_title = #{earlyWarnTitle,jdbcType=VARCHAR},
+      early_warn_txt = #{earlyWarnTxt,jdbcType=VARCHAR}
+    where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

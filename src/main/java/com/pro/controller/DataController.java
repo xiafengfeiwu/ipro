@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pro.entity.User;
-import com.pro.service.UserServcie;
+import com.pro.service.UserService;
 import com.pro.util.PublicUtil;
 
 @Controller
@@ -19,7 +19,7 @@ import com.pro.util.PublicUtil;
 public class DataController {
 
 	@Autowired
-	UserServcie userServcie;
+	UserService userServcie;
 
 	@ResponseBody
 	@RequestMapping("findUserTop5")

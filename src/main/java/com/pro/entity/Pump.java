@@ -9,6 +9,8 @@ public class Pump {
 
     private Long pumpOwnerId;
 
+    private Long pumpOperatorId;
+
     private String pumpCityCode;
 
     private String pumpLongitude;
@@ -43,6 +45,14 @@ public class Pump {
 
     public void setPumpOwnerId(Long pumpOwnerId) {
         this.pumpOwnerId = pumpOwnerId;
+    }
+
+    public Long getPumpOperatorId() {
+        return pumpOperatorId;
+    }
+
+    public void setPumpOperatorId(Long pumpOperatorId) {
+        this.pumpOperatorId = pumpOperatorId;
     }
 
     public String getPumpCityCode() {

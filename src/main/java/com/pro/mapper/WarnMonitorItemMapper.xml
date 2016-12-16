@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.RoleMenuMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.RoleMenu">
-    <id column="role_id" jdbcType="BIGINT" property="roleId" />
-    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
-    <result column="menu_pid" jdbcType="BIGINT" property="menuPid" />
+<mapper namespace="com.pro.dao.WarnMonitorItemMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WarnMonitorItem">
+    <id column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_descript" jdbcType="VARCHAR" property="itemDescript" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,16 +64,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    role_id, menu_id, menu_pid
+    item_name, item_descript
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.RoleMenuExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.WarnMonitorItemExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_role_menu
+    from w_warn_monitor_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,72 +81,59 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="com.pro.entity.RoleMenuKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_role_menu
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+    from w_warn_monitor_item
+    where item_name = #{itemName,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.RoleMenuKey">
-    delete from w_role_menu
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from w_warn_monitor_item
+    where item_name = #{itemName,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.RoleMenuExample">
-    delete from w_role_menu
+  <delete id="deleteByExample" parameterType="com.pro.entity.WarnMonitorItemExample">
+    delete from w_warn_monitor_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.RoleMenu">
-    insert into w_role_menu (role_id, menu_id, menu_pid
-      )
-    values (#{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}, #{menuPid,jdbcType=BIGINT}
-      )
+  <insert id="insert" parameterType="com.pro.entity.WarnMonitorItem">
+    insert into w_warn_monitor_item (item_name, item_descript)
+    values (#{itemName,jdbcType=VARCHAR}, #{itemDescript,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.RoleMenu">
-    insert into w_role_menu
+  <insert id="insertSelective" parameterType="com.pro.entity.WarnMonitorItem">
+    insert into w_warn_monitor_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="roleId != null">
-        role_id,
+      <if test="itemName != null">
+        item_name,
       </if>
-      <if test="menuId != null">
-        menu_id,
-      </if>
-      <if test="menuPid != null">
-        menu_pid,
+      <if test="itemDescript != null">
+        item_descript,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
       </if>
-      <if test="menuId != null">
-        #{menuId,jdbcType=BIGINT},
-      </if>
-      <if test="menuPid != null">
-        #{menuPid,jdbcType=BIGINT},
+      <if test="itemDescript != null">
+        #{itemDescript,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.RoleMenuExample" resultType="java.lang.Long">
-    select count(*) from w_role_menu
+  <select id="countByExample" parameterType="com.pro.entity.WarnMonitorItemExample" resultType="java.lang.Long">
+    select count(*) from w_warn_monitor_item
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_role_menu
+    update w_warn_monitor_item
     <set>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+      <if test="record.itemName != null">
+        item_name = #{record.itemName,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuId != null">
-        menu_id = #{record.menuId,jdbcType=BIGINT},
-      </if>
-      <if test="record.menuPid != null">
-        menu_pid = #{record.menuPid,jdbcType=BIGINT},
+      <if test="record.itemDescript != null">
+        item_descript = #{record.itemDescript,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -155,28 +141,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_role_menu
-    set role_id = #{record.roleId,jdbcType=BIGINT},
-      menu_id = #{record.menuId,jdbcType=BIGINT},
-      menu_pid = #{record.menuPid,jdbcType=BIGINT}
+    update w_warn_monitor_item
+    set item_name = #{record.itemName,jdbcType=VARCHAR},
+      item_descript = #{record.itemDescript,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.RoleMenu">
-    update w_role_menu
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WarnMonitorItem">
+    update w_warn_monitor_item
     <set>
-      <if test="menuPid != null">
-        menu_pid = #{menuPid,jdbcType=BIGINT},
+      <if test="itemDescript != null">
+        item_descript = #{itemDescript,jdbcType=VARCHAR},
       </if>
     </set>
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+    where item_name = #{itemName,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.RoleMenu">
-    update w_role_menu
-    set menu_pid = #{menuPid,jdbcType=BIGINT}
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WarnMonitorItem">
+    update w_warn_monitor_item
+    set item_descript = #{itemDescript,jdbcType=VARCHAR}
+    where item_name = #{itemName,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -3,9 +3,14 @@ package com.pro.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 
 import com.pro.entity.Menu;
 
@@ -17,6 +22,34 @@ public class PublicUtil {
 		return sequence.nextId();
 	}
 
+	// 初始化MAP
+	public static Map<String, Object> initMap() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("success", false);
+		return map;
+	}
+
+	// 获取Session用户ID
+	public static Long sessionUid() {
+		Subject subject = SecurityUtils.getSubject();
+		Object userId = subject.getSession().getAttribute("userId");
+		if (userId == null) {
+			return null;
+		}
+		return new Long(userId.toString());
+	}
+
+	// 获取Session用户角色名称
+	public static String sessionUserRole() {
+		Subject subject = SecurityUtils.getSubject();
+		Object userRole = subject.getSession().getAttribute("userRole");
+		if (userRole == null) {
+			return null;
+		}
+		return userRole.toString();
+	}
+
+	// 判断对象是否为空
 	public static boolean isEmpty(Object obj) {
 		if (obj == null) {
 			return true;
@@ -32,6 +65,7 @@ public class PublicUtil {
 		return false;
 	}
 
+	// 判断对象是否不为空
 	public static boolean isNotEmpty(Object obj) {
 		return !isEmpty(obj);
 	}
@@ -53,7 +87,7 @@ public class PublicUtil {
 
 	// 初始化菜单HTML
 	public static String initMenuHtml(List<Menu> menus) {
-		if (menus == null || menus.isEmpty()) {
+		if (PublicUtil.isEmpty(menus)) {
 			return "<!--  没有菜单数据  -->";
 		}
 		StringBuffer buffer = new StringBuffer();
@@ -94,7 +128,7 @@ public class PublicUtil {
 	}
 
 	public static String initMenuNestableHtml(List<Menu> menus) {
-		if (menus == null || menus.isEmpty()) {
+		if (PublicUtil.isEmpty(menus)) {
 			return "<!--  没有菜单数据  -->";
 		}
 		StringBuffer buffer = new StringBuffer("<div class=\"dd\" id=\"menu-nestable\"><ol class=\"dd-list\">");
@@ -153,15 +187,15 @@ public class PublicUtil {
 	}
 
 	public static void main(String[] args) {
-		while (true) {
-			System.out.println(initId());
-			try {
-				Thread.sleep(13411);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		// System.out.println(sha1("123456"));
+		// while (true) {
+		// System.out.println(initId());
+		// try {
+		// Thread.sleep(13411);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		// }
+		System.out.println(sha1("123456"));
 	}
 }

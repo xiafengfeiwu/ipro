@@ -235,6 +235,66 @@ public class RoleExample {
             return (Criteria) this;
         }
 
+        public Criteria andSystemRoleIsNull() {
+            addCriterion("system_role is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleIsNotNull() {
+            addCriterion("system_role is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleEqualTo(Boolean value) {
+            addCriterion("system_role =", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleNotEqualTo(Boolean value) {
+            addCriterion("system_role <>", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleGreaterThan(Boolean value) {
+            addCriterion("system_role >", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("system_role >=", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleLessThan(Boolean value) {
+            addCriterion("system_role <", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleLessThanOrEqualTo(Boolean value) {
+            addCriterion("system_role <=", value, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleIn(List<Boolean> values) {
+            addCriterion("system_role in", values, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleNotIn(List<Boolean> values) {
+            addCriterion("system_role not in", values, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleBetween(Boolean value1, Boolean value2) {
+            addCriterion("system_role between", value1, value2, "systemRole");
+            return (Criteria) this;
+        }
+
+        public Criteria andSystemRoleNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("system_role not between", value1, value2, "systemRole");
+            return (Criteria) this;
+        }
+
         public Criteria andRoleCreateTimeIsNull() {
             addCriterion("role_create_time is null");
             return (Criteria) this;

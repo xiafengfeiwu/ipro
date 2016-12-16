@@ -7,7 +7,6 @@
 	<!-- 
 	<properties url="file:///C:/Users/wangting/workspace/ipro/src/test/resources/generator.properties"/>
  	-->
- 	
 	<properties url="file:///C:/Users/SiZhongXia/Documents/MavenProject/src/test/resources/generator.properties"/>
  	
 	<!-- 数据库驱动包位置 -->
@@ -30,7 +29,7 @@
 		<javaClientGenerator targetPackage="${javaClientPackage}" targetProject="${javaClientProject}" type="XMLMAPPER" />
 		
 		<!-- 要生成的那些表 -->
-		<table schema="${schema}" tableName="w_device" domainObjectName="Device" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<!-- <table schema="${schema}" tableName="w_device" domainObjectName="Device" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_device_replace" domainObjectName="DeviceReplace" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_device_vender" domainObjectName="DeviceVender" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_jurisdiction" domainObjectName="Jurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
@@ -56,9 +55,14 @@
 		<table schema="${schema}" tableName="w_warn" domainObjectName="Warn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn_group" domainObjectName="WarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn_group_item" domainObjectName="WarnGroupItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		-->
 		<table schema="${schema}" tableName="w_warn_monitor_item" domainObjectName="WarnMonitorItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<!-- 
+		<table schema="${schema}" tableName="w_weather_alarm" domainObjectName="WeatherAlarm" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_weather_city" domainObjectName="WeatherCity" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_weather_data" domainObjectName="WeatherData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_weather_icon" domainObjectName="WeatherIcon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_weather_key" domainObjectName="WeatherKey" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		 -->
 	</context>
 </generatorConfiguration>

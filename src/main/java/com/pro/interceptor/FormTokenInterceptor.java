@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -19,14 +21,15 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 			Method method = handlerMethod.getMethod();
 			FormToken annotation = method.getAnnotation(FormToken.class);
 			if (annotation != null) {
+				Subject subject = SecurityUtils.getSubject();
 				if (annotation.init()) {
-					request.getSession(false).setAttribute("token", "TOKEN"+PublicUtil.initId());
+					subject.getSession().setAttribute("token", "TOKEN" + PublicUtil.initId());
 				}
 				if (annotation.check()) {
 					if (isRepeatSubmit(request)) {
 						return false;
 					}
-					request.getSession(false).removeAttribute("token");
+					subject.getSession().removeAttribute("token");
 				}
 			}
 			return true;
@@ -34,8 +37,10 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 			return super.preHandle(request, response, handler);
 		}
 	}
+
 	private boolean isRepeatSubmit(HttpServletRequest request) {
-		String serverToken = (String) request.getSession(false).getAttribute("token");
+		Subject subject = SecurityUtils.getSubject();
+		String serverToken = (String) subject.getSession().getAttribute("token");
 		if (serverToken == null) {
 			return true;
 		}

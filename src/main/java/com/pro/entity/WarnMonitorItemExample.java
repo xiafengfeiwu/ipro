@@ -3,14 +3,14 @@ package com.pro.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleMenuExample {
+public class WarnMonitorItemExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RoleMenuExample() {
+    public WarnMonitorItemExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,183 +104,143 @@ public class RoleMenuExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andRoleIdIsNull() {
-            addCriterion("role_id is null");
+        public Criteria andItemNameIsNull() {
+            addCriterion("item_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIsNotNull() {
-            addCriterion("role_id is not null");
+        public Criteria andItemNameIsNotNull() {
+            addCriterion("item_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdEqualTo(Long value) {
-            addCriterion("role_id =", value, "roleId");
+        public Criteria andItemNameEqualTo(String value) {
+            addCriterion("item_name =", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotEqualTo(Long value) {
-            addCriterion("role_id <>", value, "roleId");
+        public Criteria andItemNameNotEqualTo(String value) {
+            addCriterion("item_name <>", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThan(Long value) {
-            addCriterion("role_id >", value, "roleId");
+        public Criteria andItemNameGreaterThan(String value) {
+            addCriterion("item_name >", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("role_id >=", value, "roleId");
+        public Criteria andItemNameGreaterThanOrEqualTo(String value) {
+            addCriterion("item_name >=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThan(Long value) {
-            addCriterion("role_id <", value, "roleId");
+        public Criteria andItemNameLessThan(String value) {
+            addCriterion("item_name <", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdLessThanOrEqualTo(Long value) {
-            addCriterion("role_id <=", value, "roleId");
+        public Criteria andItemNameLessThanOrEqualTo(String value) {
+            addCriterion("item_name <=", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdIn(List<Long> values) {
-            addCriterion("role_id in", values, "roleId");
+        public Criteria andItemNameLike(String value) {
+            addCriterion("item_name like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotIn(List<Long> values) {
-            addCriterion("role_id not in", values, "roleId");
+        public Criteria andItemNameNotLike(String value) {
+            addCriterion("item_name not like", value, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdBetween(Long value1, Long value2) {
-            addCriterion("role_id between", value1, value2, "roleId");
+        public Criteria andItemNameIn(List<String> values) {
+            addCriterion("item_name in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andRoleIdNotBetween(Long value1, Long value2) {
-            addCriterion("role_id not between", value1, value2, "roleId");
+        public Criteria andItemNameNotIn(List<String> values) {
+            addCriterion("item_name not in", values, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdIsNull() {
-            addCriterion("menu_id is null");
+        public Criteria andItemNameBetween(String value1, String value2) {
+            addCriterion("item_name between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdIsNotNull() {
-            addCriterion("menu_id is not null");
+        public Criteria andItemNameNotBetween(String value1, String value2) {
+            addCriterion("item_name not between", value1, value2, "itemName");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdEqualTo(Long value) {
-            addCriterion("menu_id =", value, "menuId");
+        public Criteria andItemDescriptIsNull() {
+            addCriterion("item_descript is null");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdNotEqualTo(Long value) {
-            addCriterion("menu_id <>", value, "menuId");
+        public Criteria andItemDescriptIsNotNull() {
+            addCriterion("item_descript is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdGreaterThan(Long value) {
-            addCriterion("menu_id >", value, "menuId");
+        public Criteria andItemDescriptEqualTo(String value) {
+            addCriterion("item_descript =", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("menu_id >=", value, "menuId");
+        public Criteria andItemDescriptNotEqualTo(String value) {
+            addCriterion("item_descript <>", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdLessThan(Long value) {
-            addCriterion("menu_id <", value, "menuId");
+        public Criteria andItemDescriptGreaterThan(String value) {
+            addCriterion("item_descript >", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdLessThanOrEqualTo(Long value) {
-            addCriterion("menu_id <=", value, "menuId");
+        public Criteria andItemDescriptGreaterThanOrEqualTo(String value) {
+            addCriterion("item_descript >=", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdIn(List<Long> values) {
-            addCriterion("menu_id in", values, "menuId");
+        public Criteria andItemDescriptLessThan(String value) {
+            addCriterion("item_descript <", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdNotIn(List<Long> values) {
-            addCriterion("menu_id not in", values, "menuId");
+        public Criteria andItemDescriptLessThanOrEqualTo(String value) {
+            addCriterion("item_descript <=", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdBetween(Long value1, Long value2) {
-            addCriterion("menu_id between", value1, value2, "menuId");
+        public Criteria andItemDescriptLike(String value) {
+            addCriterion("item_descript like", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuIdNotBetween(Long value1, Long value2) {
-            addCriterion("menu_id not between", value1, value2, "menuId");
+        public Criteria andItemDescriptNotLike(String value) {
+            addCriterion("item_descript not like", value, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuPidIsNull() {
-            addCriterion("menu_pid is null");
+        public Criteria andItemDescriptIn(List<String> values) {
+            addCriterion("item_descript in", values, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuPidIsNotNull() {
-            addCriterion("menu_pid is not null");
+        public Criteria andItemDescriptNotIn(List<String> values) {
+            addCriterion("item_descript not in", values, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuPidEqualTo(Long value) {
-            addCriterion("menu_pid =", value, "menuPid");
+        public Criteria andItemDescriptBetween(String value1, String value2) {
+            addCriterion("item_descript between", value1, value2, "itemDescript");
             return (Criteria) this;
         }
 
-        public Criteria andMenuPidNotEqualTo(Long value) {
-            addCriterion("menu_pid <>", value, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidGreaterThan(Long value) {
-            addCriterion("menu_pid >", value, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidGreaterThanOrEqualTo(Long value) {
-            addCriterion("menu_pid >=", value, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidLessThan(Long value) {
-            addCriterion("menu_pid <", value, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidLessThanOrEqualTo(Long value) {
-            addCriterion("menu_pid <=", value, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidIn(List<Long> values) {
-            addCriterion("menu_pid in", values, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidNotIn(List<Long> values) {
-            addCriterion("menu_pid not in", values, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidBetween(Long value1, Long value2) {
-            addCriterion("menu_pid between", value1, value2, "menuPid");
-            return (Criteria) this;
-        }
-
-        public Criteria andMenuPidNotBetween(Long value1, Long value2) {
-            addCriterion("menu_pid not between", value1, value2, "menuPid");
+        public Criteria andItemDescriptNotBetween(String value1, String value2) {
+            addCriterion("item_descript not between", value1, value2, "itemDescript");
             return (Criteria) this;
         }
     }

@@ -9,11 +9,11 @@ import com.pro.dao.UserMapper;
 import com.pro.entity.User;
 import com.pro.entity.UserExample;
 import com.pro.model.Page;
-import com.pro.service.UserServcie;
+import com.pro.service.UserService;
 import com.pro.util.PublicUtil;
 
 @Service
-public class UserServiceImpl implements UserServcie {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserMapper userMapper;

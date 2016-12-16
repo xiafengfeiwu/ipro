@@ -1,5 +1,6 @@
 package com.pro.dao;
 
+import com.pro.entity.RoleMenu;
 import com.pro.entity.RoleMenuExample;
 import com.pro.entity.RoleMenuKey;
 import java.util.List;
@@ -12,13 +13,19 @@ public interface RoleMenuMapper {
 
     int deleteByPrimaryKey(RoleMenuKey key);
 
-    int insert(RoleMenuKey record);
+    int insert(RoleMenu record);
 
-    int insertSelective(RoleMenuKey record);
+    int insertSelective(RoleMenu record);
 
-    List<RoleMenuKey> selectByExample(RoleMenuExample example);
+    List<RoleMenu> selectByExample(RoleMenuExample example);
 
-    int updateByExampleSelective(@Param("record") RoleMenuKey record, @Param("example") RoleMenuExample example);
+    RoleMenu selectByPrimaryKey(RoleMenuKey key);
 
-    int updateByExample(@Param("record") RoleMenuKey record, @Param("example") RoleMenuExample example);
+    int updateByExampleSelective(@Param("record") RoleMenu record, @Param("example") RoleMenuExample example);
+
+    int updateByExample(@Param("record") RoleMenu record, @Param("example") RoleMenuExample example);
+
+    int updateByPrimaryKeySelective(RoleMenu record);
+
+    int updateByPrimaryKey(RoleMenu record);
 }

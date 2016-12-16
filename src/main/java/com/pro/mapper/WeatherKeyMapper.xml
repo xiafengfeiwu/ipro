@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.RoleMenuMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.RoleMenu">
-    <id column="role_id" jdbcType="BIGINT" property="roleId" />
-    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
-    <result column="menu_pid" jdbcType="BIGINT" property="menuPid" />
+<mapper namespace="com.pro.dao.WeatherKeyMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.WeatherKey">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="email_password" jdbcType="VARCHAR" property="emailPassword" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,16 +66,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    role_id, menu_id, menu_pid
+    id, key, email, email_password
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.RoleMenuExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.WeatherKeyExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_role_menu
+    from w_weather_key
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,72 +83,79 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="com.pro.entity.RoleMenuKey" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_role_menu
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+    from w_weather_key
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.pro.entity.RoleMenuKey">
-    delete from w_role_menu
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_weather_key
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.RoleMenuExample">
-    delete from w_role_menu
+  <delete id="deleteByExample" parameterType="com.pro.entity.WeatherKeyExample">
+    delete from w_weather_key
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.RoleMenu">
-    insert into w_role_menu (role_id, menu_id, menu_pid
-      )
-    values (#{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}, #{menuPid,jdbcType=BIGINT}
-      )
+  <insert id="insert" parameterType="com.pro.entity.WeatherKey">
+    insert into w_weather_key (id, key, email, 
+      email_password)
+    values (#{id,jdbcType=BIGINT}, #{key,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{emailPassword,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.RoleMenu">
-    insert into w_role_menu
+  <insert id="insertSelective" parameterType="com.pro.entity.WeatherKey">
+    insert into w_weather_key
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="roleId != null">
-        role_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="menuId != null">
-        menu_id,
+      <if test="key != null">
+        key,
       </if>
-      <if test="menuPid != null">
-        menu_pid,
+      <if test="email != null">
+        email,
+      </if>
+      <if test="emailPassword != null">
+        email_password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="roleId != null">
-        #{roleId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="menuId != null">
-        #{menuId,jdbcType=BIGINT},
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
       </if>
-      <if test="menuPid != null">
-        #{menuPid,jdbcType=BIGINT},
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailPassword != null">
+        #{emailPassword,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.RoleMenuExample" resultType="java.lang.Long">
-    select count(*) from w_role_menu
+  <select id="countByExample" parameterType="com.pro.entity.WeatherKeyExample" resultType="java.lang.Long">
+    select count(*) from w_weather_key
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_role_menu
+    update w_weather_key
     <set>
-      <if test="record.roleId != null">
-        role_id = #{record.roleId,jdbcType=BIGINT},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.menuId != null">
-        menu_id = #{record.menuId,jdbcType=BIGINT},
+      <if test="record.key != null">
+        key = #{record.key,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuPid != null">
-        menu_pid = #{record.menuPid,jdbcType=BIGINT},
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emailPassword != null">
+        email_password = #{record.emailPassword,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -155,28 +163,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_role_menu
-    set role_id = #{record.roleId,jdbcType=BIGINT},
-      menu_id = #{record.menuId,jdbcType=BIGINT},
-      menu_pid = #{record.menuPid,jdbcType=BIGINT}
+    update w_weather_key
+    set id = #{record.id,jdbcType=BIGINT},
+      key = #{record.key,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      email_password = #{record.emailPassword,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.RoleMenu">
-    update w_role_menu
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherKey">
+    update w_weather_key
     <set>
-      <if test="menuPid != null">
-        menu_pid = #{menuPid,jdbcType=BIGINT},
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailPassword != null">
+        email_password = #{emailPassword,jdbcType=VARCHAR},
       </if>
     </set>
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.RoleMenu">
-    update w_role_menu
-    set menu_pid = #{menuPid,jdbcType=BIGINT}
-    where role_id = #{roleId,jdbcType=BIGINT}
-      and menu_id = #{menuId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherKey">
+    update w_weather_key
+    set key = #{key,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      email_password = #{emailPassword,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

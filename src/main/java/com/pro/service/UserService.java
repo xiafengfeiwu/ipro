@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.pro.entity.User;
 
-public interface UserServcie {
+public interface UserService {
 	// 通过登录名查询用户
 	User findByLoginName(String loginName);
 

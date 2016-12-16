@@ -71,7 +71,7 @@
 	setTimeout(function(){
 		$("#item2_content").hide();
 		$("#OpenNewTabId").attr('href', window.location.href).attr("target", "_blank");
-	}, 200)
+	}, 1000)
 	//选项卡点击事件
 	$('#avatar-tab li').click(function() {
 		if (currentTab != this.id) {

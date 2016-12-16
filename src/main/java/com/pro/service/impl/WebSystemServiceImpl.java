@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pro.dao.WebSystemMapper;
 import com.pro.entity.WebSystem;
-import com.pro.entity.WebSystemExample;
 import com.pro.service.WebSystemService;
 
 @Service
@@ -18,16 +17,16 @@ public class WebSystemServiceImpl implements WebSystemService {
 
 	@Override
 	public WebSystem findInfo() {
-		List<WebSystem> systems = webSystemMapper.selectByExample(new WebSystemExample());
+		List<WebSystem> systems = webSystemMapper.selectByExample(null);
 		if (systems == null || systems.isEmpty()) {
-			return new WebSystem();
+			throw new RuntimeException("未默认设置系统信息");
 		}
 		return systems.get(0);
 	}
 
 	@Override
 	public void update(WebSystem webSystem) {
-		webSystemMapper.updateByExampleSelective(webSystem, new WebSystemExample());
+		webSystemMapper.updateByExampleSelective(webSystem, null);
 	}
 
 }

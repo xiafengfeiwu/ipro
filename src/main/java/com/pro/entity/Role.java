@@ -7,6 +7,8 @@ public class Role {
 
     private String roleName;
 
+    private Boolean systemRole;
+
     private Date roleCreateTime;
 
     private Date roleModifyTime;
@@ -25,6 +27,14 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public Boolean getSystemRole() {
+        return systemRole;
+    }
+
+    public void setSystemRole(Boolean systemRole) {
+        this.systemRole = systemRole;
     }
 
     public Date getRoleCreateTime() {

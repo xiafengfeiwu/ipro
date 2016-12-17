@@ -73,7 +73,7 @@
 		<servlet-class>com.pro.quartz.DelegatingServletProxy</servlet-class>
 		<init-param>
 			<param-name>cronSchedule</param-name>
-			<param-value>0 0 0,6,13,17 * * ?</param-value>
+			<param-value>0 0 0,9,16 * * ?</param-value>
 		</init-param>
 		<load-on-startup>3</load-on-startup>
 	</servlet>

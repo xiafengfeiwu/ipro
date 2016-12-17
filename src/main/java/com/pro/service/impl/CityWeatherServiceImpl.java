@@ -43,7 +43,12 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 
 	@Override
 	public WeatherKey findWeatherKey() {
-		return weatherKeyMapper.selectByPrimaryKey(809645772998967297l);
+		return weatherKeyMapper.selectByPrimaryKey(new Long("809645772998967297"));
+	}
+
+	@Override
+	public WeatherAlarm findWeatherAlarmByCode(String cityCode) {
+		return weatherAlarmMapper.selectByPrimaryKey(cityCode);
 	}
 
 	@Override
@@ -66,7 +71,7 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 
 	@Override
 	public void upInsertWeaterAlarm(WeatherAlarm weatherAlarm) {
-		WeatherAlarm data = weatherAlarmMapper.selectByPrimaryKey(weatherAlarm.getWeatherCityCode());
+		WeatherAlarm data = findWeatherAlarmByCode(weatherAlarm.getWeatherCityCode());
 		if (data == null) {
 			weatherAlarmMapper.insert(weatherAlarm);
 		} else {

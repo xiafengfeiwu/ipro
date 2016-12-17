@@ -3,9 +3,9 @@
 <mapper namespace="com.pro.dao.WeatherKeyMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.WeatherKey">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="key" jdbcType="VARCHAR" property="key" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="email_password" jdbcType="VARCHAR" property="emailPassword" />
+    <result column="weather_key" jdbcType="VARCHAR" property="weatherKey" />
+    <result column="weather_email" jdbcType="VARCHAR" property="weatherEmail" />
+    <result column="weather_email_password" jdbcType="VARCHAR" property="weatherEmailPassword" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, key, email, email_password
+    id, weather_key, weather_email, weather_email_password
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.WeatherKeyExample" resultMap="BaseResultMap">
     select
@@ -100,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.WeatherKey">
-    insert into w_weather_key (id, key, email, 
-      email_password)
-    values (#{id,jdbcType=BIGINT}, #{key,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{emailPassword,jdbcType=VARCHAR})
+    insert into w_weather_key (id, weather_key, weather_email, 
+      weather_email_password)
+    values (#{id,jdbcType=BIGINT}, #{weatherKey,jdbcType=VARCHAR}, #{weatherEmail,jdbcType=VARCHAR}, 
+      #{weatherEmailPassword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.WeatherKey">
     insert into w_weather_key
@@ -111,28 +111,28 @@
       <if test="id != null">
         id,
       </if>
-      <if test="key != null">
-        key,
+      <if test="weatherKey != null">
+        weather_key,
       </if>
-      <if test="email != null">
-        email,
+      <if test="weatherEmail != null">
+        weather_email,
       </if>
-      <if test="emailPassword != null">
-        email_password,
+      <if test="weatherEmailPassword != null">
+        weather_email_password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="key != null">
-        #{key,jdbcType=VARCHAR},
+      <if test="weatherKey != null">
+        #{weatherKey,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
+      <if test="weatherEmail != null">
+        #{weatherEmail,jdbcType=VARCHAR},
       </if>
-      <if test="emailPassword != null">
-        #{emailPassword,jdbcType=VARCHAR},
+      <if test="weatherEmailPassword != null">
+        #{weatherEmailPassword,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -148,14 +148,14 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.key != null">
-        key = #{record.key,jdbcType=VARCHAR},
+      <if test="record.weatherKey != null">
+        weather_key = #{record.weatherKey,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.weatherEmail != null">
+        weather_email = #{record.weatherEmail,jdbcType=VARCHAR},
       </if>
-      <if test="record.emailPassword != null">
-        email_password = #{record.emailPassword,jdbcType=VARCHAR},
+      <if test="record.weatherEmailPassword != null">
+        weather_email_password = #{record.weatherEmailPassword,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -165,9 +165,9 @@
   <update id="updateByExample" parameterType="map">
     update w_weather_key
     set id = #{record.id,jdbcType=BIGINT},
-      key = #{record.key,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
-      email_password = #{record.emailPassword,jdbcType=VARCHAR}
+      weather_key = #{record.weatherKey,jdbcType=VARCHAR},
+      weather_email = #{record.weatherEmail,jdbcType=VARCHAR},
+      weather_email_password = #{record.weatherEmailPassword,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -175,23 +175,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherKey">
     update w_weather_key
     <set>
-      <if test="key != null">
-        key = #{key,jdbcType=VARCHAR},
+      <if test="weatherKey != null">
+        weather_key = #{weatherKey,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="weatherEmail != null">
+        weather_email = #{weatherEmail,jdbcType=VARCHAR},
       </if>
-      <if test="emailPassword != null">
-        email_password = #{emailPassword,jdbcType=VARCHAR},
+      <if test="weatherEmailPassword != null">
+        weather_email_password = #{weatherEmailPassword,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherKey">
     update w_weather_key
-    set key = #{key,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      email_password = #{emailPassword,jdbcType=VARCHAR}
+    set weather_key = #{weatherKey,jdbcType=VARCHAR},
+      weather_email = #{weatherEmail,jdbcType=VARCHAR},
+      weather_email_password = #{weatherEmailPassword,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

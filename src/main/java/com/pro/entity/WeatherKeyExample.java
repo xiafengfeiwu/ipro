@@ -164,213 +164,213 @@ public class WeatherKeyExample {
             return (Criteria) this;
         }
 
-        public Criteria andKeyIsNull() {
-            addCriterion("key is null");
+        public Criteria andWeatherKeyIsNull() {
+            addCriterion("weather_key is null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIsNotNull() {
-            addCriterion("key is not null");
+        public Criteria andWeatherKeyIsNotNull() {
+            addCriterion("weather_key is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKeyEqualTo(String value) {
-            addCriterion("key =", value, "key");
+        public Criteria andWeatherKeyEqualTo(String value) {
+            addCriterion("weather_key =", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotEqualTo(String value) {
-            addCriterion("key <>", value, "key");
+        public Criteria andWeatherKeyNotEqualTo(String value) {
+            addCriterion("weather_key <>", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThan(String value) {
-            addCriterion("key >", value, "key");
+        public Criteria andWeatherKeyGreaterThan(String value) {
+            addCriterion("weather_key >", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("key >=", value, "key");
+        public Criteria andWeatherKeyGreaterThanOrEqualTo(String value) {
+            addCriterion("weather_key >=", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThan(String value) {
-            addCriterion("key <", value, "key");
+        public Criteria andWeatherKeyLessThan(String value) {
+            addCriterion("weather_key <", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLessThanOrEqualTo(String value) {
-            addCriterion("key <=", value, "key");
+        public Criteria andWeatherKeyLessThanOrEqualTo(String value) {
+            addCriterion("weather_key <=", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyLike(String value) {
-            addCriterion("key like", value, "key");
+        public Criteria andWeatherKeyLike(String value) {
+            addCriterion("weather_key like", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotLike(String value) {
-            addCriterion("key not like", value, "key");
+        public Criteria andWeatherKeyNotLike(String value) {
+            addCriterion("weather_key not like", value, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyIn(List<String> values) {
-            addCriterion("key in", values, "key");
+        public Criteria andWeatherKeyIn(List<String> values) {
+            addCriterion("weather_key in", values, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotIn(List<String> values) {
-            addCriterion("key not in", values, "key");
+        public Criteria andWeatherKeyNotIn(List<String> values) {
+            addCriterion("weather_key not in", values, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyBetween(String value1, String value2) {
-            addCriterion("key between", value1, value2, "key");
+        public Criteria andWeatherKeyBetween(String value1, String value2) {
+            addCriterion("weather_key between", value1, value2, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andKeyNotBetween(String value1, String value2) {
-            addCriterion("key not between", value1, value2, "key");
+        public Criteria andWeatherKeyNotBetween(String value1, String value2) {
+            addCriterion("weather_key not between", value1, value2, "weatherKey");
             return (Criteria) this;
         }
 
-        public Criteria andEmailIsNull() {
-            addCriterion("email is null");
+        public Criteria andWeatherEmailIsNull() {
+            addCriterion("weather_email is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailIsNotNull() {
-            addCriterion("email is not null");
+        public Criteria andWeatherEmailIsNotNull() {
+            addCriterion("weather_email is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailEqualTo(String value) {
-            addCriterion("email =", value, "email");
+        public Criteria andWeatherEmailEqualTo(String value) {
+            addCriterion("weather_email =", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotEqualTo(String value) {
-            addCriterion("email <>", value, "email");
+        public Criteria andWeatherEmailNotEqualTo(String value) {
+            addCriterion("weather_email <>", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThan(String value) {
-            addCriterion("email >", value, "email");
+        public Criteria andWeatherEmailGreaterThan(String value) {
+            addCriterion("weather_email >", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThanOrEqualTo(String value) {
-            addCriterion("email >=", value, "email");
+        public Criteria andWeatherEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("weather_email >=", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThan(String value) {
-            addCriterion("email <", value, "email");
+        public Criteria andWeatherEmailLessThan(String value) {
+            addCriterion("weather_email <", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThanOrEqualTo(String value) {
-            addCriterion("email <=", value, "email");
+        public Criteria andWeatherEmailLessThanOrEqualTo(String value) {
+            addCriterion("weather_email <=", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailLike(String value) {
-            addCriterion("email like", value, "email");
+        public Criteria andWeatherEmailLike(String value) {
+            addCriterion("weather_email like", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotLike(String value) {
-            addCriterion("email not like", value, "email");
+        public Criteria andWeatherEmailNotLike(String value) {
+            addCriterion("weather_email not like", value, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailIn(List<String> values) {
-            addCriterion("email in", values, "email");
+        public Criteria andWeatherEmailIn(List<String> values) {
+            addCriterion("weather_email in", values, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotIn(List<String> values) {
-            addCriterion("email not in", values, "email");
+        public Criteria andWeatherEmailNotIn(List<String> values) {
+            addCriterion("weather_email not in", values, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailBetween(String value1, String value2) {
-            addCriterion("email between", value1, value2, "email");
+        public Criteria andWeatherEmailBetween(String value1, String value2) {
+            addCriterion("weather_email between", value1, value2, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotBetween(String value1, String value2) {
-            addCriterion("email not between", value1, value2, "email");
+        public Criteria andWeatherEmailNotBetween(String value1, String value2) {
+            addCriterion("weather_email not between", value1, value2, "weatherEmail");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordIsNull() {
-            addCriterion("email_password is null");
+        public Criteria andWeatherEmailPasswordIsNull() {
+            addCriterion("weather_email_password is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordIsNotNull() {
-            addCriterion("email_password is not null");
+        public Criteria andWeatherEmailPasswordIsNotNull() {
+            addCriterion("weather_email_password is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordEqualTo(String value) {
-            addCriterion("email_password =", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordEqualTo(String value) {
+            addCriterion("weather_email_password =", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordNotEqualTo(String value) {
-            addCriterion("email_password <>", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordNotEqualTo(String value) {
+            addCriterion("weather_email_password <>", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordGreaterThan(String value) {
-            addCriterion("email_password >", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordGreaterThan(String value) {
+            addCriterion("weather_email_password >", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("email_password >=", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("weather_email_password >=", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordLessThan(String value) {
-            addCriterion("email_password <", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordLessThan(String value) {
+            addCriterion("weather_email_password <", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordLessThanOrEqualTo(String value) {
-            addCriterion("email_password <=", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordLessThanOrEqualTo(String value) {
+            addCriterion("weather_email_password <=", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordLike(String value) {
-            addCriterion("email_password like", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordLike(String value) {
+            addCriterion("weather_email_password like", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordNotLike(String value) {
-            addCriterion("email_password not like", value, "emailPassword");
+        public Criteria andWeatherEmailPasswordNotLike(String value) {
+            addCriterion("weather_email_password not like", value, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordIn(List<String> values) {
-            addCriterion("email_password in", values, "emailPassword");
+        public Criteria andWeatherEmailPasswordIn(List<String> values) {
+            addCriterion("weather_email_password in", values, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordNotIn(List<String> values) {
-            addCriterion("email_password not in", values, "emailPassword");
+        public Criteria andWeatherEmailPasswordNotIn(List<String> values) {
+            addCriterion("weather_email_password not in", values, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordBetween(String value1, String value2) {
-            addCriterion("email_password between", value1, value2, "emailPassword");
+        public Criteria andWeatherEmailPasswordBetween(String value1, String value2) {
+            addCriterion("weather_email_password between", value1, value2, "weatherEmailPassword");
             return (Criteria) this;
         }
 
-        public Criteria andEmailPasswordNotBetween(String value1, String value2) {
-            addCriterion("email_password not between", value1, value2, "emailPassword");
+        public Criteria andWeatherEmailPasswordNotBetween(String value1, String value2) {
+            addCriterion("weather_email_password not between", value1, value2, "weatherEmailPassword");
             return (Criteria) this;
         }
     }

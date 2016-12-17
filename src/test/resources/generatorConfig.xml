@@ -55,14 +55,15 @@
 		<table schema="${schema}" tableName="w_warn" domainObjectName="Warn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn_group" domainObjectName="WarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn_group_item" domainObjectName="WarnGroupItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		-->
 		<table schema="${schema}" tableName="w_warn_monitor_item" domainObjectName="WarnMonitorItem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		<!-- 
 		<table schema="${schema}" tableName="w_weather_alarm" domainObjectName="WeatherAlarm" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_weather_city" domainObjectName="WeatherCity" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		
 		<table schema="${schema}" tableName="w_weather_data" domainObjectName="WeatherData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		
 		<table schema="${schema}" tableName="w_weather_icon" domainObjectName="WeatherIcon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		-->
 		<table schema="${schema}" tableName="w_weather_key" domainObjectName="WeatherKey" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		 -->
+		<!--  -->
 	</context>
 </generatorConfiguration>

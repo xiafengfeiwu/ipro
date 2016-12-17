@@ -3,11 +3,11 @@ package com.pro.entity;
 public class WeatherKey {
     private Long id;
 
-    private String key;
+    private String weatherKey;
 
-    private String email;
+    private String weatherEmail;
 
-    private String emailPassword;
+    private String weatherEmailPassword;
 
     public Long getId() {
         return id;
@@ -17,27 +17,27 @@ public class WeatherKey {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getWeatherKey() {
+        return weatherKey;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setWeatherKey(String weatherKey) {
+        this.weatherKey = weatherKey;
     }
 
-    public String getEmail() {
-        return email;
+    public String getWeatherEmail() {
+        return weatherEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setWeatherEmail(String weatherEmail) {
+        this.weatherEmail = weatherEmail;
     }
 
-    public String getEmailPassword() {
-        return emailPassword;
+    public String getWeatherEmailPassword() {
+        return weatherEmailPassword;
     }
 
-    public void setEmailPassword(String emailPassword) {
-        this.emailPassword = emailPassword;
+    public void setWeatherEmailPassword(String weatherEmailPassword) {
+        this.weatherEmailPassword = weatherEmailPassword;
     }
 }

@@ -6,6 +6,7 @@ import com.pro.entity.WeatherIcon;
 import com.pro.entity.WeatherKey;
 
 public interface CityWeatherService {
+	
 	// 通过城市编码获取城市天气详情
 	WeatherData findTodayCityWeatherByCode(String cityCode);
 
@@ -14,6 +15,9 @@ public interface CityWeatherService {
 
 	// 获取第三方天气KEY值
 	WeatherKey findWeatherKey();
+
+	// 通过城市编码获取预警信息
+	WeatherAlarm findWeatherAlarmByCode(String cityCode);
 
 	// 更新第三方天气KEY值
 	void updateWeatherKey(WeatherKey weatherKey);

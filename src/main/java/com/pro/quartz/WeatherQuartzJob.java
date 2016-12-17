@@ -13,6 +13,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.pro.entity.WeatherAlarm;
 import com.pro.entity.WeatherData;
 import com.pro.entity.WeatherKey;
 import com.pro.service.CityWeatherService;
@@ -38,44 +39,34 @@ public class WeatherQuartzJob implements Job {
 		// 获取要进行更新的天气的城市编码 LIST
 		Set<String> cityCodes = new HashSet<>();
 
-		cityCodes.add("CN101010100");
-		cityCodes.add("CN101010200");
-		cityCodes.add("CN101010300");
-		cityCodes.add("CN101010400");
-		cityCodes.add("CN101010500");
-		cityCodes.add("CN101010600");
-		cityCodes.add("CN101010700");
-		cityCodes.add("CN101010800");
-		cityCodes.add("CN101010900");
-		cityCodes.add("CN101011000");
-		cityCodes.add("CN101011100");
-		cityCodes.add("CN101011200");
-		cityCodes.add("CN101011300");
-		cityCodes.add("CN101011400");
-		cityCodes.add("CN101011500");
 
 		// 判断城市总个数是否大于375 如果是 则在短信通知告警 增加容量或者缩短间隔 发送至系统管理员手机号
 		if (cityCodes.size() > 375) {
 			logger.error("城市编码总个数已经大于375，请增加接口容量或者缩短更新间隔。");
 		}
-
 		WeatherKey weatherKey = cityWeatherService.findWeatherKey();
 		if (weatherKey == null) {
 			logger.error("未配置第三方天气接口KEY值");
 			return;
 		}
-
-		String key = weatherKey.getKey();
-
+		String key = weatherKey.getWeatherKey();
 		// 遍历城市编码
 		for (String code : cityCodes) {
+			WeatherData wd = cityWeatherService.findTodayCityWeatherByCode(code);
+			if (wd != null && wd.getLastUpdateTime().getTime() - new Date().getTime() < 2 * 60 * 60 * 1000) {
+				logger.info(code + " : 无更新天气");
+				continue;
+			}
 			// 通过城市编码获取天气详情
 			String w_url = WeatherURL.replaceAll("#CITYCODE#", code).replaceAll("#KEY#", key);
 			try {
 				String result = HttpUtil.getRequest(w_url);
 				// 解析result
-
+				WeatherData weatherData = analysisWeatherDataJson(result);
 				// 插入更新天气信息
+				if (weatherData != null) {
+					cityWeatherService.upInsertWeatherData(weatherData);
+				}
 			} catch (Exception e) {
 				logger.error("Weather E " + e.getMessage());
 			}
@@ -84,36 +75,86 @@ public class WeatherQuartzJob implements Job {
 			try {
 				String result = HttpUtil.getRequest(a_url);
 				// 解析result
+				WeatherAlarm weatherAlarm = analysisAlarmDataJson(result);
+				logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>" + weatherAlarm);
 				// 插入更新预警信息
+				if (weatherAlarm != null) {
+					if (weatherAlarm.getEarlyWarnTime() == null) {
+						if (cityWeatherService.findWeatherAlarmByCode(weatherAlarm.getWeatherCityCode()) != null) {
+							cityWeatherService.clearWeaterAlarm(weatherAlarm.getWeatherCityCode());
+						}
+					} else {
+						logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>>" + result);
+						cityWeatherService.upInsertWeaterAlarm(weatherAlarm);
+					}
+				}
 			} catch (Exception e) {
 				logger.error("Alarm E " + e.getMessage());
 			}
 		}
 	}
 
-	private WeatherData analysisJsonString(String json) {
+	private WeatherData analysisWeatherDataJson(String json) {
 		try {
 			JSONObject object = JSONObject.fromObject(json);
 			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
+			String status = root.getString("status");
+			if (!"ok".equals(status)) {
+				logger.error("解析天气数据失败：" + json);
+				return null;
+			}
 			JSONObject basic = root.getJSONObject("basic");
-			JSONObject now = root.getJSONObject("now");
-			
 			WeatherData data = new WeatherData();
-			String weatherCityCode = basic.getString("id");
-			data.setWeatherCityCode(weatherCityCode);
-			JSONObject daily = root.getJSONArray("daily_forecast").getJSONObject(0);
-			JSONObject astro = daily.getJSONObject("astro");
-			data.setSunriseTime(astro.getString("sr"));
-			data.setSunsetTime(astro.getString("ss"));
-			JSONObject cond = daily.getJSONObject("cond");
-			data.setDayWeather(cond.getString("code_d"));
-			data.setNightWeather(cond.getString("code_n"));
-			JSONObject tmp = daily.getJSONObject("tmp");
-			data.setMinTemperature(tmp.getString("min"));
-			data.setMaxTemperature(tmp.getString("max"));
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-			data.setCollectDate(df.parse(tmp.getString("")));
+			data.setWeatherCityCode(basic.getString("id"));
+			JSONObject update = basic.getJSONObject("update");
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			data.setCollectDate(df.parse(update.getString("loc")));
+			JSONObject now = root.getJSONObject("now");
+			JSONObject cond = now.getJSONObject("cond");
+			data.setCondCode(cond.getString("code"));
+			data.setCondCodeUrl(cityWeatherService.findWeatherIconByCode(data.getCondCode()).getIcon());
+			data.setCondTxt(cond.getString("txt"));
+			data.setFl(now.getString("fl"));
+			data.setHum(now.getString("hum"));
+			data.setPcpn(now.getString("pcpn"));
+			data.setPres(now.getString("pres"));
+			data.setTmp(now.getString("tmp"));
+			data.setVis(now.getString("vis"));
+			JSONObject wind = now.getJSONObject("wind");
+			data.setWindDeg(wind.getString("deg"));
+			data.setWindDir(wind.getString("dir"));
+			data.setWindSc(wind.getString("sc"));
+			data.setWindSpd(wind.getString("spd"));
 			data.setLastUpdateTime(new Date());
+			return data;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	private WeatherAlarm analysisAlarmDataJson(String json) {
+		try {
+			JSONObject object = JSONObject.fromObject(json);
+			JSONObject root = object.getJSONArray("HeWeather5").getJSONObject(0);
+			String status = root.getString("status");
+			if (!"ok".equals(status)) {
+				logger.error("解析天气预警数据失败：" + json);
+				return null;
+			}
+			JSONObject basic = root.getJSONObject("basic");
+			WeatherAlarm data = new WeatherAlarm();
+			data.setWeatherCityCode(basic.getString("id"));
+			Object alarms = root.get("alarms");
+			if (alarms == null) {
+				return data;
+			}
+			JSONObject alarm = root.getJSONArray("alarms").getJSONObject(0);
+			data.setEarlyWarnLevel(alarm.getString("level"));
+			data.setEarlyWarnStat(alarm.getString("stat"));
+			data.setEarlyWarnTitle(alarm.getString("title"));
+			data.setEarlyWarnTxt(alarm.getString("txt"));
+			data.setEarlyWarnType(alarm.getString("type"));
+			data.setEarlyWarnTime(new Date());
 			return data;
 		} catch (Exception e) {
 			return null;

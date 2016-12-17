@@ -4,12 +4,19 @@
   <resultMap id="BaseResultMap" type="com.pro.entity.WeatherData">
     <id column="weather_city_code" jdbcType="VARCHAR" property="weatherCityCode" />
     <id column="collect_date" jdbcType="DATE" property="collectDate" />
-    <result column="sunrise_time" jdbcType="VARCHAR" property="sunriseTime" />
-    <result column="sunset_time" jdbcType="VARCHAR" property="sunsetTime" />
-    <result column="min_temperature" jdbcType="VARCHAR" property="minTemperature" />
-    <result column="max_temperature" jdbcType="VARCHAR" property="maxTemperature" />
-    <result column="day_weather" jdbcType="CHAR" property="dayWeather" />
-    <result column="night_weather" jdbcType="CHAR" property="nightWeather" />
+    <result column="cond_code" jdbcType="VARCHAR" property="condCode" />
+    <result column="cond_code_url" jdbcType="VARCHAR" property="condCodeUrl" />
+    <result column="cond_txt" jdbcType="VARCHAR" property="condTxt" />
+    <result column="fl" jdbcType="VARCHAR" property="fl" />
+    <result column="hum" jdbcType="VARCHAR" property="hum" />
+    <result column="pcpn" jdbcType="CHAR" property="pcpn" />
+    <result column="pres" jdbcType="CHAR" property="pres" />
+    <result column="tmp" jdbcType="VARCHAR" property="tmp" />
+    <result column="vis" jdbcType="VARCHAR" property="vis" />
+    <result column="wind_deg" jdbcType="VARCHAR" property="windDeg" />
+    <result column="wind_dir" jdbcType="VARCHAR" property="windDir" />
+    <result column="wind_sc" jdbcType="VARCHAR" property="windSc" />
+    <result column="wind_spd" jdbcType="VARCHAR" property="windSpd" />
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -71,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    weather_city_code, collect_date, sunrise_time, sunset_time, min_temperature, max_temperature, 
-    day_weather, night_weather, last_update_time
+    weather_city_code, collect_date, cond_code, cond_code_url, cond_txt, fl, hum, pcpn, 
+    pres, tmp, vis, wind_deg, wind_dir, wind_sc, wind_spd, last_update_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.WeatherDataExample" resultMap="BaseResultMap">
     select
@@ -108,13 +115,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.WeatherData">
-    insert into w_weather_data (weather_city_code, collect_date, sunrise_time, 
-      sunset_time, min_temperature, max_temperature, 
-      day_weather, night_weather, last_update_time
+    insert into w_weather_data (weather_city_code, collect_date, cond_code, 
+      cond_code_url, cond_txt, fl, 
+      hum, pcpn, pres, tmp, 
+      vis, wind_deg, wind_dir, 
+      wind_sc, wind_spd, last_update_time
       )
-    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=DATE}, #{sunriseTime,jdbcType=VARCHAR}, 
-      #{sunsetTime,jdbcType=VARCHAR}, #{minTemperature,jdbcType=VARCHAR}, #{maxTemperature,jdbcType=VARCHAR}, 
-      #{dayWeather,jdbcType=CHAR}, #{nightWeather,jdbcType=CHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
+    values (#{weatherCityCode,jdbcType=VARCHAR}, #{collectDate,jdbcType=DATE}, #{condCode,jdbcType=VARCHAR}, 
+      #{condCodeUrl,jdbcType=VARCHAR}, #{condTxt,jdbcType=VARCHAR}, #{fl,jdbcType=VARCHAR}, 
+      #{hum,jdbcType=VARCHAR}, #{pcpn,jdbcType=CHAR}, #{pres,jdbcType=CHAR}, #{tmp,jdbcType=VARCHAR}, 
+      #{vis,jdbcType=VARCHAR}, #{windDeg,jdbcType=VARCHAR}, #{windDir,jdbcType=VARCHAR}, 
+      #{windSc,jdbcType=VARCHAR}, #{windSpd,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.WeatherData">
@@ -126,23 +137,44 @@
       <if test="collectDate != null">
         collect_date,
       </if>
-      <if test="sunriseTime != null">
-        sunrise_time,
+      <if test="condCode != null">
+        cond_code,
       </if>
-      <if test="sunsetTime != null">
-        sunset_time,
+      <if test="condCodeUrl != null">
+        cond_code_url,
       </if>
-      <if test="minTemperature != null">
-        min_temperature,
+      <if test="condTxt != null">
+        cond_txt,
       </if>
-      <if test="maxTemperature != null">
-        max_temperature,
+      <if test="fl != null">
+        fl,
       </if>
-      <if test="dayWeather != null">
-        day_weather,
+      <if test="hum != null">
+        hum,
       </if>
-      <if test="nightWeather != null">
-        night_weather,
+      <if test="pcpn != null">
+        pcpn,
+      </if>
+      <if test="pres != null">
+        pres,
+      </if>
+      <if test="tmp != null">
+        tmp,
+      </if>
+      <if test="vis != null">
+        vis,
+      </if>
+      <if test="windDeg != null">
+        wind_deg,
+      </if>
+      <if test="windDir != null">
+        wind_dir,
+      </if>
+      <if test="windSc != null">
+        wind_sc,
+      </if>
+      <if test="windSpd != null">
+        wind_spd,
       </if>
       <if test="lastUpdateTime != null">
         last_update_time,
@@ -155,23 +187,44 @@
       <if test="collectDate != null">
         #{collectDate,jdbcType=DATE},
       </if>
-      <if test="sunriseTime != null">
-        #{sunriseTime,jdbcType=VARCHAR},
+      <if test="condCode != null">
+        #{condCode,jdbcType=VARCHAR},
       </if>
-      <if test="sunsetTime != null">
-        #{sunsetTime,jdbcType=VARCHAR},
+      <if test="condCodeUrl != null">
+        #{condCodeUrl,jdbcType=VARCHAR},
       </if>
-      <if test="minTemperature != null">
-        #{minTemperature,jdbcType=VARCHAR},
+      <if test="condTxt != null">
+        #{condTxt,jdbcType=VARCHAR},
       </if>
-      <if test="maxTemperature != null">
-        #{maxTemperature,jdbcType=VARCHAR},
+      <if test="fl != null">
+        #{fl,jdbcType=VARCHAR},
       </if>
-      <if test="dayWeather != null">
-        #{dayWeather,jdbcType=CHAR},
+      <if test="hum != null">
+        #{hum,jdbcType=VARCHAR},
       </if>
-      <if test="nightWeather != null">
-        #{nightWeather,jdbcType=CHAR},
+      <if test="pcpn != null">
+        #{pcpn,jdbcType=CHAR},
+      </if>
+      <if test="pres != null">
+        #{pres,jdbcType=CHAR},
+      </if>
+      <if test="tmp != null">
+        #{tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="vis != null">
+        #{vis,jdbcType=VARCHAR},
+      </if>
+      <if test="windDeg != null">
+        #{windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="windDir != null">
+        #{windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="windSc != null">
+        #{windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="windSpd != null">
+        #{windSpd,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateTime != null">
         #{lastUpdateTime,jdbcType=TIMESTAMP},
@@ -193,23 +246,44 @@
       <if test="record.collectDate != null">
         collect_date = #{record.collectDate,jdbcType=DATE},
       </if>
-      <if test="record.sunriseTime != null">
-        sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
+      <if test="record.condCode != null">
+        cond_code = #{record.condCode,jdbcType=VARCHAR},
       </if>
-      <if test="record.sunsetTime != null">
-        sunset_time = #{record.sunsetTime,jdbcType=VARCHAR},
+      <if test="record.condCodeUrl != null">
+        cond_code_url = #{record.condCodeUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.minTemperature != null">
-        min_temperature = #{record.minTemperature,jdbcType=VARCHAR},
+      <if test="record.condTxt != null">
+        cond_txt = #{record.condTxt,jdbcType=VARCHAR},
       </if>
-      <if test="record.maxTemperature != null">
-        max_temperature = #{record.maxTemperature,jdbcType=VARCHAR},
+      <if test="record.fl != null">
+        fl = #{record.fl,jdbcType=VARCHAR},
       </if>
-      <if test="record.dayWeather != null">
-        day_weather = #{record.dayWeather,jdbcType=CHAR},
+      <if test="record.hum != null">
+        hum = #{record.hum,jdbcType=VARCHAR},
       </if>
-      <if test="record.nightWeather != null">
-        night_weather = #{record.nightWeather,jdbcType=CHAR},
+      <if test="record.pcpn != null">
+        pcpn = #{record.pcpn,jdbcType=CHAR},
+      </if>
+      <if test="record.pres != null">
+        pres = #{record.pres,jdbcType=CHAR},
+      </if>
+      <if test="record.tmp != null">
+        tmp = #{record.tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.vis != null">
+        vis = #{record.vis,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windDeg != null">
+        wind_deg = #{record.windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windDir != null">
+        wind_dir = #{record.windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windSc != null">
+        wind_sc = #{record.windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.windSpd != null">
+        wind_spd = #{record.windSpd,jdbcType=VARCHAR},
       </if>
       <if test="record.lastUpdateTime != null">
         last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
@@ -223,12 +297,19 @@
     update w_weather_data
     set weather_city_code = #{record.weatherCityCode,jdbcType=VARCHAR},
       collect_date = #{record.collectDate,jdbcType=DATE},
-      sunrise_time = #{record.sunriseTime,jdbcType=VARCHAR},
-      sunset_time = #{record.sunsetTime,jdbcType=VARCHAR},
-      min_temperature = #{record.minTemperature,jdbcType=VARCHAR},
-      max_temperature = #{record.maxTemperature,jdbcType=VARCHAR},
-      day_weather = #{record.dayWeather,jdbcType=CHAR},
-      night_weather = #{record.nightWeather,jdbcType=CHAR},
+      cond_code = #{record.condCode,jdbcType=VARCHAR},
+      cond_code_url = #{record.condCodeUrl,jdbcType=VARCHAR},
+      cond_txt = #{record.condTxt,jdbcType=VARCHAR},
+      fl = #{record.fl,jdbcType=VARCHAR},
+      hum = #{record.hum,jdbcType=VARCHAR},
+      pcpn = #{record.pcpn,jdbcType=CHAR},
+      pres = #{record.pres,jdbcType=CHAR},
+      tmp = #{record.tmp,jdbcType=VARCHAR},
+      vis = #{record.vis,jdbcType=VARCHAR},
+      wind_deg = #{record.windDeg,jdbcType=VARCHAR},
+      wind_dir = #{record.windDir,jdbcType=VARCHAR},
+      wind_sc = #{record.windSc,jdbcType=VARCHAR},
+      wind_spd = #{record.windSpd,jdbcType=VARCHAR},
       last_update_time = #{record.lastUpdateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -237,23 +318,44 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WeatherData">
     update w_weather_data
     <set>
-      <if test="sunriseTime != null">
-        sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
+      <if test="condCode != null">
+        cond_code = #{condCode,jdbcType=VARCHAR},
       </if>
-      <if test="sunsetTime != null">
-        sunset_time = #{sunsetTime,jdbcType=VARCHAR},
+      <if test="condCodeUrl != null">
+        cond_code_url = #{condCodeUrl,jdbcType=VARCHAR},
       </if>
-      <if test="minTemperature != null">
-        min_temperature = #{minTemperature,jdbcType=VARCHAR},
+      <if test="condTxt != null">
+        cond_txt = #{condTxt,jdbcType=VARCHAR},
       </if>
-      <if test="maxTemperature != null">
-        max_temperature = #{maxTemperature,jdbcType=VARCHAR},
+      <if test="fl != null">
+        fl = #{fl,jdbcType=VARCHAR},
       </if>
-      <if test="dayWeather != null">
-        day_weather = #{dayWeather,jdbcType=CHAR},
+      <if test="hum != null">
+        hum = #{hum,jdbcType=VARCHAR},
       </if>
-      <if test="nightWeather != null">
-        night_weather = #{nightWeather,jdbcType=CHAR},
+      <if test="pcpn != null">
+        pcpn = #{pcpn,jdbcType=CHAR},
+      </if>
+      <if test="pres != null">
+        pres = #{pres,jdbcType=CHAR},
+      </if>
+      <if test="tmp != null">
+        tmp = #{tmp,jdbcType=VARCHAR},
+      </if>
+      <if test="vis != null">
+        vis = #{vis,jdbcType=VARCHAR},
+      </if>
+      <if test="windDeg != null">
+        wind_deg = #{windDeg,jdbcType=VARCHAR},
+      </if>
+      <if test="windDir != null">
+        wind_dir = #{windDir,jdbcType=VARCHAR},
+      </if>
+      <if test="windSc != null">
+        wind_sc = #{windSc,jdbcType=VARCHAR},
+      </if>
+      <if test="windSpd != null">
+        wind_spd = #{windSpd,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateTime != null">
         last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
@@ -264,12 +366,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.WeatherData">
     update w_weather_data
-    set sunrise_time = #{sunriseTime,jdbcType=VARCHAR},
-      sunset_time = #{sunsetTime,jdbcType=VARCHAR},
-      min_temperature = #{minTemperature,jdbcType=VARCHAR},
-      max_temperature = #{maxTemperature,jdbcType=VARCHAR},
-      day_weather = #{dayWeather,jdbcType=CHAR},
-      night_weather = #{nightWeather,jdbcType=CHAR},
+    set cond_code = #{condCode,jdbcType=VARCHAR},
+      cond_code_url = #{condCodeUrl,jdbcType=VARCHAR},
+      cond_txt = #{condTxt,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      hum = #{hum,jdbcType=VARCHAR},
+      pcpn = #{pcpn,jdbcType=CHAR},
+      pres = #{pres,jdbcType=CHAR},
+      tmp = #{tmp,jdbcType=VARCHAR},
+      vis = #{vis,jdbcType=VARCHAR},
+      wind_deg = #{windDeg,jdbcType=VARCHAR},
+      wind_dir = #{windDir,jdbcType=VARCHAR},
+      wind_sc = #{windSc,jdbcType=VARCHAR},
+      wind_spd = #{windSpd,jdbcType=VARCHAR},
       last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP}
     where weather_city_code = #{weatherCityCode,jdbcType=VARCHAR}
       and collect_date = #{collectDate,jdbcType=DATE}

@@ -3,66 +3,136 @@ package com.pro.entity;
 import java.util.Date;
 
 public class WeatherData extends WeatherDataKey {
-    private String sunriseTime;
+    private String condCode;
 
-    private String sunsetTime;
+    private String condCodeUrl;
 
-    private String minTemperature;
+    private String condTxt;
 
-    private String maxTemperature;
+    private String fl;
 
-    private String dayWeather;
+    private String hum;
 
-    private String nightWeather;
+    private String pcpn;
+
+    private String pres;
+
+    private String tmp;
+
+    private String vis;
+
+    private String windDeg;
+
+    private String windDir;
+
+    private String windSc;
+
+    private String windSpd;
 
     private Date lastUpdateTime;
 
-    public String getSunriseTime() {
-        return sunriseTime;
+    public String getCondCode() {
+        return condCode;
     }
 
-    public void setSunriseTime(String sunriseTime) {
-        this.sunriseTime = sunriseTime;
+    public void setCondCode(String condCode) {
+        this.condCode = condCode;
     }
 
-    public String getSunsetTime() {
-        return sunsetTime;
+    public String getCondCodeUrl() {
+        return condCodeUrl;
     }
 
-    public void setSunsetTime(String sunsetTime) {
-        this.sunsetTime = sunsetTime;
+    public void setCondCodeUrl(String condCodeUrl) {
+        this.condCodeUrl = condCodeUrl;
     }
 
-    public String getMinTemperature() {
-        return minTemperature;
+    public String getCondTxt() {
+        return condTxt;
     }
 
-    public void setMinTemperature(String minTemperature) {
-        this.minTemperature = minTemperature;
+    public void setCondTxt(String condTxt) {
+        this.condTxt = condTxt;
     }
 
-    public String getMaxTemperature() {
-        return maxTemperature;
+    public String getFl() {
+        return fl;
     }
 
-    public void setMaxTemperature(String maxTemperature) {
-        this.maxTemperature = maxTemperature;
+    public void setFl(String fl) {
+        this.fl = fl;
     }
 
-    public String getDayWeather() {
-        return dayWeather;
+    public String getHum() {
+        return hum;
     }
 
-    public void setDayWeather(String dayWeather) {
-        this.dayWeather = dayWeather;
+    public void setHum(String hum) {
+        this.hum = hum;
     }
 
-    public String getNightWeather() {
-        return nightWeather;
+    public String getPcpn() {
+        return pcpn;
     }
 
-    public void setNightWeather(String nightWeather) {
-        this.nightWeather = nightWeather;
+    public void setPcpn(String pcpn) {
+        this.pcpn = pcpn;
+    }
+
+    public String getPres() {
+        return pres;
+    }
+
+    public void setPres(String pres) {
+        this.pres = pres;
+    }
+
+    public String getTmp() {
+        return tmp;
+    }
+
+    public void setTmp(String tmp) {
+        this.tmp = tmp;
+    }
+
+    public String getVis() {
+        return vis;
+    }
+
+    public void setVis(String vis) {
+        this.vis = vis;
+    }
+
+    public String getWindDeg() {
+        return windDeg;
+    }
+
+    public void setWindDeg(String windDeg) {
+        this.windDeg = windDeg;
+    }
+
+    public String getWindDir() {
+        return windDir;
+    }
+
+    public void setWindDir(String windDir) {
+        this.windDir = windDir;
+    }
+
+    public String getWindSc() {
+        return windSc;
+    }
+
+    public void setWindSc(String windSc) {
+        this.windSc = windSc;
+    }
+
+    public String getWindSpd() {
+        return windSpd;
+    }
+
+    public void setWindSpd(String windSpd) {
+        this.windSpd = windSpd;
     }
 
     public Date getLastUpdateTime() {

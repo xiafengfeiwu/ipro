@@ -57,6 +57,12 @@ public class TxController {
 		return modelAndView;
 	}
 
+	@RequestMapping("loginInvalid")
+	public ModelAndView loginInvalidPage() {
+		ModelAndView modelAndView = new ModelAndView("login_invalid");
+		return modelAndView;
+	}
+
 	@ResponseBody
 	@RequestMapping("loginAction")
 	public Map<String, Object> loginAction(String username, String password) {

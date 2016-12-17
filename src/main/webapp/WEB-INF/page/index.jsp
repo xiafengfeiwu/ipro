@@ -40,7 +40,7 @@
 								</span>
 							</a>
 							<ul class="dropdown-menu animated fadeIn">
-								<li><a href="javascript:;">个人信息</a></li>
+								<li><a class="J_menuItem" href="user/me.jspx">个人信息</a></li>
 								<li class="divider"></li>
 								<li><a href="logout.jspx">安全退出</a></li>
 							</ul>
@@ -84,7 +84,7 @@
 						<li class="J_tabCloseOther"><a>关闭其他选项卡</a></li>
 					</ul>
 				</div>
-				<a href="javascript:;" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+				<a href="logout.jspx" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
 			</div>
 			<div class="row J_mainContent" id="content-main">
 				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="welcome.jspx" frameborder="0" seamless></iframe>

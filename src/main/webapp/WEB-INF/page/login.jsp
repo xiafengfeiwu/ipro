@@ -24,7 +24,7 @@ body {
 }
 
 .top_div {
-	background: rgb(100, 168, 83);
+	background: #39aef5;
 	width: 100%;
 	height: 280px;
 }

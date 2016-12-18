@@ -80,12 +80,12 @@ a {
 		<p style="padding: 10px 0px 10px; position: relative;">
 			<span class="input-icon user"></span> <input id="username"
 				style="padding-left: 37px;" class="ipt" type="text"
-				placeholder="请输入登录名" value="">
+				placeholder="请输入登录名" value="admin">
 		</p>
 		<p style="position: relative; margin-bottom: 20px;">
 			<span class="input-icon lock"></span> <input
 				style="padding-left: 37px;" class="ipt" id="password"
-				type="password" placeholder="请输入密码" value="">
+				type="password" placeholder="请输入密码" value="123456">
 		</p>
 		<div
 			style="height: 40px; line-height: 40px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid; text-align: center; padding-top: 16px">

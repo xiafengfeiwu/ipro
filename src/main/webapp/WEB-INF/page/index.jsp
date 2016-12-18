@@ -31,7 +31,7 @@
 					<li class="nav-header">
 						<div class="dropdown profile-element">
 							<span>
-								<img alt="image" class="img-circle" src="resources/img/default_head_124x124.png" />
+								<img alt="image" id="parentHeadImageBox" class="img-circle" src="${user.userPortraitPath }" />
 							</span> 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
 								<span class="clear">
@@ -71,7 +71,7 @@
 				</button>
 				<nav class="page-tabs J_menuTabs">
 					<div class="page-tabs-content">
-						<a href="javascript:;" class="active J_menuTab" data-id="resume">主页面</a>
+						<a href="javascript:;" class="active J_menuTab" data-id="welcome.jspx">主页面</a>
 					</div>
 				</nav>
 				<button class="roll-nav roll-right J_tabRight">
@@ -87,7 +87,7 @@
 				<a href="logout.jspx" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
 			</div>
 			<div class="row J_mainContent" id="content-main">
-				<iframe class="J_iframe" data-id="resume" name="resume" width="100%" height="100%" src="welcome.jspx" frameborder="0" seamless></iframe>
+				<iframe class="J_iframe" data-id="welcome.jspx" name="welcome.jspx" width="100%" height="100%" src="welcome.jspx" frameborder="0" seamless></iframe>
 			</div>
 			<div class="footer">
 				<div class="pull-right">${systemInfo.systemTechnicalSupport }</div>

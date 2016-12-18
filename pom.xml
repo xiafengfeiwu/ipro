@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<!-- spring版本号 -->
-		<spring.version>4.3.2.release</spring.version>
+		<spring.version>4.3.2.RELEASE</spring.version>
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.21</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -59,6 +59,8 @@
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<!-- hibernate.validator.version -->
 		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
+		<!-- jpinyin.version -->
+		<jpinyin.version>1.1.8</jpinyin.version>
 	</properties>
 	<build>
 		<plugins>
@@ -73,7 +75,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<!-- 添加Spring依赖 -->
 		<dependency>
@@ -260,22 +261,6 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
-		<!-- for rabbitmq -->
-		<dependency>
-			<groupId>com.rabbitmq</groupId>
-			<artifactId>amqp-client</artifactId>
-			<version>${amqp.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-amqp</artifactId>
-			<version>${rabbit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-rabbit</artifactId>
-			<version>${rabbit.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>com.caucho</groupId>
 			<artifactId>hessian</artifactId>
@@ -325,6 +310,11 @@
 			<groupId>javax.websocket</groupId>
 			<artifactId>javax.websocket-api</artifactId>
 			<version>${javax.websocket.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.stuxuhai</groupId>
+		    <artifactId>jpinyin</artifactId>
+		    <version>${jpinyin.version}</version>
 		</dependency>
 	</dependencies>
 </project>

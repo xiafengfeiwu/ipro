@@ -31,8 +31,8 @@
 							<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;"> <i class="fa fa-bars"></i>
 							</a>
 							<ul class="dropdown-menu dropdown-user">
-								<li><a href="javascript:;" onclick="openCreateRoleWindow()">新增角色</a></li>
-								<li><a href="javascript:;" onclick="window.location.reload()">刷新列表</a></li>
+								<li><a href="javascript:;" onclick="openCreateRoleWindow()"> <i class="fa fa-plus-square-o"></i> &nbsp;  新增角色</a></li>
+								<li><a href="javascript:;" onclick="window.location.reload()"> <i class="fa fa-refresh"></i> &nbsp; 刷新列表</a></li>
 							</ul>
 						</div>
 					</div>

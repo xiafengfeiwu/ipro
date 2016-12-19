@@ -55,10 +55,13 @@ public class UserController {
 		}
 		data.put("reqPage", reqPage);
 		long count = userService.getUserCount(reqPage.getSearchWord());
-		data.put("count", count);
 		if (count > 0) {
+			data.put("totalPages", (int) ((count + reqPage.getLength() - 1) / reqPage.getLength()));
 			List<User> list = userService.getUserData(reqPage.getSearchWord(), reqPage.getField(), reqPage.getOrder(), reqPage.getPage(), reqPage.getLength());
 			data.put("data", list);
+			data.put("success", true);
+		} else {
+			data.put("success", false);
 		}
 		return data;
 	}

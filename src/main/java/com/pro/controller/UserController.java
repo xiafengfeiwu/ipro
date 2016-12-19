@@ -47,7 +47,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequiresAuthentication
-	@RequestMapping("list")
+	@RequestMapping("listData")
 	public Map<String, Object> listData(RequestPage reqPage) {
 		Map<String, Object> data = new HashMap<>();
 		if (reqPage == null) {

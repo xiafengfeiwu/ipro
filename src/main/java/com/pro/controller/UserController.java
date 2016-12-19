@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,11 +18,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pro.entity.User;
+import com.pro.model.RequestPage;
 import com.pro.service.RoleService;
 import com.pro.service.UserService;
 import com.pro.util.PublicUtil;
@@ -32,6 +37,31 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	RoleService roleService;
+
+	@RequiresAuthentication
+	@RequestMapping("list")
+	public ModelAndView listPage() {
+		ModelAndView modelAndView = new ModelAndView("user_list");
+		return modelAndView;
+	}
+
+	@ResponseBody
+	@RequiresAuthentication
+	@RequestMapping("list")
+	public Map<String, Object> listData(RequestPage reqPage) {
+		Map<String, Object> data = new HashMap<>();
+		if (reqPage == null) {
+			reqPage = new RequestPage();
+		}
+		data.put("reqPage", reqPage);
+		long count = userService.getUserCount(reqPage.getSearchWord());
+		data.put("count", count);
+		if (count > 0) {
+			List<User> list = userService.getUserData(reqPage.getSearchWord(), reqPage.getField(), reqPage.getOrder(), reqPage.getPage(), reqPage.getLength());
+			data.put("data", list);
+		}
+		return data;
+	}
 
 	@RequiresAuthentication
 	@RequestMapping("me")
@@ -91,7 +121,7 @@ public class UserController {
 		try {
 			userService.update(qU);
 		} catch (Exception e) {
-			attr.addFlashAttribute("message", e.getMessage());
+			attr.addFlashAttribute("message", "修改失败，请稍候重试！");
 			return view;
 		}
 		attr.addFlashAttribute("status", "success");
@@ -108,9 +138,7 @@ public class UserController {
 
 	@RequiresAuthentication
 	@RequestMapping("changeSelfPwdAction")
-	public String changeSelfPwdAction(@ModelAttribute("userYsPwd") String userYsPwd,
-			@ModelAttribute("userNewPwd") String userNewPwd, @ModelAttribute("userReNewPwd") String userReNewPwd,
-			RedirectAttributes attr) {
+	public String changeSelfPwdAction(@ModelAttribute("userYsPwd") String userYsPwd, @ModelAttribute("userNewPwd") String userNewPwd, @ModelAttribute("userReNewPwd") String userReNewPwd, RedirectAttributes attr) {
 		String view = "redirect:/user/changeSelfPwd.jspx";
 		attr.addFlashAttribute("status", "danger");
 		if (!PublicUtil.isPassword(userYsPwd)) {
@@ -135,7 +163,7 @@ public class UserController {
 		try {
 			userService.update(user);
 		} catch (Exception e) {
-			attr.addFlashAttribute("message", e.getMessage());
+			attr.addFlashAttribute("message", "修改失败，请稍候重试！");
 			return view;
 		}
 		attr.addFlashAttribute("status", "success");
@@ -154,22 +182,21 @@ public class UserController {
 
 	@RequiresAuthentication
 	@RequestMapping("changeSelfHeadPicAction")
-	public String changeSelfHeadPicAction(HttpServletRequest request, @RequestParam("file") CommonsMultipartFile file,
-			RedirectAttributes attr) throws Exception {
+	public String changeSelfHeadPicAction(HttpServletRequest request, @RequestParam("file") CommonsMultipartFile file, RedirectAttributes attr) throws Exception {
 		String view = "redirect:/user/changeSelfHeadPic.jspx";
 		attr.addFlashAttribute("status", "danger");
 		if (file == null || file.getFileItem() == null || file.isEmpty()) {
 			attr.addFlashAttribute("message", "未选择文件");
 			return view;
 		}
-		if(file.getSize() > 1024*1024*1) {
+		if (file.getSize() > 1024 * 1024 * 1) {
 			attr.addFlashAttribute("message", "图片太大了，不能超过1M");
 			return view;
 		}
 		String fileName = file.getOriginalFilename();
 		String[] f = fileName.split("[.]");
 		String type = f[f.length - 1].toLowerCase();
-		if(!"png".equals(type) && !"jpg".equals(type)) {
+		if (!"png".equals(type) && !"jpg".equals(type)) {
 			attr.addFlashAttribute("message", "无效的图片类型");
 			return view;
 		}
@@ -190,7 +217,7 @@ public class UserController {
 		try {
 			userService.update(user);
 		} catch (Exception e) {
-			attr.addFlashAttribute("message", e.getMessage());
+			attr.addFlashAttribute("message", "修改失败，请稍候重试！");
 			return view;
 		}
 		attr.addFlashAttribute("status", "success");

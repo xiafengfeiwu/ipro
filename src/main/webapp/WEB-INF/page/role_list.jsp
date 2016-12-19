@@ -56,7 +56,7 @@
 										<td><c:if test="${role.systemRole }"><i class="glyphicon glyphicon-ok"></i></c:if></td>
 										<td><fmt:formatDate value="${role.roleCreateTime}" pattern="yyyy-MM-dd HH:mm" /></td>
 										<td><fmt:formatDate value="${role.roleModifyTime}" pattern="yyyy-MM-dd HH:mm" /></td>
-										<td><a href="javascript:;" onclick="openRoleAuthWindow()">授权</a><c:if test="${!role.systemRole }"> | <a href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a> | <a href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a></c:if></td>
+										<td><a href="javascript:;" onclick="openRoleAuthWindow('${role.roleId}', '${role.roleName }')">授权权限</a> | <a href="javascript:;" onclick="openRoleMenuWindow('${role.roleId}', '${role.roleName }')">授权菜单</a><c:if test="${!role.systemRole }"> | <a href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a> | <a href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a></c:if></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -102,15 +102,27 @@
                 content: ['role/delete.jspx?roleId=' + roleId, 'yes']
             });
 		}
-        function openRoleAuthWindow(){
+        function openRoleAuthWindow(roleId , roleName){
         	parent.layer.open({
                 type: 2,
-                title: '角色授权',
+                title: '角色 ' + roleName + ' 授权权限',
                 closeBtn: true,
+                resize: true,
                 shade: [0.23],
-                area: ['90%', '90%'],
-                content: ['develop/role/authorize.jspx', 'no'], //iframe的url，no代表不显示滚动条
+                area: ['788px', '448px'],
+                content: ['role/authorize.jspx?roleId=' + roleId, 'yes']
             });
+        }
+       	function openRoleMenuWindow(roleId , roleName){
+           	parent.layer.open({
+                 type: 2,
+                 title: '角色 ' + roleName + ' 授权菜单',
+                 closeBtn: true,
+                 resize: true,
+                 shade: [0.23],
+                 area: ['788px', '448px'],
+                 content: ['role/menu.jspx?roleId=' + roleId, 'yes']
+             });
         }
     </script>
 </body>

@@ -32,6 +32,12 @@ public interface RoleService {
 	// 获取角色所有权限字
 	List<Jurisdiction> findRoleJurisdictions(Long roleId);
 
+	// 检查角色权限字是否存在
+	boolean checkRoleJurisdiction(Long roleId, Long jurisdictionId);
+
+	// 检查角色权限字是否存在
+	boolean checkRoleMenu(Long roleId, Long menuId);
+
 	// 获取角色所有菜单
 	List<Menu> findRoleMenus(Long roleId);
 

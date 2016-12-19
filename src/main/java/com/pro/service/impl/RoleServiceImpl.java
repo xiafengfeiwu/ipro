@@ -98,7 +98,24 @@ public class RoleServiceImpl implements RoleService {
 		}
 		JurisdictionExample example2 = new JurisdictionExample();
 		example2.createCriteria().andJurisdictionIdIn(juids);
-		return jurisdictionMapper.selectByExample(example2);
+		List<Jurisdiction> list = jurisdictionMapper.selectByExample(example2);
+		return list;
+	}
+
+	@Override
+	public boolean checkRoleJurisdiction(Long roleId, Long jurisdictionId) {
+		RoleJurisdictionExample example = new RoleJurisdictionExample();
+		example.createCriteria().andJurisdictionIdEqualTo(jurisdictionId).andRoleIdEqualTo(roleId);
+		List<RoleJurisdictionKey> roleJurisdictions = roleJurisdictionMapper.selectByExample(example);
+		return PublicUtil.isNotEmpty(roleJurisdictions);
+	}
+
+	@Override
+	public boolean checkRoleMenu(Long roleId, Long menuId) {
+		RoleMenuKey key = new RoleMenuKey();
+		key.setRoleId(roleId);
+		key.setMenuId(menuId);
+		return null != roleMenuMapper.selectByPrimaryKey(key);
 	}
 
 	@Override

@@ -36,8 +36,8 @@
 						<form action="role/menuAction.jspx">
 							<input type="hidden" name="roleId" value="${roleId }">
 							<input type="hidden" name="menuPid" value="${val.menuPid }">
-							<input type="hidden" name="menuId" value="${val.menuId }"> &nbsp;&nbsp;&nbsp;&nbsp; 
-							<button type="submit" class="btn btn-w-m btn-link"><span style="display:-moz-inline-box;display:inline-block;width:24px; "><i class="fa ${val.hasMenu }"></i></span> ${val.menuName }</button>
+							<input type="hidden" name="menuId" value="${val.menuId }">
+							<button type="submit" class="btn btn-w-m btn-link"  style="width:80%;text-align: left;"><span style="display:-moz-inline-box;display:inline-block;width:24px; "><i class="fa ${val.hasMenu }"></i></span> ${val.menuName }</button>
 						</form>
 					</c:forEach>
 					<div class="hr-line-dashed"></div>

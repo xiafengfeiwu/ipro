@@ -3,6 +3,8 @@ package com.pro.entity;
 import java.util.Date;
 
 public class WebSystem {
+    private Long systemId;
+
     private String systemLogoUrl;
 
     private String systemTitle;
@@ -12,6 +14,14 @@ public class WebSystem {
     private String systemTechnicalSupport;
 
     private Date systemModifyTime;
+
+    public Long getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(Long systemId) {
+        this.systemId = systemId;
+    }
 
     public String getSystemLogoUrl() {
         return systemLogoUrl;

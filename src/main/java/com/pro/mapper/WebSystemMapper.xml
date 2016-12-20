@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pro.dao.WebSystemMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.WebSystem">
+    <id column="system_id" jdbcType="BIGINT" property="systemId" />
     <result column="system_logo_url" jdbcType="VARCHAR" property="systemLogoUrl" />
     <result column="system_title" jdbcType="VARCHAR" property="systemTitle" />
     <result column="system_jian_pin" jdbcType="VARCHAR" property="systemJianPin" />
@@ -67,7 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    system_logo_url, system_title, system_jian_pin, system_technical_support, system_modify_time
+    system_id, system_logo_url, system_title, system_jian_pin, system_technical_support, 
+    system_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.WebSystemExample" resultMap="BaseResultMap">
     select
@@ -84,6 +86,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_system
+    where system_id = #{systemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_system
+    where system_id = #{systemId,jdbcType=BIGINT}
+  </delete>
   <delete id="deleteByExample" parameterType="com.pro.entity.WebSystemExample">
     delete from w_system
     <if test="_parameter != null">
@@ -91,16 +103,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.WebSystem">
-    insert into w_system (system_logo_url, system_title, system_jian_pin, 
-      system_technical_support, system_modify_time
-      )
-    values (#{systemLogoUrl,jdbcType=VARCHAR}, #{systemTitle,jdbcType=VARCHAR}, #{systemJianPin,jdbcType=VARCHAR}, 
-      #{systemTechnicalSupport,jdbcType=VARCHAR}, #{systemModifyTime,jdbcType=TIMESTAMP}
-      )
+    insert into w_system (system_id, system_logo_url, system_title, 
+      system_jian_pin, system_technical_support, 
+      system_modify_time)
+    values (#{systemId,jdbcType=BIGINT}, #{systemLogoUrl,jdbcType=VARCHAR}, #{systemTitle,jdbcType=VARCHAR}, 
+      #{systemJianPin,jdbcType=VARCHAR}, #{systemTechnicalSupport,jdbcType=VARCHAR}, 
+      #{systemModifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.WebSystem">
     insert into w_system
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="systemId != null">
+        system_id,
+      </if>
       <if test="systemLogoUrl != null">
         system_logo_url,
       </if>
@@ -118,6 +133,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="systemId != null">
+        #{systemId,jdbcType=BIGINT},
+      </if>
       <if test="systemLogoUrl != null">
         #{systemLogoUrl,jdbcType=VARCHAR},
       </if>
@@ -144,6 +162,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update w_system
     <set>
+      <if test="record.systemId != null">
+        system_id = #{record.systemId,jdbcType=BIGINT},
+      </if>
       <if test="record.systemLogoUrl != null">
         system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
       </if>
@@ -166,7 +187,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update w_system
-    set system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
+    set system_id = #{record.systemId,jdbcType=BIGINT},
+      system_logo_url = #{record.systemLogoUrl,jdbcType=VARCHAR},
       system_title = #{record.systemTitle,jdbcType=VARCHAR},
       system_jian_pin = #{record.systemJianPin,jdbcType=VARCHAR},
       system_technical_support = #{record.systemTechnicalSupport,jdbcType=VARCHAR},
@@ -174,5 +196,35 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.WebSystem">
+    update w_system
+    <set>
+      <if test="systemLogoUrl != null">
+        system_logo_url = #{systemLogoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTitle != null">
+        system_title = #{systemTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="systemJianPin != null">
+        system_jian_pin = #{systemJianPin,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTechnicalSupport != null">
+        system_technical_support = #{systemTechnicalSupport,jdbcType=VARCHAR},
+      </if>
+      <if test="systemModifyTime != null">
+        system_modify_time = #{systemModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where system_id = #{systemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.WebSystem">
+    update w_system
+    set system_logo_url = #{systemLogoUrl,jdbcType=VARCHAR},
+      system_title = #{systemTitle,jdbcType=VARCHAR},
+      system_jian_pin = #{systemJianPin,jdbcType=VARCHAR},
+      system_technical_support = #{systemTechnicalSupport,jdbcType=VARCHAR},
+      system_modify_time = #{systemModifyTime,jdbcType=TIMESTAMP}
+    where system_id = #{systemId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -133,6 +133,7 @@ public class RoleServiceImpl implements RoleService {
 		}
 		MenuExample example2 = new MenuExample();
 		example2.createCriteria().andMenuIdIn(menuids);
+		example2.setOrderByClause("menu_order asc");
 		return menuMapper.selectByExample(example2);
 	}
 

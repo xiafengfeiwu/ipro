@@ -10,13 +10,21 @@ public interface WebSystemMapper {
 
     int deleteByExample(WebSystemExample example);
 
+    int deleteByPrimaryKey(Long systemId);
+
     int insert(WebSystem record);
 
     int insertSelective(WebSystem record);
 
     List<WebSystem> selectByExample(WebSystemExample example);
 
+    WebSystem selectByPrimaryKey(Long systemId);
+
     int updateByExampleSelective(@Param("record") WebSystem record, @Param("example") WebSystemExample example);
 
     int updateByExample(@Param("record") WebSystem record, @Param("example") WebSystemExample example);
+
+    int updateByPrimaryKeySelective(WebSystem record);
+
+    int updateByPrimaryKey(WebSystem record);
 }

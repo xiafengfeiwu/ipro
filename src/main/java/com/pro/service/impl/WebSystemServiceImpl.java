@@ -26,7 +26,7 @@ public class WebSystemServiceImpl implements WebSystemService {
 
 	@Override
 	public void update(WebSystem webSystem) {
-		webSystemMapper.updateByExampleSelective(webSystem, null);
+		webSystemMapper.updateByPrimaryKey(webSystem);
 	}
 
 }

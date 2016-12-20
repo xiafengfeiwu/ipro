@@ -7,12 +7,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +27,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.pro.entity.Role;
 import com.pro.entity.User;
 import com.pro.model.RequestPage;
 import com.pro.service.RoleService;
@@ -58,12 +63,100 @@ public class UserController {
 		if (count > 0) {
 			data.put("totalPages", (int) ((count + reqPage.getLength() - 1) / reqPage.getLength()));
 			List<User> list = userService.getUserData(reqPage.getSearchWord(), reqPage.getField(), reqPage.getOrder(), reqPage.getPage(), reqPage.getLength());
-			data.put("data", list);
+			List<Map<String, Object>> listData = new LinkedList<>();
+			for (User user : list) {
+				Map<String, Object> userData = new HashMap<>();
+				userData.put("userId", user.getUserId().toString());
+				userData.put("userLoginName", user.getUserLoginName());
+				userData.put("userName", user.getUserName());
+				userData.put("userPhone", user.getUserPhone());
+				userData.put("userHeadPic", user.getUserPortraitPath());
+				userData.put("userDisableStatus", user.getUserDisableStatus());
+				userData.put("userRegistTime", user.getUserRegistTime());
+				listData.add(userData);
+			}
+			data.put("data", listData);
 			data.put("success", true);
 		} else {
 			data.put("success", false);
 		}
 		return data;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("create")
+	@RequiresPermissions("CreateUser")
+	public ModelAndView createPage() {
+		ModelAndView modelAndView = new ModelAndView("user_create");
+		List<Role> roles = roleService.findAll(null, null, null);
+		Subject subject = SecurityUtils.getSubject();
+		if (!subject.isPermitted("AllotAllRole")) {
+			Role removeRole = null;
+			for (Role r : roles) {
+				// Administrator
+				if (r.getRoleId().equals(809601566439899136l)) {
+					removeRole = r;
+					break;
+				}
+			}
+			roles.remove(removeRole);
+		}
+		modelAndView.addObject("roles", roles);
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("createAction")
+	@RequiresPermissions("CreateUser")
+	public String createAction(User user, RedirectAttributes attr) {
+		String view = "redirect:/user/create.jspx";
+		attr.addFlashAttribute("status", "danger");
+		if (user == null) {
+			attr.addFlashAttribute("message", "无效的数据");
+			return view;
+		}
+		if (PublicUtil.isEmpty(user.getUserName())) {
+			attr.addFlashAttribute("message", "无效的用户名称");
+			return view;
+		} else {
+			user.setUserName(user.getUserName().trim());
+		}
+		if (!PublicUtil.isLoginName(user.getUserLoginName())) {
+			attr.addFlashAttribute("message", "无效的登录名");
+			return view;
+		}
+		if (!PublicUtil.isPhoneNo(user.getUserPhone())) {
+			attr.addFlashAttribute("message", "无效的手机号");
+			return view;
+		}
+		if (user.getRoleId() == null || user.getRoleId() == 0l) {
+			attr.addFlashAttribute("message", "请选择一个的用户角色");
+			return view;
+		}
+		if (userService.findByLoginName(user.getUserLoginName()) != null) {
+			attr.addFlashAttribute("message", "当前登录名称已存在");
+			return view;
+		}
+		if (userService.findByPhoneNo(user.getUserPhone()) != null) {
+			attr.addFlashAttribute("message", "当前手机号已存在");
+			return view;
+		}
+		user.setUserId(PublicUtil.initId());
+		user.setUserNamePy(PublicUtil.getStringPy(user.getUserName()));
+		user.setUserDisableStatus(false);
+		user.setUserPassword(PublicUtil.sha1("123456"));
+		user.setUserPortraitPath("resources/img/default_head_124x124.png");
+		user.setUserWxOpenId(null);
+		user.setUserRegistTime(new Date());
+		user.setUserModifyTime(new Date());
+		try {
+			userService.regist(user);
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "新增失败，请稍候重试！");
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "新增成功");
+		return view;
 	}
 
 	@RequiresAuthentication
@@ -83,6 +176,172 @@ public class UserController {
 		User user = userService.findById(PublicUtil.sessionUid());
 		modelAndView.addObject("user", user);
 		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("detail")
+	public ModelAndView detailPage(Long userId) {
+		ModelAndView modelAndView = new ModelAndView("user_detail");
+		User user = userService.findById(userId);
+		if (user == null) {
+			return modelAndView;
+		}
+		Role role = roleService.getById(user.getRoleId());
+		if (!"Administrator".equals(role.getRoleName())) {
+			modelAndView.addObject("showDelBtn", true);
+		}
+		modelAndView.addObject("roleName", role.getRoleName());
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserPw")
+	@RequiresPermissions("ReSetUserPwd")
+	public ModelAndView resetUserPwPage(Long userId) {
+		ModelAndView modelAndView = new ModelAndView("user_reset_password");
+		User user = userService.findById(userId);
+		if (user != null) {
+			modelAndView.addObject("userName", user.getUserName());
+			modelAndView.addObject("userPhone", user.getUserPhone());
+			modelAndView.addObject("userId", userId);
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserPwAction")
+	@RequiresPermissions("ReSetUserPwd")
+	public String resetUserPwAction(Long userId, RedirectAttributes attr) {
+		String view = "redirect:/user/resetUserPw.jspx?userId=" + userId;
+		attr.addFlashAttribute("status", "danger");
+		User user = userService.findById(userId);
+		user.setUserPassword(PublicUtil.sha1("123456"));
+		user.setUserModifyTime(new Date());
+		try {
+			userService.update(user);
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "操作失败，请稍候重试！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "密码重设成功。");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("delete")
+	@RequiresPermissions("DeleteUser")
+	public ModelAndView deletePage(Long userId) {
+		ModelAndView modelAndView = new ModelAndView("user_delete");
+		User user = userService.findById(userId);
+		if (user != null) {
+			modelAndView.addObject("userName", user.getUserName());
+			modelAndView.addObject("userPhone", user.getUserPhone());
+			modelAndView.addObject("userId", userId);
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("deleteAction")
+	@RequiresPermissions("DeleteUser")
+	public String deleteAction(Long userId, RedirectAttributes attr) {
+		String view = "redirect:/user/delete.jspx?userId=" + userId;
+		attr.addFlashAttribute("status", "danger");
+		try {
+			userService.delete(userId);
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "删除失败，可能用户有关联数据，建议禁用账号！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "删除成功。");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserStatus")
+	@RequiresPermissions("UpdateUser")
+	public ModelAndView resetUserStatusPage(Long userId) {
+		ModelAndView modelAndView = new ModelAndView("user_reset_status");
+		User user = userService.findById(userId);
+		if (user != null) {
+			modelAndView.addObject("userName", user.getUserName());
+			modelAndView.addObject("userPhone", user.getUserPhone());
+			modelAndView.addObject("statusText", user.getUserDisableStatus() ? "启用" : "禁用");
+			modelAndView.addObject("userId", userId);
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserStatusAction")
+	@RequiresPermissions("UpdateUser")
+	public String resetUserStatusAction(Long userId, RedirectAttributes attr) {
+		String view = "redirect:/user/resetUserStatus.jspx?userId=" + userId;
+		attr.addFlashAttribute("status", "danger");
+		User user = userService.findById(userId);
+		user.setUserDisableStatus(!user.getUserDisableStatus());
+		user.setUserModifyTime(new Date());
+		try {
+			userService.update(user);
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "操作失败，请稍候重试！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", (!user.getUserDisableStatus() ? "启用" : "禁用") + " 账号操作成功。");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserRole")
+	@RequiresPermissions("UserRoleAuth")
+	public ModelAndView resetUserRolePage(Long userId) {
+		ModelAndView modelAndView = new ModelAndView("user_reset_role");
+		User user = userService.findById(userId);
+		if (user != null) {
+			List<Role> roles = roleService.findAll(null, null, null);
+			Subject subject = SecurityUtils.getSubject();
+			if (!subject.isPermitted("AllotAllRole")) {
+				Role removeRole = null;
+				for (Role r : roles) {
+					// Administrator
+					if (r.getRoleId().equals(809601566439899136l)) {
+						removeRole = r;
+						break;
+					}
+				}
+				roles.remove(removeRole);
+			}
+			modelAndView.addObject("roles", roles);
+			modelAndView.addObject("userName", user.getUserName());
+			modelAndView.addObject("userPhone", user.getUserPhone());
+			modelAndView.addObject("userId", userId);
+			modelAndView.addObject("currentRoleId", user.getRoleId());
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("resetUserRoleAction")
+	@RequiresPermissions("UserRoleAuth")
+	public String resetUserRoleAction(Long userId, Long roleId, RedirectAttributes attr) {
+		String view = "redirect:/user/resetUserRole.jspx?userId=" + userId;
+		attr.addFlashAttribute("status", "danger");
+		User user = userService.findById(userId);
+		user.setRoleId(roleId);
+		user.setUserModifyTime(new Date());
+		try {
+			userService.update(user);
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "操作失败，请稍候重试！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "更改用户角色成功。");
+		return view;
 	}
 
 	@RequiresAuthentication

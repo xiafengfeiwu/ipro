@@ -35,12 +35,13 @@
 					<c:forEach items="${map.value}" var="val">
 						<form action="role/authorizeAction.jspx">
 							<input type="hidden" name="roleId" value="${roleId }">
-							<input type="hidden" name="jurisdictionId" value="${val.jurisdictionId }"> &nbsp;&nbsp;&nbsp;&nbsp; 
-							<button type="submit" class="btn btn-w-m btn-link"><span style="display:-moz-inline-box;display:inline-block;width:24px; "><i class="fa ${val.hasJurisdiction }"></i></span> ${val.jurisdictionName }（${val.jurisdictionDescript }）</button>
+							<input type="hidden" name="jurisdictionId" value="${val.jurisdictionId }">
+							<button type="submit" class="btn btn-w-m btn-link" style="width:80%;text-align: left;"><span style="display:-moz-inline-box;display:inline-block;width:24px; "><i class="fa ${val.hasJurisdiction }"></i></span> ${val.jurisdictionName }</button>
+							<span class="help-block m-b-none"> &nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp; 说明：${val.jurisdictionDescript }</span>
 						</form>
 					</c:forEach>
 					<div class="hr-line-dashed"></div>
-			</div>
+				</div>
 			</c:forEach>
 		</div>
 	</div>

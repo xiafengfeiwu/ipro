@@ -63,6 +63,12 @@ public class TxController {
 		return modelAndView;
 	}
 
+	@RequestMapping("unauthorized")
+	public ModelAndView unauthorizedPage() {
+		ModelAndView modelAndView = new ModelAndView("unauthorized");
+		return modelAndView;
+	}
+	
 	@ResponseBody
 	@RequestMapping("loginAction")
 	public Map<String, Object> loginAction(String username, String password) {

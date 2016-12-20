@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -31,7 +32,9 @@
 							<a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;"> <i class="fa fa-bars"></i>
 							</a>
 							<ul class="dropdown-menu dropdown-user">
-								<li><a href="javascript:;" onclick="openCreateRoleWindow()"> <i class="fa fa-plus-square-o"></i> &nbsp;  新增角色</a></li>
+								<shiro:hasPermission name="CreateRole">
+									<li><a href="javascript:;" onclick="openCreateRoleWindow()"> <i class="fa fa-plus-square-o"></i> &nbsp;  新增角色</a></li>
+								</shiro:hasPermission>
 								<li><a href="javascript:;" onclick="window.location.reload()"> <i class="fa fa-refresh"></i> &nbsp; 刷新列表</a></li>
 							</ul>
 						</div>
@@ -45,7 +48,7 @@
 									<th>系统角色</th>
 									<th>创建时间</th>
 									<th>修改时间</th>
-									<th>操作</th>
+									<th class="text-center">操作</th>
                                 </tr>
                             </thead>
 							<tbody>
@@ -56,7 +59,20 @@
 										<td><c:if test="${role.systemRole }"><i class="glyphicon glyphicon-ok"></i></c:if></td>
 										<td><fmt:formatDate value="${role.roleCreateTime}" pattern="yyyy-MM-dd HH:mm" /></td>
 										<td><fmt:formatDate value="${role.roleModifyTime}" pattern="yyyy-MM-dd HH:mm" /></td>
-										<td><a href="javascript:;" onclick="openRoleAuthWindow('${role.roleId}', '${role.roleName }')">授权权限</a> | <a href="javascript:;" onclick="openRoleMenuWindow('${role.roleId}', '${role.roleName }')">授权菜单</a><c:if test="${!role.systemRole }"> | <a href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a> | <a href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a></c:if></td>
+										<td class="text-center">
+											<shiro:hasPermission name="RoleAuth">
+												<a class="label label-primary" href="javascript:;" onclick="openRoleAuthWindow('${role.roleId}', '${role.roleName }')">授权权限</a>
+												<a class="label label-primary" href="javascript:;" onclick="openRoleMenuWindow('${role.roleId}', '${role.roleName }')">授权菜单</a>
+											</shiro:hasPermission>
+											<c:if test="${!role.systemRole }">
+												<shiro:hasPermission name="UpdateRole">
+													<a class="label label-primary" href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a>
+												</shiro:hasPermission>
+												<shiro:hasPermission name="DeleteRole">
+													<a class="label label-primary" href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a>
+												</shiro:hasPermission>
+											</c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>

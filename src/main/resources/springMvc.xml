@@ -64,7 +64,7 @@
 		<property name="exceptionMappings">
 			<props>
 				<prop key="org.apache.shiro.authz.UnauthenticatedException">redirect:/loginInvalid.jspx</prop>
-				<prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/error.jspx</prop>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/unauthorized.jspx</prop>
 			</props>
 		</property>
 		<property name="defaultErrorView" value="error" />

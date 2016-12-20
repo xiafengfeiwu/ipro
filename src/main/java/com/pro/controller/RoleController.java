@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,6 +52,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("create")
+	@RequiresPermissions("CreateRole")
 	public ModelAndView createPage() {
 		ModelAndView modelAndView = new ModelAndView("role_create");
 		return modelAndView;
@@ -58,6 +60,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("saveAction")
+	@RequiresPermissions("CreateRole")
 	public String saveAction(String roleName, RedirectAttributes attr) {
 		String view = "redirect:/role/create.jspx";
 		attr.addFlashAttribute("status", "danger");
@@ -84,6 +87,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("change")
+	@RequiresPermissions("UpdateRole")
 	public ModelAndView changePage(Long roleId) {
 		ModelAndView modelAndView = new ModelAndView("role_change");
 		Role role = roleService.getById(roleId);
@@ -93,6 +97,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("updateAction")
+	@RequiresPermissions("UpdateRole")
 	public String updateAction(Role role, RedirectAttributes attr) {
 		String view = "redirect:/role/change.jspx?roleId=" + role.getRoleId();
 		attr.addFlashAttribute("status", "danger");
@@ -128,6 +133,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("delete")
+	@RequiresPermissions("DeleteRole")
 	public ModelAndView deletePage(Long roleId) {
 		ModelAndView modelAndView = new ModelAndView("role_delete");
 		Role role = roleService.getById(roleId);
@@ -139,6 +145,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("deleteAction")
+	@RequiresPermissions("DeleteRole")
 	public String deleteAction(Long roleId, RedirectAttributes attr) {
 		String view = "redirect:/role/delete.jspx?roleId=" + roleId;
 		attr.addFlashAttribute("status", "danger");
@@ -164,6 +171,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("authorize")
+	@RequiresPermissions("RoleAuth")
 	public ModelAndView authPage(Long roleId) {
 		ModelAndView modelAndView = new ModelAndView("role_authorize");
 		List<Jurisdiction> roleJurisdictions = roleService.findRoleJurisdictions(roleId);
@@ -206,6 +214,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("authorizeAction")
+	@RequiresPermissions("RoleAuth")
 	public String authAction(Long roleId, Long jurisdictionId, RedirectAttributes attr) {
 		String view = "redirect:/role/authorize.jspx?roleId=" + roleId;
 		attr.addFlashAttribute("status", "danger");
@@ -228,6 +237,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("menu")
+	@RequiresPermissions("RoleAuth")
 	public ModelAndView menuPage(Long roleId) {
 		ModelAndView modelAndView = new ModelAndView("role_menu");
 		List<Menu> hadMenus = roleService.findRoleMenus(roleId);
@@ -266,6 +276,7 @@ public class RoleController {
 
 	@RequiresAuthentication
 	@RequestMapping("menuAction")
+	@RequiresPermissions("RoleAuth")
 	public String menuAction(Long roleId, Long menuId, Long menuPid, RedirectAttributes attr) {
 		String view = "redirect:/role/menu.jspx?roleId=" + roleId;
 		attr.addFlashAttribute("status", "danger");

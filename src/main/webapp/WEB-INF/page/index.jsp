@@ -31,7 +31,7 @@
 					<li class="nav-header">
 						<div class="dropdown profile-element">
 							<span>
-								<img alt="image" id="parentHeadImageBox" class="img-circle" src="${user.userPortraitPath }" />
+								<img alt="用户头像" id="parentHeadImageBox" class="img-circle" src="${user.userPortraitPath }" />
 							</span> 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
 								<span class="clear">

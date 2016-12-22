@@ -21,7 +21,7 @@
 	<p>未登录或登录超时，请登陆。 [<span id="miao" class="feadIn">3</span>s 后<a href="javascript:;" id="skip">跳转</a>]</p>
 	</div>
 	<script>
-	var s=3;var miao=window.document.getElementById("miao");var skip=window.document.getElementById("skip");var si=setInterval(function(){s--;miao.innerHTML=s;if(s==0){window.clearInterval(si);window.parent.location.href="login.jsp"}},1000);skip.onclick=function(){window.clearInterval(si);window.parent.location.href="login.jsp"};history.pushState(null,null,document.URL);window.addEventListener("popstate",function(){history.pushState(null,null,document.URL)});
+	var s=3;var miao=window.document.getElementById("miao");var skip=window.document.getElementById("skip");var si=setInterval(function(){s--;miao.innerHTML=s;if(s==0){window.clearInterval(si);window.parent.location.href="login.jspx"}},1000);skip.onclick=function(){window.clearInterval(si);window.parent.location.href="login.jspx"};history.pushState(null,null,document.URL);window.addEventListener("popstate",function(){history.pushState(null,null,document.URL)});
 	</script>
 </body>
 </html>

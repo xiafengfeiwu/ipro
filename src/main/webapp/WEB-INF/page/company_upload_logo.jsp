@@ -40,7 +40,11 @@
                 <form method="post" action="company/uploadLogoAction.jspx" class="form-horizontal" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="col-sm-10">
-                       		<input type="file" class="form-control" name="file"/>
+                       		<div id="file-pretty">
+	                            <div class="form-group">
+	                                <input type="file" class="form-control" name="file"/>
+	                            </div>
+	                        </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -55,6 +59,10 @@
     <script src="resources/js/jquery.min.js?v=2.1.4"></script>
     <script src="resources/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="resources/js/content.min.js?v=1.0.0"></script>
+    <script src="resources/js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
 	<script src="resources/js/plugins/pace/pace.min.js"></script>
+	<script type="text/javascript">
+		$(function(){$('#file-pretty input[type="file"]').prettyFile()})
+	</script>
 </body>
 </html>

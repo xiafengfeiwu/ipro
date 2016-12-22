@@ -510,11 +510,11 @@
             return true;
         };
 
-        AbstractChosen.default_multiple_text = "Select Some Options";
+        AbstractChosen.default_multiple_text = "选择多项";
 
-        AbstractChosen.default_single_text = "Select an Option";
+        AbstractChosen.default_single_text = "选择一项";
 
-        AbstractChosen.default_no_result_text = "No results match";
+        AbstractChosen.default_no_result_text = "未匹配到";
 
         return AbstractChosen;
 

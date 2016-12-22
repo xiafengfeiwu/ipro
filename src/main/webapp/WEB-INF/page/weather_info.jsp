@@ -181,14 +181,20 @@
 	    <p>最新天气：{{condTxt}}</p>
 	    <p>获取时间：{{collectDate |dateFormat:"yyyy-MM-dd" }}</p>
 	    <p>体感温度：{{fl}} ℃</p>
-	    <p>相对湿度：{{hum}} %</p>
-	    <p>降水量：{{pcpn}} mm</p>
-	    <p>气压：{{pres}} Pa</p>
-	    <p>监测温度：{{tmp}} ℃</p>
-	    <p>能见度：{{vis}} km</p>
-	    <p>风向：{{windDir}}</p>
-	    <p>风力：{{windSc}}</p>
-	    <p>风速：{{windSpd}} km/h</p>
+		<div class="row">
+			<div class="col-xs-6">
+	    		<p>相对湿度：{{hum}} %</p>
+	    		<p>降水量：{{pcpn}} mm</p>
+	    		<p>气压：{{pres}} Pa</p>
+	    		<p>监测温度：{{tmp}} ℃</p>
+			</div>
+			<div class="col-xs-6">
+	    		<p>能见度：{{vis}} km</p>
+	    		<p>风向：{{windDir}}</p>
+	   		 	<p>风力：{{windSc}}</p>
+	    		<p>风速：{{windSpd}} km/h</p>
+			</div>
+		</div>
 	</script>
 	<script id="weatherAlarmTemp" type="text/html">
 		<h5>天气预警信息</h5>

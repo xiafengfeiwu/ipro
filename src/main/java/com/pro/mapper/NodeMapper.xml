@@ -5,6 +5,7 @@
     <id column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <result column="device_id" jdbcType="BIGINT" property="deviceId" />
+    <result column="node_name" jdbcType="VARCHAR" property="nodeName" />
     <result column="node_online" jdbcType="BIT" property="nodeOnline" />
     <result column="last_time_contact_time" jdbcType="TIMESTAMP" property="lastTimeContactTime" />
     <result column="regist_time" jdbcType="TIMESTAMP" property="registTime" />
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    node_id, pump_id, device_id, node_online, last_time_contact_time, regist_time
+    node_id, pump_id, device_id, node_name, node_online, last_time_contact_time, regist_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.NodeExample" resultMap="BaseResultMap">
     select
@@ -103,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Node">
     insert into w_node (node_id, pump_id, device_id, 
-      node_online, last_time_contact_time, regist_time
-      )
+      node_name, node_online, last_time_contact_time, 
+      regist_time)
     values (#{nodeId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT}, #{deviceId,jdbcType=BIGINT}, 
-      #{nodeOnline,jdbcType=BIT}, #{lastTimeContactTime,jdbcType=TIMESTAMP}, #{registTime,jdbcType=TIMESTAMP}
-      )
+      #{nodeName,jdbcType=VARCHAR}, #{nodeOnline,jdbcType=BIT}, #{lastTimeContactTime,jdbcType=TIMESTAMP}, 
+      #{registTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Node">
     insert into w_node
@@ -120,6 +121,9 @@
       </if>
       <if test="deviceId != null">
         device_id,
+      </if>
+      <if test="nodeName != null">
+        node_name,
       </if>
       <if test="nodeOnline != null">
         node_online,
@@ -140,6 +144,9 @@
       </if>
       <if test="deviceId != null">
         #{deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeName != null">
+        #{nodeName,jdbcType=VARCHAR},
       </if>
       <if test="nodeOnline != null">
         #{nodeOnline,jdbcType=BIT},
@@ -170,6 +177,9 @@
       <if test="record.deviceId != null">
         device_id = #{record.deviceId,jdbcType=BIGINT},
       </if>
+      <if test="record.nodeName != null">
+        node_name = #{record.nodeName,jdbcType=VARCHAR},
+      </if>
       <if test="record.nodeOnline != null">
         node_online = #{record.nodeOnline,jdbcType=BIT},
       </if>
@@ -189,6 +199,7 @@
     set node_id = #{record.nodeId,jdbcType=BIGINT},
       pump_id = #{record.pumpId,jdbcType=BIGINT},
       device_id = #{record.deviceId,jdbcType=BIGINT},
+      node_name = #{record.nodeName,jdbcType=VARCHAR},
       node_online = #{record.nodeOnline,jdbcType=BIT},
       last_time_contact_time = #{record.lastTimeContactTime,jdbcType=TIMESTAMP},
       regist_time = #{record.registTime,jdbcType=TIMESTAMP}
@@ -204,6 +215,9 @@
       </if>
       <if test="deviceId != null">
         device_id = #{deviceId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeName != null">
+        node_name = #{nodeName,jdbcType=VARCHAR},
       </if>
       <if test="nodeOnline != null">
         node_online = #{nodeOnline,jdbcType=BIT},
@@ -221,6 +235,7 @@
     update w_node
     set pump_id = #{pumpId,jdbcType=BIGINT},
       device_id = #{deviceId,jdbcType=BIGINT},
+      node_name = #{nodeName,jdbcType=VARCHAR},
       node_online = #{nodeOnline,jdbcType=BIT},
       last_time_contact_time = #{lastTimeContactTime,jdbcType=TIMESTAMP},
       regist_time = #{registTime,jdbcType=TIMESTAMP}

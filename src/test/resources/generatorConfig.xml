@@ -35,7 +35,9 @@
 		<table schema="${schema}" tableName="w_jurisdiction" domainObjectName="Jurisdiction" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_jurisdiction_group" domainObjectName="JurisdictionGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_menu" domainObjectName="Menu" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		-->
 		<table schema="${schema}" tableName="w_node" domainObjectName="Node" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<!--
 		<table schema="${schema}" tableName="w_node_data" domainObjectName="NodeData" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_node_status" domainObjectName="NodeStatus" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_packet" domainObjectName="Packet" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
@@ -50,9 +52,7 @@
 		<table schema="${schema}" tableName="w_stoppage" domainObjectName="Stoppage" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_stoppage_handle" domainObjectName="StoppageHandle" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_stoppage_handle_evaluate" domainObjectName="StoppageHandleEvaluate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		-->
 		<table schema="${schema}" tableName="w_system" domainObjectName="WebSystem" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		<!--
 		<table schema="${schema}" tableName="w_user" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn" domainObjectName="Warn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_warn_group" domainObjectName="WarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>

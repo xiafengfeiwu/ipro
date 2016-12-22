@@ -98,28 +98,28 @@
 									                       <div class="input-group">
 									                            <select data-placeholder="选择一个预警类型..." class="chosen-select" style="width: 200px;" name="earlyWarnType">
 																	<option value="">请选择一个预警类型</option>
-																	<option value="台风">台风(dafeng)</option>
-																	<option value="暴雨">暴雨(baoyu)</option>
-																	<option value="暴雪">暴雪(baoxue)</option>
-																	<option value="寒潮">寒潮(hanchao)</option>
-																	<option value="大风">大风(dafeng)</option>
-																	<option value="沙尘暴">沙尘暴(shachenbao)</option>
-																	<option value="高温">高温(gaowen)</option>
-																	<option value="干旱">干旱(ganhan)</option>
-																	<option value="雷电">雷电(leidian)</option>
-																	<option value="冰雹">冰雹(bingbao)</option>
-																	<option value="霜冻">霜冻(shuangdong)</option>
-																	<option value="霾">霾(mai)</option>
-																	<option value="道路结冰">道路结冰(daolujiebing)</option>
-																	<option value="寒冷">寒冷(hanleng)</option>
-																	<option value="灰霾">灰霾(huimai)</option>
-																	<option value="雷电大风">雷电大风(leidiandafeng)</option>
-																	<option value="森林火险">森林火险(shenlinhuoxian)</option>
-																	<option value="降温">降温(jiangwen)</option>
-																	<option value="道路冰雪">道路冰雪(daolubingxue)</option>
-																	<option value="干热风">干热风(reganfeng)</option>
-																	<option value="低温">低温(diwen)</option>
-																	<option value="冰冻">冰冻(bingdong)</option>
+																	<option value="台风">台风</option>
+																	<option value="暴雨">暴雨</option>
+																	<option value="暴雪">暴雪</option>
+																	<option value="寒潮">寒潮</option>
+																	<option value="大风">大风</option>
+																	<option value="沙尘暴">沙尘暴</option>
+																	<option value="高温">高温</option>
+																	<option value="干旱">干旱</option>
+																	<option value="雷电">雷电</option>
+																	<option value="冰雹">冰雹</option>
+																	<option value="霜冻">霜冻</option>
+																	<option value="霾">霾</option>
+																	<option value="道路结冰">道路结冰</option>
+																	<option value="寒冷">寒冷</option>
+																	<option value="灰霾">灰霾</option>
+																	<option value="雷电大风">雷电大风</option>
+																	<option value="森林火险">森林火险</option>
+																	<option value="降温">降温</option>
+																	<option value="道路冰雪">道路冰雪</option>
+																	<option value="干热风">干热风</option>
+																	<option value="低温">低温</option>
+																	<option value="冰冻">冰冻</option>
 																</select>
 									                       </div>
 									                    </div>
@@ -176,7 +176,7 @@
 	</div>
 	<script id="weatherBaseTemp" type="text/html">
 		<h5>天气基本信息</h5>
-		<img class="pull-right" alt="多云" src="{{condCodeUrl}}"/>
+		<img class="pull-right" alt="多云" src="{{condCodeUrl}}" style="margin-right:10px;"/>
 		<p>城市编码：{{weatherCityCode}}</p>
 	    <p>最新天气：{{condTxt}}</p>
 	    <p>获取时间：{{collectDate |dateFormat:"yyyy-MM-dd" }}</p>

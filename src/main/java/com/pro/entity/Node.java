@@ -9,6 +9,8 @@ public class Node {
 
     private Long deviceId;
 
+    private String nodeName;
+
     private Boolean nodeOnline;
 
     private Date lastTimeContactTime;
@@ -37,6 +39,14 @@ public class Node {
 
     public void setDeviceId(Long deviceId) {
         this.deviceId = deviceId;
+    }
+
+    public String getNodeName() {
+        return nodeName;
+    }
+
+    public void setNodeName(String nodeName) {
+        this.nodeName = nodeName;
     }
 
     public Boolean getNodeOnline() {

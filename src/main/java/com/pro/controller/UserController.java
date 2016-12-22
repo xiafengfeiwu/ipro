@@ -116,28 +116,36 @@ public class UserController {
 			return view;
 		}
 		if (PublicUtil.isEmpty(user.getUserName())) {
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "无效的用户名称");
 			return view;
 		} else {
 			user.setUserName(user.getUserName().trim());
 		}
 		if (!PublicUtil.isLoginName(user.getUserLoginName())) {
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "无效的登录名");
 			return view;
 		}
 		if (!PublicUtil.isPhoneNo(user.getUserPhone())) {
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "无效的手机号");
 			return view;
 		}
 		if (user.getRoleId() == null || user.getRoleId() == 0l) {
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "请选择一个的用户角色");
 			return view;
 		}
 		if (userService.findByLoginName(user.getUserLoginName()) != null) {
+			user.setUserLoginName("");
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "当前登录名称已存在");
 			return view;
 		}
 		if (userService.findByPhoneNo(user.getUserPhone()) != null) {
+			user.setUserPhone("");
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "当前手机号已存在");
 			return view;
 		}
@@ -152,6 +160,7 @@ public class UserController {
 		try {
 			userService.regist(user);
 		} catch (Exception e) {
+			attr.addFlashAttribute("user", user);
 			attr.addFlashAttribute("message", "新增失败，请稍候重试！");
 		}
 		attr.addFlashAttribute("status", "success");

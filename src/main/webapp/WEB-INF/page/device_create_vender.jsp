@@ -28,7 +28,9 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
-        <p><a href="device/create.jspx">&lt;返回</a> 新增设备</p>
+        <c:if test="${'success'.equals(status) }">
+        	<script>parent['device_vender_list'].location.reload();</script>
+        </c:if>
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <form method="post" action="device/createVenderAction.jspx" class="form-horizontal">
@@ -36,31 +38,31 @@
 	                    <div class="form-group col-xs-6">
 	                        <label class="col-sm-2 control-label">供应商名称</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="venderName" class="form-control" value="">
+	                            <input type="text" name="venderName" class="form-control" value="${vender.venderName }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
 	                        <label class="col-sm-2 control-label">供应商编码</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="venderCode" class="form-control" value="">
+	                            <input type="text" name="venderCode" class="form-control" value="${vender.venderCode }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
 	                        <label class="col-sm-2 control-label">供应商联系人</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="venderContacts" class="form-control" value="">
+	                            <input type="text" name="venderContacts" class="form-control" value="${vender.venderContacts }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
 	                        <label class="col-sm-2 control-label">联系人电话</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="venderContactsTel" class="form-control" value="">
+	                            <input type="text" name="venderContactsTel" class="form-control" value="${vender.venderContactsTel }">
 	                        </div>
 	                    </div>
-	                    <div class="form-group col-xs-6">
+	                    <div class="form-group col-xs-8">
 	                        <label class="col-sm-2 control-label">供应商地址</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="venderAddress" class="form-control" value="">
+	                            <input type="text" name="venderAddress" class="form-control" value="${vender.venderAddress }">
 	                        </div>
 	                    </div>
 	                 </div>

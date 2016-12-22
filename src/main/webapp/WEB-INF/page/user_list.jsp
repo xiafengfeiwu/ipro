@@ -98,13 +98,13 @@
 				<td class="text-center">
 					<a class="label label-primary" href="javascript:;" onclick="openUserDetailWindow('{{user.userId}}')">详情</a> 
 					<shiro:hasPermission name="ReSetUserPwd">
-						<a class="label label-primary" href="javascript:;" onclick="resetUserPwWindow('{{user.userId}}')">重设密码</a>
+						<a class="label label-warning" href="javascript:;" onclick="resetUserPwWindow('{{user.userId}}')">重设密码</a>
 					</shiro:hasPermission>
 					<shiro:hasPermission name="UpdateUser">
-						<a class="label label-primary" href="javascript:;" onclick="resetUserStatusWindow('{{user.userId}}')">禁用/启用</a>
+						<a class="label label-warning" href="javascript:;" onclick="resetUserStatusWindow('{{user.userId}}')">禁用/启用</a>
 					</shiro:hasPermission>
 					<shiro:hasPermission name="UserRoleAuth">
-						<a class="label label-primary" href="javascript:;" onclick="resetUserRoleWindow('{{user.userId}}')">更改角色</a>
+						<a class="label label-warning" href="javascript:;" onclick="resetUserRoleWindow('{{user.userId}}')">更改角色</a>
 					</shiro:hasPermission>
 				</td>
 			</tr>

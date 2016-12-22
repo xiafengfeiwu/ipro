@@ -61,15 +61,15 @@
 										<td><fmt:formatDate value="${role.roleModifyTime}" pattern="yyyy-MM-dd HH:mm" /></td>
 										<td class="text-center">
 											<shiro:hasPermission name="RoleAuth">
-												<a class="label label-primary" href="javascript:;" onclick="openRoleAuthWindow('${role.roleId}', '${role.roleName }')">授权权限</a>
-												<a class="label label-primary" href="javascript:;" onclick="openRoleMenuWindow('${role.roleId}', '${role.roleName }')">授权菜单</a>
+												<a class="label label-warning" href="javascript:;" onclick="openRoleAuthWindow('${role.roleId}', '${role.roleName }')">授权权限</a>
+												<a class="label label-warning" href="javascript:;" onclick="openRoleMenuWindow('${role.roleId}', '${role.roleName }')">授权菜单</a>
 											</shiro:hasPermission>
 											<c:if test="${!role.systemRole }">
 												<shiro:hasPermission name="UpdateRole">
-													<a class="label label-primary" href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a>
+													<a class="label label-warning" href="javascript:;" onclick="openChangeRoleWindow('${role.roleId }')">修改</a>
 												</shiro:hasPermission>
 												<shiro:hasPermission name="DeleteRole">
-													<a class="label label-primary" href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a>
+													<a class="label label-danger" href="javascript:;" onclick="openDeleteRoleWindow('${role.roleId }')">删除</a>
 												</shiro:hasPermission>
 											</c:if>
 										</td>

@@ -33,7 +33,8 @@
         </c:if>
         <div class="row">
             <div class="col-sm-12">
-                <form method="post" action="device/createAction.jspx" class="form-horizontal">
+                <form method="post" action="device/updateAction.jspx" class="form-horizontal">
+                	<input type="hidden" name="deviceId" value="${device.deviceId }">
                 	<div class="row">
 	                    <div class="form-group col-xs-6">
 	                        <label class="col-sm-2 control-label">设备供应商</label>
@@ -80,7 +81,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12 text-center">
-                        	<button class="btn btn-primary" type="submit">新增</button>
+                        	<button class="btn btn-primary" type="submit">修改</button>
                         </div>
                     </div>
                 </form>

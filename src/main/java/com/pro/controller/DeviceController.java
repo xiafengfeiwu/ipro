@@ -69,7 +69,18 @@ public class DeviceController {
 	}
 
 	@RequiresAuthentication
+	@RequestMapping("detail")
+	public ModelAndView detailPage(Long deviceId) {
+		ModelAndView modelAndView = new ModelAndView("device_detail");
+		Device device = deviceService.findById(deviceId);
+		modelAndView.addObject("device", device);
+		modelAndView.addObject("deviceVender", deviceService.findVenderByCode(device.getDeviceVenderCode()));
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
 	@RequestMapping("create")
+	@RequiresPermissions("CreateDevice")
 	public ModelAndView createPage() {
 		ModelAndView modelAndView = new ModelAndView("device_create");
 		modelAndView.addObject("venders", deviceService.findAllVenders());
@@ -87,26 +98,32 @@ public class DeviceController {
 			return view;
 		}
 		if (PublicUtil.isEmpty(device.getDeviceVenderCode())) {
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "请选择一个供应商");
 			return view;
 		}
 		if (PublicUtil.isEmpty(device.getDeviceType())) {
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "请选择一个设备类型");
 			return view;
 		}
 		if (PublicUtil.isEmpty(device.getDeviceName())) {
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "请输入设备名称");
 			return view;
 		} else {
 			device.setDeviceName(device.getDeviceName().trim());
 		}
 		if (PublicUtil.isEmpty(device.getDeviceSn())) {
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "请输入设备序列号");
 			return view;
 		} else {
 			device.setDeviceSn(device.getDeviceSn().trim());
 		}
 		if (deviceService.findBySn(device.getDeviceSn()) != null) {
+			device.setDeviceSn("");
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "当前设备序列号已存在");
 			return view;
 		}
@@ -117,13 +134,124 @@ public class DeviceController {
 		try {
 			deviceService.save(device);
 		} catch (Exception e) {
+			attr.addFlashAttribute("device", device);
 			attr.addFlashAttribute("message", "新增失败，请稍候重试！");
 		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "新增成功");
 		return view;
 	}
 
 	@RequiresAuthentication
+	@RequestMapping("update")
+	@RequiresPermissions("UpdateDevice")
+	public ModelAndView updatePage(Long deviceId) {
+		ModelAndView modelAndView = new ModelAndView("device_update");
+		modelAndView.addObject("device", deviceService.findById(deviceId));
+		modelAndView.addObject("venders", deviceService.findAllVenders());
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("updateAction")
+	@RequiresPermissions("UpdateDevice")
+	public String updateAction(Device device, RedirectAttributes attr) {
+		String view = "redirect:/device/update.jspx?deviceId=" + device.getDeviceId();
+		attr.addFlashAttribute("status", "danger");
+		if (PublicUtil.isEmpty(device.getDeviceVenderCode())) {
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "请选择一个供应商");
+			return view;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceType())) {
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "请选择一个设备类型");
+			return view;
+		}
+		if (PublicUtil.isEmpty(device.getDeviceName())) {
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "请输入设备名称");
+			return view;
+		} else {
+			device.setDeviceName(device.getDeviceName().trim());
+		}
+		if (PublicUtil.isEmpty(device.getDeviceSn())) {
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "请输入设备序列号");
+			return view;
+		} else {
+			device.setDeviceSn(device.getDeviceSn().trim());
+		}
+		Device ds = deviceService.findBySn(device.getDeviceSn());
+		if (ds != null && !ds.getDeviceId().equals(device.getDeviceId())) {
+			device.setDeviceSn("");
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "当前设备序列号已存在");
+			return view;
+		}
+		ds = deviceService.findById(device.getDeviceId());
+		ds.setDeviceSn(device.getDeviceSn());
+		ds.setDeviceName(device.getDeviceName());
+		ds.setDeviceModel(device.getDeviceModel());
+		ds.setDeviceVenderCode(device.getDeviceVenderCode());
+		ds.setDeviceType(device.getDeviceType());
+		ds.setModifyTime(new Date());
+		try {
+			deviceService.update(ds);
+		} catch (Exception e) {
+			attr.addFlashAttribute("device", device);
+			attr.addFlashAttribute("message", "更新失败，请稍候重试！");
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "更新成功");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("delete")
+	@RequiresPermissions("DeleteDevice")
+	public ModelAndView deletePage(Long deviceId) {
+		ModelAndView modelAndView = new ModelAndView("device_delete");
+		Device device = deviceService.findById(deviceId);
+		if (device != null) {
+			modelAndView.addObject("device", device);
+		} else {
+			modelAndView.addObject("status", "success");
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("deleteAction")
+	@RequiresPermissions("DeleteDevice")
+	public String deleteAction(Long deviceId, RedirectAttributes attr) {
+		String view = "redirect:/device/delete.jspx?deviceId=" + deviceId;
+		attr.addFlashAttribute("status", "danger");
+		Device device = deviceService.findById(deviceId);
+		try {
+			if (device != null) {
+				deviceService.delete(deviceId);
+			}
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "删除失败，可能已被采集点关联！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "删除成功");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("vender/list")
+	public ModelAndView venderListPage() {
+		ModelAndView modelAndView = new ModelAndView("device_vender_list");
+		modelAndView.addObject("venders", deviceService.findAllVenders());
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
 	@RequestMapping("createVender")
+	@RequiresPermissions("CreateDeviceVender")
 	public ModelAndView createVenderPage() {
 		ModelAndView modelAndView = new ModelAndView("device_create_vender");
 		return modelAndView;
@@ -140,6 +268,60 @@ public class DeviceController {
 			return view;
 		}
 		if (PublicUtil.isEmpty(vender.getVenderName())) {
+			attr.addFlashAttribute("vender", vender);
+			attr.addFlashAttribute("message", "请输入供应商名称");
+			return view;
+		} else {
+			vender.setVenderName(vender.getVenderName().trim());
+		}
+		if (PublicUtil.isEmpty(vender.getVenderCode())) {
+			attr.addFlashAttribute("vender", vender);
+			attr.addFlashAttribute("message", "请输入供应商代码");
+			return view;
+		} else {
+			vender.setVenderCode(vender.getVenderCode().trim());
+		}
+		if (!PublicUtil.isPhoneNo(vender.getVenderContactsTel())) {
+			attr.addFlashAttribute("vender", vender);
+			attr.addFlashAttribute("message", "无效的手机号");
+			return view;
+		}
+		if (deviceService.findVenderByCode(vender.getVenderCode()) != null) {
+			vender.setVenderCode("");
+			attr.addFlashAttribute("vender", vender);
+			attr.addFlashAttribute("message", "当前供应商编码已存在");
+			return view;
+		}
+		vender.setVenderId(PublicUtil.initId());
+		vender.setCreateTime(new Date());
+		vender.setCreatorId(PublicUtil.sessionUid());
+		try {
+			deviceService.createVender(vender);
+		} catch (Exception e) {
+			attr.addFlashAttribute("vender", vender);
+			attr.addFlashAttribute("message", "新增失败，请稍候重试！");
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "新增成功");
+		return view;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("updateVender")
+	@RequiresPermissions("UpdateDeviceVender")
+	public ModelAndView updateVenderPage(Long venderId) {
+		ModelAndView modelAndView = new ModelAndView("device_update_vender");
+		modelAndView.addObject("vender", deviceService.findVenderById(venderId));
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("updateVenderAction")
+	@RequiresPermissions("UpdateDeviceVender")
+	public String updateVenderAction(DeviceVender vender, RedirectAttributes attr) {
+		String view = "redirect:/device/updateVender.jspx?venderId=" + vender.getVenderId();
+		attr.addFlashAttribute("status", "danger");
+		if (PublicUtil.isEmpty(vender.getVenderName())) {
 			attr.addFlashAttribute("message", "请输入供应商名称");
 			return view;
 		} else {
@@ -155,18 +337,59 @@ public class DeviceController {
 			attr.addFlashAttribute("message", "无效的手机号");
 			return view;
 		}
-		if (deviceService.findVenderByCode(vender.getVenderCode()) != null) {
+		DeviceVender dv = deviceService.findVenderByCode(vender.getVenderCode());
+		if (dv != null && !dv.getVenderId().equals(vender.getVenderId())) {
 			attr.addFlashAttribute("message", "当前供应商编码已存在");
 			return view;
 		}
-		vender.setVenderId(PublicUtil.initId());
-		vender.setCreateTime(new Date());
-		vender.setCreatorId(PublicUtil.sessionUid());
+		dv = deviceService.findVenderById(vender.getVenderId());
+		dv.setVenderAddress(vender.getVenderAddress());
+		dv.setVenderCode(vender.getVenderCode());
+		dv.setVenderName(vender.getVenderName());
+		dv.setVenderContacts(vender.getVenderContacts());
+		dv.setVenderContactsTel(vender.getVenderContactsTel());
 		try {
-			deviceService.createVender(vender);
+			deviceService.updateVender(dv);
 		} catch (Exception e) {
-			attr.addFlashAttribute("message", "新增失败，请稍候重试！");
+			attr.addFlashAttribute("message", "更新失败，请稍候重试！");
 		}
-		return "redirect:/device/create.jspx";
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "更新成功");
+		return view;
 	}
+
+	@RequiresAuthentication
+	@RequestMapping("deleteVender")
+	@RequiresPermissions("DeleteDeviceVender")
+	public ModelAndView deleteVenderPage(Long venderId) {
+		ModelAndView modelAndView = new ModelAndView("device_vender_delete");
+		DeviceVender vender = deviceService.findVenderById(venderId);
+		if (vender != null) {
+			modelAndView.addObject("vender", vender);
+		} else {
+			modelAndView.addObject("status", "success");
+		}
+		return modelAndView;
+	}
+
+	@RequiresAuthentication
+	@RequestMapping("deleteVenderAction")
+	@RequiresPermissions("DeleteDeviceVender")
+	public String deleteVenderAction(Long venderId, RedirectAttributes attr) {
+		String view = "redirect:/device/deleteVender.jspx?venderId=" + venderId;
+		attr.addFlashAttribute("status", "danger");
+		DeviceVender vender = deviceService.findVenderById(venderId);
+		try {
+			if (vender != null) {
+				deviceService.deleteVender(venderId);
+			}
+		} catch (Exception e) {
+			attr.addFlashAttribute("message", "删除失败，可能已被设备关联！");
+			return view;
+		}
+		attr.addFlashAttribute("status", "success");
+		attr.addFlashAttribute("message", "删除成功");
+		return view;
+	}
+
 }

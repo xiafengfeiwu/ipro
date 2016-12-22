@@ -98,7 +98,13 @@
 				<td class="client-status">{{device.deviceVenderCode}}</td>
 				<td>{{device.createTime | dateFormat:'yyyy-MM-dd hh:mm:ss'}}</td>
 				<td class="text-center">
-					<a class="label label-primary" href="javascript:;" onclick="openUserDetailWindow('{{device.deviceId}}')">详情</a> 
+					<a class="label label-primary" href="javascript:;" onclick="openDeviceDetailWindow('{{device.deviceId}}')">详情</a>
+					<shiro:hasPermission name="UpdateDevice">
+						<a class="label label-warning" href="javascript:;" onclick="openUpdateDeviceWindow('{{device.deviceId}}')">修改</a>
+					</shiro:hasPermission>
+					<shiro:hasPermission name="DeleteDevice">
+						<a class="label label-danger" href="javascript:;" onclick="openDeleteDeviceWindow('{{device.deviceId}}')">删除</a>
+					</shiro:hasPermission>
 				</td>
 			</tr>
 		{{/each}}
@@ -164,13 +170,42 @@
 		});
 		function openCreateDeviceWindow(){
 			parent.layer.open({
-				id: 'create_device_dialog',
                 type: 2,
-                title: '创建设备（供应商）',
+                title: '创建设备',
                 closeBtn: true,
                 shade: [0.23],
                 area: ['688px', '382px'],
                 content: ['device/create.jspx', 'yes']
+            });
+		}
+		function openDeviceDetailWindow(deviceId){
+			parent.layer.open({
+                type: 2,
+                title: '设备详情',
+                closeBtn: true,
+                shade: [0.23],
+                area: ['628px', '262px'],
+                content: ['device/detail.jspx?deviceId=' + deviceId, 'yes']
+            });
+		}
+		function openUpdateDeviceWindow(deviceId){
+			parent.layer.open({
+                type: 2,
+                title: '更新设备',
+                closeBtn: true,
+                shade: [0.23],
+                area: ['688px', '382px'],
+                content: ['device/update.jspx?deviceId=' + deviceId, 'yes']
+            });
+		}
+		function openDeleteDeviceWindow(deviceId){
+			parent.layer.open({
+                type: 2,
+                title: '删除设备',
+                closeBtn: true,
+                shade: [0.23],
+                area: ['348px', '312px'],
+                content: ['device/delete.jspx?deviceId=' + deviceId, 'yes']
             });
 		}
 	</script>

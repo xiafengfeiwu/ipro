@@ -29,58 +29,47 @@
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
         <c:if test="${'success'.equals(status) }">
-        	<script>parent['device_list'].location.reload();</script>
+        	<script>parent['device_vender_list'].location.reload();</script>
         </c:if>
         <div class="row">
-            <div class="col-sm-12">
-                <form method="post" action="device/createAction.jspx" class="form-horizontal">
-                	<div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <form method="post" action="device/updateVenderAction.jspx" class="form-horizontal">
+                	<input type="hidden" name="venderId" value="${vender.venderId }">
+                   <div class="row">
 	                    <div class="form-group col-xs-6">
-	                        <label class="col-sm-2 control-label">设备供应商</label>
+	                        <label class="col-sm-2 control-label">供应商名称</label>
 	                        <div class="col-sm-10">
-	                            <select class="form-control" name="deviceVenderCode">
-	                            	<option value="">选择一个供应商</option>
-	                            	<c:forEach items="${venders }" var="vender">
-	                            		<option value="${vender.venderCode }" <c:if test="${vender.venderCode.equals(device.deviceVenderCode) }">selected</c:if>>${vender.venderName } （${vender.venderCode }）</option>
-	                            	</c:forEach>
-	                            </select>
-	                            <span class="help-block m-b-none pull-right">未找到？请先创建供应商。</span>
+	                            <input type="text" name="venderName" class="form-control" value="${vender.venderName }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
-	                        <label class="col-sm-2 control-label">设备类型</label>
+	                        <label class="col-sm-2 control-label">供应商编码</label>
 	                        <div class="col-sm-10">
-	                            <select class="form-control" name="deviceType">
-	                            	<option value="">选择一个类型</option>
-	                            	<option value="AL-CJ" <c:if test="${'AL-CJ'.equals(device.deviceType) }">selected</c:if>>AL-采集器</option>
-	                            	<option value="AL-D-CJ" <c:if test="${'AL-D-CJ'.equals(device.deviceType) }">selected</c:if>>AL-单点采集器</option>
-	                            	<option value="AL-JZ" <c:if test="${'AL-JZ'.equals(device.deviceType) }">selected</c:if>>AL-集中器</option>
-	                            </select>
-	                            <span class="help-block m-b-none pull-right">&nbsp;</span>
+	                            <input type="text" name="venderCode" class="form-control" value="${vender.venderCode }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
-	                        <label class="col-sm-2 control-label">设备名称</label>
+	                        <label class="col-sm-2 control-label">供应商联系人</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="deviceName" class="form-control" value="${device.deviceName }">
+	                            <input type="text" name="venderContacts" class="form-control" value="${vender.venderContacts }">
 	                        </div>
 	                    </div>
 	                    <div class="form-group col-xs-6">
-	                        <label class="col-sm-2 control-label">设备序列号</label>
+	                        <label class="col-sm-2 control-label">联系人电话</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="deviceSn" class="form-control" value="${device.deviceSn }">
+	                            <input type="text" name="venderContactsTel" class="form-control" value="${vender.venderContactsTel }">
 	                        </div>
 	                    </div>
-	                    <div class="form-group col-xs-6">
-	                        <label class="col-sm-2 control-label">设备规格型号</label>
+	                    <div class="form-group col-xs-8">
+	                        <label class="col-sm-2 control-label">供应商地址</label>
 	                        <div class="col-sm-10">
-	                            <input type="text" name="deviceModel" class="form-control" value="${device.deviceModel }">
+	                            <input type="text" name="venderAddress" class="form-control" value="${vender.venderAddress }">
 	                        </div>
 	                    </div>
-                    </div>
+	                 </div>
                     <div class="form-group">
                         <div class="col-sm-12 text-center">
-                        	<button class="btn btn-primary" type="submit">新增</button>
+                        	<button class="btn btn-primary" type="submit">更新</button>
                         </div>
                     </div>
                 </form>
@@ -90,12 +79,6 @@
     <script src="resources/js/jquery.min.js?v=2.1.4"></script>
     <script src="resources/js/bootstrap.min.js?v=3.3.6"></script>
     <script src="resources/js/content.min.js?v=1.0.0"></script>
-	<script src="resources/js/masonry.pkgd.min.js"></script>
 	<script src="resources/js/plugins/pace/pace.min.js"></script>
-	<script>
-        $(document).ready(function(){
-        	$('.row').masonry({itemSelector: '.col-xs-6'});
-        });
-    </script>
 </body>
 </html>

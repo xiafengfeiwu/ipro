@@ -1,11 +1,21 @@
 package com.pro.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.service.MenuService;
+import com.pro.util.PoiUtil;
 import com.pro.util.PublicUtil;
 
 @Controller
@@ -110,6 +120,23 @@ public class DevelopController {
 	public ModelAndView setupPage() {
 		ModelAndView modelAndView = new ModelAndView("develop/setup");
 		return modelAndView;
+	}
+
+	@RequestMapping("poi")
+	public void poi(HttpServletRequest request, HttpServletResponse response) {
+		String[] rowName = { "ID", "时间", "值", "字段1", "字段2", "字段3" };
+		List<Object[]> dataList = new ArrayList<>();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		for (int i = 0; i < 10; i++) {
+			Object[] e = { i + 1, dateFormat.format(new Date()), Math.random(), Math.random(), Math.random(), Math.random() };
+			dataList.add(e);
+		}
+		try {
+			PoiUtil.downloadXlsFile(response, "统计信息表", rowName, dataList);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("生成失败！");
+		}
 	}
 
 }

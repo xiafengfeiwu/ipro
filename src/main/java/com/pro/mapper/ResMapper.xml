@@ -8,6 +8,7 @@
     <result column="res_name" jdbcType="VARCHAR" property="resName" />
     <result column="res_type" jdbcType="VARCHAR" property="resType" />
     <result column="res_path" jdbcType="VARCHAR" property="resPath" />
+    <result column="res_compress_path" jdbcType="VARCHAR" property="resCompressPath" />
     <result column="res_size" jdbcType="BIGINT" property="resSize" />
     <result column="res_create_time" jdbcType="TIMESTAMP" property="resCreateTime" />
   </resultMap>
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    res_id, group_id, owner_id, res_name, res_type, res_path, res_size, res_create_time
+    res_id, group_id, owner_id, res_name, res_type, res_path, res_compress_path, res_size, 
+    res_create_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.ResExample" resultMap="BaseResultMap">
     select
@@ -106,10 +108,12 @@
   <insert id="insert" parameterType="com.pro.entity.Res">
     insert into w_res (res_id, group_id, owner_id, 
       res_name, res_type, res_path, 
-      res_size, res_create_time)
+      res_compress_path, res_size, res_create_time
+      )
     values (#{resId,jdbcType=BIGINT}, #{groupId,jdbcType=BIGINT}, #{ownerId,jdbcType=BIGINT}, 
       #{resName,jdbcType=VARCHAR}, #{resType,jdbcType=VARCHAR}, #{resPath,jdbcType=VARCHAR}, 
-      #{resSize,jdbcType=BIGINT}, #{resCreateTime,jdbcType=TIMESTAMP})
+      #{resCompressPath,jdbcType=VARCHAR}, #{resSize,jdbcType=BIGINT}, #{resCreateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Res">
     insert into w_res
@@ -131,6 +135,9 @@
       </if>
       <if test="resPath != null">
         res_path,
+      </if>
+      <if test="resCompressPath != null">
+        res_compress_path,
       </if>
       <if test="resSize != null">
         res_size,
@@ -157,6 +164,9 @@
       </if>
       <if test="resPath != null">
         #{resPath,jdbcType=VARCHAR},
+      </if>
+      <if test="resCompressPath != null">
+        #{resCompressPath,jdbcType=VARCHAR},
       </if>
       <if test="resSize != null">
         #{resSize,jdbcType=BIGINT},
@@ -193,6 +203,9 @@
       <if test="record.resPath != null">
         res_path = #{record.resPath,jdbcType=VARCHAR},
       </if>
+      <if test="record.resCompressPath != null">
+        res_compress_path = #{record.resCompressPath,jdbcType=VARCHAR},
+      </if>
       <if test="record.resSize != null">
         res_size = #{record.resSize,jdbcType=BIGINT},
       </if>
@@ -212,6 +225,7 @@
       res_name = #{record.resName,jdbcType=VARCHAR},
       res_type = #{record.resType,jdbcType=VARCHAR},
       res_path = #{record.resPath,jdbcType=VARCHAR},
+      res_compress_path = #{record.resCompressPath,jdbcType=VARCHAR},
       res_size = #{record.resSize,jdbcType=BIGINT},
       res_create_time = #{record.resCreateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
@@ -236,6 +250,9 @@
       <if test="resPath != null">
         res_path = #{resPath,jdbcType=VARCHAR},
       </if>
+      <if test="resCompressPath != null">
+        res_compress_path = #{resCompressPath,jdbcType=VARCHAR},
+      </if>
       <if test="resSize != null">
         res_size = #{resSize,jdbcType=BIGINT},
       </if>
@@ -252,6 +269,7 @@
       res_name = #{resName,jdbcType=VARCHAR},
       res_type = #{resType,jdbcType=VARCHAR},
       res_path = #{resPath,jdbcType=VARCHAR},
+      res_compress_path = #{resCompressPath,jdbcType=VARCHAR},
       res_size = #{resSize,jdbcType=BIGINT},
       res_create_time = #{resCreateTime,jdbcType=TIMESTAMP}
     where res_id = #{resId,jdbcType=BIGINT}

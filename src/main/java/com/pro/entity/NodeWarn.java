@@ -2,7 +2,7 @@ package com.pro.entity;
 
 import java.util.Date;
 
-public class Warn {
+public class NodeWarn {
     private Long warnId;
 
     private String warnNo;

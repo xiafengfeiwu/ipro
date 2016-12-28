@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -14,6 +15,7 @@ import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pro.entity.WeatherAlarm;
+import com.pro.entity.WeatherCity;
 import com.pro.entity.WeatherData;
 import com.pro.entity.WeatherKey;
 import com.pro.service.CityWeatherService;
@@ -36,20 +38,20 @@ public class WeatherQuartzJob implements Job {
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		logger.info(context.getFireTime().getTime());
+
+		List<WeatherCity> wcs = cityWeatherService.findAllCity();
 		// 获取要进行更新的天气的城市编码 LIST
 		Set<String> cityCodes = new HashSet<>();
-
-
-		// 判断城市总个数是否大于375 如果是 则在短信通知告警 增加容量或者缩短间隔 发送至系统管理员手机号
-		if (cityCodes.size() > 375) {
-			logger.error("城市编码总个数已经大于375，请增加接口容量或者缩短更新间隔。");
+		for (WeatherCity wc : wcs) {
+			cityCodes.add(wc.getCode());
 		}
-		WeatherKey weatherKey = cityWeatherService.findWeatherKey();
-		if (weatherKey == null) {
+		List<WeatherKey> weatherKeys = cityWeatherService.findWeatherKeys();
+		if (weatherKeys == null || weatherKeys.isEmpty() || weatherKeys.size() < 2) {
 			logger.error("未配置第三方天气接口KEY值");
 			return;
 		}
-		String key = weatherKey.getWeatherKey();
+		String key0 = weatherKeys.get(0).getWeatherKey();
+		String key1 = weatherKeys.get(1).getWeatherKey();
 		// 遍历城市编码
 		for (String code : cityCodes) {
 			WeatherData wd = cityWeatherService.findTodayCityWeatherByCode(code);
@@ -58,7 +60,7 @@ public class WeatherQuartzJob implements Job {
 				continue;
 			}
 			// 通过城市编码获取天气详情
-			String w_url = WeatherURL.replaceAll("#CITYCODE#", code).replaceAll("#KEY#", key);
+			String w_url = WeatherURL.replaceAll("#CITYCODE#", code).replaceAll("#KEY#", key0);
 			try {
 				String result = HttpUtil.getRequest(w_url);
 				// 解析result
@@ -71,7 +73,7 @@ public class WeatherQuartzJob implements Job {
 				logger.error("Weather E " + e.getMessage());
 			}
 			// 通过城市编码获取预警信息
-			String a_url = AlarmURL.replaceAll("#CITYCODE#", code).replaceAll("#KEY#", key);
+			String a_url = AlarmURL.replaceAll("#CITYCODE#", code).replaceAll("#KEY#", key1);
 			try {
 				String result = HttpUtil.getRequest(a_url);
 				// 解析result

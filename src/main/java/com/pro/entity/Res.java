@@ -15,6 +15,8 @@ public class Res {
 
     private String resPath;
 
+    private String resCompressPath;
+
     private Long resSize;
 
     private Date resCreateTime;
@@ -65,6 +67,14 @@ public class Res {
 
     public void setResPath(String resPath) {
         this.resPath = resPath;
+    }
+
+    public String getResCompressPath() {
+        return resCompressPath;
+    }
+
+    public void setResCompressPath(String resCompressPath) {
+        this.resCompressPath = resCompressPath;
     }
 
     public Long getResSize() {

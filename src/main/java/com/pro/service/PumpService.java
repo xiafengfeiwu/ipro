@@ -26,7 +26,4 @@ public interface PumpService {
 
 	// 获取农户(所有人)所有热泵信息
 	List<Pump> getOwnerAllPumps(Long ownerId);
-
-	// 获取运维(负责人)所有热泵信息
-	List<Pump> getOperatorAllPumps(Long operatorId);
 }

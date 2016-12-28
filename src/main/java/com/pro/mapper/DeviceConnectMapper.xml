@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.DeviceConnectMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.DeviceConnect">
+    <id column="connect_id" jdbcType="BIGINT" property="connectId" />
+    <result column="connect_ip" jdbcType="VARCHAR" property="connectIp" />
+    <result column="connect_port" jdbcType="INTEGER" property="connectPort" />
+    <result column="device_sn" jdbcType="VARCHAR" property="deviceSn" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_modify_time" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="close_time" jdbcType="TIMESTAMP" property="closeTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    connect_id, connect_ip, connect_port, device_sn, create_time, last_modify_time, close_time
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.DeviceConnectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_device_connect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_device_connect
+    where connect_id = #{connectId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_device_connect
+    where connect_id = #{connectId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.DeviceConnectExample">
+    delete from w_device_connect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.DeviceConnect">
+    insert into w_device_connect (connect_id, connect_ip, connect_port, 
+      device_sn, create_time, last_modify_time, 
+      close_time)
+    values (#{connectId,jdbcType=BIGINT}, #{connectIp,jdbcType=VARCHAR}, #{connectPort,jdbcType=INTEGER}, 
+      #{deviceSn,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{closeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.DeviceConnect">
+    insert into w_device_connect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="connectId != null">
+        connect_id,
+      </if>
+      <if test="connectIp != null">
+        connect_ip,
+      </if>
+      <if test="connectPort != null">
+        connect_port,
+      </if>
+      <if test="deviceSn != null">
+        device_sn,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time,
+      </if>
+      <if test="closeTime != null">
+        close_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="connectId != null">
+        #{connectId,jdbcType=BIGINT},
+      </if>
+      <if test="connectIp != null">
+        #{connectIp,jdbcType=VARCHAR},
+      </if>
+      <if test="connectPort != null">
+        #{connectPort,jdbcType=INTEGER},
+      </if>
+      <if test="deviceSn != null">
+        #{deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.DeviceConnectExample" resultType="java.lang.Long">
+    select count(*) from w_device_connect
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_device_connect
+    <set>
+      <if test="record.connectId != null">
+        connect_id = #{record.connectId,jdbcType=BIGINT},
+      </if>
+      <if test="record.connectIp != null">
+        connect_ip = #{record.connectIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.connectPort != null">
+        connect_port = #{record.connectPort,jdbcType=INTEGER},
+      </if>
+      <if test="record.deviceSn != null">
+        device_sn = #{record.deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifyTime != null">
+        last_modify_time = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.closeTime != null">
+        close_time = #{record.closeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_device_connect
+    set connect_id = #{record.connectId,jdbcType=BIGINT},
+      connect_ip = #{record.connectIp,jdbcType=VARCHAR},
+      connect_port = #{record.connectPort,jdbcType=INTEGER},
+      device_sn = #{record.deviceSn,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{record.lastModifyTime,jdbcType=TIMESTAMP},
+      close_time = #{record.closeTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.DeviceConnect">
+    update w_device_connect
+    <set>
+      <if test="connectIp != null">
+        connect_ip = #{connectIp,jdbcType=VARCHAR},
+      </if>
+      <if test="connectPort != null">
+        connect_port = #{connectPort,jdbcType=INTEGER},
+      </if>
+      <if test="deviceSn != null">
+        device_sn = #{deviceSn,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifyTime != null">
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        close_time = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where connect_id = #{connectId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.DeviceConnect">
+    update w_device_connect
+    set connect_ip = #{connectIp,jdbcType=VARCHAR},
+      connect_port = #{connectPort,jdbcType=INTEGER},
+      device_sn = #{deviceSn,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      close_time = #{closeTime,jdbcType=TIMESTAMP}
+    where connect_id = #{connectId,jdbcType=BIGINT}
+  </update>
+</mapper>

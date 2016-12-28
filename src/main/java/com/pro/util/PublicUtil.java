@@ -132,41 +132,29 @@ public class PublicUtil {
 				buffer.append("<li>");
 				// 有子节点
 				if (menu.getHasChild()) {
-					buffer.append("<a href=\"javascript:;\"><i class=\"" + menu.getMenuIcon()
-							+ "\"></i><span class=\"nav-label\">" + menu.getMenuName()
-							+ "</span><span class=\"fa arrow\"></span></a>");
+					buffer.append("<a href=\"javascript:;\"><i class=\"" + menu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + menu.getMenuName() + "</span><span class=\"fa arrow\"></span></a>");
 					buffer.append("<ul class=\"nav nav-second-level\">");
 					for (Menu rootChildMenu : menus) {
 						// 子节点
 						if (menu.getMenuId().equals(rootChildMenu.getMenuPid())) {
 							// 有三级节点
 							if (rootChildMenu.getHasChild()) {
-								buffer.append("<li><a href=\"javascript:;\"><i class=\"" + rootChildMenu.getMenuIcon()
-										+ "\"></i><span class=\"nav-label\">" + rootChildMenu.getMenuName()
-										+ "</span><span class=\"fa arrow\"></span></a><ul class=\"nav nav-third-level\">");
+								buffer.append("<li><a href=\"javascript:;\"><i class=\"" + rootChildMenu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + rootChildMenu.getMenuName() + "</span><span class=\"fa arrow\"></span></a><ul class=\"nav nav-third-level\">");
 								for (Menu secondChildMenu : menus) {
 									// 三级节点
 									if (rootChildMenu.getMenuId().equals(secondChildMenu.getMenuPid())) {
-										buffer.append("<li><a href=\"" + secondChildMenu.getMenuUrl()
-												+ "\" class=\"J_menuItem\"><i class=\"" + secondChildMenu.getMenuIcon()
-												+ "\"></i><span class=\"nav-label\">" + secondChildMenu.getMenuName()
-												+ "</span></a></li>");
+										buffer.append("<li><a href=\"" + secondChildMenu.getMenuUrl() + "\" class=\"J_menuItem\"><i class=\"" + secondChildMenu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + secondChildMenu.getMenuName() + "</span></a></li>");
 									}
 								}
 								buffer.append("</ul></li>");
 							} else {
-								buffer.append("<li><a href=\"" + rootChildMenu.getMenuUrl()
-										+ "\" class=\"J_menuItem\"><i class=\"" + rootChildMenu.getMenuIcon()
-										+ "\"></i><span class=\"nav-label\">" + rootChildMenu.getMenuName()
-										+ "</span></a></li>");
+								buffer.append("<li><a href=\"" + rootChildMenu.getMenuUrl() + "\" class=\"J_menuItem\"><i class=\"" + rootChildMenu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + rootChildMenu.getMenuName() + "</span></a></li>");
 							}
 						}
 					}
 					buffer.append("</ul>");
 				} else {
-					buffer.append("<a href=\"" + menu.getMenuUrl() + "\" class=\"J_menuItem\"><i class=\""
-							+ menu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + menu.getMenuName()
-							+ "</span></a>");
+					buffer.append("<a href=\"" + menu.getMenuUrl() + "\" class=\"J_menuItem\"><i class=\"" + menu.getMenuIcon() + "\"></i><span class=\"nav-label\">" + menu.getMenuName() + "</span></a>");
 				}
 			}
 			buffer.append("</li>");
@@ -182,9 +170,7 @@ public class PublicUtil {
 		for (Menu menu : menus) {
 			// 根节点
 			if (menu.getIsRoot()) {
-				buffer.append("<li class=\"dd-item\" data-id=\"" + menu.getMenuId()
-						+ "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\""
-						+ menu.getMenuIcon() + "\"></i></span> " + menu.getMenuName() + " </div>");
+				buffer.append("<li class=\"dd-item\" data-id=\"" + menu.getMenuId() + "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\"" + menu.getMenuIcon() + "\"></i></span> " + menu.getMenuName() + " </div>");
 				// 有子节点
 				if (menu.getHasChild()) {
 					buffer.append("<ol class=\"dd-list\">");
@@ -193,18 +179,12 @@ public class PublicUtil {
 						if (menu.getMenuId().equals(rootChildMenu.getMenuPid())) {
 							// 有三级节点
 							if (rootChildMenu.getHasChild()) {
-								buffer.append("<li class=\"dd-item\" data-id=\"" + rootChildMenu.getMenuId()
-										+ "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\""
-										+ rootChildMenu.getMenuIcon() + "\"></i></span> " + rootChildMenu.getMenuName()
-										+ " </div>");
+								buffer.append("<li class=\"dd-item\" data-id=\"" + rootChildMenu.getMenuId() + "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\"" + rootChildMenu.getMenuIcon() + "\"></i></span> " + rootChildMenu.getMenuName() + " </div>");
 								for (Menu secondChildMenu : menus) {
 									buffer.append("<ol class=\"dd-list\">");
 									// 三级节点
 									if (rootChildMenu.getMenuId().equals(secondChildMenu.getMenuPid())) {
-										buffer.append("<li class=\"dd-item\" data-id=\"" + secondChildMenu.getMenuId()
-												+ "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\""
-												+ secondChildMenu.getMenuIcon() + "\"></i></span> "
-												+ secondChildMenu.getMenuName() + " </div></li>");
+										buffer.append("<li class=\"dd-item\" data-id=\"" + secondChildMenu.getMenuId() + "\"><div class=\"dd-handle\"><span class=\"label label-info\"><i class=\"" + secondChildMenu.getMenuIcon() + "\"></i></span> " + secondChildMenu.getMenuName() + " </div></li>");
 									}
 									buffer.append("</ol>");
 								}
@@ -254,6 +234,15 @@ public class PublicUtil {
 		}
 	}
 
+	public static boolean isNumber(String str) {
+		if (isEmpty(str)) {
+			return false;
+		}
+		Pattern regex = Pattern.compile("^(-?\\d+)(\\.\\d+)?$");
+		Matcher matcher = regex.matcher(str);
+		return matcher.matches();
+	}
+
 	public static void main(String[] args) {
 		// while (true) {
 		// System.out.println(initId());
@@ -264,6 +253,9 @@ public class PublicUtil {
 		// e.printStackTrace();
 		// }
 		// }
-		System.out.println(getStringPy("太行山hang"));
+		System.out.println(isNumber("太行山hang"));
+		System.out.println(isNumber("11.23"));
+		System.out.println(isNumber("-120.23"));
+		System.out.println(isNumber("0"));
 	}
 }

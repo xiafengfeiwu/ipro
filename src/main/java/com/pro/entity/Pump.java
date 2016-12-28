@@ -1,23 +1,20 @@
 package com.pro.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Pump {
     private Long pumpId;
 
-    private String pumpName;
+    private Long projectId;
 
-    private Long pumpOwnerId;
+    private Long venderId;
 
-    private Long pumpOperatorId;
+    private Date installDate;
 
-    private String pumpCityCode;
+    private BigDecimal installPiNo;
 
-    private String pumpLongitude;
-
-    private String pumpLatitude;
-
-    private String pumpAddress;
+    private String warrantyInfo;
 
     private Date pumpCreateTime;
 
@@ -31,60 +28,44 @@ public class Pump {
         this.pumpId = pumpId;
     }
 
-    public String getPumpName() {
-        return pumpName;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setPumpName(String pumpName) {
-        this.pumpName = pumpName;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
-    public Long getPumpOwnerId() {
-        return pumpOwnerId;
+    public Long getVenderId() {
+        return venderId;
     }
 
-    public void setPumpOwnerId(Long pumpOwnerId) {
-        this.pumpOwnerId = pumpOwnerId;
+    public void setVenderId(Long venderId) {
+        this.venderId = venderId;
     }
 
-    public Long getPumpOperatorId() {
-        return pumpOperatorId;
+    public Date getInstallDate() {
+        return installDate;
     }
 
-    public void setPumpOperatorId(Long pumpOperatorId) {
-        this.pumpOperatorId = pumpOperatorId;
+    public void setInstallDate(Date installDate) {
+        this.installDate = installDate;
     }
 
-    public String getPumpCityCode() {
-        return pumpCityCode;
+    public BigDecimal getInstallPiNo() {
+        return installPiNo;
     }
 
-    public void setPumpCityCode(String pumpCityCode) {
-        this.pumpCityCode = pumpCityCode;
+    public void setInstallPiNo(BigDecimal installPiNo) {
+        this.installPiNo = installPiNo;
     }
 
-    public String getPumpLongitude() {
-        return pumpLongitude;
+    public String getWarrantyInfo() {
+        return warrantyInfo;
     }
 
-    public void setPumpLongitude(String pumpLongitude) {
-        this.pumpLongitude = pumpLongitude;
-    }
-
-    public String getPumpLatitude() {
-        return pumpLatitude;
-    }
-
-    public void setPumpLatitude(String pumpLatitude) {
-        this.pumpLatitude = pumpLatitude;
-    }
-
-    public String getPumpAddress() {
-        return pumpAddress;
-    }
-
-    public void setPumpAddress(String pumpAddress) {
-        this.pumpAddress = pumpAddress;
+    public void setWarrantyInfo(String warrantyInfo) {
+        this.warrantyInfo = warrantyInfo;
     }
 
     public Date getPumpCreateTime() {

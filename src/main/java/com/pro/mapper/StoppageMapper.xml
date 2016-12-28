@@ -5,6 +5,7 @@
     <id column="stoppage_id" jdbcType="BIGINT" property="stoppageId" />
     <result column="warn_id" jdbcType="BIGINT" property="warnId" />
     <result column="stoppage_no" jdbcType="VARCHAR" property="stoppageNo" />
+    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
     <result column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="descript" jdbcType="VARCHAR" property="descript" />
     <result column="attach_id" jdbcType="BIGINT" property="attachId" />
@@ -72,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    stoppage_id, warn_id, stoppage_no, node_id, descript, attach_id, originator_id, occur_time, 
-    handle_status, handle_modify_time
+    stoppage_id, warn_id, stoppage_no, pump_id, node_id, descript, attach_id, originator_id, 
+    occur_time, handle_status, handle_modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.StoppageExample" resultMap="BaseResultMap">
     select
@@ -108,13 +109,13 @@
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Stoppage">
     insert into w_stoppage (stoppage_id, warn_id, stoppage_no, 
-      node_id, descript, attach_id, 
-      originator_id, occur_time, handle_status, 
-      handle_modify_time)
+      pump_id, node_id, descript, 
+      attach_id, originator_id, occur_time, 
+      handle_status, handle_modify_time)
     values (#{stoppageId,jdbcType=BIGINT}, #{warnId,jdbcType=BIGINT}, #{stoppageNo,jdbcType=VARCHAR}, 
-      #{nodeId,jdbcType=BIGINT}, #{descript,jdbcType=VARCHAR}, #{attachId,jdbcType=BIGINT}, 
-      #{originatorId,jdbcType=BIGINT}, #{occurTime,jdbcType=TIMESTAMP}, #{handleStatus,jdbcType=CHAR}, 
-      #{handleModifyTime,jdbcType=TIMESTAMP})
+      #{pumpId,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{descript,jdbcType=VARCHAR}, 
+      #{attachId,jdbcType=BIGINT}, #{originatorId,jdbcType=BIGINT}, #{occurTime,jdbcType=TIMESTAMP}, 
+      #{handleStatus,jdbcType=CHAR}, #{handleModifyTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.pro.entity.Stoppage">
     insert into w_stoppage
@@ -127,6 +128,9 @@
       </if>
       <if test="stoppageNo != null">
         stoppage_no,
+      </if>
+      <if test="pumpId != null">
+        pump_id,
       </if>
       <if test="nodeId != null">
         node_id,
@@ -159,6 +163,9 @@
       </if>
       <if test="stoppageNo != null">
         #{stoppageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
       </if>
       <if test="nodeId != null">
         #{nodeId,jdbcType=BIGINT},
@@ -201,6 +208,9 @@
       <if test="record.stoppageNo != null">
         stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
       </if>
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
+      </if>
       <if test="record.nodeId != null">
         node_id = #{record.nodeId,jdbcType=BIGINT},
       </if>
@@ -232,6 +242,7 @@
     set stoppage_id = #{record.stoppageId,jdbcType=BIGINT},
       warn_id = #{record.warnId,jdbcType=BIGINT},
       stoppage_no = #{record.stoppageNo,jdbcType=VARCHAR},
+      pump_id = #{record.pumpId,jdbcType=BIGINT},
       node_id = #{record.nodeId,jdbcType=BIGINT},
       descript = #{record.descript,jdbcType=VARCHAR},
       attach_id = #{record.attachId,jdbcType=BIGINT},
@@ -251,6 +262,9 @@
       </if>
       <if test="stoppageNo != null">
         stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pumpId != null">
+        pump_id = #{pumpId,jdbcType=BIGINT},
       </if>
       <if test="nodeId != null">
         node_id = #{nodeId,jdbcType=BIGINT},
@@ -280,6 +294,7 @@
     update w_stoppage
     set warn_id = #{warnId,jdbcType=BIGINT},
       stoppage_no = #{stoppageNo,jdbcType=VARCHAR},
+      pump_id = #{pumpId,jdbcType=BIGINT},
       node_id = #{nodeId,jdbcType=BIGINT},
       descript = #{descript,jdbcType=VARCHAR},
       attach_id = #{attachId,jdbcType=BIGINT},

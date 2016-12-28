@@ -1,19 +1,24 @@
 package com.pro.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pro.dao.WeatherAlarmMapper;
+import com.pro.dao.WeatherCityMapper;
 import com.pro.dao.WeatherDataMapper;
 import com.pro.dao.WeatherIconMapper;
 import com.pro.dao.WeatherKeyMapper;
 import com.pro.entity.WeatherAlarm;
+import com.pro.entity.WeatherCity;
+import com.pro.entity.WeatherCityExample;
 import com.pro.entity.WeatherData;
 import com.pro.entity.WeatherDataKey;
 import com.pro.entity.WeatherIcon;
 import com.pro.entity.WeatherKey;
+import com.pro.entity.WeatherKeyExample;
 import com.pro.service.CityWeatherService;
 
 @Service
@@ -27,6 +32,8 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 	WeatherKeyMapper weatherKeyMapper;
 	@Autowired
 	WeatherAlarmMapper weatherAlarmMapper;
+	@Autowired
+	WeatherCityMapper weatherCityMapper;
 
 	@Override
 	public WeatherData findTodayCityWeatherByCode(String cityCode) {
@@ -42,8 +49,17 @@ public class CityWeatherServiceImpl implements CityWeatherService {
 	}
 
 	@Override
-	public WeatherKey findWeatherKey() {
-		return weatherKeyMapper.selectByPrimaryKey(new Long("809645772998967297"));
+	public List<WeatherKey> findWeatherKeys() {
+		WeatherKeyExample example = new WeatherKeyExample();
+		example.setOrderByClause("id asc");
+		return weatherKeyMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<WeatherCity> findAllCity() {
+		WeatherCityExample example = new WeatherCityExample();
+		example.setOrderByClause("code asc");
+		return weatherCityMapper.selectByExample(example);
 	}
 
 	@Override

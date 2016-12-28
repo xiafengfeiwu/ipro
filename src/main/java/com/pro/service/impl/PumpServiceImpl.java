@@ -42,9 +42,6 @@ public class PumpServiceImpl implements PumpService {
 		PumpExample example = new PumpExample();
 		if (PublicUtil.isNotEmpty(searchWord)) {
 			searchWord = "%" + searchWord + "%";
-			example.or().andPumpNameLike(searchWord);
-			example.or().andPumpCityCodeLike(searchWord);
-			example.or().andPumpAddressLike(searchWord);
 		}
 		return pumpMapper.countByExample(example);
 	}
@@ -54,9 +51,6 @@ public class PumpServiceImpl implements PumpService {
 		PumpExample example = new PumpExample();
 		if (PublicUtil.isNotEmpty(searchWord)) {
 			searchWord = "%" + searchWord + "%";
-			example.or().andPumpNameLike(searchWord);
-			example.or().andPumpCityCodeLike(searchWord);
-			example.or().andPumpAddressLike(searchWord);
 		}
 		return pumpMapper.selectByExample(example);
 	}
@@ -64,14 +58,6 @@ public class PumpServiceImpl implements PumpService {
 	@Override
 	public List<Pump> getOwnerAllPumps(Long ownerId) {
 		PumpExample example = new PumpExample();
-		example.createCriteria().andPumpOwnerIdEqualTo(ownerId);
-		return pumpMapper.selectByExample(example);
-	}
-
-	@Override
-	public List<Pump> getOperatorAllPumps(Long operatorId) {
-		PumpExample example = new PumpExample();
-		example.createCriteria().andPumpOperatorIdEqualTo(operatorId);
 		return pumpMapper.selectByExample(example);
 	}
 

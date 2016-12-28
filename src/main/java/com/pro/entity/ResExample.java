@@ -495,6 +495,76 @@ public class ResExample {
             return (Criteria) this;
         }
 
+        public Criteria andResCompressPathIsNull() {
+            addCriterion("res_compress_path is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathIsNotNull() {
+            addCriterion("res_compress_path is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathEqualTo(String value) {
+            addCriterion("res_compress_path =", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathNotEqualTo(String value) {
+            addCriterion("res_compress_path <>", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathGreaterThan(String value) {
+            addCriterion("res_compress_path >", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathGreaterThanOrEqualTo(String value) {
+            addCriterion("res_compress_path >=", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathLessThan(String value) {
+            addCriterion("res_compress_path <", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathLessThanOrEqualTo(String value) {
+            addCriterion("res_compress_path <=", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathLike(String value) {
+            addCriterion("res_compress_path like", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathNotLike(String value) {
+            addCriterion("res_compress_path not like", value, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathIn(List<String> values) {
+            addCriterion("res_compress_path in", values, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathNotIn(List<String> values) {
+            addCriterion("res_compress_path not in", values, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathBetween(String value1, String value2) {
+            addCriterion("res_compress_path between", value1, value2, "resCompressPath");
+            return (Criteria) this;
+        }
+
+        public Criteria andResCompressPathNotBetween(String value1, String value2) {
+            addCriterion("res_compress_path not between", value1, value2, "resCompressPath");
+            return (Criteria) this;
+        }
+
         public Criteria andResSizeIsNull() {
             addCriterion("res_size is null");
             return (Criteria) this;

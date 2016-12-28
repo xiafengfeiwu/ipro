@@ -61,6 +61,8 @@
 		<hibernate.validator.version>5.1.2.Final</hibernate.validator.version>
 		<!-- jpinyin.version -->
 		<jpinyin.version>1.1.8</jpinyin.version>
+		<!-- poi.version -->
+		<poi.version>3.15</poi.version>
 	</properties>
 	<build>
 		<plugins>
@@ -312,9 +314,14 @@
 			<version>${javax.websocket.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.github.stuxuhai</groupId>
-		    <artifactId>jpinyin</artifactId>
-		    <version>${jpinyin.version}</version>
+			<groupId>com.github.stuxuhai</groupId>
+			<artifactId>jpinyin</artifactId>
+			<version>${jpinyin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
 		</dependency>
 	</dependencies>
 </project>

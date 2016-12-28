@@ -295,6 +295,66 @@ public class StoppageExample {
             return (Criteria) this;
         }
 
+        public Criteria andPumpIdIsNull() {
+            addCriterion("pump_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdIsNotNull() {
+            addCriterion("pump_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdEqualTo(Long value) {
+            addCriterion("pump_id =", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdNotEqualTo(Long value) {
+            addCriterion("pump_id <>", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdGreaterThan(Long value) {
+            addCriterion("pump_id >", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("pump_id >=", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdLessThan(Long value) {
+            addCriterion("pump_id <", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdLessThanOrEqualTo(Long value) {
+            addCriterion("pump_id <=", value, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdIn(List<Long> values) {
+            addCriterion("pump_id in", values, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdNotIn(List<Long> values) {
+            addCriterion("pump_id not in", values, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdBetween(Long value1, Long value2) {
+            addCriterion("pump_id between", value1, value2, "pumpId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPumpIdNotBetween(Long value1, Long value2) {
+            addCriterion("pump_id not between", value1, value2, "pumpId");
+            return (Criteria) this;
+        }
+
         public Criteria andNodeIdIsNull() {
             addCriterion("node_id is null");
             return (Criteria) this;

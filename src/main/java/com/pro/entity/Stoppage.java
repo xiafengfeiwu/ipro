@@ -9,6 +9,8 @@ public class Stoppage {
 
     private String stoppageNo;
 
+    private Long pumpId;
+
     private Long nodeId;
 
     private String descript;
@@ -45,6 +47,14 @@ public class Stoppage {
 
     public void setStoppageNo(String stoppageNo) {
         this.stoppageNo = stoppageNo;
+    }
+
+    public Long getPumpId() {
+        return pumpId;
+    }
+
+    public void setPumpId(Long pumpId) {
+        this.pumpId = pumpId;
     }
 
     public Long getNodeId() {

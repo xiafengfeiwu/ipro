@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pro.dao.DeviceReplaceMapper">
-  <resultMap id="BaseResultMap" type="com.pro.entity.DeviceReplace">
+<mapper namespace="com.pro.dao.NodeReplaceMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.NodeReplace">
     <id column="record_id" jdbcType="BIGINT" property="recordId" />
     <result column="node_id" jdbcType="BIGINT" property="nodeId" />
     <result column="replace_time" jdbcType="TIMESTAMP" property="replaceTime" />
@@ -69,14 +69,14 @@
   <sql id="Base_Column_List">
     record_id, node_id, replace_time, replace_descript, operator_id
   </sql>
-  <select id="selectByExample" parameterType="com.pro.entity.DeviceReplaceExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.pro.entity.NodeReplaceExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from w_device_replace
+    from w_node_replace
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,27 +87,27 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from w_device_replace
+    from w_node_replace
     where record_id = #{recordId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from w_device_replace
+    delete from w_node_replace
     where record_id = #{recordId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.pro.entity.DeviceReplaceExample">
-    delete from w_device_replace
+  <delete id="deleteByExample" parameterType="com.pro.entity.NodeReplaceExample">
+    delete from w_node_replace
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.pro.entity.DeviceReplace">
-    insert into w_device_replace (record_id, node_id, replace_time, 
+  <insert id="insert" parameterType="com.pro.entity.NodeReplace">
+    insert into w_node_replace (record_id, node_id, replace_time, 
       replace_descript, operator_id)
     values (#{recordId,jdbcType=BIGINT}, #{nodeId,jdbcType=BIGINT}, #{replaceTime,jdbcType=TIMESTAMP}, 
       #{replaceDescript,jdbcType=VARCHAR}, #{operatorId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.pro.entity.DeviceReplace">
-    insert into w_device_replace
+  <insert id="insertSelective" parameterType="com.pro.entity.NodeReplace">
+    insert into w_node_replace
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="recordId != null">
         record_id,
@@ -143,14 +143,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.pro.entity.DeviceReplaceExample" resultType="java.lang.Long">
-    select count(*) from w_device_replace
+  <select id="countByExample" parameterType="com.pro.entity.NodeReplaceExample" resultType="java.lang.Long">
+    select count(*) from w_node_replace
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update w_device_replace
+    update w_node_replace
     <set>
       <if test="record.recordId != null">
         record_id = #{record.recordId,jdbcType=BIGINT},
@@ -173,7 +173,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update w_device_replace
+    update w_node_replace
     set record_id = #{record.recordId,jdbcType=BIGINT},
       node_id = #{record.nodeId,jdbcType=BIGINT},
       replace_time = #{record.replaceTime,jdbcType=TIMESTAMP},
@@ -183,8 +183,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.DeviceReplace">
-    update w_device_replace
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.NodeReplace">
+    update w_node_replace
     <set>
       <if test="nodeId != null">
         node_id = #{nodeId,jdbcType=BIGINT},
@@ -201,8 +201,8 @@
     </set>
     where record_id = #{recordId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pro.entity.DeviceReplace">
-    update w_device_replace
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.NodeReplace">
+    update w_node_replace
     set node_id = #{nodeId,jdbcType=BIGINT},
       replace_time = #{replaceTime,jdbcType=TIMESTAMP},
       replace_descript = #{replaceDescript,jdbcType=VARCHAR},

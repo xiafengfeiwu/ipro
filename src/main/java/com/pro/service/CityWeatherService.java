@@ -1,6 +1,9 @@
 package com.pro.service;
 
+import java.util.List;
+
 import com.pro.entity.WeatherAlarm;
+import com.pro.entity.WeatherCity;
 import com.pro.entity.WeatherData;
 import com.pro.entity.WeatherIcon;
 import com.pro.entity.WeatherKey;
@@ -14,7 +17,10 @@ public interface CityWeatherService {
 	WeatherIcon findWeatherIconByCode(String weatherCode);
 
 	// 获取第三方天气KEY值
-	WeatherKey findWeatherKey();
+	List<WeatherKey> findWeatherKeys();
+
+	// 获取所有的城市列表
+	List<WeatherCity> findAllCity();
 
 	// 通过城市编码获取预警信息
 	WeatherAlarm findWeatherAlarmByCode(String cityCode);

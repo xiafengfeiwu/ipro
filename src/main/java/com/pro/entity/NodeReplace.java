@@ -2,7 +2,7 @@ package com.pro.entity;
 
 import java.util.Date;
 
-public class DeviceReplace {
+public class NodeReplace {
     private Long recordId;
 
     private Long nodeId;

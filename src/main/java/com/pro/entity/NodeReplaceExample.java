@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DeviceReplaceExample {
+public class NodeReplaceExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceReplaceExample() {
+    public NodeReplaceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

@@ -1,7 +1,9 @@
 package com.pro.entity;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class PumpExample {
@@ -105,6 +107,32 @@ public class PumpExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
         public Criteria andPumpIdIsNull() {
             addCriterion("pump_id is null");
             return (Criteria) this;
@@ -165,473 +193,313 @@ public class PumpExample {
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameIsNull() {
-            addCriterion("pump_name is null");
+        public Criteria andProjectIdIsNull() {
+            addCriterion("project_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameIsNotNull() {
-            addCriterion("pump_name is not null");
+        public Criteria andProjectIdIsNotNull() {
+            addCriterion("project_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameEqualTo(String value) {
-            addCriterion("pump_name =", value, "pumpName");
+        public Criteria andProjectIdEqualTo(Long value) {
+            addCriterion("project_id =", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameNotEqualTo(String value) {
-            addCriterion("pump_name <>", value, "pumpName");
+        public Criteria andProjectIdNotEqualTo(Long value) {
+            addCriterion("project_id <>", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameGreaterThan(String value) {
-            addCriterion("pump_name >", value, "pumpName");
+        public Criteria andProjectIdGreaterThan(Long value) {
+            addCriterion("project_id >", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_name >=", value, "pumpName");
+        public Criteria andProjectIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("project_id >=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameLessThan(String value) {
-            addCriterion("pump_name <", value, "pumpName");
+        public Criteria andProjectIdLessThan(Long value) {
+            addCriterion("project_id <", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameLessThanOrEqualTo(String value) {
-            addCriterion("pump_name <=", value, "pumpName");
+        public Criteria andProjectIdLessThanOrEqualTo(Long value) {
+            addCriterion("project_id <=", value, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameLike(String value) {
-            addCriterion("pump_name like", value, "pumpName");
+        public Criteria andProjectIdIn(List<Long> values) {
+            addCriterion("project_id in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameNotLike(String value) {
-            addCriterion("pump_name not like", value, "pumpName");
+        public Criteria andProjectIdNotIn(List<Long> values) {
+            addCriterion("project_id not in", values, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameIn(List<String> values) {
-            addCriterion("pump_name in", values, "pumpName");
+        public Criteria andProjectIdBetween(Long value1, Long value2) {
+            addCriterion("project_id between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameNotIn(List<String> values) {
-            addCriterion("pump_name not in", values, "pumpName");
+        public Criteria andProjectIdNotBetween(Long value1, Long value2) {
+            addCriterion("project_id not between", value1, value2, "projectId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameBetween(String value1, String value2) {
-            addCriterion("pump_name between", value1, value2, "pumpName");
+        public Criteria andVenderIdIsNull() {
+            addCriterion("vender_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpNameNotBetween(String value1, String value2) {
-            addCriterion("pump_name not between", value1, value2, "pumpName");
+        public Criteria andVenderIdIsNotNull() {
+            addCriterion("vender_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdIsNull() {
-            addCriterion("pump_owner_id is null");
+        public Criteria andVenderIdEqualTo(Long value) {
+            addCriterion("vender_id =", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdIsNotNull() {
-            addCriterion("pump_owner_id is not null");
+        public Criteria andVenderIdNotEqualTo(Long value) {
+            addCriterion("vender_id <>", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdEqualTo(Long value) {
-            addCriterion("pump_owner_id =", value, "pumpOwnerId");
+        public Criteria andVenderIdGreaterThan(Long value) {
+            addCriterion("vender_id >", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdNotEqualTo(Long value) {
-            addCriterion("pump_owner_id <>", value, "pumpOwnerId");
+        public Criteria andVenderIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("vender_id >=", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdGreaterThan(Long value) {
-            addCriterion("pump_owner_id >", value, "pumpOwnerId");
+        public Criteria andVenderIdLessThan(Long value) {
+            addCriterion("vender_id <", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("pump_owner_id >=", value, "pumpOwnerId");
+        public Criteria andVenderIdLessThanOrEqualTo(Long value) {
+            addCriterion("vender_id <=", value, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdLessThan(Long value) {
-            addCriterion("pump_owner_id <", value, "pumpOwnerId");
+        public Criteria andVenderIdIn(List<Long> values) {
+            addCriterion("vender_id in", values, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdLessThanOrEqualTo(Long value) {
-            addCriterion("pump_owner_id <=", value, "pumpOwnerId");
+        public Criteria andVenderIdNotIn(List<Long> values) {
+            addCriterion("vender_id not in", values, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdIn(List<Long> values) {
-            addCriterion("pump_owner_id in", values, "pumpOwnerId");
+        public Criteria andVenderIdBetween(Long value1, Long value2) {
+            addCriterion("vender_id between", value1, value2, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdNotIn(List<Long> values) {
-            addCriterion("pump_owner_id not in", values, "pumpOwnerId");
+        public Criteria andVenderIdNotBetween(Long value1, Long value2) {
+            addCriterion("vender_id not between", value1, value2, "venderId");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdBetween(Long value1, Long value2) {
-            addCriterion("pump_owner_id between", value1, value2, "pumpOwnerId");
+        public Criteria andInstallDateIsNull() {
+            addCriterion("install_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOwnerIdNotBetween(Long value1, Long value2) {
-            addCriterion("pump_owner_id not between", value1, value2, "pumpOwnerId");
+        public Criteria andInstallDateIsNotNull() {
+            addCriterion("install_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdIsNull() {
-            addCriterion("pump_operator_id is null");
+        public Criteria andInstallDateEqualTo(Date value) {
+            addCriterionForJDBCDate("install_date =", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdIsNotNull() {
-            addCriterion("pump_operator_id is not null");
+        public Criteria andInstallDateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("install_date <>", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdEqualTo(Long value) {
-            addCriterion("pump_operator_id =", value, "pumpOperatorId");
+        public Criteria andInstallDateGreaterThan(Date value) {
+            addCriterionForJDBCDate("install_date >", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdNotEqualTo(Long value) {
-            addCriterion("pump_operator_id <>", value, "pumpOperatorId");
+        public Criteria andInstallDateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("install_date >=", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdGreaterThan(Long value) {
-            addCriterion("pump_operator_id >", value, "pumpOperatorId");
+        public Criteria andInstallDateLessThan(Date value) {
+            addCriterionForJDBCDate("install_date <", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("pump_operator_id >=", value, "pumpOperatorId");
+        public Criteria andInstallDateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("install_date <=", value, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdLessThan(Long value) {
-            addCriterion("pump_operator_id <", value, "pumpOperatorId");
+        public Criteria andInstallDateIn(List<Date> values) {
+            addCriterionForJDBCDate("install_date in", values, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdLessThanOrEqualTo(Long value) {
-            addCriterion("pump_operator_id <=", value, "pumpOperatorId");
+        public Criteria andInstallDateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("install_date not in", values, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdIn(List<Long> values) {
-            addCriterion("pump_operator_id in", values, "pumpOperatorId");
+        public Criteria andInstallDateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("install_date between", value1, value2, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdNotIn(List<Long> values) {
-            addCriterion("pump_operator_id not in", values, "pumpOperatorId");
+        public Criteria andInstallDateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("install_date not between", value1, value2, "installDate");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdBetween(Long value1, Long value2) {
-            addCriterion("pump_operator_id between", value1, value2, "pumpOperatorId");
+        public Criteria andInstallPiNoIsNull() {
+            addCriterion("install_pi_no is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpOperatorIdNotBetween(Long value1, Long value2) {
-            addCriterion("pump_operator_id not between", value1, value2, "pumpOperatorId");
+        public Criteria andInstallPiNoIsNotNull() {
+            addCriterion("install_pi_no is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeIsNull() {
-            addCriterion("pump_city_code is null");
+        public Criteria andInstallPiNoEqualTo(BigDecimal value) {
+            addCriterion("install_pi_no =", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeIsNotNull() {
-            addCriterion("pump_city_code is not null");
+        public Criteria andInstallPiNoNotEqualTo(BigDecimal value) {
+            addCriterion("install_pi_no <>", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeEqualTo(String value) {
-            addCriterion("pump_city_code =", value, "pumpCityCode");
+        public Criteria andInstallPiNoGreaterThan(BigDecimal value) {
+            addCriterion("install_pi_no >", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeNotEqualTo(String value) {
-            addCriterion("pump_city_code <>", value, "pumpCityCode");
+        public Criteria andInstallPiNoGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("install_pi_no >=", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeGreaterThan(String value) {
-            addCriterion("pump_city_code >", value, "pumpCityCode");
+        public Criteria andInstallPiNoLessThan(BigDecimal value) {
+            addCriterion("install_pi_no <", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_city_code >=", value, "pumpCityCode");
+        public Criteria andInstallPiNoLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("install_pi_no <=", value, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeLessThan(String value) {
-            addCriterion("pump_city_code <", value, "pumpCityCode");
+        public Criteria andInstallPiNoIn(List<BigDecimal> values) {
+            addCriterion("install_pi_no in", values, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeLessThanOrEqualTo(String value) {
-            addCriterion("pump_city_code <=", value, "pumpCityCode");
+        public Criteria andInstallPiNoNotIn(List<BigDecimal> values) {
+            addCriterion("install_pi_no not in", values, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeLike(String value) {
-            addCriterion("pump_city_code like", value, "pumpCityCode");
+        public Criteria andInstallPiNoBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("install_pi_no between", value1, value2, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeNotLike(String value) {
-            addCriterion("pump_city_code not like", value, "pumpCityCode");
+        public Criteria andInstallPiNoNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("install_pi_no not between", value1, value2, "installPiNo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeIn(List<String> values) {
-            addCriterion("pump_city_code in", values, "pumpCityCode");
+        public Criteria andWarrantyInfoIsNull() {
+            addCriterion("warranty_info is null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeNotIn(List<String> values) {
-            addCriterion("pump_city_code not in", values, "pumpCityCode");
+        public Criteria andWarrantyInfoIsNotNull() {
+            addCriterion("warranty_info is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeBetween(String value1, String value2) {
-            addCriterion("pump_city_code between", value1, value2, "pumpCityCode");
+        public Criteria andWarrantyInfoEqualTo(String value) {
+            addCriterion("warranty_info =", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpCityCodeNotBetween(String value1, String value2) {
-            addCriterion("pump_city_code not between", value1, value2, "pumpCityCode");
+        public Criteria andWarrantyInfoNotEqualTo(String value) {
+            addCriterion("warranty_info <>", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeIsNull() {
-            addCriterion("pump_longitude is null");
+        public Criteria andWarrantyInfoGreaterThan(String value) {
+            addCriterion("warranty_info >", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeIsNotNull() {
-            addCriterion("pump_longitude is not null");
+        public Criteria andWarrantyInfoGreaterThanOrEqualTo(String value) {
+            addCriterion("warranty_info >=", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeEqualTo(String value) {
-            addCriterion("pump_longitude =", value, "pumpLongitude");
+        public Criteria andWarrantyInfoLessThan(String value) {
+            addCriterion("warranty_info <", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeNotEqualTo(String value) {
-            addCriterion("pump_longitude <>", value, "pumpLongitude");
+        public Criteria andWarrantyInfoLessThanOrEqualTo(String value) {
+            addCriterion("warranty_info <=", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeGreaterThan(String value) {
-            addCriterion("pump_longitude >", value, "pumpLongitude");
+        public Criteria andWarrantyInfoLike(String value) {
+            addCriterion("warranty_info like", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_longitude >=", value, "pumpLongitude");
+        public Criteria andWarrantyInfoNotLike(String value) {
+            addCriterion("warranty_info not like", value, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeLessThan(String value) {
-            addCriterion("pump_longitude <", value, "pumpLongitude");
+        public Criteria andWarrantyInfoIn(List<String> values) {
+            addCriterion("warranty_info in", values, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeLessThanOrEqualTo(String value) {
-            addCriterion("pump_longitude <=", value, "pumpLongitude");
+        public Criteria andWarrantyInfoNotIn(List<String> values) {
+            addCriterion("warranty_info not in", values, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeLike(String value) {
-            addCriterion("pump_longitude like", value, "pumpLongitude");
+        public Criteria andWarrantyInfoBetween(String value1, String value2) {
+            addCriterion("warranty_info between", value1, value2, "warrantyInfo");
             return (Criteria) this;
         }
 
-        public Criteria andPumpLongitudeNotLike(String value) {
-            addCriterion("pump_longitude not like", value, "pumpLongitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLongitudeIn(List<String> values) {
-            addCriterion("pump_longitude in", values, "pumpLongitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLongitudeNotIn(List<String> values) {
-            addCriterion("pump_longitude not in", values, "pumpLongitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLongitudeBetween(String value1, String value2) {
-            addCriterion("pump_longitude between", value1, value2, "pumpLongitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLongitudeNotBetween(String value1, String value2) {
-            addCriterion("pump_longitude not between", value1, value2, "pumpLongitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeIsNull() {
-            addCriterion("pump_latitude is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeIsNotNull() {
-            addCriterion("pump_latitude is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeEqualTo(String value) {
-            addCriterion("pump_latitude =", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeNotEqualTo(String value) {
-            addCriterion("pump_latitude <>", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeGreaterThan(String value) {
-            addCriterion("pump_latitude >", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_latitude >=", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeLessThan(String value) {
-            addCriterion("pump_latitude <", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeLessThanOrEqualTo(String value) {
-            addCriterion("pump_latitude <=", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeLike(String value) {
-            addCriterion("pump_latitude like", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeNotLike(String value) {
-            addCriterion("pump_latitude not like", value, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeIn(List<String> values) {
-            addCriterion("pump_latitude in", values, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeNotIn(List<String> values) {
-            addCriterion("pump_latitude not in", values, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeBetween(String value1, String value2) {
-            addCriterion("pump_latitude between", value1, value2, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpLatitudeNotBetween(String value1, String value2) {
-            addCriterion("pump_latitude not between", value1, value2, "pumpLatitude");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressIsNull() {
-            addCriterion("pump_address is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressIsNotNull() {
-            addCriterion("pump_address is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressEqualTo(String value) {
-            addCriterion("pump_address =", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressNotEqualTo(String value) {
-            addCriterion("pump_address <>", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressGreaterThan(String value) {
-            addCriterion("pump_address >", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressGreaterThanOrEqualTo(String value) {
-            addCriterion("pump_address >=", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressLessThan(String value) {
-            addCriterion("pump_address <", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressLessThanOrEqualTo(String value) {
-            addCriterion("pump_address <=", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressLike(String value) {
-            addCriterion("pump_address like", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressNotLike(String value) {
-            addCriterion("pump_address not like", value, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressIn(List<String> values) {
-            addCriterion("pump_address in", values, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressNotIn(List<String> values) {
-            addCriterion("pump_address not in", values, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressBetween(String value1, String value2) {
-            addCriterion("pump_address between", value1, value2, "pumpAddress");
-            return (Criteria) this;
-        }
-
-        public Criteria andPumpAddressNotBetween(String value1, String value2) {
-            addCriterion("pump_address not between", value1, value2, "pumpAddress");
+        public Criteria andWarrantyInfoNotBetween(String value1, String value2) {
+            addCriterion("warranty_info not between", value1, value2, "warrantyInfo");
             return (Criteria) this;
         }
 

@@ -90,7 +90,7 @@
 				<iframe class="J_iframe" data-id="welcome.jspx" name="welcome.jspx" width="100%" height="100%" src="welcome.jspx" frameborder="0" seamless></iframe>
 			</div>
 			<div class="footer">
-				<div class="pull-right">${systemInfo.systemTechnicalSupport }</div>
+				<div class="text-center">${systemInfo.systemTechnicalSupport }</div>
 			</div>
 		</div>
 		<%--右侧部分结束--%>

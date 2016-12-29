@@ -43,12 +43,14 @@
 		<table schema="${schema}" tableName="w_node_status" domainObjectName="NodeStatus" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_packet" domainObjectName="Packet" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_packet_query" domainObjectName="PacketQuery" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		-->
 		<table schema="${schema}" tableName="w_pump" domainObjectName="Pump" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_ele" domainObjectName="PumpEle" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table schema="${schema}" tableName="w_pump_ele_statistics" domainObjectName="PumpEleStatistics" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		-->
 		<!--
 		<table schema="${schema}" tableName="w_pump_warn_group" domainObjectName="PumpWarnGroup" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
-		-->
 		<table schema="${schema}" tableName="w_project" domainObjectName="Project" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		-->
 		<!--
 		<table schema="${schema}" tableName="w_res" domainObjectName="Res" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
 		<table schema="${schema}" tableName="w_role" domainObjectName="Role" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>

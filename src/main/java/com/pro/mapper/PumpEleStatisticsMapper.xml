@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pro.dao.PumpEleStatisticsMapper">
+  <resultMap id="BaseResultMap" type="com.pro.entity.PumpEleStatistics">
+    <id column="data_id" jdbcType="BIGINT" property="dataId" />
+    <result column="pump_id" jdbcType="BIGINT" property="pumpId" />
+    <result column="collect_date" jdbcType="DATE" property="collectDate" />
+    <result column="ele_today" jdbcType="DECIMAL" property="eleToday" />
+    <result column="ele_total" jdbcType="VARCHAR" property="eleTotal" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    data_id, pump_id, collect_date, ele_today, ele_total
+  </sql>
+  <select id="selectByExample" parameterType="com.pro.entity.PumpEleStatisticsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from w_pump_ele_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from w_pump_ele_statistics
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from w_pump_ele_statistics
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.pro.entity.PumpEleStatisticsExample">
+    delete from w_pump_ele_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.pro.entity.PumpEleStatistics">
+    insert into w_pump_ele_statistics (data_id, pump_id, collect_date, 
+      ele_today, ele_total)
+    values (#{dataId,jdbcType=BIGINT}, #{pumpId,jdbcType=BIGINT}, #{collectDate,jdbcType=DATE}, 
+      #{eleToday,jdbcType=DECIMAL}, #{eleTotal,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pro.entity.PumpEleStatistics">
+    insert into w_pump_ele_statistics
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        data_id,
+      </if>
+      <if test="pumpId != null">
+        pump_id,
+      </if>
+      <if test="collectDate != null">
+        collect_date,
+      </if>
+      <if test="eleToday != null">
+        ele_today,
+      </if>
+      <if test="eleTotal != null">
+        ele_total,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        #{dataId,jdbcType=BIGINT},
+      </if>
+      <if test="pumpId != null">
+        #{pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="collectDate != null">
+        #{collectDate,jdbcType=DATE},
+      </if>
+      <if test="eleToday != null">
+        #{eleToday,jdbcType=DECIMAL},
+      </if>
+      <if test="eleTotal != null">
+        #{eleTotal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.pro.entity.PumpEleStatisticsExample" resultType="java.lang.Long">
+    select count(*) from w_pump_ele_statistics
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update w_pump_ele_statistics
+    <set>
+      <if test="record.dataId != null">
+        data_id = #{record.dataId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pumpId != null">
+        pump_id = #{record.pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="record.collectDate != null">
+        collect_date = #{record.collectDate,jdbcType=DATE},
+      </if>
+      <if test="record.eleToday != null">
+        ele_today = #{record.eleToday,jdbcType=DECIMAL},
+      </if>
+      <if test="record.eleTotal != null">
+        ele_total = #{record.eleTotal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update w_pump_ele_statistics
+    set data_id = #{record.dataId,jdbcType=BIGINT},
+      pump_id = #{record.pumpId,jdbcType=BIGINT},
+      collect_date = #{record.collectDate,jdbcType=DATE},
+      ele_today = #{record.eleToday,jdbcType=DECIMAL},
+      ele_total = #{record.eleTotal,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.PumpEleStatistics">
+    update w_pump_ele_statistics
+    <set>
+      <if test="pumpId != null">
+        pump_id = #{pumpId,jdbcType=BIGINT},
+      </if>
+      <if test="collectDate != null">
+        collect_date = #{collectDate,jdbcType=DATE},
+      </if>
+      <if test="eleToday != null">
+        ele_today = #{eleToday,jdbcType=DECIMAL},
+      </if>
+      <if test="eleTotal != null">
+        ele_total = #{eleTotal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pro.entity.PumpEleStatistics">
+    update w_pump_ele_statistics
+    set pump_id = #{pumpId,jdbcType=BIGINT},
+      collect_date = #{collectDate,jdbcType=DATE},
+      ele_today = #{eleToday,jdbcType=DECIMAL},
+      ele_total = #{eleTotal,jdbcType=VARCHAR}
+    where data_id = #{dataId,jdbcType=BIGINT}
+  </update>
+</mapper>

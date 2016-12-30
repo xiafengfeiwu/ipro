@@ -21,15 +21,15 @@
 	.BMap_cpyCtrl{display:none;}
 	#m-map{width: 100%; height: 100%;position: absolute;left: 0;top: 0;}
 	
-	.leftCtrlPanel{width: 261px; height: 100%; position: absolute;right:0;z-index:100; background-color: rgba(255,255,255,.75);bottom: 60px;display: none;}
-	.leftCtrlPanel .close{width:40px;height: 40px;position: absolute;right: 0;top:60px;font-size: 22px;line-height: 40px;text-align: center;color: #000;cursor: pointer;background-color: rgba(255,255,255,.8);z-index:200; }
-	.leftCtrlPanel .htmlContent{width:100%;height: 100%;position: absolute;bottom: 0px;padding: 8px;padding-top:68px;overflow: hidden;}
+	.leftCtrlPanel{width: 261px; height: 100%; position: absolute;right:0;z-index:200; background-color: rgba(255,255,255,.75);display: none;}
+	.leftCtrlPanel .close{width:40px;height: 40px;position: absolute;right: 0;font-size: 22px;line-height: 40px;text-align: center;color: #000;cursor: pointer;background-color: rgba(255,255,255,.8);z-index:200; }
+	.leftCtrlPanel .htmlContent{width:100%;height: 100%;position: absolute;bottom: 0px;padding: 8px;overflow: auto;}
 
 	.spiner {margin-top: 50%;}
 	
-	.JPCtrlPanel{width:100%;height: 60px;position: absolute;bottom: 0;z-index:100; background-color: rgba(0,0,0,.25);}
-	.row {padding:0;margin:0;position: absolute;bottom: 0;color:#fff;min-width: 890px}
-	.row .col-xs-12 .title{width:80px;height: 100%;float: left;line-height: 60px;font-size: 14px;text-align: center;border-right: 1px solid #fff;margin-left: -10px;font-weight: bold;}
+	.JPCtrlPanel{width:100%;height: 60px;position: absolute;bottom: 0;z-index:100; background-color: rgb(244,243,239);border-top: 1px solid #ddd}
+	.row {padding:0;margin:0;position: absolute;bottom: 0;color:rgb(47,64,80);min-width: 890px;}
+	.row .col-xs-12 .title{width:80px;height: 100%;float: left;line-height: 60px;font-size: 14px;text-align: center;border-right: 1px solid #ddd;margin-left: -10px;font-weight: bold;}
 	.row .col-xs-12 img{width: 60px;height: 60px;float: left;}
 	.row .col-xs-12 .text {float: left;}
 	.row .col-xs-12 .text p {height: 60px;padding: 0;margin: 0;line-height: 60px;margin-right: 12px;margin-left: 4px;text-align: center;}

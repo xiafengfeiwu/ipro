@@ -36,7 +36,7 @@ public class CollectMainServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		startService(12121);
+		//startService(12121);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class CollectMainServlet extends HttpServlet {
 		super.destroy();
 	}
 
-	private void startService(int port) {
+	void startService(int port) {
 		new Thread(new Runnable() {
 			@SuppressWarnings("resource")
 			@Override

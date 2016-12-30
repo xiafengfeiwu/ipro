@@ -55,7 +55,7 @@ public class WeatherQuartzJob implements Job {
 		// 遍历城市编码
 		for (String code : cityCodes) {
 			WeatherData wd = cityWeatherService.findTodayCityWeatherByCode(code);
-			if (wd != null && wd.getLastUpdateTime().getTime() - new Date().getTime() < 2 * 60 * 60 * 1000) {
+			if (wd != null && wd.getLastUpdateTime().getTime() - new Date().getTime() < 30 * 60 * 1000) {
 				logger.info(code + " : 无更新天气");
 				continue;
 			}

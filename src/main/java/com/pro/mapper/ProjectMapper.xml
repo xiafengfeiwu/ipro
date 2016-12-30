@@ -3,6 +3,7 @@
 <mapper namespace="com.pro.dao.ProjectMapper">
   <resultMap id="BaseResultMap" type="com.pro.entity.Project">
     <id column="project_id" jdbcType="BIGINT" property="projectId" />
+    <result column="project_area_id" jdbcType="BIGINT" property="projectAreaId" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="project_owner_id" jdbcType="BIGINT" property="projectOwnerId" />
     <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
@@ -10,7 +11,6 @@
     <result column="owner_type" jdbcType="CHAR" property="ownerType" />
     <result column="heating_area" jdbcType="DECIMAL" property="heatingArea" />
     <result column="heating_temp" jdbcType="DECIMAL" property="heatingTemp" />
-    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
     <result column="area_longitude" jdbcType="VARCHAR" property="areaLongitude" />
     <result column="area_latitude" jdbcType="VARCHAR" property="areaLatitude" />
     <result column="area_weather_condition" jdbcType="VARCHAR" property="areaWeatherCondition" />
@@ -76,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    project_id, project_name, project_owner_id, owner_name, owner_phone_no, owner_type, 
-    heating_area, heating_temp, area_code, area_longitude, area_latitude, area_weather_condition, 
+    project_id, project_area_id, project_name, project_owner_id, owner_name, owner_phone_no, 
+    owner_type, heating_area, heating_temp, area_longitude, area_latitude, area_weather_condition, 
     create_time, modify_time
   </sql>
   <select id="selectByExample" parameterType="com.pro.entity.ProjectExample" resultMap="BaseResultMap">
@@ -112,14 +112,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pro.entity.Project">
-    insert into w_project (project_id, project_name, project_owner_id, 
-      owner_name, owner_phone_no, owner_type, 
-      heating_area, heating_temp, area_code, 
+    insert into w_project (project_id, project_area_id, project_name, 
+      project_owner_id, owner_name, owner_phone_no, 
+      owner_type, heating_area, heating_temp, 
       area_longitude, area_latitude, area_weather_condition, 
       create_time, modify_time)
-    values (#{projectId,jdbcType=BIGINT}, #{projectName,jdbcType=VARCHAR}, #{projectOwnerId,jdbcType=BIGINT}, 
-      #{ownerName,jdbcType=VARCHAR}, #{ownerPhoneNo,jdbcType=VARCHAR}, #{ownerType,jdbcType=CHAR}, 
-      #{heatingArea,jdbcType=DECIMAL}, #{heatingTemp,jdbcType=DECIMAL}, #{areaCode,jdbcType=VARCHAR}, 
+    values (#{projectId,jdbcType=BIGINT}, #{projectAreaId,jdbcType=BIGINT}, #{projectName,jdbcType=VARCHAR}, 
+      #{projectOwnerId,jdbcType=BIGINT}, #{ownerName,jdbcType=VARCHAR}, #{ownerPhoneNo,jdbcType=VARCHAR}, 
+      #{ownerType,jdbcType=CHAR}, #{heatingArea,jdbcType=DECIMAL}, #{heatingTemp,jdbcType=DECIMAL}, 
       #{areaLongitude,jdbcType=VARCHAR}, #{areaLatitude,jdbcType=VARCHAR}, #{areaWeatherCondition,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
@@ -128,6 +128,9 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="projectId != null">
         project_id,
+      </if>
+      <if test="projectAreaId != null">
+        project_area_id,
       </if>
       <if test="projectName != null">
         project_name,
@@ -150,9 +153,6 @@
       <if test="heatingTemp != null">
         heating_temp,
       </if>
-      <if test="areaCode != null">
-        area_code,
-      </if>
       <if test="areaLongitude != null">
         area_longitude,
       </if>
@@ -172,6 +172,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="projectId != null">
         #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="projectAreaId != null">
+        #{projectAreaId,jdbcType=BIGINT},
       </if>
       <if test="projectName != null">
         #{projectName,jdbcType=VARCHAR},
@@ -193,9 +196,6 @@
       </if>
       <if test="heatingTemp != null">
         #{heatingTemp,jdbcType=DECIMAL},
-      </if>
-      <if test="areaCode != null">
-        #{areaCode,jdbcType=VARCHAR},
       </if>
       <if test="areaLongitude != null">
         #{areaLongitude,jdbcType=VARCHAR},
@@ -226,6 +226,9 @@
       <if test="record.projectId != null">
         project_id = #{record.projectId,jdbcType=BIGINT},
       </if>
+      <if test="record.projectAreaId != null">
+        project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
+      </if>
       <if test="record.projectName != null">
         project_name = #{record.projectName,jdbcType=VARCHAR},
       </if>
@@ -246,9 +249,6 @@
       </if>
       <if test="record.heatingTemp != null">
         heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
-      </if>
-      <if test="record.areaCode != null">
-        area_code = #{record.areaCode,jdbcType=VARCHAR},
       </if>
       <if test="record.areaLongitude != null">
         area_longitude = #{record.areaLongitude,jdbcType=VARCHAR},
@@ -273,6 +273,7 @@
   <update id="updateByExample" parameterType="map">
     update w_project
     set project_id = #{record.projectId,jdbcType=BIGINT},
+      project_area_id = #{record.projectAreaId,jdbcType=BIGINT},
       project_name = #{record.projectName,jdbcType=VARCHAR},
       project_owner_id = #{record.projectOwnerId,jdbcType=BIGINT},
       owner_name = #{record.ownerName,jdbcType=VARCHAR},
@@ -280,7 +281,6 @@
       owner_type = #{record.ownerType,jdbcType=CHAR},
       heating_area = #{record.heatingArea,jdbcType=DECIMAL},
       heating_temp = #{record.heatingTemp,jdbcType=DECIMAL},
-      area_code = #{record.areaCode,jdbcType=VARCHAR},
       area_longitude = #{record.areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{record.areaLatitude,jdbcType=VARCHAR},
       area_weather_condition = #{record.areaWeatherCondition,jdbcType=VARCHAR},
@@ -293,6 +293,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.pro.entity.Project">
     update w_project
     <set>
+      <if test="projectAreaId != null">
+        project_area_id = #{projectAreaId,jdbcType=BIGINT},
+      </if>
       <if test="projectName != null">
         project_name = #{projectName,jdbcType=VARCHAR},
       </if>
@@ -314,9 +317,6 @@
       <if test="heatingTemp != null">
         heating_temp = #{heatingTemp,jdbcType=DECIMAL},
       </if>
-      <if test="areaCode != null">
-        area_code = #{areaCode,jdbcType=VARCHAR},
-      </if>
       <if test="areaLongitude != null">
         area_longitude = #{areaLongitude,jdbcType=VARCHAR},
       </if>
@@ -337,14 +337,14 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.pro.entity.Project">
     update w_project
-    set project_name = #{projectName,jdbcType=VARCHAR},
+    set project_area_id = #{projectAreaId,jdbcType=BIGINT},
+      project_name = #{projectName,jdbcType=VARCHAR},
       project_owner_id = #{projectOwnerId,jdbcType=BIGINT},
       owner_name = #{ownerName,jdbcType=VARCHAR},
       owner_phone_no = #{ownerPhoneNo,jdbcType=VARCHAR},
       owner_type = #{ownerType,jdbcType=CHAR},
       heating_area = #{heatingArea,jdbcType=DECIMAL},
       heating_temp = #{heatingTemp,jdbcType=DECIMAL},
-      area_code = #{areaCode,jdbcType=VARCHAR},
       area_longitude = #{areaLongitude,jdbcType=VARCHAR},
       area_latitude = #{areaLatitude,jdbcType=VARCHAR},
       area_weather_condition = #{areaWeatherCondition,jdbcType=VARCHAR},

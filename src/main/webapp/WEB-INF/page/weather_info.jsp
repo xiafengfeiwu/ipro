@@ -73,7 +73,7 @@
 															<div class="input-group">
 																<select data-placeholder="选择一个城市..." class="chosen-select" style="width: 200px;" name="weatherCityCode">
 																	<option value="">请选择一个城市</option>
-																	<c:forEach items="${citys }" var="city"><option value="${city.code }"> ${city.county } , ${city.province}</option></c:forEach>
+																	<c:forEach items="${citys }" var="city"><option value="${city.code }"> ${city.county }</option></c:forEach>
 																</select>
 															</div>
 														</div>
@@ -157,9 +157,12 @@
 													<div class="input-group">
 														<select data-placeholder="选择一个城市..." class="chosen-select" style="width: 240px;" onchange="selectCityHandler(this)">
 															<option value="">请选择一个城市</option>
-															<c:forEach items="${citys }" var="city"><option value="${city.code }"> ${city.county } , ${city.province}</option></c:forEach>
+															<c:forEach items="${citys }" var="city"><option value="${city.code }"> ${city.county }</option></c:forEach>
 														</select>
 													</div>
+												</div>
+												<div class="form-group">
+													<button class="btn btn-info" id="updateCityWeather">更新所有城市天气</button>
 												</div>
 											</div>
 											<div class="col-xs-4" id="weatherBaseBox"></div>
@@ -179,7 +182,7 @@
 		<img class="pull-right" alt="多云" src="{{condCodeUrl}}" style="margin-right:10px;"/>
 		<p>城市编码：{{weatherCityCode}}</p>
 	    <p>最新天气：{{condTxt}}</p>
-	    <p>获取时间：{{collectDate |dateFormat:"yyyy-MM-dd" }}</p>
+	    <p>获取时间：{{lastUpdateTime |dateFormat:"yyyy-MM-dd hh:mm" }}</p>
 	    <p>体感温度：{{fl}} ℃</p>
 		<div class="row">
 			<div class="col-xs-6">
@@ -235,6 +238,17 @@
 						$('#weatherDetailTextCounter').removeClass('text-danger').addClass('text-success').html('还可以输入' + (500-content_length)+'  个字符。 ')
 					}
 				}
+			})
+			$("#updateCityWeather").on("click", function(){
+				var layerLoadDialog = layer.load(0, {shade: false});
+				$.ajax({
+					type : "get",
+					url : 'data/updateCityWeather.jspx',
+					success : function(data) {
+						layer.close(layerLoadDialog);
+						layer.msg(data.message);
+					}
+				});
 			})
 		})
 		function selectCityHandler(_this){

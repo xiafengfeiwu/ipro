@@ -6,6 +6,8 @@ import java.util.Date;
 public class Project {
     private Long projectId;
 
+    private Long projectAreaId;
+
     private String projectName;
 
     private Long projectOwnerId;
@@ -19,8 +21,6 @@ public class Project {
     private BigDecimal heatingArea;
 
     private BigDecimal heatingTemp;
-
-    private String areaCode;
 
     private String areaLongitude;
 
@@ -38,6 +38,14 @@ public class Project {
 
     public void setProjectId(Long projectId) {
         this.projectId = projectId;
+    }
+
+    public Long getProjectAreaId() {
+        return projectAreaId;
+    }
+
+    public void setProjectAreaId(Long projectAreaId) {
+        this.projectAreaId = projectAreaId;
     }
 
     public String getProjectName() {
@@ -94,14 +102,6 @@ public class Project {
 
     public void setHeatingTemp(BigDecimal heatingTemp) {
         this.heatingTemp = heatingTemp;
-    }
-
-    public String getAreaCode() {
-        return areaCode;
-    }
-
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
     }
 
     public String getAreaLongitude() {

@@ -28,7 +28,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
-        <c:if test="${'success'.equals(status) }">
+        <c:if test="${\"success\".equals(status) }">
         	<script>parent['device_list'].location.reload();</script>
         </c:if>
         <div class="row">
@@ -52,9 +52,9 @@
 	                        <div class="col-sm-10">
 	                            <select class="form-control" name="deviceType">
 	                            	<option value="">选择一个类型</option>
-	                            	<option value="AL-CJ" <c:if test="${'AL-CJ'.equals(device.deviceType) }">selected</c:if>>AL-采集器</option>
-	                            	<option value="AL-D-CJ" <c:if test="${'AL-D-CJ'.equals(device.deviceType) }">selected</c:if>>AL-单点采集器</option>
-	                            	<option value="AL-JZ" <c:if test="${'AL-JZ'.equals(device.deviceType) }">selected</c:if>>AL-集中器</option>
+	                            	<option value="AL-CJ" <c:if test="${\"AL-CJ\".equals(device.deviceType) }">selected</c:if>>AL-采集器</option>
+	                            	<option value="AL-D-CJ" <c:if test="${\"AL-D-CJ\".equals(device.deviceType) }">selected</c:if>>AL-单点采集器</option>
+	                            	<option value="AL-JZ" <c:if test="${\"AL-JZ\".equals(device.deviceType) }">selected</c:if>>AL-集中器</option>
 	                            </select>
 	                            <span class="help-block m-b-none pull-right">&nbsp;</span>
 	                        </div>

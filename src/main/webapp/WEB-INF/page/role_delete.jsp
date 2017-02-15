@@ -28,7 +28,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
-        <c:if test='${!"success".equals(status) && role != null }'>
+        <c:if test="${!\"success\".equals(status) && role != null }">
 	        <div class="row">
 	            <div class="col-sm-8 col-sm-offset-2">
 	                <form method="post" action="role/deleteAction.jspx" class="form-horizontal">
@@ -43,7 +43,7 @@
 	            </div>
 	        </div>
         </c:if>
-        <c:if test='${"success".equals(status) || role == null }'>
+        <c:if test="${\"success\".equals(status) || role == null }">
         	<div class="row">
            		<div class="col-sm-8 col-sm-offset-2">
         			<div class="form-group text-center">角色已被删除。</div>

@@ -16,6 +16,14 @@
 <link href="resources/css/plugins/iCheck/custom.css" rel="stylesheet">
 <link href="resources/css/animate.min.css" rel="stylesheet">
 <link href="resources/css/style.min.css?v=4.1.0" rel="stylesheet">
+<style type="text/css">
+	.i_item {
+		min-width: 124px;
+	}
+	.i_item_seleled {
+		border-left: 2px solid #d9534f;padding-left: 6px;background-color: #fff
+	}
+</style>
 </head>
 <body class="gray-bg">
 	<div class="wrapper wrapper-content  animated fadeIn">
@@ -25,9 +33,9 @@
 					<div class="ibox-content mailbox-content">
 						<div class="file-manager">
 							<ul class="folder-list m-b-md" style="padding: 0px">
-								<li><a href="javascript:;"><i class="fa fa-file-word-o"></i>设备清单报表</a></li>
-								<li><a href="javascript:;"><i class="fa fa-file-powerpoint-o"></i>实时数据报表</a></li>
-								<li style="border-left: 2px solid #d9534f;padding-left: 6px;background-color: #fff"><a href="javascript:;"><i class="fa fa-file-excel-o"></i>历史数据报表</a></li>
+								<li class="i_item i_item_seleled"><a href="javascript:;"><i class="fa fa-file-word-o"></i>设备清单报表</a></li>
+								<li class="i_item"><a href="javascript:;"><i class="fa fa-file-powerpoint-o"></i>实时数据报表</a></li>
+								<li class="i_item"><a href="javascript:;"><i class="fa fa-file-excel-o"></i>历史数据报表</a></li>
 							</ul>
 							<div class="clearfix"></div>
 						</div>
@@ -204,5 +212,12 @@
 	<script src="resources/js/content.min.js?v=1.0.0"></script>
 	<script src="resources/js/plugins/iCheck/icheck.min.js"></script>
 	<script src="resources/js/plugins/pace/pace.min.js"></script>
+	<script type="text/javascript">
+		$(".i_item").on("click", function(){
+			var _this = this;
+			$(".i_item").removeClass("i_item_seleled");
+			$(_this).addClass("i_item_seleled");
+		});
+	</script>
 </body>
 </html>

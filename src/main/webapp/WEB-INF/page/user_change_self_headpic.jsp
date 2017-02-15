@@ -28,7 +28,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
-        <c:if test="${'success'.equals(status) }">
+        <c:if test="${\"success\".equals(status) }">
         	<script>parent['user_me'].$('#parentHeadImageBox').attr('src', '${userHeadPic }');parent.$('#parentHeadImageBox').attr('src', '${userHeadPic }');</script>
         </c:if>
         <div class="row">

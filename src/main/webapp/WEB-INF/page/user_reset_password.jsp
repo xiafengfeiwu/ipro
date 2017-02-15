@@ -28,7 +28,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500)</script>
         </c:if>
-        <c:if test='${!"success".equals(status) }'>
+        <c:if test="${!\"success\".equals(status) }">
 	        <div class="row">
 	            <div class="col-sm-8 col-sm-offset-2">
 	                <form method="post" action="user/resetUserPwAction.jspx" class="form-horizontal">
@@ -43,7 +43,7 @@
 	            </div>
 	        </div>
         </c:if>
-        <c:if test='${"success".equals(status)}'>
+        <c:if test="${\"success\".equals(status)}">
         	<div class="row">
            		<div class="col-sm-8 col-sm-offset-2">
         			<div class="form-group text-center">用户密码已重置，当前密码为123456。</div>

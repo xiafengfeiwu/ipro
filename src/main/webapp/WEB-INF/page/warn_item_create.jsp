@@ -29,7 +29,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500);</script>
         </c:if>
-        <c:if test="${'success'.equals(status) }">
+        <c:if test="${\"success\".equals(status) }">
         	<script>parent['warn_list'].location.reload();</script>
         </c:if>
         <div class="row">
@@ -51,9 +51,9 @@
                         <div class="col-xs-4">
                         	<select class="form-control" name="itemOperators">
 	                        	<option value="">选择操作符</option>
-                            	<option value="GT" <c:if test="${'GT'.equals(warnItem.itemOperators) }">selected</c:if>>当大于阀值</option>
-                            	<option value="EQ" <c:if test="${'EQ'.equals(warnItem.itemOperators) }">selected</c:if>>当等于阀值</option>
-                            	<option value="LT" <c:if test="${'LT'.equals(warnItem.itemOperators) }">selected</c:if>>当小于阀值</option>
+                            	<option value="GT" <c:if test="${\"GT\".equals(warnItem.itemOperators) }">selected</c:if>>当大于阀值</option>
+                            	<option value="EQ" <c:if test="${\"EQ\".equals(warnItem.itemOperators) }">selected</c:if>>当等于阀值</option>
+                            	<option value="LT" <c:if test="${\"LT\".equals(warnItem.itemOperators) }">selected</c:if>>当小于阀值</option>
                             </select>
                         </div>
                         <div class="col-xs-4">
@@ -71,11 +71,11 @@
                         <div class="col-xs-6">
                         	<select class="form-control" name="warnLevel">
                             	<option value="">选择一个告警级别</option>
-                            	<option value="一级" <c:if test="${'一级'.equals(warnItem.warnLevel) }">selected</c:if>>一级</option>
-                            	<option value="二级" <c:if test="${'二级'.equals(warnItem.warnLevel) }">selected</c:if>>二级</option>
-                            	<option value="三级" <c:if test="${'三级'.equals(warnItem.warnLevel) }">selected</c:if>>三级</option>
-                            	<option value="四级" <c:if test="${'四级'.equals(warnItem.warnLevel) }">selected</c:if>>四级</option>
-                            	<option value="通知" <c:if test="${'通知'.equals(warnItem.warnLevel) }">selected</c:if>>通知</option>
+                            	<option value="一级" <c:if test="${\"一级\".equals(warnItem.warnLevel) }">selected</c:if>>一级</option>
+                            	<option value="二级" <c:if test="${\"二级\".equals(warnItem.warnLevel) }">selected</c:if>>二级</option>
+                            	<option value="三级" <c:if test="${\"三级\".equals(warnItem.warnLevel) }">selected</c:if>>三级</option>
+                            	<option value="四级" <c:if test="${\"四级\".equals(warnItem.warnLevel) }">selected</c:if>>四级</option>
+                            	<option value="通知" <c:if test="${\"通知\".equals(warnItem.warnLevel) }">selected</c:if>>通知</option>
                             </select>
                         </div>
                     </div>

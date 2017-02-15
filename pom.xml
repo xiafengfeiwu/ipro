@@ -63,6 +63,10 @@
 		<jpinyin.version>1.1.8</jpinyin.version>
 		<!-- poi.version -->
 		<poi.version>3.15</poi.version>
+		<!-- goeasy.version -->
+		<goeasy.version>0.3.3</goeasy.version>
+		<!-- jedis.version -->
+		<jedis.version>2.9.0</jedis.version>
 	</properties>
 	<build>
 		<plugins>
@@ -77,6 +81,13 @@
 			</plugin>
 		</plugins>
 	</build>
+    <repositories>
+        <repository>
+            <id>goeasy</id>
+            <name>goeasy</name>
+            <url>http://maven.goeasy.io/content/repositories/releases/</url>
+        </repository>
+    </repositories>
 	<dependencies>
 		<!-- 添加Spring依赖 -->
 		<dependency>
@@ -322,6 +333,16 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>io.goeasy</groupId>
+            <artifactId>goeasy-sdk</artifactId>
+            <version>${goeasy.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>redis.clients</groupId>
+		    <artifactId>jedis</artifactId>
+		    <version>${jedis.version}</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -28,7 +28,7 @@
 	        </div>
 			<script>setTimeout(function(){$("#alertMsgBox").alert('close')}, 1500);</script>
         </c:if>
-        <c:if test="${'success'.equals(status) }">
+        <c:if test="${\"success\".equals(status) }">
         	<script>parent['role_list'].location.reload();</script>
         </c:if>
         <div class="row">
